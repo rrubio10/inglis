@@ -1,55 +1,47 @@
 {
   "app": {
     "title": "Cambridge English Practice 🎓",
-    "subtitle": "Elige primero un bloque oficial y después el tipo de ejercicio.",
-    "footer": "📖 Material organizado desde exercises.json para seguir ampliándolo con más bloques oficiales.",
-    "exerciseTypeOrder": [
-      "multipleChoice",
-      "fillBlanks",
-      "wordFormation",
-      "sentenceTransformation"
-    ]
+    "subtitle": "Primero eliges un bloque oficial y después el tipo de ejercicio disponible en ese bloque.",
+    "footer": "📖 Contenido organizado desde exercises.json para poder seguir añadiendo más material oficial."
   },
   "exerciseTypes": {
     "multipleChoice": {
       "label": "Multiple Choice",
       "icon": "📝",
-      "description": "Texto completo con todos los huecos numerados y una respuesta distinta para cada gap."
+      "description": "Multiple-choice cloze con el texto completo y una pregunta independiente para cada hueco."
     },
     "fillBlanks": {
       "label": "Fill the Gaps",
       "icon": "✍️",
-      "description": "Open cloze con el pasaje entero y una hoja de respuestas para escribir una sola palabra."
+      "description": "Open cloze con pasaje completo y hoja de respuestas para escribir una sola palabra."
     },
     "wordFormation": {
       "label": "Word Formation",
       "icon": "🔄",
-      "description": "Texto completo con palabra base visible en cada hueco, al estilo Cambridge."
+      "description": "Texto completo con la palabra base visible en cada hueco."
     },
     "sentenceTransformation": {
       "label": "Sentence Transformation",
       "icon": "✏️",
-      "description": "Oración original, palabra dada y hueco para escribir solo el fragmento que falta."
+      "description": "Transformaciones tipo Part 4, tanto en formato examen como en ejercicios de paráfrasis."
     }
   },
   "exerciseSets": [
     {
-      "id": "official_sample_paper_3",
+      "id": "specs_sample_paper",
       "title": "Official Sample Paper 3",
-      "description": "Bloque oficial con Studying black bears, The origin of language, Training sports champions y las transformaciones 25–30.",
-      "level": "C1 Advanced",
+      "description": "Bloque oficial de Specifications and Sample Papers con las cuatro partes que te interesan.",
       "source": {
-        "collection": "Specifications and Sample Papers",
-        "pages": "10–14",
-        "notes": "Ejercicios y answer key oficiales del mismo bloque."
+        "file": "Cambridge_C1_Advanced_Oficial_Compilado.pdf",
+        "pages": "10–14"
       },
       "types": {
         "multipleChoice": [
           {
-            "id": "sp3_mc_black_bears",
+            "id": "sp3_black_bears",
             "title": "Studying black bears",
             "instructions": "For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.",
-            "note": "Texto completo del ejercicio oficial y opciones separadas por hueco.",
+            "note": "Texto oficial completo del ejercicio de Part 1.",
             "source": {
               "pages": "10, 14"
             },
@@ -136,36 +128,41 @@
                 "correct": "D"
               }
             ],
-            "explanation": "Las combinaciones clave aquí son win trust, insight into, contrary to, care for, dispute claims, be misled, under no illusion y extend beyond."
+            "explanation": "Fíjate en las colocaciones: win trust, insight into, contrary to, care for, disputes claims, be misled, under no illusion y extend beyond."
           }
         ],
         "fillBlanks": [
           {
-            "id": "sp3_fb_origin_language",
+            "id": "sp3_origin_language",
             "title": "The origin of language",
             "instructions": "For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.",
-            "note": "Este ejercicio admite varias respuestas oficiales en algunos huecos.",
+            "note": "Texto oficial completo del Open Cloze.",
             "source": {
-              "pages": "11, 14, 16–17"
+              "pages": "11, 14"
             },
             "text": "The truth is nobody really knows how language first began. Did we all start talking at around the same time {{9}} of the manner in which our brains had begun to develop?\n\nAlthough there is a lack of clear evidence, people have come up with various theories about the origins of language. One recent theory is that human beings have evolved in {{10}} a way that we are programmed for language from the moment of birth. In {{11}} words, language came about as a result of an evolutionary change in our brains at some stage.\n\nLanguage {{12}} well be programmed into the brain but, {{13}} this, people still need stimulus from others around them. From studies, we know that {{14}} children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so. This research shows, if {{15}} else, that language is a social activity, not something invented {{16}} isolation.",
             "blanks": [
               {
                 "number": 9,
-                "answer": "because"
+                "answers": [
+                  "because"
+                ]
               },
               {
                 "number": 10,
-                "answer": "such"
+                "answers": [
+                  "such"
+                ]
               },
               {
                 "number": 11,
-                "answer": "other"
+                "answers": [
+                  "other"
+                ]
               },
               {
                 "number": 12,
-                "answer": "could",
-                "acceptedAnswers": [
+                "answers": [
                   "could",
                   "may",
                   "might"
@@ -173,12 +170,13 @@
               },
               {
                 "number": 13,
-                "answer": "despite"
+                "answers": [
+                  "despite"
+                ]
               },
               {
                 "number": 14,
-                "answer": "if",
-                "acceptedAnswers": [
+                "answers": [
                   "if",
                   "when",
                   "whenever"
@@ -186,83 +184,101 @@
               },
               {
                 "number": 15,
-                "answer": "nothing",
-                "acceptedAnswers": [
+                "answers": [
                   "nothing",
                   "little"
                 ]
               },
               {
                 "number": 16,
-                "answer": "in"
+                "answers": [
+                  "in"
+                ]
               }
             ],
-            "explanation": "En Open Cloze suelen caer conectores, cuantificadores y expresiones fijas como in other words, if nothing else o in isolation."
+            "explanation": "Aquí mandan los conectores y expresiones fijas: because of, such a way, in other words, could/may/might well, despite this, if/when/whenever, if nothing/little else, in isolation."
           }
         ],
         "wordFormation": [
           {
-            "id": "sp3_wf_training_sports_champions",
+            "id": "sp3_training_sports_champions",
             "title": "Training sports champions",
-            "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap in the same line.",
-            "note": "Texto completo con la palabra base en cada hueco, igual que en el formato oficial.",
+            "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap.",
+            "note": "Texto oficial completo del Part 3.",
             "source": {
-              "pages": "11, 14, 16"
+              "pages": "11, 14"
             },
-            "text": "What are the abilities that a professional sports person needs? To guarantee that opponents can be {{17|COME}}, speed, stamina and agility are essential, not to mention outstanding natural talent. Both a rigorous and comprehensive {{18|FIT}} regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates, rather than proteins and fat, that provide athletes with the {{19|ENDURE}} they need to compete. This means that pasta is more {{20|BENEFIT}} than eggs or meat. Such a diet enables them to move very energetically when required. Failure to follow a sensible diet can result in the {{21|ABLE}} to maintain stamina.\n\nRegular training to increase muscular {{22|STRONG}} is also a vital part of a professional’s regime, and this is {{23|TYPE}} done by exercising with weights. Sports people are prone to injury but a quality training regime can ensure that the {{24|SEVERE}} of these can be minimised.",
+            "text": "What are the abilities that a professional sports person needs? To guarantee that opponents can be {{17|COME}}, speed, stamina and agility are essential, not to mention outstanding natural talent. Both a rigorous and comprehensive {{18|FIT}} regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates, rather than proteins and fat, that provide athletes with the {{19|ENDURE}} they need to compete. This means that pasta is more {{20|BENEFIT}} than eggs or meat. Such a diet enables them to move very energetically when required. Failure to follow a sensible diet can result in the {{21|ABLE}} to maintain stamina. Regular training to increase muscular {{22|STRONG}} is also a vital part of a professional’s regime, and this is {{23|TYPE}} done by exercising with weights. Sports people are prone to injury but a quality training regime can ensure that the {{24|SEVERE}} of these can be minimised.",
             "blanks": [
               {
                 "number": 17,
                 "base": "COME",
-                "answer": "overcome"
+                "answers": [
+                  "overcome"
+                ]
               },
               {
                 "number": 18,
                 "base": "FIT",
-                "answer": "fitness"
+                "answers": [
+                  "fitness"
+                ]
               },
               {
                 "number": 19,
                 "base": "ENDURE",
-                "answer": "endurance"
+                "answers": [
+                  "endurance"
+                ]
               },
               {
                 "number": 20,
                 "base": "BENEFIT",
-                "answer": "beneficial"
+                "answers": [
+                  "beneficial"
+                ]
               },
               {
                 "number": 21,
                 "base": "ABLE",
-                "answer": "inability"
+                "answers": [
+                  "inability"
+                ]
               },
               {
                 "number": 22,
                 "base": "STRONG",
-                "answer": "strength"
+                "answers": [
+                  "strength"
+                ]
               },
               {
                 "number": 23,
                 "base": "TYPE",
-                "answer": "typically"
+                "answers": [
+                  "typically"
+                ]
               },
               {
                 "number": 24,
                 "base": "SEVERE",
-                "answer": "severity"
+                "answers": [
+                  "severity"
+                ]
               }
             ],
-            "explanation": "Aquí hay que detectar la categoría gramatical que pide el contexto: sustantivos como fitness, endurance, inability, strength y severity; adjetivo beneficial; adverbio typically; y verbo overcome."
+            "explanation": "Busca la categoría gramatical que pide el hueco: overcome (verbo), fitness/endurance/inability/strength/severity (sustantivos), beneficial (adjetivo) y typically (adverbio)."
           }
         ],
         "sentenceTransformation": [
           {
-            "id": "sp3_sentence_transformations",
-            "title": "Key word transformations 25–30",
+            "id": "sp3_key_transformations",
+            "title": "Key word transformations",
+            "mode": "exam",
             "instructions": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
-            "note": "Se han añadido variantes oficiales aceptadas para que la autocorrección sea más flexible.",
+            "note": "Bloque oficial completo de Part 4.",
             "source": {
-              "pages": "12, 14, 16–17"
+              "pages": "12, 14"
             },
             "items": [
               {
@@ -271,16 +287,15 @@
                 "givenWord": "NEARLY",
                 "prefix": "My brother",
                 "suffix": "much now as he did when he was younger.",
-                "answer": "doesn't earn nearly as",
-                "acceptedAnswers": [
+                "answers": [
                   "doesn't earn nearly as",
-                  "doesn’t earn nearly as",
-                  "doesn't earn nearly so",
-                  "doesn’t earn nearly so",
+                  "does not earn nearly as",
                   "doesn't make nearly as",
-                  "doesn’t make nearly as",
+                  "does not make nearly as",
+                  "doesn't earn nearly so",
+                  "does not earn nearly so",
                   "doesn't make nearly so",
-                  "doesn’t make nearly so"
+                  "does not make nearly so"
                 ]
               },
               {
@@ -289,8 +304,7 @@
                 "givenWord": "PULLED",
                 "prefix": "The old bus station is",
                 "suffix": "with a new one.",
-                "answer": "being pulled down and replaced",
-                "acceptedAnswers": [
+                "answers": [
                   "being pulled down and replaced",
                   "being pulled down and being replaced",
                   "being pulled down to be replaced",
@@ -303,14 +317,13 @@
                 "givenWord": "THE",
                 "prefix": "The number of students now at university is",
                 "suffix": "been, apparently.",
-                "answer": "the highest it has ever",
-                "acceptedAnswers": [
-                  "the highest it has ever",
+                "answers": [
                   "the highest that it has ever",
                   "the highest which it has ever",
-                  "the highest it's ever",
+                  "the highest it has ever",
                   "the highest that it's ever",
-                  "the highest which it's ever"
+                  "the highest which it's ever",
+                  "the highest it's ever"
                 ]
               },
               {
@@ -319,8 +332,7 @@
                 "givenWord": "COMPARISON",
                 "prefix": "I think the Fishers’ new album is",
                 "suffix": "their previous one.",
-                "answer": "disappointing in comparison with",
-                "acceptedAnswers": [
+                "answers": [
                   "disappointing in comparison with",
                   "disappointing in comparison to",
                   "a disappointment in comparison with",
@@ -333,10 +345,9 @@
                 "givenWord": "SPITE",
                 "prefix": "Anna got the job",
                 "suffix": "of experience in public relations.",
-                "answer": "in spite of her lack",
-                "acceptedAnswers": [
-                  "in spite of her lack",
-                  "in spite of a lack"
+                "answers": [
+                  "in spite of a lack",
+                  "in spite of her lack"
                 ]
               },
               {
@@ -345,43 +356,37 @@
                 "givenWord": "DANGERS",
                 "prefix": "Max received a",
                 "suffix": "at night without any lights from the police officer.",
-                "answer": "warning about the dangers of cycling",
-                "acceptedAnswers": [
+                "answers": [
                   "warning about the dangers of cycling",
                   "warning regarding the dangers of cycling",
-                  "warning concerning the dangers of cycling",
-                  "warning about the dangers when cycling",
-                  "warning regarding the dangers when cycling",
-                  "warning concerning the dangers when cycling"
+                  "warning concerning the dangers of cycling"
                 ]
               }
             ],
-            "explanation": "En estas transformaciones importa mucho reconocer equivalencias exactas: nearly as/so, be pulled down, the highest ... has ever been, in comparison with/to, in spite of y warning about/regarding/concerning."
+            "explanation": "En Part 4 cuenta mucho detectar la estructura equivalente exacta: nearly as/so, pulled down, the highest it has ever been, in comparison with/to, in spite of a/her lack y warning about/regarding/concerning."
           }
         ]
       }
     },
     {
-      "id": "official_handbook_sample",
+      "id": "handbook_sample_test",
       "title": "Official Handbook Sample Test",
-      "description": "Bloque oficial con New uses for salt mines, Managing change, Fashion and Science y las transformaciones 25–30.",
-      "level": "C1 Advanced",
+      "description": "Bloque del handbook oficial con otro Part 1, Part 2, Part 3 y Part 4 completos.",
       "source": {
-        "collection": "C1 Advanced Handbook for teachers",
-        "pages": "4–8",
-        "notes": "Las respuestas salen en la misma muestra oficial del handbook."
+        "file": "Cambridge_C1_Advanced_Oficial_Compilado.pdf",
+        "pages": "4–8"
       },
       "types": {
         "multipleChoice": [
           {
-            "id": "hb_mc_salt_mines",
+            "id": "hb_salt_mines",
             "title": "New uses for salt mines",
             "instructions": "For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.",
-            "note": "Basado en el sample test paper-based del handbook oficial.",
+            "note": "Part 1 del handbook oficial.",
             "source": {
               "pages": "4, 8"
             },
-            "text": "Geological deposits of salt were formed millions of years ago, when what is now land, lay under the sea. It is hard to believe that salt is now such a cheap {{1}}, because centuries ago it was the commercial {{2}} of today’s oil. The men who mined salt became wealthy and, although the work was {{3}} and frequently dangerous, a job in a salt mine was highly {{4}}.\n\nNowadays, the specific microclimates in disused mines have been {{5}} for the treatment of respiratory illnesses such as asthma, and the silent, dark surroundings in a mine are considered {{6}} in encouraging patients to relax.\n\nIn addition, some disused mines have been {{7}} to different commercial enterprises, although keeping up-to-date with the technology of mining is essential to {{8}} visitors’ safety. Some of the largest underground chambers even host concerts, conferences and business meetings.",
+            "text": "Geological deposits of salt were formed millions of years ago, when what is now land lay under the sea. It is hard to believe that salt is now such a cheap {{1}}, because centuries ago it was the commercial {{2}} of today’s oil. The men who mined salt became wealthy and, although the work was {{3}} and frequently dangerous, a job in a salt mine was highly {{4}}.\n\nNowadays, the specific microclimates in disused mines have been {{5}} for the treatment of respiratory illnesses such as asthma, and the silent, dark surroundings in a mine are considered {{6}} in encouraging patients to relax.\n\nIn addition, some disused mines have been {{7}} to different commercial enterprises, although keeping up-to-date with the technology of mining is essential to {{8}} visitors’ safety. Some of the largest underground chambers even host concerts, conferences and business meetings.",
             "questions": [
               {
                 "number": 1,
@@ -464,15 +469,15 @@
                 "correct": "C"
               }
             ],
-            "explanation": "Aquí son decisivas las colocaciones y el sentido contextual: cheap commodity, equivalent of, demanding work, highly regarded, exploited for treatment, beneficial in encouraging, turned over to, ensure safety."
+            "explanation": "Aquí destacan las colocaciones y el significado contextual: commodity, equivalent, demanding, highly regarded, exploited, beneficial, turned over y ensure safety."
           }
         ],
         "fillBlanks": [
           {
-            "id": "hb_fb_managing_change",
+            "id": "hb_managing_change",
             "title": "Managing change",
             "instructions": "For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.",
-            "note": "Open cloze del handbook con una respuesta doble oficial en el hueco 13.",
+            "note": "Open cloze del handbook oficial.",
             "source": {
               "pages": "5, 8"
             },
@@ -480,50 +485,63 @@
             "blanks": [
               {
                 "number": 9,
-                "answer": "such"
+                "answers": [
+                  "such"
+                ]
               },
               {
                 "number": 10,
-                "answer": "at"
+                "answers": [
+                  "at"
+                ]
               },
               {
                 "number": 11,
-                "answer": "put"
+                "answers": [
+                  "put"
+                ]
               },
               {
                 "number": 12,
-                "answer": "than"
+                "answers": [
+                  "than"
+                ]
               },
               {
                 "number": 13,
-                "answer": "with",
-                "acceptedAnswers": [
+                "answers": [
                   "with",
                   "by"
                 ]
               },
               {
                 "number": 14,
-                "answer": "like"
+                "answers": [
+                  "like"
+                ]
               },
               {
                 "number": 15,
-                "answer": "least"
+                "answers": [
+                  "least"
+                ]
               },
               {
                 "number": 16,
-                "answer": "despite"
+                "answers": [
+                  "despite"
+                ]
               }
             ],
-            "explanation": "Hay varias estructuras fijas importantes: such ... that, at times, put forward, rather than, faced with/by change, at least y despite the simplicity of these ideas."
+            "explanation": "Las respuestas se apoyan en estructuras muy fijas: such...that, at times, put forward, rather than, faced with/by, like, at least y despite."
           }
         ],
         "wordFormation": [
           {
-            "id": "hb_wf_fashion_science",
+            "id": "hb_fashion_science",
             "title": "Fashion and Science",
-            "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap in the same line.",
-            "note": "Ejercicio oficial de Word Formation con ocho transformaciones completas.",
+            "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap.",
+            "note": "Word formation del handbook oficial.",
             "source": {
               "pages": "5, 8"
             },
@@ -532,53 +550,70 @@
               {
                 "number": 17,
                 "base": "PURSUE",
-                "answer": "pursuit"
+                "answers": [
+                  "pursuit"
+                ]
               },
               {
                 "number": 18,
                 "base": "PREDICT",
-                "answer": "unpredictable"
+                "answers": [
+                  "unpredictable"
+                ]
               },
               {
                 "number": 19,
                 "base": "ENTHUSE",
-                "answer": "enthusiasts"
+                "answers": [
+                  "enthusiasts"
+                ]
               },
               {
                 "number": 20,
                 "base": "DISTINCT",
-                "answer": "distinguish"
+                "answers": [
+                  "distinguish"
+                ]
               },
               {
                 "number": 21,
                 "base": "COMPETE",
-                "answer": "competitors"
+                "answers": [
+                  "competitors"
+                ]
               },
               {
                 "number": 22,
                 "base": "INCREASE",
-                "answer": "increasingly"
+                "answers": [
+                  "increasingly"
+                ]
               },
               {
                 "number": 23,
                 "base": "REPLACE",
-                "answer": "replacements"
+                "answers": [
+                  "replacements"
+                ]
               },
               {
                 "number": 24,
                 "base": "INNOVATE",
-                "answer": "innovative"
+                "answers": [
+                  "innovative"
+                ]
               }
             ],
-            "explanation": "Este texto combina cambios de categoría y prefijación/sufijación: pursuit, unpredictable, enthusiasts, distinguish, competitors, increasingly, replacements e innovative."
+            "explanation": "Aquí hay cambios de clase léxica muy claros: pursuit, unpredictable, enthusiasts, distinguish, competitors, increasingly, replacements e innovative."
           }
         ],
         "sentenceTransformation": [
           {
-            "id": "hb_sentence_transformations",
-            "title": "Key word transformations 25–30",
+            "id": "hb_key_transformations",
+            "title": "Paper-based sample test transformations",
+            "mode": "exam",
             "instructions": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
-            "note": "Se incluyen las respuestas oficiales aceptadas que aparecen en la clave del handbook.",
+            "note": "Part 4 del handbook oficial.",
             "source": {
               "pages": "6, 8"
             },
@@ -589,8 +624,7 @@
                 "givenWord": "GIVE",
                 "prefix": "If",
                 "suffix": "the process at the conference, your boss will be pleased.",
-                "answer": "you give a clear explanation of",
-                "acceptedAnswers": [
+                "answers": [
                   "you give a clear explanation of",
                   "you give a clear explanation about"
                 ]
@@ -601,8 +635,7 @@
                 "givenWord": "ALLEGED",
                 "prefix": "A visitor to the national art gallery",
                 "suffix": "an 18th-century painting.",
-                "answer": "is alleged to have damaged",
-                "acceptedAnswers": [
+                "answers": [
                   "is alleged to have damaged"
                 ]
               },
@@ -612,8 +645,7 @@
                 "givenWord": "DIFFERENCE",
                 "prefix": "It really",
                 "suffix": "whether Jill chooses to come on holiday with us or not.",
-                "answer": "makes no difference to me",
-                "acceptedAnswers": [
+                "answers": [
                   "makes no difference to me",
                   "makes very little difference to me"
                 ]
@@ -624,8 +656,7 @@
                 "givenWord": "BEEN",
                 "prefix": "If it",
                 "suffix": "help, I don’t think I’d have finished the course.",
-                "answer": "hadn't been for Joe's",
-                "acceptedAnswers": [
+                "answers": [
                   "hadn't been for Joe's",
                   "had not been for Joe's"
                 ]
@@ -636,9 +667,7 @@
                 "givenWord": "TAKES",
                 "prefix": "We can assure our customers that we will",
                 "suffix": "to maintain the quality of the products on our shelves.",
-                "answer": "do what it takes",
-                "acceptedAnswers": [
-                  "do what it takes",
+                "answers": [
                   "do whatever it takes",
                   "do everything it takes",
                   "do all it takes",
@@ -651,14 +680,368 @@
                 "givenWord": "LIGHT",
                 "prefix": "The government’s proposal to build a new runway at the airport",
                 "suffix": "some complaints by local residents.",
-                "answer": "was withdrawn in light of",
-                "acceptedAnswers": [
-                  "was withdrawn in light of",
-                  "was withdrawn in the light of"
+                "answers": [
+                  "was withdrawn in the light of",
+                  "was withdrawn in light of"
                 ]
               }
             ],
-            "explanation": "Aquí se practican varias equivalencias muy típicas del examen: give a clear explanation, be alleged to have, make no difference, hadn’t been for, do what it takes y in light of / in the light of."
+            "explanation": "En este bloque conviene reconocer pasiva, expresiones fijas y perífrasis: give a clear explanation, is alleged to have, makes no difference, had not been for, do whatever it takes e in the light of."
+          }
+        ]
+      }
+    },
+    {
+      "id": "part1_lesson_plan",
+      "title": "Official Part 1 Lesson Worksheet",
+      "description": "Práctica oficial de Part 1 basada en el worksheet del PDF de Cambridge.",
+      "source": {
+        "file": "Cambridge_C1_Advanced_Oficial_Compilado.pdf",
+        "pages": "37–41"
+      },
+      "types": {
+        "multipleChoice": [
+          {
+            "id": "lp_music_brain",
+            "title": "What we know about music and the brain",
+            "instructions": "Worksheet-based Part 1 practice. Choose the best word for each gap.",
+            "note": "Actividad oficial de preparación. Las opciones se reconstruyen a partir del worksheet y de la clave del mismo bloque.",
+            "source": {
+              "pages": "37–41"
+            },
+            "text": "Work on the human brain has indicated how different parts are centres of activity for different skills, feelings, perceptions and so on. It has also been shown that the left and right hemispheres, or halves, of the brain are {{1}} for different functions. While language is processed in the left, or analytical hemisphere, music is processed in the right, or emotional hemisphere. {{2}} of music like tone, pitch and melody are all probably processed in different parts of the brain. Some features of musical experience are processed not just in the auditory parts of the brain, but in the visual ones. We don’t yet fully understand the {{3}} of this.\n\nThe tempo of music seems to be {{4}} related to its emotional impact, with fast music often felt as happier and slower music as sadder. It is the same with the major biological rhythm of the body: our heart {{5}} quickens when we’re happy, but slows when we’re sad. Military music may have evolved from attempts to get us ready for battle by using fast drumming to {{6}} our hearts into beating faster. Music is perhaps one of the most complex experiences the brain {{7}} with and it has become an absolutely vital part of our rituals and ceremonies. It has power beyond language to {{8}} mood and co-ordinate our emotional states.",
+            "questions": [
+              {
+                "number": 1,
+                "options": {
+                  "A": "responsible",
+                  "B": "amenable",
+                  "C": "dependable",
+                  "D": "reliable"
+                },
+                "correct": "A"
+              },
+              {
+                "number": 2,
+                "options": {
+                  "A": "Aspects",
+                  "B": "Views",
+                  "C": "Factors",
+                  "D": "Pieces"
+                },
+                "correct": "A"
+              },
+              {
+                "number": 3,
+                "options": {
+                  "A": "implications",
+                  "B": "expectations",
+                  "C": "assumptions",
+                  "D": "propositions"
+                },
+                "correct": "A"
+              },
+              {
+                "number": 4,
+                "options": {
+                  "A": "directly",
+                  "B": "surely",
+                  "C": "plainly",
+                  "D": "evidently"
+                },
+                "correct": "A"
+              },
+              {
+                "number": 5,
+                "options": {
+                  "A": "rate",
+                  "B": "pulse",
+                  "C": "speed",
+                  "D": "pace"
+                },
+                "correct": "A"
+              },
+              {
+                "number": 6,
+                "options": {
+                  "A": "stimulate",
+                  "B": "activate",
+                  "C": "motivate",
+                  "D": "animate"
+                },
+                "correct": "A"
+              },
+              {
+                "number": 7,
+                "options": {
+                  "A": "copes",
+                  "B": "manages",
+                  "C": "bears",
+                  "D": "holds"
+                },
+                "correct": "A"
+              },
+              {
+                "number": 8,
+                "options": {
+                  "A": "communicate",
+                  "B": "notify",
+                  "C": "report",
+                  "D": "associate"
+                },
+                "correct": "A"
+              }
+            ],
+            "explanation": "Este bloque sale de un worksheet oficial de Part 1. La clave da las ocho palabras correctas y el mismo material aporta los grupos léxicos usados aquí como opciones."
+          }
+        ],
+        "fillBlanks": [],
+        "wordFormation": [],
+        "sentenceTransformation": []
+      }
+    },
+    {
+      "id": "part4_lesson_plan",
+      "title": "Official Part 4 Lesson Plan",
+      "description": "Material oficial de Cambridge para practicar Sentence Transformation con worksheet y sample task.",
+      "source": {
+        "file": "Cambridge_C1_Advanced_Oficial_Compilado.pdf",
+        "pages": "43–48"
+      },
+      "types": {
+        "multipleChoice": [],
+        "fillBlanks": [],
+        "wordFormation": [],
+        "sentenceTransformation": [
+          {
+            "id": "lp4_paraphrase_drill",
+            "title": "Paraphrase drill worksheet",
+            "mode": "fullSentence",
+            "instructions": "Produce a paraphrase of the first sentence using the word given.",
+            "note": "Actividad oficial de paráfrasis del worksheet. Aquí se responde con la oración completa.",
+            "source": {
+              "pages": "45, 47"
+            },
+            "items": [
+              {
+                "number": 1,
+                "original": "The machine doesn’t work.",
+                "givenWord": "ORDER",
+                "answers": [
+                  "The machine's out of order.",
+                  "The machine is out of order."
+                ]
+              },
+              {
+                "number": 2,
+                "original": "There’s no point in doing that.",
+                "givenWord": "WASTE",
+                "answers": [
+                  "It's a waste of time doing that.",
+                  "It is a waste of time doing that."
+                ]
+              },
+              {
+                "number": 3,
+                "original": "She couldn’t decide.",
+                "givenWord": "MIND",
+                "answers": [
+                  "She couldn't make her mind up.",
+                  "She couldn't make up her mind.",
+                  "She could not make her mind up.",
+                  "She could not make up her mind."
+                ]
+              },
+              {
+                "number": 4,
+                "original": "Could you look after the children?",
+                "givenWord": "CARE",
+                "answers": [
+                  "Could you take care of the children?"
+                ]
+              },
+              {
+                "number": 5,
+                "original": "I don’t feel like going out.",
+                "givenWord": "MOOD",
+                "answers": [
+                  "I'm not in the mood to go out.",
+                  "I'm not in the mood for going out.",
+                  "I am not in the mood to go out.",
+                  "I am not in the mood for going out."
+                ]
+              },
+              {
+                "number": 6,
+                "original": "I like coffee better than tea.",
+                "givenWord": "PREFER",
+                "answers": [
+                  "I prefer coffee to tea."
+                ]
+              },
+              {
+                "number": 7,
+                "original": "Please don’t leave your seats.",
+                "givenWord": "REMAIN",
+                "answers": [
+                  "Please remain in your seats."
+                ]
+              },
+              {
+                "number": 8,
+                "original": "You’re entitled to vote.",
+                "givenWord": "RIGHT",
+                "answers": [
+                  "You have the right to vote."
+                ]
+              },
+              {
+                "number": 9,
+                "original": "I don’t mind.",
+                "givenWord": "SAME",
+                "answers": [
+                  "It's all the same to me.",
+                  "It is all the same to me."
+                ]
+              },
+              {
+                "number": 10,
+                "original": "I didn’t mean to interrupt the meeting.",
+                "givenWord": "INTENTION",
+                "answers": [
+                  "I had no intention of interrupting the meeting."
+                ]
+              },
+              {
+                "number": 11,
+                "original": "The guide pointed out the paintings.",
+                "givenWord": "ATTENTION",
+                "answers": [
+                  "The guide drew our attention to the paintings."
+                ]
+              },
+              {
+                "number": 12,
+                "original": "John never explained why he left.",
+                "givenWord": "EXPLANATION",
+                "answers": [
+                  "John never gave an explanation for why he left.",
+                  "John never gave an explanation for leaving."
+                ]
+              },
+              {
+                "number": 13,
+                "original": "I’ve run out of money.",
+                "givenWord": "LEFT",
+                "answers": [
+                  "I've no money left.",
+                  "I haven't any money left.",
+                  "I have no money left.",
+                  "I have not any money left."
+                ]
+              },
+              {
+                "number": 14,
+                "original": "I’ve known Marcia since 2004.",
+                "givenWord": "MET",
+                "answers": [
+                  "I met Marcia in 2004."
+                ]
+              },
+              {
+                "number": 15,
+                "original": "I really admire someone like that.",
+                "givenWord": "LOOK",
+                "answers": [
+                  "I really look up to someone like that."
+                ]
+              },
+              {
+                "number": 16,
+                "original": "It was wrong of us to say that.",
+                "givenWord": "SHOULDN'T",
+                "answers": [
+                  "We shouldn't have said that.",
+                  "We should not have said that."
+                ]
+              }
+            ],
+            "explanation": "Este worksheet trabaja equivalencias muy comunes: out of order, a waste of time, make up one’s mind, take care of, be in the mood, prefer A to B, draw attention to, look up to y should(n’t) have + participio."
+          },
+          {
+            "id": "lp4_sample_task",
+            "title": "Sample task",
+            "mode": "exam",
+            "instructions": "For questions 1 – 6, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
+            "note": "Sample task oficial del lesson plan.",
+            "source": {
+              "pages": "46, 48"
+            },
+            "items": [
+              {
+                "number": 1,
+                "original": "There were a lot of things that we had to think about before we could accept their offer.",
+                "givenWord": "OBLIGED",
+                "prefix": "There were several things that we",
+                "suffix": "consideration before we could accept their offer.",
+                "answers": [
+                  "were obliged to take into"
+                ]
+              },
+              {
+                "number": 2,
+                "original": "I know that it was wrong of me to shout in front of the customers.",
+                "givenWord": "RAISED",
+                "prefix": "I know that I should",
+                "suffix": "in front of the customers.",
+                "answers": [
+                  "not have raised my voice"
+                ]
+              },
+              {
+                "number": 3,
+                "original": "If you need any help, you can always call me.",
+                "givenWord": "HESITATE",
+                "prefix": "If you need any help,",
+                "suffix": "me.",
+                "answers": [
+                  "don't hesitate to call",
+                  "do not hesitate to call"
+                ]
+              },
+              {
+                "number": 4,
+                "original": "It hasn’t rained quite as much this year as in previous years.",
+                "givenWord": "SLIGHTLY",
+                "prefix": "This year, it has rained",
+                "suffix": "did in previous years.",
+                "answers": [
+                  "slightly less than it"
+                ]
+              },
+              {
+                "number": 5,
+                "original": "Unless the weather improves, they will have to stop the tennis match.",
+                "givenWord": "MEAN",
+                "prefix": "If the weather doesn’t get",
+                "suffix": "stopping the tennis match.",
+                "answers": [
+                  "any better it will mean"
+                ]
+              },
+              {
+                "number": 6,
+                "original": "I don’t mind whether we stay in or go out this evening, but John wants to go to the cinema.",
+                "givenWord": "DIFFERENCE",
+                "prefix": "It doesn’t",
+                "suffix": "whether we stay in or go out this evening, but John wants to go to the cinema.",
+                "answers": [
+                  "make any difference to me",
+                  "make much difference to me"
+                ]
+              }
+            ],
+            "explanation": "En este sample task aparecen varias transformaciones muy típicas: take into consideration, should not have + participio, don’t hesitate to, slightly less than, any better it will mean y make any/much difference to me."
           }
         ]
       }

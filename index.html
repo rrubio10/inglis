@@ -13,6 +13,8 @@
       --text: #111827;
       --soft-blue: #eef2ff;
       --soft-violet: #f5f3ff;
+      --blue: #3730a3;
+      --blue-2: #6366f1;
       --green: #16a34a;
       --green-bg: #dcfce7;
       --red: #dc2626;
@@ -69,123 +71,114 @@
       margin-bottom: 1.25rem;
     }
 
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
+    .set-grid, .type-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
     }
 
-    .panel-title {
-      font-size: 1.5rem;
-      font-weight: 800;
+    .set-card, .type-card {
+      background: var(--card);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 1.4rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 2px solid transparent;
     }
 
-    .panel-subtitle {
+    .set-card:hover, .type-card:hover {
+      transform: translateY(-4px);
+      border-color: #c7d2fe;
+      box-shadow: 0 22px 50px rgba(0,0,0,0.22);
+    }
+
+    .set-card h3, .type-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.55rem;
+      color: #111827;
+    }
+
+    .set-card p, .type-card p, .meta-line {
       color: var(--muted);
-      line-height: 1.6;
-      margin-top: 0.35rem;
+      line-height: 1.55;
+    }
+
+    .set-meta, .type-meta {
+      margin-top: 0.95rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
     }
 
     .pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      padding: 0.45rem 0.8rem;
       border-radius: 999px;
+      padding: 0.42rem 0.8rem;
       background: var(--soft-blue);
-      color: var(--bg-1);
-      font-size: 0.85rem;
-      font-weight: 800;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-
-    .set-card, .type-card {
-      background: rgba(255,255,255,0.98);
-      border-radius: 18px;
-      border: 2px solid transparent;
-      padding: 1.2rem;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.10);
-    }
-
-    .set-card:hover, .type-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(79,70,229,0.35);
-      box-shadow: 0 18px 34px rgba(0,0,0,0.16);
-    }
-
-    .set-top, .type-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.75rem;
-      align-items: flex-start;
-      margin-bottom: 0.85rem;
-    }
-
-    .set-title, .type-title {
-      font-size: 1.18rem;
-      font-weight: 800;
-      line-height: 1.3;
-    }
-
-    .set-desc, .type-desc {
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.95rem;
-    }
-
-    .meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.95rem;
-    }
-
-    .meta-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: #f3f4f6;
-      color: #374151;
-      border-radius: 999px;
-      padding: 0.35rem 0.7rem;
-      font-size: 0.82rem;
+      color: var(--blue);
       font-weight: 700;
+      font-size: 0.88rem;
     }
 
-    .card {
-      padding: 1.4rem;
+    .pill.secondary {
+      background: var(--soft-violet);
+      color: #6d28d9;
     }
 
-    .top-controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      justify-content: space-between;
-      align-items: center;
+    .pill.count {
+      background: #ecfccb;
+      color: #3f6212;
+    }
+
+    .info-banner, .result-summary, .explanation, .source-box, .loader-box {
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
       margin-bottom: 1rem;
     }
 
-    .breadcrumbs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      align-items: center;
-      color: var(--muted);
-      font-size: 0.92rem;
-      font-weight: 700;
+    .info-banner, .source-box {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
     }
 
-    .breadcrumbs strong { color: var(--text); }
+    .result-summary {
+      display: none;
+      background: #ecfeff;
+      border: 1px solid #a5f3fc;
+    }
+
+    .result-summary.show, .explanation.show {
+      display: block;
+    }
+
+    .explanation {
+      display: none;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+    }
+
+    .exercise-screen .card {
+      padding: 1.25rem;
+    }
+
+    .progress-section { margin-bottom: 1rem; }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .progress-header h2 {
+      font-size: 1.2rem;
+      color: #111827;
+      line-height: 1.4;
+    }
 
     .exercise-badge {
       display: inline-flex;
@@ -195,29 +188,16 @@
       color: white;
       padding: 0.55rem 0.95rem;
       border-radius: 999px;
+      font-size: 0.92rem;
       font-weight: 800;
-      font-size: 0.9rem;
-    }
-
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 0.9rem;
-    }
-
-    .progress-header h2 {
-      font-size: 1.25rem;
     }
 
     .progress-bar {
-      height: 10px;
+      width: 100%;
+      height: 9px;
       background: #e5e7eb;
       border-radius: 999px;
       overflow: hidden;
-      margin-bottom: 1.2rem;
     }
 
     .progress-fill {
@@ -227,84 +207,78 @@
     }
 
     .exercise-title {
-      font-size: clamp(1.5rem, 2.4vw, 2rem);
-      font-weight: 900;
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
       margin-bottom: 0.45rem;
+      color: #111827;
     }
 
-    .exercise-subtitle, .source-strip {
-      color: var(--muted);
+    .exercise-subtitle {
+      color: #4b5563;
       line-height: 1.6;
-      margin-bottom: 0.9rem;
-    }
-
-    .instruction-strip {
-      background: linear-gradient(135deg, #eff6ff, #eef2ff);
-      border: 1px solid #c7d2fe;
-      border-radius: 16px;
-      padding: 1rem 1.05rem;
-      color: #312e81;
-      line-height: 1.6;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .mini-note {
-      margin-top: 0.75rem;
-      padding: 0.8rem 0.9rem;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.7);
-      color: #4338ca;
-      font-size: 0.94rem;
-      line-height: 1.5;
+      margin-bottom: 0.8rem;
     }
 
     .exercise-passage {
-      background: #fafafa;
-      border: 1px solid var(--border);
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
       border-radius: 18px;
-      padding: 1.2rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .exercise-passage p {
-      font-size: 1.05rem;
-      line-height: 1.95;
+      padding: 1.25rem;
       margin-bottom: 1rem;
     }
 
-    .exercise-passage p:last-child { margin-bottom: 0; }
+    .exercise-passage p {
+      line-height: 2;
+      font-size: 1.03rem;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+
+    .exercise-passage p:last-child {
+      margin-bottom: 0;
+    }
 
     .inline-gap {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      white-space: nowrap;
-      margin: 0 0.08rem;
+      gap: 0.35rem;
+      margin: 0 0.1rem;
+      vertical-align: middle;
     }
 
-    .gap-number { font-weight: 900; color: #111827; }
-    .gap-line { display: inline-block; min-width: 78px; border-bottom: 3px dotted var(--bg-2); transform: translateY(-2px); }
+    .gap-number {
+      font-weight: 800;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+    .gap-line {
+      display: inline-block;
+      width: 90px;
+      border-bottom: 2px solid #6366f1;
+      transform: translateY(-1px);
+    }
+
     .gap-base-inline {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.18rem 0.45rem;
+      padding: 0.15rem 0.42rem;
       border-radius: 8px;
-      background: var(--soft-violet);
+      background: #ede9fe;
       color: #6d28d9;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
 
     .section-title {
       display: flex;
       align-items: center;
-      gap: 0.55rem;
-      font-size: 1.06rem;
-      font-weight: 900;
-      margin-bottom: 0.9rem;
+      gap: 0.6rem;
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #111827;
     }
 
     .question-list, .answer-grid, .transformation-list {
@@ -314,51 +288,36 @@
 
     .question-card, .answer-card, .transform-item {
       background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
       padding: 1rem;
     }
 
     .question-header, .answer-card-header {
       display: flex;
-      justify-content: space-between;
-      gap: 0.75rem;
-      align-items: center;
-      margin-bottom: 0.85rem;
-      flex-wrap: wrap;
-    }
-
-    .left-inline {
-      display: flex;
       align-items: center;
       gap: 0.65rem;
+      margin-bottom: 0.85rem;
+      justify-content: space-between;
       flex-wrap: wrap;
     }
 
-    .number-badge, .gap-chip {
-      min-width: 42px;
-      height: 42px;
+    .question-number-badge, .gap-chip {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 0.7rem;
+      min-width: 42px;
+      height: 42px;
+      padding: 0 0.6rem;
       border-radius: 12px;
       background: #111827;
       color: white;
-      font-weight: 900;
+      font-weight: 800;
     }
 
-    .base-word-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.42rem 0.75rem;
-      border-radius: 10px;
-      background: var(--soft-violet);
-      color: #6d28d9;
-      font-size: 0.82rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
+    .question-card-title {
+      font-weight: 700;
+      color: #111827;
     }
 
     .options-grid {
@@ -375,58 +334,109 @@
       border-radius: 14px;
       padding: 0.9rem 1rem;
       cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.98rem;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      transition: all 0.18s ease;
-      font-size: 0.98rem;
+      gap: 0.8rem;
     }
 
     .option-button:hover:not(:disabled) {
-      border-color: var(--bg-1);
+      border-color: var(--blue-2);
       transform: translateY(-1px);
       background: #f8faff;
     }
 
-    .option-button.selected { background: var(--soft-blue); border-color: var(--bg-1); }
-    .option-button.correct { background: var(--green-bg); border-color: var(--green); }
-    .option-button.incorrect { background: var(--red-bg); border-color: var(--red); }
+    .option-button.selected {
+      border-color: var(--blue-2);
+      background: var(--soft-blue);
+    }
+
+    .option-button.correct {
+      border-color: var(--green);
+      background: var(--green-bg);
+    }
+
+    .option-button.incorrect {
+      border-color: var(--red);
+      background: var(--red-bg);
+    }
 
     .option-letter {
       width: 32px;
       height: 32px;
       border-radius: 999px;
-      background: var(--soft-blue);
-      color: var(--bg-1);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
+      background: #eef2ff;
+      color: var(--blue);
+      font-weight: 800;
       flex-shrink: 0;
     }
 
-    .option-button.correct .option-letter { background: #bbf7d0; color: #166534; }
-    .option-button.incorrect .option-letter { background: #fecaca; color: #991b1b; }
+    .option-button.correct .option-letter {
+      background: #dcfce7;
+      color: var(--green);
+    }
+
+    .option-button.incorrect .option-letter {
+      background: #fee2e2;
+      color: var(--red);
+    }
+
+    .mc-status, .feedback, .transform-feedback {
+      margin-top: 0.85rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: 12px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .feedback.correct, .transform-feedback.correct, .mc-status.correct {
+      background: var(--green-bg);
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .feedback.incorrect, .transform-feedback.incorrect, .mc-status.incorrect {
+      background: var(--red-bg);
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
 
     .answer-grid {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    }
+
+    .base-word-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.7rem;
+      border-radius: 10px;
+      background: #ede9fe;
+      color: #5b21b6;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
     }
 
     .input-field {
       width: 100%;
       border: 2px solid #d1d5db;
-      border-radius: 12px;
-      padding: 0.88rem 1rem;
-      font-size: 1rem;
-      font-family: inherit;
       background: white;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      font-family: inherit;
     }
 
     .input-field:focus {
       outline: none;
-      border-color: var(--bg-1);
-      box-shadow: 0 0 0 4px rgba(79,70,229,0.12);
+      border-color: var(--blue-2);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
     }
 
     .input-field:disabled {
@@ -438,44 +448,48 @@
     .answer-help {
       color: var(--muted);
       font-size: 0.9rem;
-      line-height: 1.5;
-      margin-top: 0.6rem;
+      margin-top: 0.55rem;
+      line-height: 1.45;
     }
 
-    .feedback, .mc-status, .transform-feedback {
-      margin-top: 0.8rem;
-      padding: 0.82rem 0.92rem;
-      border-radius: 12px;
-      font-weight: 800;
-      line-height: 1.5;
-      border: 1px solid transparent;
+    .word-rows {
+      display: grid;
+      gap: 1rem;
     }
 
-    .correct { background: var(--green-bg); color: #166534; border-color: #bbf7d0; }
-    .incorrect { background: var(--red-bg); color: #991b1b; border-color: #fecaca; }
+    .transform-item {
+      padding: 1.1rem;
+    }
 
     .transform-top {
       display: flex;
-      gap: 0.9rem;
       align-items: flex-start;
-      margin-bottom: 0.75rem;
+      gap: 0.9rem;
+      margin-bottom: 0.8rem;
     }
 
-    .transform-body { flex: 1; }
-    .transform-original { line-height: 1.6; margin-bottom: 0.8rem; }
+    .transform-body {
+      flex: 1;
+    }
+
+    .transform-original {
+      color: #111827;
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
 
     .given-word-box {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      background: var(--orange-bg);
+      background: #fff7ed;
       color: #9a3412;
       border: 1px solid #fed7aa;
       border-radius: 999px;
       padding: 0.42rem 0.8rem;
       font-size: 0.9rem;
-      font-weight: 900;
-      margin-bottom: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 0.9rem;
     }
 
     .transform-complete-line {
@@ -484,88 +498,119 @@
       align-items: center;
       gap: 0.45rem;
       line-height: 1.9;
+      font-size: 1.02rem;
     }
 
-    .transform-input { min-width: 280px; flex: 1 1 320px; }
+    .transform-prefix, .transform-suffix {
+      color: #222;
+    }
+
+    .transform-input {
+      min-width: 280px;
+      flex: 1 1 320px;
+    }
 
     .answer-preview {
-      margin-top: 0.85rem;
+      margin-top: 0.9rem;
       padding: 0.85rem 0.95rem;
       border-radius: 12px;
-      background: var(--orange-bg);
+      background: #fff7ed;
       border: 1px solid #fed7aa;
-      color: #9a3412;
-      line-height: 1.55;
-      font-weight: 800;
+      line-height: 1.6;
     }
 
-    .result-summary, .explanation, .loader-box {
-      display: none;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      padding: 1rem 1.05rem;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #eff6ff, #eef2ff);
-      border: 1px solid #bfdbfe;
-    }
-
-    .result-summary.show, .explanation.show, .loader-box.show {
-      display: block;
-    }
-
-    .result-summary h3, .explanation h3, .loader-box h3 {
-      color: #1d4ed8;
-      margin-bottom: 0.45rem;
-    }
-
-    .result-summary p, .explanation p, .loader-box p { line-height: 1.6; }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
+    .button-group {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
       margin-top: 1rem;
     }
 
     .button {
       border: none;
       border-radius: 14px;
-      padding: 0.95rem 1.2rem;
+      padding: 0.95rem 1.25rem;
       font-size: 1rem;
-      font-weight: 900;
+      font-weight: 800;
       cursor: pointer;
-      transition: transform 0.18s ease, opacity 0.18s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
     }
 
-    .button:hover:not(:disabled) { transform: translateY(-2px); }
-    .button:disabled { opacity: 0.55; cursor: not-allowed; }
+    .button:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
 
-    .button-dark { background: #374151; color: white; }
-    .button-main { background: linear-gradient(135deg, var(--bg-1), var(--bg-2)); color: white; }
-    .button-orange { background: var(--orange); color: white; }
-    .button-green { background: var(--green); color: white; }
+    .button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
 
-    .json-input {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
+    .button-back {
+      background: #374151;
+      color: white;
+    }
+
+    .button-check {
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      color: white;
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.28);
+    }
+
+    .button-retry {
+      background: #f59e0b;
+      color: white;
+    }
+
+    .button-next {
+      background: #16a34a;
+      color: white;
+    }
+
+    .button-ghost {
+      background: white;
+      color: #111827;
+      border: 2px solid #d1d5db;
+    }
+
+    .loader-box {
+      background: rgba(255,255,255,0.96);
+      box-shadow: var(--shadow);
+      margin: 0 auto 1rem;
+      max-width: 760px;
+      text-align: center;
+    }
+
+    .loader-box h3 {
+      margin-bottom: 0.65rem;
+      font-size: 1.3rem;
+    }
+
+    .loader-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
       flex-wrap: wrap;
-      margin-top: 0.6rem;
+      margin-top: 1rem;
     }
 
     .footer {
-      color: rgba(255,255,255,0.96);
       text-align: center;
-      margin-top: 1rem;
-      font-size: 0.94rem;
+      color: rgba(255,255,255,0.92);
+      margin-top: 1.4rem;
+      font-size: 0.95rem;
     }
 
     @media (max-width: 760px) {
-      body { padding: 0.85rem; }
-      .card, .panel-card { padding: 1rem; }
+      body { padding: 1.2rem 0.8rem; }
+      .header h1 { font-size: 2rem; }
+      .card { padding: 1rem; }
+      .progress-header { flex-direction: column; align-items: flex-start; }
+      .exercise-title { font-size: 1.5rem; }
+      .exercise-passage { padding: 1rem; }
+      .exercise-passage p { font-size: 1rem; line-height: 1.85; }
       .options-grid { grid-template-columns: 1fr; }
       .transform-input { min-width: 100%; }
-      .progress-header { align-items: flex-start; }
+      .button-group { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -573,313 +618,276 @@
   <div class="container">
     <div class="header">
       <h1 id="appTitle">Cambridge English Practice 🎓</h1>
-      <p id="appSubtitle">Elige primero un bloque oficial y después el tipo de ejercicio.</p>
+      <p id="appSubtitle">Cargando ejercicios…</p>
     </div>
 
-    <div id="loaderBox" class="panel-card loader-box show">
-      <h3>📂 Cargando ejercicios</h3>
-      <p>La página intentará leer <strong>exercises.json</strong> automáticamente. Si has abierto el HTML con doble clic y el navegador bloquea la carga, selecciona el JSON manualmente aquí abajo.</p>
-      <div class="json-input">
-        <input type="file" id="jsonFileInput" accept="application/json">
-        <button class="button button-main" type="button" onclick="loadJsonFromFile()">Cargar JSON manualmente</button>
+    <div id="loaderScreen" class="screen active">
+      <div class="loader-box">
+        <h3>Cargando exercises.json</h3>
+        <p id="loaderMessage">Intentando abrir el archivo externo con todos los bloques oficiales.</p>
+        <div class="loader-actions">
+          <button class="button button-ghost" onclick="retryLoad()">Reintentar</button>
+          <button class="button button-check" onclick="document.getElementById('manualJson').click()">Elegir JSON manualmente</button>
+        </div>
+        <input id="manualJson" type="file" accept=".json,application/json" style="display:none">
       </div>
     </div>
 
     <div id="homeScreen" class="screen"></div>
+
     <div id="typeScreen" class="screen"></div>
 
-    <div id="exerciseScreen" class="screen">
+    <div id="exerciseScreen" class="screen exercise-screen">
       <div class="card">
-        <div class="top-controls">
-          <div class="breadcrumbs" id="breadcrumbs"></div>
-          <div class="exercise-badge" id="exerciseBadge">📝 Multiple Choice</div>
+        <div class="progress-section">
+          <div class="progress-header">
+            <h2 id="exerciseNumber">Ejercicio</h2>
+            <span class="exercise-badge" id="exerciseType">Tipo</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressBar" style="width:0%"></div>
+          </div>
         </div>
 
-        <div class="progress-header">
-          <h2 id="exerciseCounter">Ejercicio 1 de 1</h2>
-          <span class="pill" id="exerciseSourcePill">Fuente oficial</span>
-        </div>
-        <div class="progress-bar"><div id="progressFill" class="progress-fill" style="width:100%"></div></div>
+        <div class="source-box" id="sourceBox"></div>
+        <div class="exercise-content" id="exerciseContent"></div>
 
-        <div id="exerciseContent"></div>
         <div id="resultSummary" class="result-summary"></div>
         <div id="explanation" class="explanation"></div>
 
-        <div class="button-row" id="exerciseButtons"></div>
+        <div class="button-group" id="buttonGroup"></div>
       </div>
     </div>
 
-    <div class="footer" id="appFooter">📖 Material organizado desde exercises.json para seguir ampliándolo con más bloques oficiales.</div>
+    <div class="footer" id="appFooter"></div>
   </div>
 
   <script>
+    const FALLBACK_JSON = 'exercises_completo.json';
     let appData = null;
-    let selectedSet = null;
-    let currentTypeKey = null;
+    let currentSet = null;
+    let currentType = null;
     let currentExercises = [];
     let currentExerciseIndex = 0;
-    let showResults = false;
     let userAnswers = {};
+    let showResults = false;
 
-    const screens = {
-      home: () => document.getElementById('homeScreen'),
-      types: () => document.getElementById('typeScreen'),
-      exercise: () => document.getElementById('exerciseScreen')
-    };
+    const manualJson = document.getElementById('manualJson');
+    manualJson.addEventListener('change', handleManualJson);
 
-    document.addEventListener('DOMContentLoaded', async () => {
-      await tryAutoLoadJson();
+    document.addEventListener('DOMContentLoaded', () => {
+      loadAppData();
     });
 
-    async function tryAutoLoadJson() {
+    async function loadAppData() {
+      setLoaderMessage('Intentando abrir el archivo externo con todos los bloques oficiales.');
       try {
-        const response = await fetch('exercises.json', { cache: 'no-store' });
-        if (!response.ok) throw new Error('No se pudo leer exercises.json');
-        const data = await response.json();
-        initialiseApp(data);
+        const response = await fetch(FALLBACK_JSON, { cache: 'no-store' });
+        if (!response.ok) throw new Error('No se pudo leer el JSON');
+        const json = await response.json();
+        initializeApp(json);
       } catch (error) {
-        showLoaderBox(`No se pudo cargar el JSON automáticamente. ${error.message}`);
+        setLoaderMessage('No se ha podido cargar automáticamente el JSON. Esto suele pasar al abrir el HTML directamente con doble clic. Usa el botón para elegir el archivo JSON manualmente.');
       }
     }
 
-    function showLoaderBox(message) {
-      const box = document.getElementById('loaderBox');
-      box.classList.add('show');
-      box.innerHTML = `
-        <h3>📂 Carga manual necesaria</h3>
-        <p>${message}</p>
-        <p>Selecciona <strong>exercises.json</strong> manualmente si estás abriendo el HTML desde <code>file://</code>.</p>
-        <div class="json-input">
-          <input type="file" id="jsonFileInput" accept="application/json">
-          <button class="button button-main" type="button" onclick="loadJsonFromFile()">Cargar JSON manualmente</button>
-        </div>
-      `;
+    function retryLoad() {
+      loadAppData();
     }
 
-    async function loadJsonFromFile() {
-      const input = document.getElementById('jsonFileInput');
-      const file = input?.files?.[0];
-      if (!file) {
-        alert('Selecciona antes el archivo exercises.json.');
-        return;
-      }
-
+    async function handleManualJson(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
       try {
         const text = await file.text();
-        const data = JSON.parse(text);
-        initialiseApp(data);
+        const json = JSON.parse(text);
+        initializeApp(json);
       } catch (error) {
-        alert('No se ha podido leer el JSON: ' + error.message);
+        setLoaderMessage('El archivo seleccionado no parece un JSON válido.');
       }
     }
 
-    function initialiseApp(data) {
-      appData = data;
-      selectedSet = null;
-      currentTypeKey = null;
-      currentExercises = [];
-      currentExerciseIndex = 0;
-      showResults = false;
-      userAnswers = {};
-
-      document.getElementById('appTitle').textContent = appData.app?.title || 'Cambridge English Practice';
-      document.getElementById('appSubtitle').textContent = appData.app?.subtitle || '';
-      document.getElementById('appFooter').textContent = appData.app?.footer || '';
-      document.getElementById('loaderBox').classList.remove('show');
-
-      renderHomeScreen();
-      activateScreen('home');
+    function setLoaderMessage(message) {
+      document.getElementById('loaderMessage').textContent = message;
     }
 
-    function activateScreen(name) {
-      Object.values(screens).forEach(getEl => getEl().classList.remove('active'));
-      screens[name]().classList.add('active');
+    function initializeApp(data) {
+      appData = data;
+      document.getElementById('appTitle').textContent = data.app?.title || 'Cambridge English Practice';
+      document.getElementById('appSubtitle').textContent = data.app?.subtitle || '';
+      document.getElementById('appFooter').textContent = data.app?.footer || '';
+      userAnswers = {};
+      showScreen('homeScreen');
+      renderHomeScreen();
+    }
+
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
+      document.getElementById(screenId).classList.add('active');
     }
 
     function renderHomeScreen() {
-      const home = screens.home();
-      const sets = appData.exerciseSets || [];
+      const screen = document.getElementById('homeScreen');
+      const cards = appData.exerciseSets.map(set => {
+        const counts = countTypesInSet(set);
+        const badges = Object.entries(counts)
+          .filter(([, count]) => count > 0)
+          .map(([type, count]) => `<span class="pill count">${appData.exerciseTypes[type].icon} ${appData.exerciseTypes[type].label}: ${count}</span>`)
+          .join('');
 
-      home.innerHTML = `
-        <div class="panel-card">
-          <div class="panel-header">
-            <div>
-              <div class="panel-title">Bloques de ejercicios oficiales</div>
-              <div class="panel-subtitle">Al hacer clic en un bloque primero eliges el tipo de ejercicio disponible, y después accedes al texto completo.</div>
+        return `
+          <div class="set-card" onclick="openSet('${set.id}')">
+            <h3>${escapeHtml(set.title)}</h3>
+            <p>${escapeHtml(set.description || '')}</p>
+            <div class="set-meta">
+              <span class="pill">${escapeHtml(set.source?.file || 'Fuente oficial')}</span>
+              <span class="pill secondary">Páginas ${escapeHtml(set.source?.pages || '')}</span>
             </div>
-            <span class="pill">${sets.length} bloque${sets.length === 1 ? '' : 's'}</span>
-          </div>
-          <div class="grid" id="setGrid"></div>
-        </div>
-      `;
-
-      const setGrid = document.getElementById('setGrid');
-      sets.forEach((setItem) => {
-        const typeCount = Object.keys(setItem.types || {}).filter(key => (setItem.types[key] || []).length).length;
-        const totalExercises = Object.values(setItem.types || {}).reduce((sum, list) => sum + (Array.isArray(list) ? list.length : 0), 0);
-        const card = document.createElement('button');
-        card.type = 'button';
-        card.className = 'set-card';
-        card.innerHTML = `
-          <div class="set-top">
-            <div>
-              <div class="set-title">${escapeHtml(setItem.title)}</div>
-              <div class="set-desc">${escapeHtml(setItem.description || '')}</div>
-            </div>
-            <span class="pill">${escapeHtml(setItem.level || '')}</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-chip">📚 ${typeCount} tipo${typeCount === 1 ? '' : 's'}</span>
-            <span class="meta-chip">🧩 ${totalExercises} ejercicio${totalExercises === 1 ? '' : 's'}</span>
-            ${setItem.source?.collection ? `<span class="meta-chip">📄 ${escapeHtml(setItem.source.collection)}</span>` : ''}
-            ${setItem.source?.pages ? `<span class="meta-chip">📍 Páginas ${escapeHtml(setItem.source.pages)}</span>` : ''}
+            <div class="set-meta">${badges}</div>
           </div>
         `;
-        card.addEventListener('click', () => selectSet(setItem.id));
-        setGrid.appendChild(card);
-      });
+      }).join('');
+
+      screen.innerHTML = `
+        <div class="panel-card">
+          <div class="section-title">📚 Bloques oficiales disponibles</div>
+          <p class="meta-line">Haz clic en un bloque. Después verás solo los tipos de ejercicio que realmente existen dentro de ese material.</p>
+        </div>
+        <div class="set-grid">${cards}</div>
+      `;
     }
 
-    function selectSet(setId) {
-      selectedSet = (appData.exerciseSets || []).find(item => item.id === setId) || null;
-      currentTypeKey = null;
+    function countTypesInSet(set) {
+      const counts = {};
+      Object.keys(appData.exerciseTypes).forEach(type => {
+        counts[type] = Array.isArray(set.types?.[type]) ? set.types[type].length : 0;
+      });
+      return counts;
+    }
+
+    function openSet(setId) {
+      currentSet = appData.exerciseSets.find(set => set.id === setId);
+      currentType = null;
       currentExercises = [];
       currentExerciseIndex = 0;
-      showResults = false;
       userAnswers = {};
+      showResults = false;
       renderTypeScreen();
-      activateScreen('types');
+      showScreen('typeScreen');
     }
 
     function renderTypeScreen() {
-      const typeScreen = screens.types();
-      if (!selectedSet) return;
-
-      const typesOrder = appData.app?.exerciseTypeOrder || Object.keys(appData.exerciseTypes || {});
-      typeScreen.innerHTML = `
-        <div class="panel-card">
-          <div class="panel-header">
-            <div>
-              <div class="panel-title">${escapeHtml(selectedSet.title)}</div>
-              <div class="panel-subtitle">${escapeHtml(selectedSet.description || '')}</div>
+      const screen = document.getElementById('typeScreen');
+      const typeCards = Object.entries(appData.exerciseTypes)
+        .filter(([type]) => (currentSet.types?.[type] || []).length > 0)
+        .map(([type, meta]) => {
+          const total = currentSet.types[type].length;
+          return `
+            <div class="type-card" onclick="openType('${type}')">
+              <h3>${meta.icon} ${escapeHtml(meta.label)}</h3>
+              <p>${escapeHtml(meta.description || '')}</p>
+              <div class="type-meta">
+                <span class="pill count">${total} bloque${total === 1 ? '' : 's'}</span>
+                <span class="pill secondary">En ${escapeHtml(currentSet.title)}</span>
+              </div>
             </div>
-            <span class="pill">${escapeHtml(selectedSet.level || '')}</span>
+          `;
+        }).join('');
+
+      screen.innerHTML = `
+        <div class="panel-card">
+          <div class="section-title">🗂️ ${escapeHtml(currentSet.title)}</div>
+          <p class="meta-line">${escapeHtml(currentSet.description || '')}</p>
+          <div class="set-meta">
+            <span class="pill">${escapeHtml(currentSet.source?.file || 'Fuente oficial')}</span>
+            <span class="pill secondary">Páginas ${escapeHtml(currentSet.source?.pages || '')}</span>
           </div>
-          <div class="meta-row" style="margin-bottom:1rem;">
-            ${selectedSet.source?.collection ? `<span class="meta-chip">📄 ${escapeHtml(selectedSet.source.collection)}</span>` : ''}
-            ${selectedSet.source?.pages ? `<span class="meta-chip">📍 Páginas ${escapeHtml(selectedSet.source.pages)}</span>` : ''}
-            ${selectedSet.source?.notes ? `<span class="meta-chip">ℹ️ ${escapeHtml(selectedSet.source.notes)}</span>` : ''}
-          </div>
-          <div class="grid" id="typeGrid"></div>
-          <div class="button-row">
-            <button class="button button-dark" type="button" onclick="goHome()">← Volver a bloques</button>
+          <div class="loader-actions" style="justify-content:flex-start; margin-top:1rem;">
+            <button class="button button-back" onclick="goHome()">← Volver a bloques</button>
           </div>
         </div>
+        <div class="type-grid">${typeCards}</div>
       `;
-
-      const typeGrid = document.getElementById('typeGrid');
-      typesOrder.forEach((typeKey) => {
-        const exercises = selectedSet.types?.[typeKey] || [];
-        if (!exercises.length) return;
-        const typeInfo = appData.exerciseTypes?.[typeKey] || { label: typeKey, icon: '📘', description: '' };
-        const card = document.createElement('button');
-        card.type = 'button';
-        card.className = 'type-card';
-        card.innerHTML = `
-          <div class="type-top">
-            <div>
-              <div class="type-title">${escapeHtml(typeInfo.icon || '📘')} ${escapeHtml(typeInfo.label || typeKey)}</div>
-              <div class="type-desc">${escapeHtml(typeInfo.description || '')}</div>
-            </div>
-            <span class="pill">${exercises.length}</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-chip">Texto${exercises.length === 1 ? '' : 's'} completo${exercises.length === 1 ? '' : 's'}</span>
-          </div>
-        `;
-        card.addEventListener('click', () => openExerciseType(typeKey));
-        typeGrid.appendChild(card);
-      });
     }
 
-    function openExerciseType(typeKey) {
-      currentTypeKey = typeKey;
-      currentExercises = selectedSet?.types?.[typeKey] || [];
+    function openType(type) {
+      currentType = type;
+      currentExercises = currentSet.types[type] || [];
       currentExerciseIndex = 0;
-      showResults = false;
       userAnswers = {};
+      showResults = false;
       loadExercise(0);
-      activateScreen('exercise');
+      showScreen('exerciseScreen');
     }
 
     function goHome() {
-      selectedSet = null;
-      currentTypeKey = null;
+      currentSet = null;
+      currentType = null;
       currentExercises = [];
-      showResults = false;
+      currentExerciseIndex = 0;
       userAnswers = {};
-      activateScreen('home');
+      showResults = false;
+      showScreen('homeScreen');
     }
 
-    function goBackToTypes() {
-      currentTypeKey = null;
-      currentExercises = [];
+    function goToTypes() {
       showResults = false;
       userAnswers = {};
+      showScreen('typeScreen');
       renderTypeScreen();
-      activateScreen('types');
     }
 
     function loadExercise(index) {
       currentExerciseIndex = index;
       showResults = false;
-      updateExerciseHeader();
-      renderExerciseContent();
-      document.getElementById('resultSummary').classList.remove('show');
-      document.getElementById('explanation').classList.remove('show');
-      updateExerciseButtons();
+      updateProgress();
+      renderExerciseContent(currentExercises[index]);
+      resetFeedback();
+      updateButtons();
     }
 
-    function updateExerciseHeader() {
-      const exercise = currentExercises[currentExerciseIndex];
-      const total = currentExercises.length || 1;
-      const typeInfo = appData.exerciseTypes?.[currentTypeKey] || { label: currentTypeKey, icon: '📘' };
-      document.getElementById('exerciseCounter').textContent = `Ejercicio ${currentExerciseIndex + 1} de ${total}`;
-      document.getElementById('exerciseBadge').textContent = `${typeInfo.icon || '📘'} ${typeInfo.label || currentTypeKey}`;
-      document.getElementById('progressFill').style.width = `${((currentExerciseIndex + 1) / total) * 100}%`;
-      document.getElementById('exerciseSourcePill').textContent = exercise?.source?.pages ? `Fuente oficial · páginas ${exercise.source.pages}` : 'Fuente oficial';
-      document.getElementById('breadcrumbs').innerHTML = `
-        <span>${escapeHtml(selectedSet?.title || 'Bloque')}</span>
-        <span>›</span>
-        <strong>${escapeHtml(typeInfo.label || currentTypeKey)}</strong>
-      `;
+    function resetFeedback() {
+      const summary = document.getElementById('resultSummary');
+      const explanation = document.getElementById('explanation');
+      summary.classList.remove('show');
+      explanation.classList.remove('show');
+      summary.innerHTML = '';
+      explanation.innerHTML = '';
     }
 
-    function renderExerciseContent() {
-      const container = document.getElementById('exerciseContent');
+    function updateProgress() {
       const exercise = currentExercises[currentExerciseIndex];
-      container.innerHTML = '';
+      const progress = ((currentExerciseIndex + 1) / currentExercises.length) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
 
-      const intro = document.createElement('div');
-      intro.innerHTML = `
-        <div class="exercise-title">${escapeHtml(exercise.title)}</div>
-        <div class="exercise-subtitle">El texto aparece completo y los huecos se muestran directamente en el pasaje.</div>
-        ${exercise.source?.pages || selectedSet?.source?.collection ? `<div class="source-strip">${selectedSet?.source?.collection ? `Origen: ${escapeHtml(selectedSet.source.collection)}` : ''}${exercise.source?.pages ? ` · páginas ${escapeHtml(exercise.source.pages)}` : ''}</div>` : ''}
-        <div class="instruction-strip">
-          ${escapeHtml(exercise.instructions || '')}
-          ${exercise.note ? `<div class="mini-note">💡 ${escapeHtml(exercise.note)}</div>` : ''}
+      const typeMeta = appData.exerciseTypes[currentType];
+      document.getElementById('exerciseNumber').textContent = `${currentSet.title} · ${currentExerciseIndex + 1} de ${currentExercises.length}`;
+      document.getElementById('exerciseType').textContent = `${typeMeta.icon} ${typeMeta.label}`;
+
+      const sourceBox = document.getElementById('sourceBox');
+      sourceBox.innerHTML = `
+        <div style="font-weight:800; margin-bottom:0.35rem;">${escapeHtml(exercise.title)}</div>
+        <div class="exercise-subtitle">${escapeHtml(exercise.instructions || '')}</div>
+        ${exercise.note ? `<div class="meta-line" style="margin-top:0.45rem;">${escapeHtml(exercise.note)}</div>` : ''}
+        <div class="set-meta" style="margin-top:0.75rem;">
+          <span class="pill">${escapeHtml(currentSet.source?.file || 'Fuente oficial')}</span>
+          <span class="pill secondary">Páginas ${escapeHtml(exercise.source?.pages || currentSet.source?.pages || '')}</span>
         </div>
       `;
-      container.appendChild(intro);
+    }
 
-      if (currentTypeKey === 'multipleChoice') {
-        renderMultipleChoice(exercise, container);
-      } else if (currentTypeKey === 'fillBlanks') {
-        renderFillBlanks(exercise, container);
-      } else if (currentTypeKey === 'wordFormation') {
-        renderWordFormation(exercise, container);
-      } else if (currentTypeKey === 'sentenceTransformation') {
-        renderSentenceTransformation(exercise, container);
+    function renderExerciseContent(exercise) {
+      const content = document.getElementById('exerciseContent');
+      content.innerHTML = '';
+
+      if (currentType === 'multipleChoice') {
+        renderMultipleChoice(exercise, content);
+      } else if (currentType === 'fillBlanks') {
+        renderFillBlanks(exercise, content);
+      } else if (currentType === 'wordFormation') {
+        renderWordFormation(exercise, content);
+      } else if (currentType === 'sentenceTransformation') {
+        renderSentenceTransformation(exercise, content);
       }
     }
 
@@ -887,44 +895,43 @@
       container.appendChild(createPassageBlock(exercise.text));
 
       const section = document.createElement('div');
-      section.innerHTML = `<div class="section-title">✅ Respuestas para cada hueco</div>`;
+      section.innerHTML = `<div class="section-title">✅ Preguntas y opciones</div>`;
       const list = document.createElement('div');
       list.className = 'question-list';
 
       exercise.questions.forEach((question) => {
         const card = document.createElement('div');
         card.className = 'question-card';
-        card.innerHTML = `
-          <div class="question-header">
-            <div class="left-inline">
-              <span class="number-badge">${question.number}</span>
-              <strong>Hueco ${question.number}</strong>
-            </div>
+
+        const header = document.createElement('div');
+        header.className = 'question-header';
+        header.innerHTML = `
+          <div style="display:flex; align-items:center; gap:0.65rem;">
+            <span class="question-number-badge">${question.number}</span>
+            <span class="question-card-title">Gap ${question.number}</span>
           </div>
         `;
+        card.appendChild(header);
 
         const optionsGrid = document.createElement('div');
         optionsGrid.className = 'options-grid';
 
-        Object.entries(question.options).forEach(([letter, text]) => {
+        Object.entries(question.options).forEach(([letter, value]) => {
           const button = document.createElement('button');
-          button.type = 'button';
           button.className = 'option-button';
-          button.disabled = showResults;
           const selected = userAnswers[questionKey(exercise.id, question.number)] === letter;
           if (selected) button.classList.add('selected');
+
           if (showResults) {
             if (letter === question.correct) button.classList.add('correct');
             if (selected && letter !== question.correct) button.classList.add('incorrect');
           }
-          button.innerHTML = `
-            <span class="option-letter">${letter}</span>
-            <span>${escapeHtml(text)}</span>
-          `;
+
+          button.disabled = showResults;
+          button.innerHTML = `<span class="option-letter">${letter}</span><span>${escapeHtml(value)}</span>`;
           button.addEventListener('click', () => {
-            if (showResults) return;
             userAnswers[questionKey(exercise.id, question.number)] = letter;
-            renderExerciseContent();
+            renderExerciseContent(exercise);
           });
           optionsGrid.appendChild(button);
         });
@@ -936,11 +943,14 @@
           const status = document.createElement('div');
           const isCorrect = selected === question.correct;
           status.className = `mc-status ${isCorrect ? 'correct' : 'incorrect'}`;
-          status.textContent = isCorrect
-            ? `✓ Correcto. La respuesta es ${question.correct}: ${question.options[question.correct]}.`
-            : selected
-              ? `✗ Tu respuesta fue ${selected}. La correcta es ${question.correct}: ${question.options[question.correct]}.`
-              : `✗ No has respondido. La correcta es ${question.correct}: ${question.options[question.correct]}.`;
+
+          if (isCorrect) {
+            status.textContent = `✓ Correcto. La respuesta es ${question.correct}: ${question.options[question.correct]}.`;
+          } else if (selected) {
+            status.textContent = `✗ Tu respuesta fue ${selected}. La correcta es ${question.correct}: ${question.options[question.correct]}.`;
+          } else {
+            status.textContent = `✗ No has respondido. La correcta es ${question.correct}: ${question.options[question.correct]}.`;
+          }
           card.appendChild(status);
         }
 
@@ -953,6 +963,7 @@
 
     function renderFillBlanks(exercise, container) {
       container.appendChild(createPassageBlock(exercise.text));
+
       const section = document.createElement('div');
       section.innerHTML = `<div class="section-title">🖊️ Hoja de respuestas</div>`;
       const grid = document.createElement('div');
@@ -961,14 +972,14 @@
       exercise.blanks.forEach((blank) => {
         const card = document.createElement('div');
         card.className = 'answer-card';
-        card.innerHTML = `
-          <div class="answer-card-header">
-            <div class="left-inline">
-              <span class="gap-chip">${blank.number}</span>
-              <strong>Una sola palabra</strong>
-            </div>
-          </div>
+
+        const header = document.createElement('div');
+        header.className = 'answer-card-header';
+        header.innerHTML = `
+          <span class="gap-chip">${blank.number}</span>
+          <span>Una sola palabra</span>
         `;
+        card.appendChild(header);
 
         const input = document.createElement('input');
         input.type = 'text';
@@ -988,11 +999,11 @@
 
         if (showResults) {
           const feedback = document.createElement('div');
-          const correct = isBlankCorrect(blank, userAnswers[blankKey(exercise.id, blank.number)]);
+          const correct = isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answers);
           feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
           feedback.textContent = correct
-            ? `✓ Correcto: ${formatAcceptedAnswers(blank).toUpperCase()}`
-            : `✗ Respuesta válida: ${formatAcceptedAnswers(blank).toUpperCase()}`;
+            ? `✓ Correcto: ${formatAnswers(blank.answers).toUpperCase()}`
+            : `✗ Respuesta correcta: ${formatAnswers(blank.answers).toUpperCase()}`;
           card.appendChild(feedback);
         }
 
@@ -1005,28 +1016,32 @@
 
     function renderWordFormation(exercise, container) {
       container.appendChild(createPassageBlock(exercise.text));
+
       const section = document.createElement('div');
       section.innerHTML = `<div class="section-title">🔤 Respuestas y palabra base</div>`;
-      const grid = document.createElement('div');
-      grid.className = 'question-list';
+
+      const rows = document.createElement('div');
+      rows.className = 'word-rows';
 
       exercise.blanks.forEach((blank) => {
         const card = document.createElement('div');
         card.className = 'answer-card';
-        card.innerHTML = `
-          <div class="answer-card-header">
-            <div class="left-inline">
-              <span class="gap-chip">${blank.number}</span>
-              <span class="base-word-badge">${escapeHtml(blank.base)}</span>
-            </div>
-            <strong>Transformación</strong>
+
+        const header = document.createElement('div');
+        header.className = 'answer-card-header';
+        header.innerHTML = `
+          <div style="display:flex; align-items:center; gap:0.65rem;">
+            <span class="gap-chip">${blank.number}</span>
+            <span class="base-word-badge">${escapeHtml(blank.base)}</span>
           </div>
+          <span>Forma correcta</span>
         `;
+        card.appendChild(header);
 
         const input = document.createElement('input');
         input.type = 'text';
         input.className = 'input-field';
-        input.placeholder = 'Escribe la forma correcta';
+        input.placeholder = 'Transforma la palabra base';
         input.disabled = showResults;
         input.value = userAnswers[blankKey(exercise.id, blank.number)] || '';
         input.addEventListener('input', (e) => {
@@ -1041,18 +1056,18 @@
 
         if (showResults) {
           const feedback = document.createElement('div');
-          const correct = isBlankCorrect(blank, userAnswers[blankKey(exercise.id, blank.number)]);
+          const correct = isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answers);
           feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
           feedback.textContent = correct
-            ? `✓ Correcto: ${blank.answer.toUpperCase()}`
-            : `✗ Respuesta correcta: ${blank.answer.toUpperCase()}`;
+            ? `✓ Correcto: ${formatAnswers(blank.answers).toUpperCase()}`
+            : `✗ Respuesta correcta: ${formatAnswers(blank.answers).toUpperCase()}`;
           card.appendChild(feedback);
         }
 
-        grid.appendChild(card);
+        rows.appendChild(card);
       });
 
-      section.appendChild(grid);
+      section.appendChild(rows);
       container.appendChild(section);
     }
 
@@ -1063,53 +1078,88 @@
       exercise.items.forEach((item) => {
         const block = document.createElement('div');
         block.className = 'transform-item';
+
         block.innerHTML = `
           <div class="transform-top">
-            <span class="number-badge">${item.number}</span>
+            <span class="question-number-badge">${item.number}</span>
             <div class="transform-body">
               <div class="transform-original">${escapeHtml(item.original)}</div>
               <div class="given-word-box">Palabra dada: ${escapeHtml(item.givenWord)}</div>
-              <div class="transform-complete-line">
-                <span>${escapeHtml(item.prefix)}</span>
-              </div>
             </div>
           </div>
         `;
 
-        const line = block.querySelector('.transform-complete-line');
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.className = 'input-field transform-input';
-        input.placeholder = 'Escribe solo las palabras que faltan';
-        input.disabled = showResults;
-        input.value = userAnswers[transformKey(exercise.id, item.number)] || '';
-        input.addEventListener('input', (e) => {
-          userAnswers[transformKey(exercise.id, item.number)] = e.target.value;
-        });
-        line.appendChild(input);
+        if (exercise.mode === 'fullSentence') {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'input-field';
+          input.placeholder = 'Escribe la oración completa usando la palabra dada';
+          input.disabled = showResults;
+          input.value = userAnswers[transformKey(exercise.id, item.number)] || '';
+          input.addEventListener('input', (e) => {
+            userAnswers[transformKey(exercise.id, item.number)] = e.target.value;
+          });
+          block.appendChild(input);
 
-        const suffix = document.createElement('span');
-        suffix.textContent = item.suffix;
-        line.appendChild(suffix);
+          const help = document.createElement('div');
+          help.className = 'answer-help';
+          help.textContent = 'En este ejercicio se responde con la oración completa.';
+          block.appendChild(help);
 
-        const help = document.createElement('div');
-        help.className = 'answer-help';
-        help.textContent = 'Escribe entre 3 y 6 palabras incluyendo la palabra dada.';
-        block.appendChild(help);
+          if (showResults) {
+            const correct = isFullSentenceCorrect(item, userAnswers[transformKey(exercise.id, item.number)]);
+            const feedback = document.createElement('div');
+            feedback.className = `transform-feedback ${correct ? 'correct' : 'incorrect'}`;
+            feedback.textContent = correct
+              ? '✓ Correcto.'
+              : `✗ Respuesta aceptada: ${formatAnswers(item.answers).toUpperCase()}`;
+            block.appendChild(feedback);
 
-        if (showResults) {
-          const feedback = document.createElement('div');
-          const correct = isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)]);
-          feedback.className = `transform-feedback ${correct ? 'correct' : 'incorrect'}`;
-          feedback.textContent = correct
-            ? '✓ Correcto.'
-            : `✗ Respuesta válida: ${formatAcceptedAnswers(item).toUpperCase()}`;
-          block.appendChild(feedback);
+            const preview = document.createElement('div');
+            preview.className = 'answer-preview';
+            preview.innerHTML = `<strong>Respuesta aceptada:</strong><br>${escapeHtml(firstAnswer(item.answers))}`;
+            block.appendChild(preview);
+          }
+        } else {
+          const line = document.createElement('div');
+          line.className = 'transform-complete-line';
+          line.innerHTML = `<span class="transform-prefix">${escapeHtml(item.prefix)}</span>`;
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'input-field transform-input';
+          input.placeholder = 'Escribe solo las palabras que faltan';
+          input.disabled = showResults;
+          input.value = userAnswers[transformKey(exercise.id, item.number)] || '';
+          input.addEventListener('input', (e) => {
+            userAnswers[transformKey(exercise.id, item.number)] = e.target.value;
+          });
+          line.appendChild(input);
 
-          const preview = document.createElement('div');
-          preview.className = 'answer-preview';
-          preview.innerHTML = `<strong>Oración completa aceptada:</strong><br>${escapeHtml(item.prefix)} ${escapeHtml(item.answer)} ${escapeHtml(item.suffix)}`;
-          block.appendChild(preview);
+          const suffix = document.createElement('span');
+          suffix.className = 'transform-suffix';
+          suffix.textContent = item.suffix;
+          line.appendChild(suffix);
+          block.appendChild(line);
+
+          const help = document.createElement('div');
+          help.className = 'answer-help';
+          help.textContent = 'Escribe entre 3 y 6 palabras incluyendo la palabra dada.';
+          block.appendChild(help);
+
+          if (showResults) {
+            const correct = isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)]);
+            const feedback = document.createElement('div');
+            feedback.className = `transform-feedback ${correct ? 'correct' : 'incorrect'}`;
+            feedback.textContent = correct
+              ? '✓ Correcto.'
+              : `✗ Respuesta correcta: ${formatAnswers(item.answers).toUpperCase()}`;
+            block.appendChild(feedback);
+
+            const preview = document.createElement('div');
+            preview.className = 'answer-preview';
+            preview.innerHTML = `<strong>Oración completa aceptada:</strong><br>${escapeHtml(buildFullSentence(item, firstAnswer(item.answers)))}`;
+            block.appendChild(preview);
+          }
         }
 
         list.appendChild(block);
@@ -1121,40 +1171,149 @@
     function createPassageBlock(text) {
       const wrapper = document.createElement('div');
       wrapper.className = 'exercise-passage';
-      wrapper.innerHTML = formatPassageHtml(text || '');
+      wrapper.innerHTML = formatPassageHtml(text);
       return wrapper;
     }
 
     function formatPassageHtml(text) {
-      return text.split('\n\n').map((paragraph) => {
-        let html = escapeHtml(paragraph);
-        html = html.replace(/\{\{(\d+)\|([A-Z]+)\}\}/g, (_, number, base) => {
+      const paragraphs = text.split('\n\n').map(paragraph => {
+        let htmlText = escapeHtml(paragraph);
+
+        htmlText = htmlText.replace(/\{\{(\d+)\|([A-Z']+)\}\}/g, (_, number, base) => {
           return `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span><span class="gap-base-inline">${base}</span></span>`;
         });
-        html = html.replace(/\{\{(\d+)\}\}/g, (_, number) => {
+
+        htmlText = htmlText.replace(/\{\{(\d+)\}\}/g, (_, number) => {
           return `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span></span>`;
         });
-        return `<p>${html}</p>`;
-      }).join('');
+
+        return `<p>${htmlText}</p>`;
+      });
+
+      return paragraphs.join('');
     }
 
-    function updateExerciseButtons() {
-      const container = document.getElementById('exerciseButtons');
-      container.innerHTML = '';
+    function questionKey(exerciseId, number) {
+      return `${exerciseId}-q-${number}`;
+    }
 
-      if (!showResults) {
-        container.innerHTML = `
-          <button class="button button-dark" type="button" onclick="goBackToTypes()">← Volver a tipos</button>
-          <button class="button button-main" type="button" onclick="checkAnswers()">Comprobar ✓</button>
-        `;
-        return;
+    function blankKey(exerciseId, number) {
+      return `${exerciseId}-blank-${number}`;
+    }
+
+    function transformKey(exerciseId, number) {
+      return `${exerciseId}-transform-${number}`;
+    }
+
+    function normalizeText(value) {
+      return (value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[’‘]/g, "'")
+        .replace(/[^a-z0-9'\s-]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function ensureArray(value) {
+      if (Array.isArray(value)) return value;
+      if (value === undefined || value === null) return [];
+      return [value];
+    }
+
+    function firstAnswer(value) {
+      return ensureArray(value)[0] || '';
+    }
+
+    function formatAnswers(value) {
+      return ensureArray(value).join(' / ');
+    }
+
+    function isSingleAnswerCorrect(userValue, correctAnswers) {
+      const normalizedInput = normalizeText(userValue);
+      return ensureArray(correctAnswers).some(answer => normalizeText(answer) === normalizedInput);
+    }
+
+    function buildFullSentence(item, fragment) {
+      return `${item.prefix} ${fragment} ${item.suffix}`.replace(/\s+/g, ' ').trim();
+    }
+
+    function isTransformationCorrect(item, userValue) {
+      const normalizedInput = normalizeText(userValue);
+      return ensureArray(item.answers).some(answer => {
+        const normalizedAnswer = normalizeText(answer);
+        const normalizedFull = normalizeText(buildFullSentence(item, answer));
+        return normalizedInput === normalizedAnswer || normalizedInput === normalizedFull;
+      });
+    }
+
+    function isFullSentenceCorrect(item, userValue) {
+      const normalizedInput = normalizeText(userValue);
+      return ensureArray(item.answers).some(answer => normalizeText(answer) === normalizedInput);
+    }
+
+    function getScore(exercise) {
+      if (currentType === 'multipleChoice') {
+        const total = exercise.questions.length;
+        const correct = exercise.questions.filter(q => userAnswers[questionKey(exercise.id, q.number)] === q.correct).length;
+        return { correct, total };
       }
 
-      container.innerHTML = `
-        <button class="button button-dark" type="button" onclick="goBackToTypes()">← Volver a tipos</button>
-        <button class="button button-orange" type="button" onclick="retryExercise()">Intentar de nuevo 🔄</button>
-        <button class="button button-green" type="button" ${currentExerciseIndex < currentExercises.length - 1 ? '' : 'disabled'} onclick="nextExercise()">Siguiente ▶</button>
+      if (currentType === 'fillBlanks' || currentType === 'wordFormation') {
+        const total = exercise.blanks.length;
+        const correct = exercise.blanks.filter(blank => isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answers)).length;
+        return { correct, total };
+      }
+
+      const total = exercise.items.length;
+      const correct = exercise.items.filter(item => {
+        const value = userAnswers[transformKey(exercise.id, item.number)];
+        return exercise.mode === 'fullSentence' ? isFullSentenceCorrect(item, value) : isTransformationCorrect(item, value);
+      }).length;
+      return { correct, total };
+    }
+
+    function checkAnswer() {
+      showResults = true;
+      const exercise = currentExercises[currentExerciseIndex];
+      renderExerciseContent(exercise);
+
+      const score = getScore(exercise);
+      const summary = document.getElementById('resultSummary');
+      summary.classList.add('show');
+      summary.innerHTML = `
+        <h3 style="margin-bottom:0.4rem;">📊 Resultado</h3>
+        <p>Has acertado <strong>${score.correct}</strong> de <strong>${score.total}</strong> respuestas.</p>
       `;
+
+      const explanation = document.getElementById('explanation');
+      explanation.classList.add('show');
+      explanation.innerHTML = `
+        <h3 style="margin-bottom:0.4rem;">📚 Pista de corrección</h3>
+        <p>${escapeHtml(exercise.explanation || 'Revisa las respuestas correctas y vuelve a intentarlo.')}</p>
+      `;
+
+      updateButtons();
+    }
+
+    function updateButtons() {
+      const group = document.getElementById('buttonGroup');
+
+      if (!showResults) {
+        group.innerHTML = `
+          <button class="button button-back" onclick="goToTypes()">← Tipos</button>
+          <button class="button button-ghost" onclick="goHome()">Bloques</button>
+          <button class="button button-check" onclick="checkAnswer()">Comprobar ✓</button>
+        `;
+      } else {
+        const nextDisabled = currentExerciseIndex >= currentExercises.length - 1;
+        group.innerHTML = `
+          <button class="button button-back" onclick="goToTypes()">← Tipos</button>
+          <button class="button button-retry" onclick="retryExercise()">Intentar de nuevo</button>
+          <button class="button button-next" ${nextDisabled ? 'disabled' : ''} onclick="nextExercise()">Siguiente</button>
+        `;
+      }
     }
 
     function retryExercise() {
@@ -1167,86 +1326,8 @@
       }
     }
 
-    function questionKey(exerciseId, number) { return `${exerciseId}-q-${number}`; }
-    function blankKey(exerciseId, number) { return `${exerciseId}-blank-${number}`; }
-    function transformKey(exerciseId, number) { return `${exerciseId}-transform-${number}`; }
-
-    function normalizeText(value) {
-      return (value || '')
-        .toLowerCase()
-        .replace(/[’‘]/g, "'")
-        .replace(/[^a-z0-9'\s-]/g, '')
-        .replace(/\s+/g, ' ')
-        .trim();
-    }
-
-    function getAcceptedAnswers(item) {
-      if (Array.isArray(item.acceptedAnswers) && item.acceptedAnswers.length) return item.acceptedAnswers;
-      if (item.answer) return [item.answer];
-      return [];
-    }
-
-    function formatAcceptedAnswers(item) {
-      return getAcceptedAnswers(item).join(' / ');
-    }
-
-    function isBlankCorrect(item, userValue) {
-      const normalized = normalizeText(userValue);
-      return getAcceptedAnswers(item).some(answer => normalizeText(answer) === normalized);
-    }
-
-    function isTransformationCorrect(item, userValue) {
-      const normalizedInput = normalizeText(userValue);
-      const answers = getAcceptedAnswers(item);
-      return answers.some(answer => {
-        const full = `${item.prefix} ${answer} ${item.suffix}`;
-        return normalizeText(answer) === normalizedInput || normalizeText(full) === normalizedInput;
-      });
-    }
-
-    function getScore(exercise) {
-      if (currentTypeKey === 'multipleChoice') {
-        const total = exercise.questions.length;
-        const correct = exercise.questions.filter(q => userAnswers[questionKey(exercise.id, q.number)] === q.correct).length;
-        return { correct, total };
-      }
-
-      if (currentTypeKey === 'fillBlanks' || currentTypeKey === 'wordFormation') {
-        const total = exercise.blanks.length;
-        const correct = exercise.blanks.filter(blank => isBlankCorrect(blank, userAnswers[blankKey(exercise.id, blank.number)])).length;
-        return { correct, total };
-      }
-
-      const total = exercise.items.length;
-      const correct = exercise.items.filter(item => isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)])).length;
-      return { correct, total };
-    }
-
-    function checkAnswers() {
-      showResults = true;
-      renderExerciseContent();
-      const exercise = currentExercises[currentExerciseIndex];
-      const score = getScore(exercise);
-
-      const summary = document.getElementById('resultSummary');
-      summary.classList.add('show');
-      summary.innerHTML = `
-        <h3>📊 Resultado</h3>
-        <p>Has acertado <strong>${score.correct}</strong> de <strong>${score.total}</strong> respuestas.</p>
-      `;
-
-      const explanation = document.getElementById('explanation');
-      explanation.classList.add('show');
-      explanation.innerHTML = `
-        <h3>📚 Pista de corrección</h3>
-        <p>${escapeHtml(exercise.explanation || '')}</p>
-      `;
-
-      updateExerciseButtons();
-    }
-
-    function escapeHtml(text) {
-      return String(text ?? '')
+    function escapeHtml(value) {
+      return String(value ?? '')
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
