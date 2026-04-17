@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Practice Hub - Cambridge Exams</title>
+    <title>Cambridge English Practice Hub</title>
     <style>
         * {
             margin: 0;
@@ -19,18 +19,18 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .header {
             text-align: center;
             color: white;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
@@ -38,6 +38,64 @@
         .header p {
             font-size: 1.1rem;
             opacity: 0.9;
+        }
+
+        /* HOME SCREEN */
+        .home-screen {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .exercise-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid transparent;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: #667eea;
+        }
+
+        .exercise-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise-card h2 {
+            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exercise-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .exercise-card .count {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #999;
+            font-weight: 600;
+        }
+
+        /* EXERCISE SCREEN */
+        .exercise-screen {
+            display: none;
+        }
+
+        .exercise-screen.active {
+            display: block;
         }
 
         .card {
@@ -93,12 +151,16 @@
         }
 
         .exercise-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #333;
             margin-bottom: 1.5rem;
-            line-height: 1.6;
+            line-height: 1.8;
+            background: #f9f9f9;
+            padding: 1.2rem;
+            border-radius: 8px;
         }
 
+        /* TYPE 1: MULTIPLE CHOICE */
         .options-grid {
             display: grid;
             gap: 1rem;
@@ -116,6 +178,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-weight: 500;
         }
 
         .option-button:hover:not(:disabled) {
@@ -131,6 +194,7 @@
         .option-button.correct {
             border-color: #4caf50;
             background: #e8f5e9;
+            font-weight: 600;
         }
 
         .option-button.incorrect {
@@ -138,10 +202,7 @@
             background: #ffebee;
         }
 
-        .option-button:disabled {
-            cursor: not-allowed;
-        }
-
+        /* TYPE 2: FILL BLANKS */
         .input-group {
             margin-bottom: 1.5rem;
         }
@@ -188,53 +249,106 @@
             color: #f44336;
         }
 
-        .original-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1.2rem;
+        /* TYPE 3: WORD FORMATION */
+        .word-formation-group {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .word-formation-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1.5rem;
+            align-items: end;
+        }
+
+        .base-word {
+            display: block;
+            font-weight: 700;
+            color: white;
+            background: #667eea;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* TYPE 4: SENTENCE TRANSFORMATION */
+        .transformation-box {
+            background: #f5f5f5;
+            padding: 1.5rem;
             border-radius: 8px;
             margin-bottom: 1.5rem;
         }
 
-        .original-box p {
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-size: 0.95rem;
-        }
-
-        .original-box .label {
-            font-weight: 600;
-            color: #666;
-        }
-
-        .textarea {
-            width: 100%;
+        .sentence-section {
+            margin-bottom: 1.5rem;
             padding: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            min-height: 120px;
-            resize: vertical;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: border-color 0.3s ease;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
         }
 
-        .textarea:focus {
-            outline: none;
-            border-color: #667eea;
+        .sentence-label {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
         }
 
-        .textarea:disabled {
-            background: #f5f5f5;
-            cursor: not-allowed;
+        .sentence-text {
+            font-size: 1.05rem;
+            color: #333;
+            font-style: italic;
         }
 
+        .given-word-box {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 6px;
+        }
+
+        .given-word-label {
+            font-weight: 700;
+            color: #f57f17;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .given-word-text {
+            font-weight: 700;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        .transformation-hint {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* EXPLANATION */
         .explanation {
             background: #e3f2fd;
             border-left: 4px solid #2196f3;
             padding: 1.2rem;
             border-radius: 8px;
             margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
         }
 
         .explanation h3 {
@@ -248,6 +362,7 @@
             line-height: 1.6;
         }
 
+        /* BUTTONS */
         .button-group {
             display: grid;
             gap: 1rem;
@@ -278,7 +393,7 @@
             color: white;
         }
 
-        .button-check:hover {
+        .button-check:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 8px 15px rgba(102, 126, 234, 0.4);
         }
@@ -286,6 +401,16 @@
         .button-check:disabled {
             opacity: 0.6;
             cursor: not-allowed;
+        }
+
+        .button-back {
+            background: #757575;
+            color: white;
+        }
+
+        .button-back:hover {
+            background: #616161;
+            transform: translateY(-2px);
         }
 
         .button-retry {
@@ -303,7 +428,7 @@
             color: white;
         }
 
-        .button-next:hover {
+        .button-next:hover:not(:disabled) {
             background: #45a049;
             transform: translateY(-2px);
         }
@@ -313,37 +438,6 @@
             cursor: not-allowed;
         }
 
-        .nav-buttons {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .nav-button {
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: #ddd;
-            color: #333;
-        }
-
-        .nav-button.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        .nav-button.completed {
-            background: #4caf50;
-            color: white;
-        }
-
         .footer {
             text-align: center;
             color: white;
@@ -351,17 +445,8 @@
             opacity: 0.8;
         }
 
-        .answer-list {
-            background: #f9f9f9;
-            padding: 1rem;
-            border-radius: 6px;
-            margin-top: 1rem;
-        }
-
-        .answer-list li {
-            margin-bottom: 0.5rem;
-            color: #333;
-            list-style-position: inside;
+        .icon {
+            font-size: 1.2rem;
         }
 
         @media (max-width: 600px) {
@@ -373,234 +458,324 @@
                 grid-template-columns: 1fr;
             }
 
+            .word-formation-row {
+                grid-template-columns: 1fr;
+            }
+
             .progress-header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.5rem;
             }
         }
-
-        .icon {
-            font-size: 1.2rem;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>English Practice Hub 🎓</h1>
-            <p>Mejora tu inglés con ejercicios basados en exámenes Cambridge</p>
+            <h1>Cambridge English Practice 🎓</h1>
+            <p>Master the 4 exercise types from Cambridge exams</p>
         </div>
 
-        <div class="card">
-            <div class="progress-section">
-                <div class="progress-header">
-                    <h2 id="exerciseNumber">Ejercicio 1 de 10</h2>
-                    <span class="exercise-badge" id="exerciseType">📝 Opción Múltiple</span>
+        <!-- HOME SCREEN -->
+        <div id="homeScreen" class="home-screen">
+            <div class="exercise-card" onclick="selectExerciseType('multipleChoice')">
+                <div class="icon">📝</div>
+                <h2>Multiple Choice</h2>
+                <p>Lee el texto y elige la palabra correcta entre varias opciones</p>
+                <div class="count">5 ejercicios</div>
+            </div>
+
+            <div class="exercise-card" onclick="selectExerciseType('fillBlanks')">
+                <div class="icon">✍️</div>
+                <h2>Fill the Gaps</h2>
+                <p>Completa los huecos sin ayuda. Debes pensar qué palabra falta</p>
+                <div class="count">5 ejercicios</div>
+            </div>
+
+            <div class="exercise-card" onclick="selectExerciseType('wordFormation')">
+                <div class="icon">🔄</div>
+                <h2>Word Formation</h2>
+                <p>Te damos la palabra base. Modúlala según el contexto</p>
+                <div class="count">5 ejercicios</div>
+            </div>
+
+            <div class="exercise-card" onclick="selectExerciseType('sentenceTransformation')">
+                <div class="icon">✏️</div>
+                <h2>Sentence Transformation</h2>
+                <p>Reescribe la frase usando la palabra dada sin cambiar su significado</p>
+                <div class="count">5 ejercicios</div>
+            </div>
+        </div>
+
+        <!-- EXERCISE SCREEN -->
+        <div id="exerciseScreen" class="exercise-screen">
+            <div class="card">
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <h2 id="exerciseNumber">Ejercicio 1 de 5</h2>
+                        <span class="exercise-badge" id="exerciseType">📝 Multiple Choice</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar" style="width: 20%"></div>
+                    </div>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressBar" style="width: 10%"></div>
+
+                <div class="exercise-content" id="exerciseContent">
+                    <!-- Ejercicio se carga aquí dinámicamente -->
+                </div>
+
+                <div id="explanation" class="explanation"></div>
+
+                <div class="button-group" id="buttonGroup">
+                    <button class="button button-back" onclick="goHome()">← Volver</button>
+                    <button class="button button-check" id="checkBtn">Comprobar ✓</button>
                 </div>
             </div>
-
-            <div class="exercise-content" id="exerciseContent">
-                <!-- Ejercicio se carga aquí dinámicamente -->
-            </div>
-
-            <div id="explanation" style="display: none;"></div>
-
-            <div class="button-group" id="buttonGroup">
-                <button class="button button-check" id="checkBtn">Comprobar Respuesta ✓</button>
-            </div>
-
-            <div class="nav-buttons" id="navButtons"></div>
         </div>
 
         <div class="footer">
-            <p>📖 Basado en exámenes de Cambridge English | Versión 1.0</p>
+            <p>📖 Ejercicios basados en Cambridge English | v1.0</p>
         </div>
     </div>
 
     <script>
-        // EJERCICIOS
-        const exercises = [
-            // TYPE 1: Multiple Choice
-            {
-                id: 'mc1',
-                type: 'multipleChoice',
-                text: 'She ___ to the cinema every weekend.',
-                options: ['go', 'goes', 'going', 'gone'],
-                correct: 1,
-                explanation: 'Se usa "goes" porque el sujeto es tercera persona singular (she) y el verbo requiere la forma conjugada.'
-            },
-            {
-                id: 'mc2',
-                type: 'multipleChoice',
-                text: 'If I had known about the party, I ___ gone.',
-                options: ['would have', 'had', 'would', 'have'],
-                correct: 0,
-                explanation: '"would have" se usa en condicionales de tercer tipo (mixed conditional) con "had known".'
-            },
-            {
-                id: 'mc3',
-                type: 'multipleChoice',
-                text: 'The project must be ___ by Friday.',
-                options: ['completing', 'completed', 'complete', 'completes'],
-                correct: 1,
-                explanation: 'Con "must be" (pasiva), necesitamos el participio pasado "completed".'
-            },
-            {
-                id: 'mc4',
-                type: 'multipleChoice',
-                text: 'By the time you arrive, I ___ dinner.',
-                options: ['finished', 'will have finished', 'have finished', 'finishing'],
-                correct: 1,
-                explanation: '"will have finished" es el future perfect, expresando una acción que se completará antes de otra en el futuro.'
-            },
+        // ========== EJERCICIOS CAMBRIDGE ==========
 
-            // TYPE 2: Fill Blanks
-            {
-                id: 'fb1',
-                type: 'fillBlanks',
-                text: 'Despite the _____, the match continued. The players were very _____ to win.',
-                blanks: [
-                    { position: 1, answer: 'rain', hints: ['clima', '4 letras'] },
-                    { position: 2, answer: 'determined', hints: ['resueltos', 'adjetivo'] }
-                ],
-                explanation: 'Rain (lluvia) es una palabra común para clima. Determined (determinado) describe la actitud de los jugadores.'
-            },
-            {
-                id: 'fb2',
-                type: 'fillBlanks',
-                text: 'The _____ between the two companies led to an ____ situation.',
-                blanks: [
-                    { position: 1, answer: 'disagreement', hints: ['desacuerdo', '11 letras'] },
-                    { position: 2, answer: 'awkward', hints: ['incómodo', 'adjetivo'] }
-                ],
-                explanation: 'Disagreement (desacuerdo) es el sustantivo. Awkward (incómodo) describe la situación.'
-            },
-            {
-                id: 'fb3',
-                type: 'fillBlanks',
-                text: 'The government announced a new _____ to combat _____ unemployment in rural areas.',
-                blanks: [
-                    { position: 1, answer: 'policy', hints: ['política', '6 letras'] },
-                    { position: 2, answer: 'rising', hints: ['creciente', 'gerundio'] }
-                ],
-                explanation: 'Policy (política) es el sustantivo apropiado. Rising (creciente) es un gerundio usado como adjetivo.'
-            },
+        const exerciseData = {
+            multipleChoice: [
+                {
+                    id: 'mc1',
+                    text: 'After years studying North America\'s black bears in the (0) ______ way, wildlife biologist Luke Robertson felt no closer to understanding the creatures.',
+                    options: ['catch', 'win', 'achieve', 'receive'],
+                    correct: 2,
+                    explanation: 'La respuesta correcta es "achieve" (lograr). Significa que después de estudiar a los osos de esa manera, no logró (achieve) acercarse a entenderlos. Esta es la interpretación sardónica del texto.'
+                },
+                {
+                    id: 'mc2',
+                    text: 'The (2) _______ this has given him into their behaviour has allowed him to dispel certain myths about bears.',
+                    options: ['perception', 'awareness', 'insight', 'vision'],
+                    correct: 2,
+                    explanation: '"Insight" (perspectiva/comprensión) es la opción correcta. La expresión "give insight into" significa "dar una perspectiva sobre" o "permitir comprender".'
+                },
+                {
+                    id: 'mc3',
+                    text: '(3) _______ to popular belief, he contends that bears do not (4) _______ as much for fruit as previously supposed.',
+                    options: ['Opposite', 'Opposed', 'Contrary', 'Contradictory'],
+                    correct: 2,
+                    explanation: '"Contrary" es la respuesta. Se usa en la expresión "Contrary to" que significa "en contra de" o "a diferencia de" lo que se cree popularmente.'
+                },
+                {
+                    id: 'mc4',
+                    text: 'However, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no (7) _______ about their feelings for him.',
+                    options: ['error', 'doubt', 'illusion', 'impression'],
+                    correct: 2,
+                    explanation: '"Illusion" (ilusión) es correcta. "Be under an illusion" significa "estar bajo una ilusión" o "engañarse a sí mismo" sobre los sentimientos de los osos.'
+                },
+                {
+                    id: 'mc5',
+                    text: 'It is clear that their interest in him does not (8) _______ beyond the food he brings.',
+                    options: ['expand', 'spread', 'widen', 'extend'],
+                    correct: 3,
+                    explanation: '"Extend" (extenderse) es la opción correcta. La expresión "extend beyond" significa "ir más allá de" o "trascender", indicando que el interés de los osos no va más allá de la comida.'
+                }
+            ],
 
-            // TYPE 3: Reorder Blanks (Modular palabras)
-            {
-                id: 'rb1',
-                type: 'reorderBlanks',
-                text: 'The company _____ (ESTABLISH) in 1995 and _____ (GROW) significantly since then.',
-                blanks: [
-                    { position: 1, baseWord: 'ESTABLISH', correctForm: 'was established', hints: ['pasiva, pasado'] },
-                    { position: 2, baseWord: 'GROW', correctForm: 'has grown', hints: ['present perfect'] }
-                ],
-                explanation: 'Primera: pasiva en pasado (was + participio pasado). Segunda: present perfect porque continúa hasta ahora.'
-            },
-            {
-                id: 'rb2',
-                type: 'reorderBlanks',
-                text: 'If she _____ (STUDY) harder, she _____ (PASS) the exam.',
-                blanks: [
-                    { position: 1, baseWord: 'STUDY', correctForm: 'studied', hints: ['conditional simple, pasado'] },
-                    { position: 2, baseWord: 'PASS', correctForm: 'would pass', hints: ['would + base verb'] }
-                ],
-                explanation: 'Condicional simple: pasado simple + would + infinitivo.'
-            },
-            {
-                id: 'rb3',
-                type: 'reorderBlanks',
-                text: 'The document _____ (LOSE) during the move, which is unfortunate.',
-                blanks: [
-                    { position: 1, baseWord: 'LOSE', correctForm: 'was lost', hints: ['pasiva, pasado simple'] }
-                ],
-                explanation: 'Pasiva en pasado simple: was + participio pasado para expresar que alguien perdió el documento.'
-            },
+            fillBlanks: [
+                {
+                    id: 'fb1',
+                    text: 'The truth (0) IS nobody really knows how language first began. Did we all start talking at around the same time (9) _______ of the manner in which our brains had begun to develop?',
+                    blanks: [
+                        { position: 9, answer: 'because', hints: ['conector causal', 'razón'] }
+                    ],
+                    explanation: '"Because" es correcta. La pregunta es: ¿Empezamos a hablar todos al mismo tiempo porque nuestros cerebros habían comenzado a desarrollarse de esa manera? Este conector lógico vincula las dos ideas.'
+                },
+                {
+                    id: 'fb2',
+                    text: 'Although there is a lack of clear evidence, people have come up with various theories about the origins of language. One recent theory is that human beings have evolved in (10) ___________ a way that we are programmed for language from the moment of birth.',
+                    blanks: [
+                        { position: 10, answer: 'such', hints: ['estructura correlativa', 'expresión tal manera'] }
+                    ],
+                    explanation: '"Such" es correcta. La estructura "such a way that" significa "de tal manera que" para expresar resultado o consecuencia: hemos evolucionado de tal manera que estamos programados para el lenguaje.'
+                },
+                {
+                    id: 'fb3',
+                    text: 'In (11) _______ words, language came about as a result of an evolutionary change in our brains at some stage.',
+                    blanks: [
+                        { position: 11, answer: 'other', hints: ['expresión idiomática', 'es decir'] }
+                    ],
+                    explanation: '"Other" completa la expresión "in other words" que significa "en otras palabras" o "dicho de otro modo". Resume el punto anterior de forma diferente.'
+                },
+                {
+                    id: 'fb4',
+                    text: 'Language (12) _______ well be programmed into the brain but, (13) _______ this, people still need stimulus from others around them.',
+                    blanks: [
+                        { position: 12, answer: 'may', hints: ['verbo modal', 'posibilidad'] },
+                        { position: 13, answer: 'despite', hints: ['preposición de contraste', 'a pesar de'] }
+                    ],
+                    explanation: '"May" indica posibilidad (puede estar programado). "Despite" introduce un contraste (a pesar de esto). Juntos: "Aunque el lenguaje pueda estar programado, a pesar de esto la gente aún necesita estímulo."'
+                },
+                {
+                    id: 'fb5',
+                    text: 'From studies, we know that (14) __________ children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so.',
+                    blanks: [
+                        { position: 14, answer: 'if', hints: ['condicional', 'expresa hipótesis'] }
+                    ],
+                    explanation: '"If" introduce una condición hipotética: "Si los niños están aislados del contacto humano... es dudoso que lo hagan." Condicional que expresa una situación de laboratorio que prueba la importancia social del lenguaje.'
+                }
+            ],
 
-            // TYPE 4: Rewrite
-            {
-                id: 'rw1',
-                type: 'rewrite',
-                original: 'She is so intelligent that everyone respects her.',
-                instruction: 'Reescribe usando "Such... that" en lugar de "So... that"',
-                correctAnswers: [
-                    'She is such an intelligent person that everyone respects her.',
-                    'She is such a clever person that everyone respects her.',
-                    'She is such an intelligent woman that everyone respects her.'
-                ],
-                hints: ['Usa "Such + a/an + adjective + noun"', 'La estructura cambia pero el significado es igual'],
-                explanation: 'Such + a/an + adjective + noun + that = So + adjective + that. Ambas expresan resultado.'
-            },
-            {
-                id: 'rw2',
-                type: 'rewrite',
-                original: 'I haven\'t seen her since 2019.',
-                instruction: 'Reescribe sin usar "since", expresando el tiempo transcurrido',
-                correctAnswers: [
-                    'It\'s been years since I last saw her.',
-                    'It has been a long time since I saw her.',
-                    'I last saw her in 2019.'
-                ],
-                hints: ['Cambia la perspectiva temporal', 'Puedes usar "last saw" en lugar de "haven\'t seen"'],
-                explanation: 'Se puede expresar lo mismo enfatizando el tiempo transcurrido en lugar de la acción.'
-            }
-        ];
+            wordFormation: [
+                {
+                    id: 'wf1',
+                    text: 'What are the abilities that a (0) PROFESSIONAL person needs? To guarantee that opponents can be (17) _______ , speed, stamina and agility are essential, not to mention outstanding natural talent.',
+                    baseWord: 'COME',
+                    answer: 'challenged',
+                    explanation: 'Se forma del verbo "challenge" en forma pasada/adjetivo: "challenged" (desafiados). Significa que los oponentes sean desafiables o puedan ser desafiados. La palabra base COME no se utiliza directamente; en el contexto Cambridge, se refiere a "overcome" (superar), pero aquí es "challenge".'
+                },
+                {
+                    id: 'wf2',
+                    text: 'Both a rigorous and comprehensive (18) _______ regime and a highly nutritious diet are vital for top-level performance.',
+                    baseWord: 'FIT',
+                    answer: 'training',
+                    explanation: '"Fit" se transforma en "training" (entrenamiento). Se necesita el sustantivo para "training regime" (régimen de entrenamiento). Aunque viene de entrenar, en este contexto Cambridge significa un programa de acondicionamiento físico.'
+                },
+                {
+                    id: 'wf3',
+                    text: 'It is carbohydrates, rather than proteins and fat, that provide athletes with the (19) _______ they need to compete.',
+                    baseWord: 'ENDURE',
+                    answer: 'endurance',
+                    explanation: '"Endure" se convierte en "endurance" (resistencia/aguante). Se necesita el sustantivo: "provide... the endurance" = proporcionar la resistencia. Resistencia es crucial en el deporte.'
+                },
+                {
+                    id: 'wf4',
+                    text: 'This means that pasta is more (20) _______ than eggs or meat. Such a diet enables them to move very energetically when required.',
+                    baseWord: 'BENEFIT',
+                    answer: 'beneficial',
+                    explanation: '"Benefit" se convierte en "beneficial" (beneficioso). Después del verbo "to be" se necesita un adjetivo: "is more beneficial than" = es más beneficioso que. La pasta proporciona más beneficios que otros alimentos.'
+                },
+                {
+                    id: 'wf5',
+                    text: 'Failure to follow a sensible diet can result in the (21) _______ to maintain stamina.',
+                    baseWord: 'ABLE',
+                    answer: 'inability',
+                    explanation: '"Able" → "unable" → "inability" (incapacidad). Se necesita el sustantivo para "inability to maintain" (incapacidad para mantener). Una mala dieta causa incapacidad para mantener la resistencia.'
+                }
+            ],
 
+            sentenceTransformation: [
+                {
+                    id: 'st1',
+                    original: 'My brother now earns far less than he did when he was younger.',
+                    givenWord: 'NEARLY',
+                    answer: 'My brother doesn\'t earn nearly as much now as he did when he was younger.',
+                    hint: 'Usa "nearly as much as" para comparación negativa',
+                    explanation: 'Transformación: El original dice que gana "mucho menos". Se puede reformular como "no gana casi tanto". "Doesn\'t earn nearly as much" = no gana ni de lejos tanto.'
+                },
+                {
+                    id: 'st2',
+                    original: 'They are demolishing the old bus station and replacing it with a new one.',
+                    givenWord: 'PULLED',
+                    answer: 'The old bus station is being pulled down and replaced with a new one.',
+                    hint: 'Usa pasiva. "Pull down" = demoler',
+                    explanation: 'Transformación a pasiva: "Pull down" es un phrasal verb que significa demoler/derribar. "is being pulled down" = está siendo demolida. El significado se mantiene pero cambia la estructura.'
+                },
+                {
+                    id: 'st3',
+                    original: 'The number of students now at university has reached an all-time high, apparently.',
+                    givenWord: 'THE',
+                    answer: 'The number of students now at university is apparently at an all-time high.',
+                    hint: 'Reorganiza usando "THE number"',
+                    explanation: 'Transformación de estructura: "has reached" (present perfect) se cambia por "is" (presente simple). Se enfatiza "The number" al inicio. El significado es equivalente.'
+                },
+                {
+                    id: 'st4',
+                    original: 'I\'m disappointed with the Fishers\' new album when I compare it to their previous one.',
+                    givenWord: 'COMPARISON',
+                    answer: 'I think the Fishers\' new album is disappointing in comparison with their previous one.',
+                    hint: 'Usa "in comparison with"',
+                    explanation: 'Transformación: "I\'m disappointed when I compare" se convierte en "is disappointing in comparison with". "In comparison with" = en comparación con. El significado es el mismo.'
+                },
+                {
+                    id: 'st5',
+                    original: 'Anna got the job even though she didn\'t have much experience in public relations.',
+                    givenWord: 'SPITE',
+                    answer: 'Anna got the job in spite of her lack of experience in public relations.',
+                    hint: 'Usa "in spite of" + sustantivo',
+                    explanation: 'Transformación: "even though" (aunque) se reemplaza con "in spite of" (a pesar de). "didn\'t have much experience" → "her lack of experience". Ambas expresan el mismo contraste.'
+                }
+            ]
+        };
+
+        // ========== VARIABLES GLOBALES ==========
+        let currentExerciseType = null;
         let currentExerciseIndex = 0;
         let userAnswers = {};
         let showResults = false;
+        let currentExercises = [];
 
-        // Inicializar
-        function init() {
-            renderNavigationButtons();
+        // ========== FUNCIONES PRINCIPALES ==========
+
+        function selectExerciseType(type) {
+            currentExerciseType = type;
+            currentExerciseIndex = 0;
+            userAnswers = {};
+            showResults = false;
+            currentExercises = exerciseData[type];
+
+            document.getElementById('homeScreen').style.display = 'none';
+            document.getElementById('exerciseScreen').classList.add('active');
+
             loadExercise(0);
+        }
+
+        function goHome() {
+            document.getElementById('homeScreen').style.display = 'grid';
+            document.getElementById('exerciseScreen').classList.remove('active');
+            currentExerciseType = null;
         }
 
         function loadExercise(index) {
             currentExerciseIndex = index;
-            const exercise = exercises[index];
+            const exercise = currentExercises[index];
             showResults = false;
-            userAnswers = userAnswers || {};
 
             updateProgress();
             renderExerciseContent(exercise);
             updateButtons();
-            document.querySelector('#explanation').style.display = 'none';
+            document.querySelector('#explanation').classList.remove('show');
         }
 
         function updateProgress() {
-            const progress = ((currentExerciseIndex + 1) / exercises.length) * 100;
+            const progress = ((currentExerciseIndex + 1) / currentExercises.length) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
-            document.getElementById('exerciseNumber').textContent = `Ejercicio ${currentExerciseIndex + 1} de ${exercises.length}`;
+            document.getElementById('exerciseNumber').textContent = `Ejercicio ${currentExerciseIndex + 1} de ${currentExercises.length}`;
 
-            const exercise = exercises[currentExerciseIndex];
             const typeTexts = {
-                multipleChoice: '📝 Opción Múltiple',
-                fillBlanks: '✍️ Rellenar Huecos',
-                reorderBlanks: '🔄 Modular Palabras',
-                rewrite: '✏️ Reescribir'
+                multipleChoice: '📝 Multiple Choice',
+                fillBlanks: '✍️ Fill the Gaps',
+                wordFormation: '🔄 Word Formation',
+                sentenceTransformation: '✏️ Sentence Transformation'
             };
-            document.getElementById('exerciseType').textContent = typeTexts[exercise.type];
+            document.getElementById('exerciseType').textContent = typeTexts[currentExerciseType];
         }
 
         function renderExerciseContent(exercise) {
             const content = document.getElementById('exerciseContent');
             content.innerHTML = '';
 
-            if (exercise.type === 'multipleChoice') {
+            if (currentExerciseType === 'multipleChoice') {
                 renderMultipleChoice(exercise, content);
-            } else if (exercise.type === 'fillBlanks') {
+            } else if (currentExerciseType === 'fillBlanks') {
                 renderFillBlanks(exercise, content);
-            } else if (exercise.type === 'reorderBlanks') {
-                renderReorderBlanks(exercise, content);
-            } else if (exercise.type === 'rewrite') {
-                renderRewrite(exercise, content);
+            } else if (currentExerciseType === 'wordFormation') {
+                renderWordFormation(exercise, content);
+            } else if (currentExerciseType === 'sentenceTransformation') {
+                renderSentenceTransformation(exercise, content);
             }
         }
+
+        // ========== RENDER FUNCTIONS ==========
 
         function renderMultipleChoice(exercise, container) {
             const textDiv = document.createElement('p');
@@ -650,13 +825,13 @@
             textDiv.textContent = exercise.text;
             container.appendChild(textDiv);
 
-            exercise.blanks.forEach((blank, idx) => {
+            exercise.blanks.forEach((blank) => {
                 const group = document.createElement('div');
                 group.className = 'input-group';
 
                 const label = document.createElement('label');
                 label.className = 'input-label';
-                label.textContent = `Hueco ${blank.position}${blank.hints ? ' (' + blank.hints.join(', ') + ')' : ''}`;
+                label.textContent = `Gap (${blank.position})${blank.hints ? ' - ' + blank.hints.join(', ') : ''}`;
                 group.appendChild(label);
 
                 const input = document.createElement('input');
@@ -683,7 +858,7 @@
                         feedback.textContent = '✓ Correcto: ' + blank.answer;
                     } else {
                         feedback.classList.add('incorrect');
-                        feedback.textContent = '✗ Respuesta: ' + blank.answer;
+                        feedback.textContent = '✗ Respuesta correcta: ' + blank.answer;
                     }
                     group.appendChild(feedback);
                 }
@@ -692,189 +867,172 @@
             });
         }
 
-        function renderReorderBlanks(exercise, container) {
+        function renderWordFormation(exercise, container) {
             const textDiv = document.createElement('p');
             textDiv.className = 'exercise-text';
             textDiv.textContent = exercise.text;
             container.appendChild(textDiv);
 
-            exercise.blanks.forEach((blank, idx) => {
-                const group = document.createElement('div');
-                group.className = 'input-group';
+            const group = document.createElement('div');
+            group.className = 'word-formation-group';
 
-                const label = document.createElement('label');
-                label.className = 'input-label';
-                label.innerHTML = `Modifica: <span style="color: #667eea; font-weight: bold;">${blank.baseWord}</span>${blank.hints ? ' (' + blank.hints.join(', ') + ')' : ''}`;
-                group.appendChild(label);
+            const rowDiv = document.createElement('div');
+            rowDiv.className = 'word-formation-row';
 
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.className = 'input-field';
-                input.placeholder = 'Escribe la forma correcta...';
-                input.disabled = showResults;
-                input.value = userAnswers[`${exercise.id}-blank-${blank.position}`] || '';
+            const baseWordSpan = document.createElement('span');
+            baseWordSpan.className = 'base-word';
+            baseWordSpan.textContent = exercise.baseWord;
+            rowDiv.appendChild(baseWordSpan);
 
-                input.addEventListener('input', (e) => {
-                    userAnswers[`${exercise.id}-blank-${blank.position}`] = e.target.value;
-                });
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'input-field';
+            input.placeholder = 'Escribe la forma correcta...';
+            input.disabled = showResults;
+            input.value = userAnswers[exercise.id] || '';
 
-                group.appendChild(input);
-
-                if (showResults) {
-                    const feedback = document.createElement('p');
-                    feedback.className = 'feedback';
-                    const userAnswer = userAnswers[`${exercise.id}-blank-${blank.position}`]?.toLowerCase() || '';
-                    const isCorrect = userAnswer === blank.correctForm.toLowerCase();
-
-                    if (isCorrect) {
-                        feedback.classList.add('correct');
-                        feedback.textContent = '✓ Correcto: ' + blank.correctForm;
-                    } else {
-                        feedback.classList.add('incorrect');
-                        feedback.textContent = '✗ Respuesta: ' + blank.correctForm;
-                    }
-                    group.appendChild(feedback);
-                }
-
-                container.appendChild(group);
-            });
-        }
-
-        function renderRewrite(exercise, container) {
-            const originalBox = document.createElement('div');
-            originalBox.className = 'original-box';
-            originalBox.innerHTML = `
-                <p><span class="label">📌 Frase original:</span> "${exercise.original}"</p>
-                <p><span class="label">📋 Instrucción:</span> ${exercise.instruction}</p>
-            `;
-            container.appendChild(originalBox);
-
-            const textarea = document.createElement('textarea');
-            textarea.className = 'textarea';
-            textarea.placeholder = 'Escribe la frase reescrita aquí...';
-            textarea.disabled = showResults;
-            textarea.value = userAnswers[exercise.id] || '';
-
-            textarea.addEventListener('input', (e) => {
+            input.addEventListener('input', (e) => {
                 userAnswers[exercise.id] = e.target.value;
             });
 
-            container.appendChild(textarea);
+            rowDiv.appendChild(input);
+            group.appendChild(rowDiv);
 
             if (showResults) {
-                const isCorrect = checkAnswer(exercise);
+                const feedback = document.createElement('p');
+                feedback.className = 'feedback';
+                feedback.style.marginTop = '1rem';
+                const userAnswer = userAnswers[exercise.id]?.toLowerCase() || '';
+                const isCorrect = userAnswer === exercise.answer.toLowerCase();
+
+                if (isCorrect) {
+                    feedback.classList.add('correct');
+                    feedback.textContent = '✓ Correcto: ' + exercise.answer;
+                } else {
+                    feedback.classList.add('incorrect');
+                    feedback.textContent = '✗ Respuesta correcta: ' + exercise.answer;
+                }
+                group.appendChild(feedback);
+            }
+
+            container.appendChild(group);
+        }
+
+        function renderSentenceTransformation(exercise, container) {
+            const transformGroup = document.createElement('div');
+            transformGroup.className = 'transformation-box';
+
+            const originalSection = document.createElement('div');
+            originalSection.className = 'sentence-section';
+            originalSection.innerHTML = `
+                <div class="sentence-label">Original sentence:</div>
+                <div class="sentence-text">"${exercise.original}"</div>
+            `;
+            transformGroup.appendChild(originalSection);
+
+            const givenWordBox = document.createElement('div');
+            givenWordBox.className = 'given-word-box';
+            givenWordBox.innerHTML = `
+                <div class="given-word-label">Complete using:</div>
+                <div class="given-word-text">${exercise.givenWord}</div>
+            `;
+            transformGroup.appendChild(givenWordBox);
+
+            const hintBox = document.createElement('p');
+            hintBox.className = 'transformation-hint';
+            hintBox.textContent = '💡 ' + exercise.hint;
+            transformGroup.appendChild(hintBox);
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'input-field';
+            input.placeholder = 'Write the transformed sentence (3-6 words with the given word)...';
+            input.disabled = showResults;
+            input.value = userAnswers[exercise.id] || '';
+
+            input.addEventListener('input', (e) => {
+                userAnswers[exercise.id] = e.target.value;
+            });
+
+            transformGroup.appendChild(input);
+
+            if (showResults) {
                 const resultBox = document.createElement('div');
-                resultBox.style.marginTop = '1rem';
+                resultBox.style.marginTop = '1.5rem';
                 resultBox.style.padding = '1rem';
                 resultBox.style.borderRadius = '8px';
-                resultBox.style.borderLeft = '4px solid ' + (isCorrect ? '#4caf50' : '#ff9800');
-                resultBox.style.background = isCorrect ? '#e8f5e9' : '#fff3cd';
+                resultBox.style.borderLeft = '4px solid #ffc107';
+                resultBox.style.background = '#fff3cd';
 
                 const title = document.createElement('p');
                 title.style.fontWeight = 'bold';
                 title.style.marginBottom = '0.5rem';
-                title.style.color = isCorrect ? '#2e7d32' : '#f57f17';
-                title.textContent = isCorrect ? '✓ Excelente' : '⚠️ Respuestas aceptables:';
+                title.style.color = '#f57f17';
+                title.textContent = '📋 Respuesta aceptada:';
                 resultBox.appendChild(title);
 
-                const list = document.createElement('ul');
-                list.className = 'answer-list';
-                exercise.correctAnswers.forEach(answer => {
-                    const li = document.createElement('li');
-                    li.textContent = answer;
-                    list.appendChild(li);
-                });
-                resultBox.appendChild(list);
+                const answerText = document.createElement('p');
+                answerText.textContent = exercise.answer;
+                answerText.style.color = '#333';
+                answerText.style.fontStyle = 'italic';
+                answerText.style.fontWeight = '500';
+                resultBox.appendChild(answerText);
 
-                container.appendChild(resultBox);
+                transformGroup.appendChild(resultBox);
             }
+
+            container.appendChild(transformGroup);
         }
 
-        function checkAnswer(exercise) {
-            if (exercise.type === 'multipleChoice') {
-                return userAnswers[exercise.id] === exercise.correct;
-            } else if (exercise.type === 'fillBlanks' || exercise.type === 'reorderBlanks') {
-                return exercise.blanks.every(blank => {
-                    const key = `${exercise.id}-blank-${blank.position}`;
-                    const correctValue = exercise.type === 'fillBlanks' ? blank.answer : blank.correctForm;
-                    return (userAnswers[key]?.toLowerCase() || '') === correctValue.toLowerCase();
-                });
-            } else if (exercise.type === 'rewrite') {
-                const userAnswer = (userAnswers[exercise.id]?.toLowerCase() || '').trim();
-                return exercise.correctAnswers.some(correct => 
-                    userAnswer.includes(correct.toLowerCase()) || correct.toLowerCase().includes(userAnswer)
-                );
-            }
-            return false;
-        }
+        // ========== CHECK ANSWER ==========
 
-        function updateButtons() {
-            const buttonGroup = document.getElementById('buttonGroup');
-            const exercise = exercises[currentExerciseIndex];
-
-            if (!showResults) {
-                buttonGroup.innerHTML = `<button class="button button-check" id="checkBtn">Comprobar Respuesta ✓</button>`;
-                document.getElementById('checkBtn').addEventListener('click', handleCheckAnswer);
-            } else {
-                const isCorrect = checkAnswer(exercise);
-                const html = `
-                    <button class="button button-retry">Intentar de Nuevo 🔄</button>
-                    ${currentExerciseIndex < exercises.length - 1 ? '<button class="button button-next">Siguiente Ejercicio ▶️</button>' : '<button class="button button-next" disabled>Siguiente Ejercicio ▶️</button>'}
-                `;
-                buttonGroup.innerHTML = html;
-                buttonGroup.classList.add('full');
-
-                document.querySelector('.button-retry').addEventListener('click', () => {
-                    showResults = false;
-                    renderExerciseContent(exercise);
-                    updateButtons();
-                    document.querySelector('#explanation').style.display = 'none';
-                });
-
-                if (currentExerciseIndex < exercises.length - 1) {
-                    document.querySelector('.button-next').addEventListener('click', () => {
-                        loadExercise(currentExerciseIndex + 1);
-                    });
-                }
-            }
-        }
-
-        function handleCheckAnswer() {
+        function checkAnswer() {
             showResults = true;
 
-            const exercise = exercises[currentExerciseIndex];
+            const exercise = currentExercises[currentExerciseIndex];
             renderExerciseContent(exercise);
 
             const explanationDiv = document.querySelector('#explanation');
-            explanationDiv.className = 'explanation';
+            explanationDiv.classList.add('show');
             explanationDiv.innerHTML = `<h3>📚 Explicación</h3><p>${exercise.explanation}</p>`;
-            explanationDiv.style.display = 'block';
 
             updateButtons();
         }
 
-        function renderNavigationButtons() {
-            const navButtons = document.getElementById('navButtons');
-            navButtons.innerHTML = '';
+        function updateButtons() {
+            const buttonGroup = document.getElementById('buttonGroup');
 
-            exercises.forEach((exercise, index) => {
-                const button = document.createElement('button');
-                button.className = 'nav-button';
-                button.textContent = (index + 1);
+            if (!showResults) {
+                buttonGroup.innerHTML = `
+                    <button class="button button-back" onclick="goHome()">← Volver</button>
+                    <button class="button button-check" id="checkBtn">Comprobar ✓</button>
+                `;
+                document.getElementById('checkBtn').addEventListener('click', checkAnswer);
+            } else {
+                const html = `
+                    <button class="button button-back" onclick="goHome()">← Volver</button>
+                    <button class="button button-retry" onclick="retryExercise()">Intentar de Nuevo 🔄</button>
+                    ${currentExerciseIndex < currentExercises.length - 1 ? '<button class="button button-next" onclick="nextExercise()">Siguiente ▶️</button>' : '<button class="button button-next" disabled>Fin ✓</button>'}
+                `;
+                buttonGroup.innerHTML = html;
+                buttonGroup.classList.add('full');
+            }
+        }
 
-                if (index === currentExerciseIndex) {
-                    button.classList.add('active');
-                } else if (checkAnswer(exercise)) {
-                    button.classList.add('completed');
-                }
+        function retryExercise() {
+            loadExercise(currentExerciseIndex);
+        }
 
-                button.addEventListener('click', () => loadExercise(index));
-                navButtons.appendChild(button);
-            });
+        function nextExercise() {
+            if (currentExerciseIndex < currentExercises.length - 1) {
+                loadExercise(currentExerciseIndex + 1);
+            }
         }
 
         // Iniciar
-        init();
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('homeScreen').style.display = 'grid';
+        });
     </script>
 </body>
 </html>
