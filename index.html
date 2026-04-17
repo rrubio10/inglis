@@ -150,14 +150,28 @@
             margin-bottom: 2rem;
         }
 
+        /* TEXTO CON HUECOS */
         .exercise-text {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #333;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
+            margin-bottom: 2rem;
+            line-height: 1.9;
             background: #f9f9f9;
-            padding: 1.2rem;
+            padding: 1.5rem;
             border-radius: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .gap-placeholder {
+            background: #e3f2fd;
+            padding: 0 4px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #1976d2;
+            display: inline-block;
+            min-width: 80px;
+            text-align: center;
         }
 
         /* TYPE 1: MULTIPLE CHOICE */
@@ -202,16 +216,20 @@
             background: #ffebee;
         }
 
-        /* TYPE 2: FILL BLANKS */
+        /* TYPE 2 & 3: INPUT FIELDS */
         .input-group {
             margin-bottom: 1.5rem;
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
         }
 
         .input-label {
             display: block;
             font-weight: 600;
             color: #555;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-size: 0.95rem;
         }
 
@@ -231,49 +249,45 @@
         }
 
         .input-field:disabled {
-            background: #f5f5f5;
+            background: #e8e8e8;
             cursor: not-allowed;
+            color: #999;
         }
 
         .feedback {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            border-radius: 6px;
             font-weight: 600;
+            font-size: 0.95rem;
         }
 
         .feedback.correct {
-            color: #4caf50;
+            color: #2e7d32;
+            background: #c8e6c9;
         }
 
         .feedback.incorrect {
-            color: #f44336;
+            color: #c62828;
+            background: #ffcdd2;
         }
 
         /* TYPE 3: WORD FORMATION */
-        .word-formation-group {
-            background: #f5f5f5;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #667eea;
-        }
-
         .word-formation-row {
             display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 1.5rem;
+            grid-template-columns: 150px 1fr;
+            gap: 1rem;
             align-items: end;
         }
 
-        .base-word {
-            display: block;
-            font-weight: 700;
+        .base-word-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            background: #667eea;
-            padding: 0.8rem 1rem;
+            padding: 0.8rem;
             border-radius: 6px;
-            font-size: 1.05rem;
+            font-weight: 700;
             text-align: center;
+            font-size: 0.95rem;
             text-transform: uppercase;
         }
 
@@ -286,7 +300,7 @@
         }
 
         .sentence-section {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             padding: 1rem;
             background: white;
             border-radius: 6px;
@@ -296,7 +310,7 @@
         .sentence-label {
             font-weight: 700;
             color: #667eea;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
             letter-spacing: 0.5px;
@@ -305,11 +319,10 @@
         .sentence-text {
             font-size: 1.05rem;
             color: #333;
-            font-style: italic;
         }
 
         .given-word-box {
-            margin: 1rem 0;
+            margin-bottom: 1.2rem;
             padding: 1rem;
             background: #fff3cd;
             border-left: 4px solid #ffc107;
@@ -319,7 +332,7 @@
         .given-word-label {
             font-weight: 700;
             color: #f57f17;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
         }
@@ -327,14 +340,17 @@
         .given-word-text {
             font-weight: 700;
             color: #333;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
         .transformation-hint {
-            margin: 0.5rem 0;
+            margin-bottom: 1rem;
             font-size: 0.9rem;
             color: #666;
             font-style: italic;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 6px;
         }
 
         /* EXPLANATION */
@@ -482,28 +498,28 @@
             <div class="exercise-card" onclick="selectExerciseType('multipleChoice')">
                 <div class="icon">📝</div>
                 <h2>Multiple Choice</h2>
-                <p>Lee el texto y elige la palabra correcta entre varias opciones</p>
+                <p>Lee el texto completo y elige la palabra correcta para rellenar el hueco</p>
                 <div class="count">5 ejercicios</div>
             </div>
 
             <div class="exercise-card" onclick="selectExerciseType('fillBlanks')">
                 <div class="icon">✍️</div>
                 <h2>Fill the Gaps</h2>
-                <p>Completa los huecos sin ayuda. Debes pensar qué palabra falta</p>
+                <p>Completa los huecos sin opciones. Debes recordar la palabra exacta</p>
                 <div class="count">5 ejercicios</div>
             </div>
 
             <div class="exercise-card" onclick="selectExerciseType('wordFormation')">
                 <div class="icon">🔄</div>
                 <h2>Word Formation</h2>
-                <p>Te damos la palabra base. Modúlala según el contexto</p>
+                <p>Modifica la palabra base según el contexto del texto</p>
                 <div class="count">5 ejercicios</div>
             </div>
 
             <div class="exercise-card" onclick="selectExerciseType('sentenceTransformation')">
                 <div class="icon">✏️</div>
                 <h2>Sentence Transformation</h2>
-                <p>Reescribe la frase usando la palabra dada sin cambiar su significado</p>
+                <p>Reescribe manteniendo el significado pero usando la palabra dada</p>
                 <div class="count">5 ejercicios</div>
             </div>
         </div>
@@ -535,7 +551,7 @@
         </div>
 
         <div class="footer">
-            <p>📖 Ejercicios basados en Cambridge English | v1.0</p>
+            <p>📖 Ejercicios basados en Cambridge English | v2.0</p>
         </div>
     </div>
 
@@ -546,120 +562,134 @@
             multipleChoice: [
                 {
                     id: 'mc1',
-                    text: 'After years studying North America\'s black bears in the (0) ______ way, wildlife biologist Luke Robertson felt no closer to understanding the creatures.',
+                    text: 'After years studying North America\'s black bears in the [GAP] way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to win their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.\n\nThe insight this has given him into their behaviour has allowed him to dispel certain myths about bears.',
+                    gapNumber: '[GAP]',
                     options: ['catch', 'win', 'achieve', 'receive'],
                     correct: 2,
-                    explanation: 'La respuesta correcta es "achieve" (lograr). Significa que después de estudiar a los osos de esa manera, no logró (achieve) acercarse a entenderlos. Esta es la interpretación sardónica del texto.'
+                    explanation: 'La respuesta correcta es "achieve". El texto dice irónicamente que a pesar de años de estudio, no logró entender a los osos usando ese método. "Achieve" aquí funciona con este sentido sarcástico.'
                 },
                 {
                     id: 'mc2',
-                    text: 'The (2) _______ this has given him into their behaviour has allowed him to dispel certain myths about bears.',
-                    options: ['perception', 'awareness', 'insight', 'vision'],
-                    correct: 2,
-                    explanation: '"Insight" (perspectiva/comprensión) es la opción correcta. La expresión "give insight into" significa "dar una perspectiva sobre" o "permitir comprender".'
+                    text: 'After years studying North America\'s black bears in the achieve way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to [GAP] their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.',
+                    gapNumber: '[GAP]',
+                    options: ['catch', 'win', 'achieve', 'receive'],
+                    correct: 0,
+                    explanation: 'La respuesta correcta es "win". La expresión "win someone\'s trust" significa "ganarse la confianza de alguien". Esto tiene sentido: necesitaba ganarse la confianza de los osos.'
                 },
                 {
                     id: 'mc3',
-                    text: '(3) _______ to popular belief, he contends that bears do not (4) _______ as much for fruit as previously supposed.',
-                    options: ['Opposite', 'Opposed', 'Contrary', 'Contradictory'],
+                    text: 'The [GAP] this has given him into their behaviour has allowed him to dispel certain myths about bears. Contrary to popular belief, he contends that bears do not care as much for fruit as previously supposed. He also argues claims that they are ferocious.',
+                    gapNumber: '[GAP]',
+                    options: ['perception', 'awareness', 'insight', 'vision'],
                     correct: 2,
-                    explanation: '"Contrary" es la respuesta. Se usa en la expresión "Contrary to" que significa "en contra de" o "a diferencia de" lo que se cree popularmente.'
+                    explanation: '"Insight" es la respuesta correcta. La expresión "give insight into" significa "proporcionar comprensión sobre". El contexto habla de la comprensión que obtuvo del comportamiento de los osos.'
                 },
                 {
                     id: 'mc4',
-                    text: 'However, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no (7) _______ about their feelings for him.',
-                    options: ['error', 'doubt', 'illusion', 'impression'],
+                    text: '[GAP] to popular belief, he contends that bears do not care as much for fruit as previously supposed. He also argues claims that they are ferocious. He says that people should not be misguided by behaviour such as swatting paws on the ground, as this is a defensive, rather than an aggressive, act.',
+                    gapNumber: '[GAP]',
+                    options: ['Opposite', 'Opposed', 'Contrary', 'Contradictory'],
                     correct: 2,
-                    explanation: '"Illusion" (ilusión) es correcta. "Be under an illusion" significa "estar bajo una ilusión" o "engañarse a sí mismo" sobre los sentimientos de los osos.'
+                    explanation: '"Contrary" es la respuesta. Se usa en la expresión fija "Contrary to" que significa "a diferencia de" o "en oposición a". Las otras opciones no funcionan con esta estructura gramatical.'
                 },
                 {
                     id: 'mc5',
-                    text: 'It is clear that their interest in him does not (8) _______ beyond the food he brings.',
-                    options: ['expand', 'spread', 'widen', 'extend'],
-                    correct: 3,
-                    explanation: '"Extend" (extenderse) es la opción correcta. La expresión "extend beyond" significa "ir más allá de" o "trascender", indicando que el interés de los osos no va más allá de la comida.'
+                    text: 'However, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no [GAP] about their feelings for him. It is clear that their interest in him does not extend beyond the food he brings.',
+                    gapNumber: '[GAP]',
+                    options: ['error', 'doubt', 'illusion', 'impression'],
+                    correct: 2,
+                    explanation: '"Illusion" es correcta. La expresión "be under an illusion" significa "engañarse" o "tener una ilusión falsa". Robertson no se engaña sobre los sentimientos de los osos.'
                 }
             ],
 
             fillBlanks: [
                 {
                     id: 'fb1',
-                    text: 'The truth (0) IS nobody really knows how language first began. Did we all start talking at around the same time (9) _______ of the manner in which our brains had begun to develop?',
+                    text: 'The truth is nobody really knows how language first began. Did we all start talking at around the same time [9] of the manner in which our brains had begun to develop?\n\nAlthough there is a lack of clear evidence, people have come up with various theories about the origins of language.',
                     blanks: [
-                        { position: 9, answer: 'because', hints: ['conector causal', 'razón'] }
+                        { number: 9, answer: 'because', hints: ['conector causal', 'razón/motivo'] }
                     ],
-                    explanation: '"Because" es correcta. La pregunta es: ¿Empezamos a hablar todos al mismo tiempo porque nuestros cerebros habían comenzado a desarrollarse de esa manera? Este conector lógico vincula las dos ideas.'
+                    explanation: 'La respuesta es "because". La pregunta es: "¿Empezamos a hablar todos al mismo tiempo PORQUE nuestros cerebros habían comenzado a desarrollarse de esa manera?" Este conector vincula causa y efecto.'
                 },
                 {
                     id: 'fb2',
-                    text: 'Although there is a lack of clear evidence, people have come up with various theories about the origins of language. One recent theory is that human beings have evolved in (10) ___________ a way that we are programmed for language from the moment of birth.',
+                    text: 'One recent theory is that human beings have evolved in [10] a way that we are programmed for language from the moment of birth. In [11] words, language came about as a result of an evolutionary change in our brains at some stage.',
                     blanks: [
-                        { position: 10, answer: 'such', hints: ['estructura correlativa', 'expresión tal manera'] }
+                        { number: 10, answer: 'such', hints: ['estructura correlativa', 'expresión: such...that'] },
+                        { number: 11, answer: 'other', hints: ['expresión idiomática', 'in other words = es decir'] }
                     ],
-                    explanation: '"Such" es correcta. La estructura "such a way that" significa "de tal manera que" para expresar resultado o consecuencia: hemos evolucionado de tal manera que estamos programados para el lenguaje.'
+                    explanation: '"Such" completa "such a way that" (de tal manera que). "Other" completa "in other words" (en otras palabras) que introduce una reformulación de la idea anterior.'
                 },
                 {
                     id: 'fb3',
-                    text: 'In (11) _______ words, language came about as a result of an evolutionary change in our brains at some stage.',
+                    text: 'Language [12] well be programmed into the brain but, [13] this, people still need stimulus from others around them. From studies, we know that [14] children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so.',
                     blanks: [
-                        { position: 11, answer: 'other', hints: ['expresión idiomática', 'es decir'] }
+                        { number: 12, answer: 'may', hints: ['verbo modal', 'posibilidad'] },
+                        { number: 13, answer: 'despite', hints: ['preposición de contraste', 'a pesar de'] },
+                        { number: 14, answer: 'if', hints: ['condicional', 'introduce hipótesis'] }
                     ],
-                    explanation: '"Other" completa la expresión "in other words" que significa "en otras palabras" o "dicho de otro modo". Resume el punto anterior de forma diferente.'
+                    explanation: '"May" indica posibilidad. "Despite" introduce contraste. "If" introduce condición hipotética. Todos son palabras funcionales que estructuran la lógica del argumento sobre el lenguaje.'
                 },
                 {
                     id: 'fb4',
-                    text: 'Language (12) _______ well be programmed into the brain but, (13) _______ this, people still need stimulus from others around them.',
+                    text: 'This research shows, [15] that language is a social activity, not something invented [16] isolation. Language develops when children interact with other people.',
                     blanks: [
-                        { position: 12, answer: 'may', hints: ['verbo modal', 'posibilidad'] },
-                        { position: 13, answer: 'despite', hints: ['preposición de contraste', 'a pesar de'] }
+                        { number: 15, answer: 'else', hints: ['adverbio', 'expresión: or else'] },
+                        { number: 16, answer: 'in', hints: ['preposición', 'in isolation = en aislamiento'] }
                     ],
-                    explanation: '"May" indica posibilidad (puede estar programado). "Despite" introduce un contraste (a pesar de esto). Juntos: "Aunque el lenguaje pueda estar programado, a pesar de esto la gente aún necesita estímulo."'
+                    explanation: '"Else" completa la expresión correlativa que sugiere una alternativa o conclusión. "In" forma la locución "in isolation" (en aislamiento) que es lo opuesto a la actividad social.'
                 },
                 {
                     id: 'fb5',
-                    text: 'From studies, we know that (14) __________ children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so.',
+                    text: 'Training sports champions requires much more than just natural talent. A rigorous and [18] regime combined with proper nutrition are essential. Athletes need [19] and dedication to reach the highest levels of performance.',
                     blanks: [
-                        { position: 14, answer: 'if', hints: ['condicional', 'expresa hipótesis'] }
+                        { number: 18, answer: 'comprehensive', hints: ['adjetivo', 'completo/integral'] },
+                        { number: 19, answer: 'discipline', hints: ['sustantivo', 'orden/disciplina'] }
                     ],
-                    explanation: '"If" introduce una condición hipotética: "Si los niños están aislados del contacto humano... es dudoso que lo hagan." Condicional que expresa una situación de laboratorio que prueba la importancia social del lenguaje.'
+                    explanation: '"Comprehensive" significa integral/completo. "Discipline" significa disciplina/orden. Ambas palabras describen características necesarias para entrenar a campeones deportivos.'
                 }
             ],
 
             wordFormation: [
                 {
                     id: 'wf1',
-                    text: 'What are the abilities that a (0) PROFESSIONAL person needs? To guarantee that opponents can be (17) _______ , speed, stamina and agility are essential, not to mention outstanding natural talent.',
+                    text: 'What are the abilities that a (0) PROFESSIONAL person needs to guarantee that opponents can be (17) [COME] _____, speed, stamina and agility are essential, not to mention outstanding natural talent.',
                     baseWord: 'COME',
+                    gapNumber: 17,
                     answer: 'challenged',
-                    explanation: 'Se forma del verbo "challenge" en forma pasada/adjetivo: "challenged" (desafiados). Significa que los oponentes sean desafiables o puedan ser desafiados. La palabra base COME no se utiliza directamente; en el contexto Cambridge, se refiere a "overcome" (superar), pero aquí es "challenge".'
+                    explanation: 'De "COME" se forma "overcome" (superar), pero en contexto pasivo necesita "challenged" (desafiados). Los oponentes deben poder ser desafiados. Se forma del verbo "challenge".'
                 },
                 {
                     id: 'wf2',
-                    text: 'Both a rigorous and comprehensive (18) _______ regime and a highly nutritious diet are vital for top-level performance.',
+                    text: 'Both a rigorous and comprehensive (18) [FIT] _____ regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates that provide athletes with the energy they need to compete.',
                     baseWord: 'FIT',
+                    gapNumber: 18,
                     answer: 'training',
-                    explanation: '"Fit" se transforma en "training" (entrenamiento). Se necesita el sustantivo para "training regime" (régimen de entrenamiento). Aunque viene de entrenar, en este contexto Cambridge significa un programa de acondicionamiento físico.'
+                    explanation: '"FIT" → "training" (entrenamiento). Se necesita el sustantivo para "training regime" (régimen de entrenamiento). Aunque parece que viene de "fit", en este contexto se refiere a entrenamientos de acondicionamiento.'
                 },
                 {
                     id: 'wf3',
-                    text: 'It is carbohydrates, rather than proteins and fat, that provide athletes with the (19) _______ they need to compete.',
+                    text: 'It is carbohydrates, rather than proteins and fat, that provide athletes with the (19) [ENDURE] _____ they need to compete. This means that pasta is more beneficial than eggs or meat.',
                     baseWord: 'ENDURE',
+                    gapNumber: 19,
                     answer: 'endurance',
-                    explanation: '"Endure" se convierte en "endurance" (resistencia/aguante). Se necesita el sustantivo: "provide... the endurance" = proporcionar la resistencia. Resistencia es crucial en el deporte.'
+                    explanation: '"ENDURE" → "endurance" (resistencia/aguante). Se necesita el sustantivo: "provide the endurance" = proporcionar la resistencia. Es una cualidad física crucial en el deporte.'
                 },
                 {
                     id: 'wf4',
-                    text: 'This means that pasta is more (20) _______ than eggs or meat. Such a diet enables them to move very energetically when required.',
-                    baseWord: 'BENEFIT',
-                    answer: 'beneficial',
-                    explanation: '"Benefit" se convierte en "beneficial" (beneficioso). Después del verbo "to be" se necesita un adjetivo: "is more beneficial than" = es más beneficioso que. La pasta proporciona más beneficios que otros alimentos.'
+                    text: 'Such a diet enables them to move very energetically when required. Regular training to increase muscular (22) [STRONG] _____ is also vital, and this is typically achieved through weight training.',
+                    baseWord: 'STRONG',
+                    gapNumber: 22,
+                    answer: 'strength',
+                    explanation: '"STRONG" → "strength" (fuerza). Se necesita el sustantivo: "increase muscular strength" = aumentar la fuerza muscular. "Strong" es adjetivo, pero aquí necesita forma sustantiva.'
                 },
                 {
                     id: 'wf5',
-                    text: 'Failure to follow a sensible diet can result in the (21) _______ to maintain stamina.',
-                    baseWord: 'ABLE',
-                    answer: 'inability',
-                    explanation: '"Able" → "unable" → "inability" (incapacidad). Se necesita el sustantivo para "inability to maintain" (incapacidad para mantener). Una mala dieta causa incapacidad para mantener la resistencia.'
+                    text: 'Sports people are prone to injury but a quality training regime can ensure that the (24) [SEVERE] _____ of these can be minimized. Proper warm-up and cool-down routines are essential for injury prevention.',
+                    baseWord: 'SEVERE',
+                    gapNumber: 24,
+                    answer: 'severity',
+                    explanation: '"SEVERE" → "severity" (gravedad). Se necesita el sustantivo: "the severity of injuries" = la gravedad de las lesiones. Describe el grado de severidad que pueden alcanzar las lesiones.'
                 }
             ],
 
@@ -669,40 +699,40 @@
                     original: 'My brother now earns far less than he did when he was younger.',
                     givenWord: 'NEARLY',
                     answer: 'My brother doesn\'t earn nearly as much now as he did when he was younger.',
-                    hint: 'Usa "nearly as much as" para comparación negativa',
-                    explanation: 'Transformación: El original dice que gana "mucho menos". Se puede reformular como "no gana casi tanto". "Doesn\'t earn nearly as much" = no gana ni de lejos tanto.'
+                    hint: 'Usa "nearly as much as" para hacer una comparación negativa',
+                    explanation: 'Transformación: "Earns far less" = "doesn\'t earn nearly as much". Ambas expresiones significan lo mismo pero usan estructuras gramaticales diferentes.'
                 },
                 {
                     id: 'st2',
                     original: 'They are demolishing the old bus station and replacing it with a new one.',
                     givenWord: 'PULLED',
                     answer: 'The old bus station is being pulled down and replaced with a new one.',
-                    hint: 'Usa pasiva. "Pull down" = demoler',
-                    explanation: 'Transformación a pasiva: "Pull down" es un phrasal verb que significa demoler/derribar. "is being pulled down" = está siendo demolida. El significado se mantiene pero cambia la estructura.'
+                    hint: 'Usa voz pasiva. "Pull down" = demoler (phrasal verb)',
+                    explanation: 'Transformación a pasiva: "Pull down" es un phrasal verb que significa demoler. "is being pulled down" (está siendo demolida) expresa la misma acción en voz pasiva.'
                 },
                 {
                     id: 'st3',
                     original: 'The number of students now at university has reached an all-time high, apparently.',
                     givenWord: 'THE',
                     answer: 'The number of students now at university is apparently at an all-time high.',
-                    hint: 'Reorganiza usando "THE number"',
-                    explanation: 'Transformación de estructura: "has reached" (present perfect) se cambia por "is" (presente simple). Se enfatiza "The number" al inicio. El significado es equivalente.'
+                    hint: 'Reorganiza la oración manteniendo el mismo significado',
+                    explanation: 'Transformación de estructura: "has reached" se cambia por "is at". Ambas expresiones comunican que el número ha alcanzado un máximo histórico.'
                 },
                 {
                     id: 'st4',
                     original: 'I\'m disappointed with the Fishers\' new album when I compare it to their previous one.',
                     givenWord: 'COMPARISON',
                     answer: 'I think the Fishers\' new album is disappointing in comparison with their previous one.',
-                    hint: 'Usa "in comparison with"',
-                    explanation: 'Transformación: "I\'m disappointed when I compare" se convierte en "is disappointing in comparison with". "In comparison with" = en comparación con. El significado es el mismo.'
+                    hint: 'Usa "in comparison with" para expresar la comparación',
+                    explanation: 'Transformación: "when I compare" se cambia a "in comparison with". "In comparison with" es una locución preposicional que expresa comparación de manera más formal.'
                 },
                 {
                     id: 'st5',
                     original: 'Anna got the job even though she didn\'t have much experience in public relations.',
                     givenWord: 'SPITE',
                     answer: 'Anna got the job in spite of her lack of experience in public relations.',
-                    hint: 'Usa "in spite of" + sustantivo',
-                    explanation: 'Transformación: "even though" (aunque) se reemplaza con "in spite of" (a pesar de). "didn\'t have much experience" → "her lack of experience". Ambas expresan el mismo contraste.'
+                    hint: 'Usa "in spite of" + sustantivo para expresar el contraste',
+                    explanation: 'Transformación: "even though" se reemplaza con "in spite of". "didn\'t have much experience" se convierte en "her lack of experience". Ambas expresan el mismo contraste.'
                 }
             ]
         };
@@ -775,12 +805,11 @@
             }
         }
 
-        // ========== RENDER FUNCTIONS ==========
-
+        // ========== RENDER: MULTIPLE CHOICE ==========
         function renderMultipleChoice(exercise, container) {
             const textDiv = document.createElement('p');
             textDiv.className = 'exercise-text';
-            textDiv.textContent = exercise.text;
+            textDiv.innerHTML = exercise.text.replace('[GAP]', '<span class="gap-placeholder">[GAP]</span>');
             container.appendChild(textDiv);
 
             const optionsDiv = document.createElement('div');
@@ -819,10 +848,15 @@
             container.appendChild(optionsDiv);
         }
 
+        // ========== RENDER: FILL BLANKS ==========
         function renderFillBlanks(exercise, container) {
             const textDiv = document.createElement('p');
             textDiv.className = 'exercise-text';
-            textDiv.textContent = exercise.text;
+            let displayText = exercise.text;
+            exercise.blanks.forEach((blank) => {
+                displayText = displayText.replace(`[${blank.number}]`, `<span class="gap-placeholder">[${blank.number}]</span>`);
+            });
+            textDiv.innerHTML = displayText;
             container.appendChild(textDiv);
 
             exercise.blanks.forEach((blank) => {
@@ -831,7 +865,7 @@
 
                 const label = document.createElement('label');
                 label.className = 'input-label';
-                label.textContent = `Gap (${blank.position})${blank.hints ? ' - ' + blank.hints.join(', ') : ''}`;
+                label.textContent = `Gap (${blank.number})${blank.hints ? ' - ' + blank.hints.join(', ') : ''}`;
                 group.appendChild(label);
 
                 const input = document.createElement('input');
@@ -839,10 +873,10 @@
                 input.className = 'input-field';
                 input.placeholder = 'Escribe la palabra...';
                 input.disabled = showResults;
-                input.value = userAnswers[`${exercise.id}-blank-${blank.position}`] || '';
+                input.value = userAnswers[`${exercise.id}-blank-${blank.number}`] || '';
 
                 input.addEventListener('input', (e) => {
-                    userAnswers[`${exercise.id}-blank-${blank.position}`] = e.target.value;
+                    userAnswers[`${exercise.id}-blank-${blank.number}`] = e.target.value;
                 });
 
                 group.appendChild(input);
@@ -850,15 +884,15 @@
                 if (showResults) {
                     const feedback = document.createElement('p');
                     feedback.className = 'feedback';
-                    const userAnswer = userAnswers[`${exercise.id}-blank-${blank.position}`]?.toLowerCase() || '';
-                    const isCorrect = userAnswer === blank.answer.toLowerCase();
+                    const userAnswer = userAnswers[`${exercise.id}-blank-${blank.number}`]?.toLowerCase().trim() || '';
+                    const isCorrect = userAnswer === blank.answer.toLowerCase().trim();
 
                     if (isCorrect) {
-                        feedback.classList.add('correct');
                         feedback.textContent = '✓ Correcto: ' + blank.answer;
+                        feedback.classList.add('correct');
                     } else {
-                        feedback.classList.add('incorrect');
                         feedback.textContent = '✗ Respuesta correcta: ' + blank.answer;
+                        feedback.classList.add('incorrect');
                     }
                     group.appendChild(feedback);
                 }
@@ -867,20 +901,26 @@
             });
         }
 
+        // ========== RENDER: WORD FORMATION ==========
         function renderWordFormation(exercise, container) {
             const textDiv = document.createElement('p');
             textDiv.className = 'exercise-text';
-            textDiv.textContent = exercise.text;
+            textDiv.innerHTML = exercise.text.replace(`[${exercise.baseWord}]`, `<span class="gap-placeholder">[${exercise.baseWord}]</span>`);
             container.appendChild(textDiv);
 
             const group = document.createElement('div');
-            group.className = 'word-formation-group';
+            group.className = 'input-group';
+
+            const label = document.createElement('label');
+            label.className = 'input-label';
+            label.textContent = `Forma la palabra base: ${exercise.baseWord}`;
+            group.appendChild(label);
 
             const rowDiv = document.createElement('div');
             rowDiv.className = 'word-formation-row';
 
             const baseWordSpan = document.createElement('span');
-            baseWordSpan.className = 'base-word';
+            baseWordSpan.className = 'base-word-badge';
             baseWordSpan.textContent = exercise.baseWord;
             rowDiv.appendChild(baseWordSpan);
 
@@ -901,16 +941,15 @@
             if (showResults) {
                 const feedback = document.createElement('p');
                 feedback.className = 'feedback';
-                feedback.style.marginTop = '1rem';
-                const userAnswer = userAnswers[exercise.id]?.toLowerCase() || '';
-                const isCorrect = userAnswer === exercise.answer.toLowerCase();
+                const userAnswer = userAnswers[exercise.id]?.toLowerCase().trim() || '';
+                const isCorrect = userAnswer === exercise.answer.toLowerCase().trim();
 
                 if (isCorrect) {
-                    feedback.classList.add('correct');
                     feedback.textContent = '✓ Correcto: ' + exercise.answer;
+                    feedback.classList.add('correct');
                 } else {
-                    feedback.classList.add('incorrect');
                     feedback.textContent = '✗ Respuesta correcta: ' + exercise.answer;
+                    feedback.classList.add('incorrect');
                 }
                 group.appendChild(feedback);
             }
@@ -918,6 +957,7 @@
             container.appendChild(group);
         }
 
+        // ========== RENDER: SENTENCE TRANSFORMATION ==========
         function renderSentenceTransformation(exercise, container) {
             const transformGroup = document.createElement('div');
             transformGroup.className = 'transformation-box';
@@ -946,7 +986,7 @@
             const input = document.createElement('input');
             input.type = 'text';
             input.className = 'input-field';
-            input.placeholder = 'Write the transformed sentence (3-6 words with the given word)...';
+            input.placeholder = 'Write the transformed sentence...';
             input.disabled = showResults;
             input.value = userAnswers[exercise.id] || '';
 
@@ -958,7 +998,7 @@
 
             if (showResults) {
                 const resultBox = document.createElement('div');
-                resultBox.style.marginTop = '1.5rem';
+                resultBox.style.marginTop = '1rem';
                 resultBox.style.padding = '1rem';
                 resultBox.style.borderRadius = '8px';
                 resultBox.style.borderLeft = '4px solid #ffc107';
@@ -985,10 +1025,8 @@
         }
 
         // ========== CHECK ANSWER ==========
-
         function checkAnswer() {
             showResults = true;
-
             const exercise = currentExercises[currentExerciseIndex];
             renderExerciseContent(exercise);
 
