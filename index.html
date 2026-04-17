@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Practice Hub - Cambridge Exams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-header h2 {
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        .exercise-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .exercise-content {
+            margin-bottom: 2rem;
+        }
+
+        .exercise-text {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .options-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option-button {
+            border: 2px solid #e0e0e0;
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .option-button:hover:not(:disabled) {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .option-button.selected {
+            border-color: #667eea;
+            background: #e8ecff;
+        }
+
+        .option-button.correct {
+            border-color: #4caf50;
+            background: #e8f5e9;
+        }
+
+        .option-button.incorrect {
+            border-color: #f44336;
+            background: #ffebee;
+        }
+
+        .option-button:disabled {
+            cursor: not-allowed;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .input-field:disabled {
+            background: #f5f5f5;
+            cursor: not-allowed;
+        }
+
+        .feedback {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .feedback.correct {
+            color: #4caf50;
+        }
+
+        .feedback.incorrect {
+            color: #f44336;
+        }
+
+        .original-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .original-box p {
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .original-box .label {
+            font-weight: 600;
+            color: #666;
+        }
+
+        .textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            min-height: 120px;
+            resize: vertical;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .textarea:disabled {
+            background: #f5f5f5;
+            cursor: not-allowed;
+        }
+
+        .explanation {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .explanation h3 {
+            color: #1565c0;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .explanation p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 1.5rem;
+        }
+
+        .button-group.full {
+            grid-template-columns: 1fr;
+        }
+
+        .button {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .button-check {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .button-check:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .button-check:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .button-retry {
+            background: #ff9800;
+            color: white;
+        }
+
+        .button-retry:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .button-next {
+            background: #4caf50;
+            color: white;
+        }
+
+        .button-next:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .button-next:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .nav-button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #ddd;
+            color: #333;
+        }
+
+        .nav-button.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .nav-button.completed {
+            background: #4caf50;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
+            opacity: 0.8;
+        }
+
+        .answer-list {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        .answer-list li {
+            margin-bottom: 0.5rem;
+            color: #333;
+            list-style-position: inside;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        .icon {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>English Practice Hub 🎓</h1>
+            <p>Mejora tu inglés con ejercicios basados en exámenes Cambridge</p>
+        </div>
+
+        <div class="card">
+            <div class="progress-section">
+                <div class="progress-header">
+                    <h2 id="exerciseNumber">Ejercicio 1 de 10</h2>
+                    <span class="exercise-badge" id="exerciseType">📝 Opción Múltiple</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar" style="width: 10%"></div>
+                </div>
+            </div>
+
+            <div class="exercise-content" id="exerciseContent">
+                <!-- Ejercicio se carga aquí dinámicamente -->
+            </div>
+
+            <div id="explanation" style="display: none;"></div>
+
+            <div class="button-group" id="buttonGroup">
+                <button class="button button-check" id="checkBtn">Comprobar Respuesta ✓</button>
+            </div>
+
+            <div class="nav-buttons" id="navButtons"></div>
+        </div>
+
+        <div class="footer">
+            <p>📖 Basado en exámenes de Cambridge English | Versión 1.0</p>
+        </div>
+    </div>
+
+    <script>
+        // EJERCICIOS
+        const exercises = [
+            // TYPE 1: Multiple Choice
+            {
+                id: 'mc1',
+                type: 'multipleChoice',
+                text: 'She ___ to the cinema every weekend.',
+                options: ['go', 'goes', 'going', 'gone'],
+                correct: 1,
+                explanation: 'Se usa "goes" porque el sujeto es tercera persona singular (she) y el verbo requiere la forma conjugada.'
+            },
+            {
+                id: 'mc2',
+                type: 'multipleChoice',
+                text: 'If I had known about the party, I ___ gone.',
+                options: ['would have', 'had', 'would', 'have'],
+                correct: 0,
+                explanation: '"would have" se usa en condicionales de tercer tipo (mixed conditional) con "had known".'
+            },
+            {
+                id: 'mc3',
+                type: 'multipleChoice',
+                text: 'The project must be ___ by Friday.',
+                options: ['completing', 'completed', 'complete', 'completes'],
+                correct: 1,
+                explanation: 'Con "must be" (pasiva), necesitamos el participio pasado "completed".'
+            },
+            {
+                id: 'mc4',
+                type: 'multipleChoice',
+                text: 'By the time you arrive, I ___ dinner.',
+                options: ['finished', 'will have finished', 'have finished', 'finishing'],
+                correct: 1,
+                explanation: '"will have finished" es el future perfect, expresando una acción que se completará antes de otra en el futuro.'
+            },
+
+            // TYPE 2: Fill Blanks
+            {
+                id: 'fb1',
+                type: 'fillBlanks',
+                text: 'Despite the _____, the match continued. The players were very _____ to win.',
+                blanks: [
+                    { position: 1, answer: 'rain', hints: ['clima', '4 letras'] },
+                    { position: 2, answer: 'determined', hints: ['resueltos', 'adjetivo'] }
+                ],
+                explanation: 'Rain (lluvia) es una palabra común para clima. Determined (determinado) describe la actitud de los jugadores.'
+            },
+            {
+                id: 'fb2',
+                type: 'fillBlanks',
+                text: 'The _____ between the two companies led to an ____ situation.',
+                blanks: [
+                    { position: 1, answer: 'disagreement', hints: ['desacuerdo', '11 letras'] },
+                    { position: 2, answer: 'awkward', hints: ['incómodo', 'adjetivo'] }
+                ],
+                explanation: 'Disagreement (desacuerdo) es el sustantivo. Awkward (incómodo) describe la situación.'
+            },
+            {
+                id: 'fb3',
+                type: 'fillBlanks',
+                text: 'The government announced a new _____ to combat _____ unemployment in rural areas.',
+                blanks: [
+                    { position: 1, answer: 'policy', hints: ['política', '6 letras'] },
+                    { position: 2, answer: 'rising', hints: ['creciente', 'gerundio'] }
+                ],
+                explanation: 'Policy (política) es el sustantivo apropiado. Rising (creciente) es un gerundio usado como adjetivo.'
+            },
+
+            // TYPE 3: Reorder Blanks (Modular palabras)
+            {
+                id: 'rb1',
+                type: 'reorderBlanks',
+                text: 'The company _____ (ESTABLISH) in 1995 and _____ (GROW) significantly since then.',
+                blanks: [
+                    { position: 1, baseWord: 'ESTABLISH', correctForm: 'was established', hints: ['pasiva, pasado'] },
+                    { position: 2, baseWord: 'GROW', correctForm: 'has grown', hints: ['present perfect'] }
+                ],
+                explanation: 'Primera: pasiva en pasado (was + participio pasado). Segunda: present perfect porque continúa hasta ahora.'
+            },
+            {
+                id: 'rb2',
+                type: 'reorderBlanks',
+                text: 'If she _____ (STUDY) harder, she _____ (PASS) the exam.',
+                blanks: [
+                    { position: 1, baseWord: 'STUDY', correctForm: 'studied', hints: ['conditional simple, pasado'] },
+                    { position: 2, baseWord: 'PASS', correctForm: 'would pass', hints: ['would + base verb'] }
+                ],
+                explanation: 'Condicional simple: pasado simple + would + infinitivo.'
+            },
+            {
+                id: 'rb3',
+                type: 'reorderBlanks',
+                text: 'The document _____ (LOSE) during the move, which is unfortunate.',
+                blanks: [
+                    { position: 1, baseWord: 'LOSE', correctForm: 'was lost', hints: ['pasiva, pasado simple'] }
+                ],
+                explanation: 'Pasiva en pasado simple: was + participio pasado para expresar que alguien perdió el documento.'
+            },
+
+            // TYPE 4: Rewrite
+            {
+                id: 'rw1',
+                type: 'rewrite',
+                original: 'She is so intelligent that everyone respects her.',
+                instruction: 'Reescribe usando "Such... that" en lugar de "So... that"',
+                correctAnswers: [
+                    'She is such an intelligent person that everyone respects her.',
+                    'She is such a clever person that everyone respects her.',
+                    'She is such an intelligent woman that everyone respects her.'
+                ],
+                hints: ['Usa "Such + a/an + adjective + noun"', 'La estructura cambia pero el significado es igual'],
+                explanation: 'Such + a/an + adjective + noun + that = So + adjective + that. Ambas expresan resultado.'
+            },
+            {
+                id: 'rw2',
+                type: 'rewrite',
+                original: 'I haven\'t seen her since 2019.',
+                instruction: 'Reescribe sin usar "since", expresando el tiempo transcurrido',
+                correctAnswers: [
+                    'It\'s been years since I last saw her.',
+                    'It has been a long time since I saw her.',
+                    'I last saw her in 2019.'
+                ],
+                hints: ['Cambia la perspectiva temporal', 'Puedes usar "last saw" en lugar de "haven\'t seen"'],
+                explanation: 'Se puede expresar lo mismo enfatizando el tiempo transcurrido en lugar de la acción.'
+            }
+        ];
+
+        let currentExerciseIndex = 0;
+        let userAnswers = {};
+        let showResults = false;
+
+        // Inicializar
+        function init() {
+            renderNavigationButtons();
+            loadExercise(0);
+        }
+
+        function loadExercise(index) {
+            currentExerciseIndex = index;
+            const exercise = exercises[index];
+            showResults = false;
+            userAnswers = userAnswers || {};
+
+            updateProgress();
+            renderExerciseContent(exercise);
+            updateButtons();
+            document.querySelector('#explanation').style.display = 'none';
+        }
+
+        function updateProgress() {
+            const progress = ((currentExerciseIndex + 1) / exercises.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('exerciseNumber').textContent = `Ejercicio ${currentExerciseIndex + 1} de ${exercises.length}`;
+
+            const exercise = exercises[currentExerciseIndex];
+            const typeTexts = {
+                multipleChoice: '📝 Opción Múltiple',
+                fillBlanks: '✍️ Rellenar Huecos',
+                reorderBlanks: '🔄 Modular Palabras',
+                rewrite: '✏️ Reescribir'
+            };
+            document.getElementById('exerciseType').textContent = typeTexts[exercise.type];
+        }
+
+        function renderExerciseContent(exercise) {
+            const content = document.getElementById('exerciseContent');
+            content.innerHTML = '';
+
+            if (exercise.type === 'multipleChoice') {
+                renderMultipleChoice(exercise, content);
+            } else if (exercise.type === 'fillBlanks') {
+                renderFillBlanks(exercise, content);
+            } else if (exercise.type === 'reorderBlanks') {
+                renderReorderBlanks(exercise, content);
+            } else if (exercise.type === 'rewrite') {
+                renderRewrite(exercise, content);
+            }
+        }
+
+        function renderMultipleChoice(exercise, container) {
+            const textDiv = document.createElement('p');
+            textDiv.className = 'exercise-text';
+            textDiv.textContent = exercise.text;
+            container.appendChild(textDiv);
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options-grid';
+
+            exercise.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-button';
+                button.textContent = option;
+                button.disabled = showResults;
+
+                if (userAnswers[exercise.id] === index) {
+                    button.classList.add('selected');
+                }
+
+                if (showResults) {
+                    if (index === exercise.correct) {
+                        button.classList.add('correct');
+                        button.innerHTML = option + ' <span class="icon">✓</span>';
+                    } else if (userAnswers[exercise.id] === index) {
+                        button.classList.add('incorrect');
+                        button.innerHTML = option + ' <span class="icon">✗</span>';
+                    }
+                }
+
+                button.addEventListener('click', () => {
+                    if (!showResults) {
+                        userAnswers[exercise.id] = index;
+                        renderExerciseContent(exercise);
+                    }
+                });
+
+                optionsDiv.appendChild(button);
+            });
+
+            container.appendChild(optionsDiv);
+        }
+
+        function renderFillBlanks(exercise, container) {
+            const textDiv = document.createElement('p');
+            textDiv.className = 'exercise-text';
+            textDiv.textContent = exercise.text;
+            container.appendChild(textDiv);
+
+            exercise.blanks.forEach((blank, idx) => {
+                const group = document.createElement('div');
+                group.className = 'input-group';
+
+                const label = document.createElement('label');
+                label.className = 'input-label';
+                label.textContent = `Hueco ${blank.position}${blank.hints ? ' (' + blank.hints.join(', ') + ')' : ''}`;
+                group.appendChild(label);
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'input-field';
+                input.placeholder = 'Escribe la palabra...';
+                input.disabled = showResults;
+                input.value = userAnswers[`${exercise.id}-blank-${blank.position}`] || '';
+
+                input.addEventListener('input', (e) => {
+                    userAnswers[`${exercise.id}-blank-${blank.position}`] = e.target.value;
+                });
+
+                group.appendChild(input);
+
+                if (showResults) {
+                    const feedback = document.createElement('p');
+                    feedback.className = 'feedback';
+                    const userAnswer = userAnswers[`${exercise.id}-blank-${blank.position}`]?.toLowerCase() || '';
+                    const isCorrect = userAnswer === blank.answer.toLowerCase();
+
+                    if (isCorrect) {
+                        feedback.classList.add('correct');
+                        feedback.textContent = '✓ Correcto: ' + blank.answer;
+                    } else {
+                        feedback.classList.add('incorrect');
+                        feedback.textContent = '✗ Respuesta: ' + blank.answer;
+                    }
+                    group.appendChild(feedback);
+                }
+
+                container.appendChild(group);
+            });
+        }
+
+        function renderReorderBlanks(exercise, container) {
+            const textDiv = document.createElement('p');
+            textDiv.className = 'exercise-text';
+            textDiv.textContent = exercise.text;
+            container.appendChild(textDiv);
+
+            exercise.blanks.forEach((blank, idx) => {
+                const group = document.createElement('div');
+                group.className = 'input-group';
+
+                const label = document.createElement('label');
+                label.className = 'input-label';
+                label.innerHTML = `Modifica: <span style="color: #667eea; font-weight: bold;">${blank.baseWord}</span>${blank.hints ? ' (' + blank.hints.join(', ') + ')' : ''}`;
+                group.appendChild(label);
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'input-field';
+                input.placeholder = 'Escribe la forma correcta...';
+                input.disabled = showResults;
+                input.value = userAnswers[`${exercise.id}-blank-${blank.position}`] || '';
+
+                input.addEventListener('input', (e) => {
+                    userAnswers[`${exercise.id}-blank-${blank.position}`] = e.target.value;
+                });
+
+                group.appendChild(input);
+
+                if (showResults) {
+                    const feedback = document.createElement('p');
+                    feedback.className = 'feedback';
+                    const userAnswer = userAnswers[`${exercise.id}-blank-${blank.position}`]?.toLowerCase() || '';
+                    const isCorrect = userAnswer === blank.correctForm.toLowerCase();
+
+                    if (isCorrect) {
+                        feedback.classList.add('correct');
+                        feedback.textContent = '✓ Correcto: ' + blank.correctForm;
+                    } else {
+                        feedback.classList.add('incorrect');
+                        feedback.textContent = '✗ Respuesta: ' + blank.correctForm;
+                    }
+                    group.appendChild(feedback);
+                }
+
+                container.appendChild(group);
+            });
+        }
+
+        function renderRewrite(exercise, container) {
+            const originalBox = document.createElement('div');
+            originalBox.className = 'original-box';
+            originalBox.innerHTML = `
+                <p><span class="label">📌 Frase original:</span> "${exercise.original}"</p>
+                <p><span class="label">📋 Instrucción:</span> ${exercise.instruction}</p>
+            `;
+            container.appendChild(originalBox);
+
+            const textarea = document.createElement('textarea');
+            textarea.className = 'textarea';
+            textarea.placeholder = 'Escribe la frase reescrita aquí...';
+            textarea.disabled = showResults;
+            textarea.value = userAnswers[exercise.id] || '';
+
+            textarea.addEventListener('input', (e) => {
+                userAnswers[exercise.id] = e.target.value;
+            });
+
+            container.appendChild(textarea);
+
+            if (showResults) {
+                const isCorrect = checkAnswer(exercise);
+                const resultBox = document.createElement('div');
+                resultBox.style.marginTop = '1rem';
+                resultBox.style.padding = '1rem';
+                resultBox.style.borderRadius = '8px';
+                resultBox.style.borderLeft = '4px solid ' + (isCorrect ? '#4caf50' : '#ff9800');
+                resultBox.style.background = isCorrect ? '#e8f5e9' : '#fff3cd';
+
+                const title = document.createElement('p');
+                title.style.fontWeight = 'bold';
+                title.style.marginBottom = '0.5rem';
+                title.style.color = isCorrect ? '#2e7d32' : '#f57f17';
+                title.textContent = isCorrect ? '✓ Excelente' : '⚠️ Respuestas aceptables:';
+                resultBox.appendChild(title);
+
+                const list = document.createElement('ul');
+                list.className = 'answer-list';
+                exercise.correctAnswers.forEach(answer => {
+                    const li = document.createElement('li');
+                    li.textContent = answer;
+                    list.appendChild(li);
+                });
+                resultBox.appendChild(list);
+
+                container.appendChild(resultBox);
+            }
+        }
+
+        function checkAnswer(exercise) {
+            if (exercise.type === 'multipleChoice') {
+                return userAnswers[exercise.id] === exercise.correct;
+            } else if (exercise.type === 'fillBlanks' || exercise.type === 'reorderBlanks') {
+                return exercise.blanks.every(blank => {
+                    const key = `${exercise.id}-blank-${blank.position}`;
+                    const correctValue = exercise.type === 'fillBlanks' ? blank.answer : blank.correctForm;
+                    return (userAnswers[key]?.toLowerCase() || '') === correctValue.toLowerCase();
+                });
+            } else if (exercise.type === 'rewrite') {
+                const userAnswer = (userAnswers[exercise.id]?.toLowerCase() || '').trim();
+                return exercise.correctAnswers.some(correct => 
+                    userAnswer.includes(correct.toLowerCase()) || correct.toLowerCase().includes(userAnswer)
+                );
+            }
+            return false;
+        }
+
+        function updateButtons() {
+            const buttonGroup = document.getElementById('buttonGroup');
+            const exercise = exercises[currentExerciseIndex];
+
+            if (!showResults) {
+                buttonGroup.innerHTML = `<button class="button button-check" id="checkBtn">Comprobar Respuesta ✓</button>`;
+                document.getElementById('checkBtn').addEventListener('click', handleCheckAnswer);
+            } else {
+                const isCorrect = checkAnswer(exercise);
+                const html = `
+                    <button class="button button-retry">Intentar de Nuevo 🔄</button>
+                    ${currentExerciseIndex < exercises.length - 1 ? '<button class="button button-next">Siguiente Ejercicio ▶️</button>' : '<button class="button button-next" disabled>Siguiente Ejercicio ▶️</button>'}
+                `;
+                buttonGroup.innerHTML = html;
+                buttonGroup.classList.add('full');
+
+                document.querySelector('.button-retry').addEventListener('click', () => {
+                    showResults = false;
+                    renderExerciseContent(exercise);
+                    updateButtons();
+                    document.querySelector('#explanation').style.display = 'none';
+                });
+
+                if (currentExerciseIndex < exercises.length - 1) {
+                    document.querySelector('.button-next').addEventListener('click', () => {
+                        loadExercise(currentExerciseIndex + 1);
+                    });
+                }
+            }
+        }
+
+        function handleCheckAnswer() {
+            showResults = true;
+
+            const exercise = exercises[currentExerciseIndex];
+            renderExerciseContent(exercise);
+
+            const explanationDiv = document.querySelector('#explanation');
+            explanationDiv.className = 'explanation';
+            explanationDiv.innerHTML = `<h3>📚 Explicación</h3><p>${exercise.explanation}</p>`;
+            explanationDiv.style.display = 'block';
+
+            updateButtons();
+        }
+
+        function renderNavigationButtons() {
+            const navButtons = document.getElementById('navButtons');
+            navButtons.innerHTML = '';
+
+            exercises.forEach((exercise, index) => {
+                const button = document.createElement('button');
+                button.className = 'nav-button';
+                button.textContent = (index + 1);
+
+                if (index === currentExerciseIndex) {
+                    button.classList.add('active');
+                } else if (checkAnswer(exercise)) {
+                    button.classList.add('completed');
+                }
+
+                button.addEventListener('click', () => loadExercise(index));
+                navButtons.appendChild(button);
+            });
+        }
+
+        // Iniciar
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+{
+  "metadata": {
+    "title": "English Practice Hub - Cambridge Exercises",
+    "version": "1.0",
+    "lastUpdated": "2024",
+    "description": "Ejercicios basados en Cambridge English Exams",
+    "exerciseCount": 10,
+    "levels": ["A1", "A2", "B1", "B2", "C1", "C2"]
+  },
+  
+  "exercises": {
+    "multipleChoice": [
+      {
+        "id": "mc1",
+        "level": "B1",
+        "source": "Cambridge PET",
+        "text": "She ___ to the cinema every weekend.",
+        "options": ["go", "goes", "going", "gone"],
+        "correctIndex": 1,
+        "explanation": "Se usa 'goes' porque el sujeto es tercera persona singular (she) y el verbo requiere la forma conjugada.",
+        "grammar": "Present Simple - Third Person Singular"
+      },
+      {
+        "id": "mc2",
+        "level": "B2",
+        "source": "Cambridge FCE",
+        "text": "If I had known about the party, I ___ gone.",
+        "options": ["would have", "had", "would", "have"],
+        "correctIndex": 0,
+        "explanation": "'would have' se usa en condicionales de tercer tipo (mixed conditional) con 'had known'.",
+        "grammar": "Third Conditional - Mixed Conditional"
+      },
+      {
+        "id": "mc3",
+        "level": "B1",
+        "source": "Cambridge PET",
+        "text": "The project must be ___ by Friday.",
+        "options": ["completing", "completed", "complete", "completes"],
+        "correctIndex": 1,
+        "explanation": "Con 'must be' (pasiva), necesitamos el participio pasado 'completed'.",
+        "grammar": "Passive Voice - Must + be + past participle"
+      },
+      {
+        "id": "mc4",
+        "level": "B2",
+        "source": "Cambridge FCE",
+        "text": "By the time you arrive, I ___ dinner.",
+        "options": ["finished", "will have finished", "have finished", "finishing"],
+        "correctIndex": 1,
+        "explanation": "'will have finished' es el future perfect, expresando una acción que se completará antes de otra en el futuro.",
+        "grammar": "Future Perfect"
+      }
+    ],
+    
+    "fillBlanks": [
+      {
+        "id": "fb1",
+        "level": "B1",
+        "source": "Cambridge PET",
+        "text": "Despite the _____, the match continued. The players were very _____ to win.",
+        "blanks": [
+          {
+            "position": 1,
+            "answer": "rain",
+            "wordType": "noun",
+            "hints": ["clima", "4 letras"],
+            "alternativeAnswers": ["weather", "storm"]
+          },
+          {
+            "position": 2,
+            "answer": "determined",
+            "wordType": "adjective",
+            "hints": ["resueltos", "10 letras"],
+            "alternativeAnswers": ["eager", "keen"]
+          }
+        ],
+        "explanation": "Rain (lluvia) es una palabra común para clima. Determined (determinado) describe la actitud de los jugadores.",
+        "theme": "Sports"
+      },
+      {
+        "id": "fb2",
+        "level": "B1",
+        "source": "Cambridge PET",
+        "text": "The _____ between the two companies led to an ____ situation.",
+        "blanks": [
+          {
+            "position": 1,
+            "answer": "disagreement",
+            "wordType": "noun",
+            "hints": ["desacuerdo", "11 letras"],
+            "alternativeAnswers": ["conflict", "dispute"]
+          },
+          {
+            "position": 2,
+            "answer": "awkward",
+            "wordType": "adjective",
+            "hints": ["incómodo", "8 letras"],
+            "alternativeAnswers": ["difficult", "uncomfortable"]
+          }
+        ],
+        "explanation": "Disagreement (desacuerdo) es el sustantivo. Awkward (incómodo) describe la situación.",
+        "theme": "Business"
+      },
+      {
+        "id": "fb3",
+        "level": "B2",
+        "source": "Cambridge FCE",
+        "text": "The government announced a new _____ to combat _____ unemployment in rural areas.",
+        "blanks": [
+          {
+            "position": 1,
+            "answer": "policy",
+            "wordType": "noun",
+            "hints": ["política", "6 letras"],
+            "alternativeAnswers": ["plan", "strategy"]
+          },
+          {
+            "position": 2,
+            "answer": "rising",
+            "wordType": "adjective/gerund",
+            "hints": ["creciente", "6 letras"],
+            "alternativeAnswers": ["growing"]
+          }
+        ],
+        "explanation": "Policy (política) es el sustantivo apropiado. Rising (creciente) es un gerundio usado como adjetivo.",
+        "theme": "Politics"
+      }
+    ],
+    
+    "reorderBlanks": [
+      {
+        "id": "rb1",
+        "level": "B1",
+        "source": "Cambridge PET",
+        "text": "The company _____ (ESTABLISH) in 1995 and _____ (GROW) significantly since then.",
+        "blanks": [
+          {
+            "position": 1,
+            "baseWord": "ESTABLISH",
+            "correctForm": "was established",
+            "wordType": "passive verb",
+            "hints": ["pasiva, pasado"],
+            "explanation": "Pasiva en pasado simple para expresar que alguien estableció la empresa."
+          },
+          {
+            "position": 2,
+            "baseWord": "GROW",
+            "correctForm": "has grown",
+            "wordType": "present perfect",
+            "hints": ["present perfect", "desde entonces"],
+            "explanation": "Present perfect porque el crecimiento comenzó en el pasado y continúa hasta ahora."
+          }
+        ],
+        "explanation": "Primera: pasiva en pasado (was + participio pasado). Segunda: present perfect porque continúa hasta ahora.",
+        "grammar": "Passive Voice + Present Perfect"
+      },
+      {
+        "id": "rb2",
+        "level": "B1",
+        "source": "Cambridge PET",
+        "text": "If she _____ (STUDY) harder, she _____ (PASS) the exam.",
+        "blanks": [
+          {
+            "position": 1,
+            "baseWord": "STUDY",
+            "correctForm": "studied",
+            "wordType": "past simple",
+            "hints": ["conditional, pasado"],
+            "explanation": "Pasado simple para el primer condicional."
+          },
+          {
+            "position": 2,
+            "baseWord": "PASS",
+            "correctForm": "would pass",
+            "wordType": "conditional",
+            "hints": ["would + base verb", "condicional"],
+            "explanation": "Would + infinitivo para el resultado del condicional."
+          }
+        ],
+        "explanation": "Condicional simple: pasado simple + would + infinitivo.",
+        "grammar": "Second Conditional"
+      },
+      {
+        "id": "rb3",
+        "level": "B1",
+        "source": "Cambridge PET",
+        "text": "The document _____ (LOSE) during the move, which is unfortunate.",
+        "blanks": [
+          {
+            "position": 1,
+            "baseWord": "LOSE",
+            "correctForm": "was lost",
+            "wordType": "passive verb",
+            "hints": ["pasiva, pasado simple"],
+            "explanation": "Pasiva en pasado simple para expresar que alguien perdió el documento."
+          }
+        ],
+        "explanation": "Pasiva en pasado simple: was + participio pasado.",
+        "grammar": "Passive Voice - Past Simple"
+      }
+    ],
+    
+    "rewrite": [
+      {
+        "id": "rw1",
+        "level": "B1",
+        "source": "Cambridge PET",
+        "original": "She is so intelligent that everyone respects her.",
+        "instruction": "Reescribe usando 'Such... that' en lugar de 'So... that'",
+        "correctAnswers": [
+          "She is such an intelligent person that everyone respects her.",
+          "She is such a clever person that everyone respects her.",
+          "She is such an intelligent woman that everyone respects her."
+        ],
+        "hints": [
+          "Usa 'Such + a/an + adjective + noun'",
+          "La estructura cambia pero el significado es igual"
+        ],
+        "explanation": "Such + a/an + adjective + noun + that = So + adjective + that. Ambas expresan resultado.",
+        "grammar": "So... that vs Such... that"
+      },
+      {
+        "id": "rw2",
+        "level": "B1",
+        "source": "Cambridge PET",
+        "original": "I haven't seen her since 2019.",
+        "instruction": "Reescribe sin usar 'since', expresando el tiempo transcurrido",
+        "correctAnswers": [
+          "It's been years since I last saw her.",
+          "It has been a long time since I saw her.",
+          "I last saw her in 2019."
+        ],
+        "hints": [
+          "Cambia la perspectiva temporal",
+          "Puedes usar 'last saw' en lugar de 'haven't seen'"
+        ],
+        "explanation": "Se puede expresar lo mismo enfatizando el tiempo transcurrido en lugar de la acción.",
+        "grammar": "Present Perfect vs Past Simple"
+      }
+    ]
+  },
+
+  "guidelines": {
+    "addingNewExercises": "Usa esta estructura JSON para agregar nuevos ejercicios de tus investigaciones de Cambridge",
+    "sources": [
+      "Cambridge PET (A2-B1)",
+      "Cambridge FCE (B2)",
+      "Cambridge CAE (C1)",
+      "Cambridge CPE (C2)"
+    ],
+    "tips": [
+      "Asegúrate de incluir explicaciones en ambos idiomas",
+      "Proporciona pistas útiles para los estudiantes",
+      "Categoriza por nivel de dificultad",
+      "Incluye alternativas donde sea posible",
+      "Menciona la fuente del ejercicio"
+    ]
+  }
+}
