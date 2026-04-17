@@ -6,90 +6,111 @@
     <title>Cambridge English Practice Hub</title>
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-1: #667eea;
+            --bg-2: #764ba2;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --line: #d1d5db;
+            --soft: #f3f4f6;
+            --soft-blue: #eef2ff;
+            --blue: #4f46e5;
+            --blue-2: #6366f1;
+            --green: #16a34a;
+            --green-bg: #ecfdf3;
+            --red: #dc2626;
+            --red-bg: #fef2f2;
+            --yellow: #f59e0b;
+            --yellow-bg: #fff7ed;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
             min-height: 100vh;
             padding: 2rem 1rem;
+            color: var(--text);
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1080px;
             margin: 0 auto;
         }
 
         .header {
             text-align: center;
             color: white;
-            margin-bottom: 3rem;
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* HOME SCREEN */
-        .home-screen {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
             margin-bottom: 2rem;
         }
 
+        .header h1 {
+            font-size: 2.7rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .header p {
+            opacity: 0.95;
+            font-size: 1.05rem;
+        }
+
+        .home-screen {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+
         .exercise-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
+            background: rgba(255,255,255,0.96);
+            border-radius: 18px;
+            padding: 1.5rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 3px solid transparent;
+            border: 2px solid transparent;
+            box-shadow: 0 14px 35px rgba(0,0,0,0.18);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
         .exercise-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            border-color: #667eea;
+            transform: translateY(-6px);
+            box-shadow: 0 18px 38px rgba(0,0,0,0.24);
+            border-color: rgba(79, 70, 229, 0.35);
         }
 
         .exercise-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.3rem;
+            margin-bottom: 0.9rem;
         }
 
         .exercise-card h2 {
-            color: #333;
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.55rem;
         }
 
         .exercise-card p {
-            color: #666;
+            color: var(--muted);
+            line-height: 1.55;
             font-size: 0.95rem;
-            line-height: 1.5;
         }
 
         .exercise-card .count {
             margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
             font-size: 0.85rem;
-            color: #999;
-            font-weight: 600;
+            font-weight: 700;
+            color: var(--blue);
+            background: var(--soft-blue);
+            padding: 0.4rem 0.7rem;
+            border-radius: 999px;
         }
 
-        /* EXERCISE SCREEN */
         .exercise-screen {
             display: none;
         }
@@ -99,389 +120,524 @@
         }
 
         .card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: var(--card);
+            border-radius: 22px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.22);
         }
 
         .progress-section {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.4rem;
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
+            gap: 1rem;
             align-items: center;
             margin-bottom: 1rem;
         }
 
         .progress-header h2 {
-            font-size: 1.3rem;
-            color: #333;
+            font-size: 1.25rem;
         }
 
         .exercise-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            padding: 0.55rem 0.95rem;
+            border-radius: 999px;
+            font-weight: 700;
             font-size: 0.9rem;
-            font-weight: 600;
+            white-space: nowrap;
         }
 
         .progress-bar {
             width: 100%;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 10px;
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 999px;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, var(--bg-1), var(--bg-2));
             transition: width 0.3s ease;
         }
 
-        .exercise-content {
-            margin-bottom: 2rem;
+        .exercise-intro {
+            margin-bottom: 1.2rem;
         }
 
-        /* TEXTO CON HUECOS */
-        .exercise-text {
-            font-size: 1.05rem;
-            color: #333;
-            margin-bottom: 2rem;
-            line-height: 1.9;
-            background: #f9f9f9;
-            padding: 1.5rem;
-            border-radius: 8px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+        .exercise-title {
+            font-size: 1.85rem;
+            margin-bottom: 0.4rem;
+            color: #111827;
         }
 
-        .gap-placeholder {
-            background: #e3f2fd;
-            padding: 0 4px;
-            border-radius: 4px;
+        .exercise-subtitle {
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .instruction-strip {
+            background: linear-gradient(135deg, #eff6ff, #eef2ff);
+            border: 1px solid #c7d2fe;
+            border-radius: 14px;
+            padding: 1rem 1.1rem;
+            line-height: 1.6;
+            color: #312e81;
             font-weight: 600;
-            color: #1976d2;
-            display: inline-block;
-            min-width: 80px;
-            text-align: center;
+            margin-bottom: 1.2rem;
         }
 
-        /* TYPE 1: MULTIPLE CHOICE */
-        .options-grid {
+        .mini-note {
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            color: #4338ca;
+            background: rgba(255,255,255,0.65);
+            border-radius: 10px;
+            padding: 0.75rem 0.85rem;
+        }
+
+        .exercise-passage {
+            background: #fafafa;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 1.4rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .exercise-passage p {
+            font-size: 1.08rem;
+            line-height: 2;
+            margin-bottom: 1.25rem;
+            color: #222;
+        }
+
+        .exercise-passage p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-gap {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+            vertical-align: baseline;
+            margin: 0 0.1rem;
+        }
+
+        .gap-number {
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .gap-line {
+            display: inline-block;
+            min-width: 78px;
+            border-bottom: 3px dotted #7c3aed;
+            transform: translateY(-2px);
+        }
+
+        .gap-base-inline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.18rem 0.45rem;
+            border-radius: 8px;
+            background: #ede9fe;
+            color: #5b21b6;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.08rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .question-list, .answer-grid, .transformation-list {
             display: grid;
             gap: 1rem;
         }
 
-        .option-button {
-            border: 2px solid #e0e0e0;
-            background: #f9f9f9;
+        .question-card, .answer-card, .transform-item {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
             padding: 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: left;
-            font-size: 1rem;
+        }
+
+        .question-header, .answer-card-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            font-weight: 500;
+            gap: 0.65rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .question-number-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 42px;
+            height: 42px;
+            padding: 0 0.6rem;
+            border-radius: 12px;
+            background: #111827;
+            color: white;
+            font-weight: 800;
+        }
+
+        .question-card-title {
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .option-button {
+            width: 100%;
+            text-align: left;
+            border: 2px solid #dbe4ff;
+            background: white;
+            border-radius: 14px;
+            padding: 0.9rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.98rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
         .option-button:hover:not(:disabled) {
-            border-color: #667eea;
-            background: #f0f4ff;
+            border-color: var(--blue-2);
+            transform: translateY(-1px);
+            background: #f8faff;
         }
 
         .option-button.selected {
-            border-color: #667eea;
-            background: #e8ecff;
+            border-color: var(--blue-2);
+            background: var(--soft-blue);
         }
 
         .option-button.correct {
-            border-color: #4caf50;
-            background: #e8f5e9;
-            font-weight: 600;
+            border-color: var(--green);
+            background: var(--green-bg);
         }
 
         .option-button.incorrect {
-            border-color: #f44336;
-            background: #ffebee;
+            border-color: var(--red);
+            background: var(--red-bg);
         }
 
-        /* TYPE 2 & 3: INPUT FIELDS */
-        .input-group {
-            margin-bottom: 1.5rem;
-            background: #f5f5f5;
-            padding: 1rem;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
+        .option-letter {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #eef2ff;
+            color: var(--blue);
+            font-weight: 800;
+            flex-shrink: 0;
         }
 
-        .input-label {
-            display: block;
-            font-weight: 600;
-            color: #555;
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
+        .option-button.correct .option-letter {
+            background: #dcfce7;
+            color: var(--green);
+        }
+
+        .option-button.incorrect .option-letter {
+            background: #fee2e2;
+            color: var(--red);
+        }
+
+        .mc-status, .feedback, .transform-feedback {
+            margin-top: 0.85rem;
+            padding: 0.8rem 0.9rem;
+            border-radius: 12px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        .feedback.correct, .transform-feedback.correct, .mc-status.correct {
+            background: var(--green-bg);
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .feedback.incorrect, .transform-feedback.incorrect, .mc-status.incorrect {
+            background: var(--red-bg);
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .answer-grid {
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        }
+
+        .answer-card-header {
+            justify-content: space-between;
+        }
+
+        .gap-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 42px;
+            height: 42px;
+            padding: 0 0.6rem;
+            border-radius: 12px;
+            background: #111827;
+            color: white;
+            font-weight: 800;
+        }
+
+        .base-word-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.45rem 0.7rem;
+            border-radius: 10px;
+            background: #ede9fe;
+            color: #5b21b6;
+            font-size: 0.84rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
         }
 
         .input-field {
             width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            border: 2px solid #d1d5db;
+            background: white;
+            border-radius: 12px;
+            padding: 0.9rem 1rem;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            font-family: inherit;
         }
 
         .input-field:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--blue-2);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
         }
 
         .input-field:disabled {
-            background: #e8e8e8;
+            background: #f3f4f6;
+            color: #6b7280;
             cursor: not-allowed;
-            color: #999;
         }
 
-        .feedback {
-            margin-top: 0.8rem;
-            padding: 0.8rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.95rem;
+        .answer-help {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-top: 0.55rem;
+            line-height: 1.45;
         }
 
-        .feedback.correct {
-            color: #2e7d32;
-            background: #c8e6c9;
-        }
-
-        .feedback.incorrect {
-            color: #c62828;
-            background: #ffcdd2;
-        }
-
-        /* TYPE 3: WORD FORMATION */
-        .word-formation-row {
+        .word-rows {
             display: grid;
-            grid-template-columns: 150px 1fr;
             gap: 1rem;
-            align-items: end;
         }
 
-        .base-word-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.8rem;
-            border-radius: 6px;
-            font-weight: 700;
-            text-align: center;
-            font-size: 0.95rem;
-            text-transform: uppercase;
+        .transform-item {
+            padding: 1.1rem;
         }
 
-        /* TYPE 4: SENTENCE TRANSFORMATION */
-        .transformation-box {
-            background: #f5f5f5;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
+        .transform-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            margin-bottom: 0.8rem;
         }
 
-        .sentence-section {
-            margin-bottom: 1.2rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 6px;
-            border-left: 4px solid #667eea;
+        .transform-body {
+            flex: 1;
         }
 
-        .sentence-label {
-            font-weight: 700;
-            color: #667eea;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.5px;
-        }
-
-        .sentence-text {
-            font-size: 1.05rem;
-            color: #333;
+        .transform-original {
+            color: #111827;
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
         }
 
         .given-word-box {
-            margin-bottom: 1.2rem;
-            padding: 1rem;
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            border-radius: 6px;
-        }
-
-        .given-word-label {
-            font-weight: 700;
-            color: #f57f17;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .given-word-text {
-            font-weight: 700;
-            color: #333;
-            font-size: 1.3rem;
-        }
-
-        .transformation-hint {
-            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: #fff7ed;
+            color: #9a3412;
+            border: 1px solid #fed7aa;
+            border-radius: 999px;
+            padding: 0.42rem 0.8rem;
             font-size: 0.9rem;
-            color: #666;
-            font-style: italic;
-            padding: 0.8rem;
-            background: white;
-            border-radius: 6px;
+            font-weight: 800;
+            margin-bottom: 0.9rem;
         }
 
-        /* EXPLANATION */
-        .explanation {
-            background: #e3f2fd;
-            border-left: 4px solid #2196f3;
-            padding: 1.2rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
+        .transform-complete-line {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.45rem;
+            line-height: 1.9;
+            font-size: 1.02rem;
+        }
+
+        .transform-prefix, .transform-suffix {
+            color: #222;
+        }
+
+        .transform-input {
+            min-width: 280px;
+            flex: 1 1 320px;
+        }
+
+        .answer-preview {
+            margin-top: 0.9rem;
+            padding: 0.85rem 0.95rem;
+            border-radius: 12px;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #9a3412;
+            line-height: 1.55;
+            font-weight: 700;
+        }
+
+        .result-summary, .explanation {
             display: none;
+            margin-top: 1rem;
+            margin-bottom: 1.2rem;
+            border-radius: 16px;
+            padding: 1rem 1.1rem;
+            border: 1px solid #bfdbfe;
+            background: linear-gradient(135deg, #eff6ff, #eef2ff);
         }
 
-        .explanation.show {
+        .result-summary.show, .explanation.show {
             display: block;
         }
 
-        .explanation h3 {
-            color: #1565c0;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
+        .result-summary h3, .explanation h3 {
+            margin-bottom: 0.45rem;
+            color: #1d4ed8;
         }
 
-        .explanation p {
-            color: #333;
+        .result-summary p, .explanation p {
             line-height: 1.6;
+            color: #1f2937;
         }
 
-        /* BUTTONS */
         .button-group {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: 1fr 1fr;
-            margin-bottom: 1.5rem;
-        }
-
-        .button-group.full {
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-top: 1rem;
         }
 
         .button {
-            padding: 1rem 1.5rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 14px;
+            padding: 0.95rem 1.25rem;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 800;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
         }
 
-        .button-check {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .button-check:hover:not(:disabled) {
+        .button:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(102, 126, 234, 0.4);
         }
 
-        .button-check:disabled {
-            opacity: 0.6;
+        .button:disabled {
             cursor: not-allowed;
+            opacity: 0.55;
         }
 
         .button-back {
-            background: #757575;
+            background: #374151;
             color: white;
         }
 
-        .button-back:hover {
-            background: #616161;
-            transform: translateY(-2px);
+        .button-check {
+            background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+            color: white;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.28);
         }
 
         .button-retry {
-            background: #ff9800;
+            background: #f59e0b;
             color: white;
-        }
-
-        .button-retry:hover {
-            background: #f57c00;
-            transform: translateY(-2px);
         }
 
         .button-next {
-            background: #4caf50;
+            background: #16a34a;
             color: white;
-        }
-
-        .button-next:hover:not(:disabled) {
-            background: #45a049;
-            transform: translateY(-2px);
-        }
-
-        .button-next:disabled {
-            background: #ccc;
-            cursor: not-allowed;
         }
 
         .footer {
             text-align: center;
-            color: white;
-            margin-top: 2rem;
-            opacity: 0.8;
+            color: rgba(255,255,255,0.92);
+            margin-top: 1.4rem;
+            font-size: 0.95rem;
         }
 
-        .icon {
-            font-size: 1.2rem;
-        }
+        @media (max-width: 760px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
 
-        @media (max-width: 600px) {
             .header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
-            .button-group {
-                grid-template-columns: 1fr;
-            }
-
-            .word-formation-row {
-                grid-template-columns: 1fr;
+            .card {
+                padding: 1rem;
             }
 
             .progress-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.5rem;
+            }
+
+            .exercise-title {
+                font-size: 1.5rem;
+            }
+
+            .exercise-passage {
+                padding: 1rem;
+            }
+
+            .exercise-passage p {
+                font-size: 1rem;
+                line-height: 1.85;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .transform-input {
+                min-width: 100%;
             }
         }
     </style>
@@ -490,57 +646,54 @@
     <div class="container">
         <div class="header">
             <h1>Cambridge English Practice 🎓</h1>
-            <p>Master the 4 exercise types from Cambridge exams</p>
+            <p>Ahora cada parte se ve con el texto completo y los huecos como en un examen real.</p>
         </div>
 
-        <!-- HOME SCREEN -->
         <div id="homeScreen" class="home-screen">
             <div class="exercise-card" onclick="selectExerciseType('multipleChoice')">
                 <div class="icon">📝</div>
                 <h2>Multiple Choice</h2>
-                <p>Lee el texto completo y elige la palabra correcta para rellenar el hueco</p>
-                <div class="count">5 ejercicios</div>
+                <p>Texto completo con todos los huecos numerados y una sección de respuestas por cada pregunta.</p>
+                <div class="count">1 texto completo</div>
             </div>
 
             <div class="exercise-card" onclick="selectExerciseType('fillBlanks')">
                 <div class="icon">✍️</div>
                 <h2>Fill the Gaps</h2>
-                <p>Completa los huecos sin opciones. Debes recordar la palabra exacta</p>
-                <div class="count">5 ejercicios</div>
+                <p>Lectura completa con todos los huecos visibles y una hoja de respuestas para escribir una palabra.</p>
+                <div class="count">1 texto completo</div>
             </div>
 
             <div class="exercise-card" onclick="selectExerciseType('wordFormation')">
                 <div class="icon">🔄</div>
                 <h2>Word Formation</h2>
-                <p>Modifica la palabra base según el contexto del texto</p>
-                <div class="count">5 ejercicios</div>
+                <p>Texto completo con huecos y palabra base indicada en cada caso, tal y como aparece en Cambridge.</p>
+                <div class="count">1 texto completo</div>
             </div>
 
             <div class="exercise-card" onclick="selectExerciseType('sentenceTransformation')">
                 <div class="icon">✏️</div>
                 <h2>Sentence Transformation</h2>
-                <p>Reescribe manteniendo el significado pero usando la palabra dada</p>
-                <div class="count">5 ejercicios</div>
+                <p>Las frases salen completas, con la palabra dada y un espacio para escribir solo el fragmento que falta.</p>
+                <div class="count">1 bloque de preguntas</div>
             </div>
         </div>
 
-        <!-- EXERCISE SCREEN -->
         <div id="exerciseScreen" class="exercise-screen">
             <div class="card">
                 <div class="progress-section">
                     <div class="progress-header">
-                        <h2 id="exerciseNumber">Ejercicio 1 de 5</h2>
+                        <h2 id="exerciseNumber">Ejercicio 1 de 1</h2>
                         <span class="exercise-badge" id="exerciseType">📝 Multiple Choice</span>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill" id="progressBar" style="width: 20%"></div>
+                        <div class="progress-fill" id="progressBar" style="width: 100%"></div>
                     </div>
                 </div>
 
-                <div class="exercise-content" id="exerciseContent">
-                    <!-- Ejercicio se carga aquí dinámicamente -->
-                </div>
+                <div class="exercise-content" id="exerciseContent"></div>
 
+                <div id="resultSummary" class="result-summary"></div>
                 <div id="explanation" class="explanation"></div>
 
                 <div class="button-group" id="buttonGroup">
@@ -551,211 +704,163 @@
         </div>
 
         <div class="footer">
-            <p>📖 Ejercicios basados en Cambridge English | v2.0</p>
+            <p>📖 Diseño actualizado para mostrar textos completos y respuestas por formato</p>
         </div>
     </div>
 
     <script>
-        // ========== EJERCICIOS CAMBRIDGE ==========
-
         const exerciseData = {
             multipleChoice: [
                 {
-                    id: 'mc1',
-                    text: 'After years studying North America\'s black bears in the [GAP] way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to win their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.\n\nThe insight this has given him into their behaviour has allowed him to dispel certain myths about bears.',
-                    gapNumber: '[GAP]',
-                    options: ['catch', 'win', 'achieve', 'receive'],
-                    correct: 2,
-                    explanation: 'La respuesta correcta es "achieve". El texto dice irónicamente que a pesar de años de estudio, no logró entender a los osos usando ese método. "Achieve" aquí funciona con este sentido sarcástico.'
-                },
-                {
-                    id: 'mc2',
-                    text: 'After years studying North America\'s black bears in the achieve way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to [GAP] their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.',
-                    gapNumber: '[GAP]',
-                    options: ['catch', 'win', 'achieve', 'receive'],
-                    correct: 0,
-                    explanation: 'La respuesta correcta es "win". La expresión "win someone\'s trust" significa "ganarse la confianza de alguien". Esto tiene sentido: necesitaba ganarse la confianza de los osos.'
-                },
-                {
-                    id: 'mc3',
-                    text: 'The [GAP] this has given him into their behaviour has allowed him to dispel certain myths about bears. Contrary to popular belief, he contends that bears do not care as much for fruit as previously supposed. He also argues claims that they are ferocious.',
-                    gapNumber: '[GAP]',
-                    options: ['perception', 'awareness', 'insight', 'vision'],
-                    correct: 2,
-                    explanation: '"Insight" es la respuesta correcta. La expresión "give insight into" significa "proporcionar comprensión sobre". El contexto habla de la comprensión que obtuvo del comportamiento de los osos.'
-                },
-                {
-                    id: 'mc4',
-                    text: '[GAP] to popular belief, he contends that bears do not care as much for fruit as previously supposed. He also argues claims that they are ferocious. He says that people should not be misguided by behaviour such as swatting paws on the ground, as this is a defensive, rather than an aggressive, act.',
-                    gapNumber: '[GAP]',
-                    options: ['Opposite', 'Opposed', 'Contrary', 'Contradictory'],
-                    correct: 2,
-                    explanation: '"Contrary" es la respuesta. Se usa en la expresión fija "Contrary to" que significa "a diferencia de" o "en oposición a". Las otras opciones no funcionan con esta estructura gramatical.'
-                },
-                {
-                    id: 'mc5',
-                    text: 'However, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no [GAP] about their feelings for him. It is clear that their interest in him does not extend beyond the food he brings.',
-                    gapNumber: '[GAP]',
-                    options: ['error', 'doubt', 'illusion', 'impression'],
-                    correct: 2,
-                    explanation: '"Illusion" es correcta. La expresión "be under an illusion" significa "engañarse" o "tener una ilusión falsa". Robertson no se engaña sobre los sentimientos de los osos.'
+                    id: 'mc_black_bears',
+                    title: 'Studying black bears',
+                    instructions: 'For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.',
+                    note: 'Ahora ya no se muestra un trozo suelto del texto: ves todo el pasaje y debajo eliges una opción distinta para cada hueco.',
+                    text: `After years studying North America’s black bears in the usual way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to {{1}} their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.
+
+The {{2}} this has given him into their behaviour has allowed him to dispel certain myths about bears. {{3}} to popular belief, he contends that bears do not {{4}} as much for fruit as previously supposed. He also {{5}} claims that they are ferocious. He says that people should not be {{6}} by behaviour such as swatting paws on the ground, as this is a defensive, rather than an aggressive, act.
+
+However, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no {{7}} about their feelings for him. It is clear that their interest in him does not {{8}} beyond the food he brings.`,
+                    questions: [
+                        { number: 1, options: { A: 'catch', B: 'win', C: 'achieve', D: 'receive' }, correct: 'B' },
+                        { number: 2, options: { A: 'perception', B: 'awareness', C: 'insight', D: 'vision' }, correct: 'C' },
+                        { number: 3, options: { A: 'Opposite', B: 'Opposed', C: 'Contrary', D: 'Contradictory' }, correct: 'C' },
+                        { number: 4, options: { A: 'care', B: 'bother', C: 'desire', D: 'hope' }, correct: 'A' },
+                        { number: 5, options: { A: 'concludes', B: 'disputes', C: 'reasons', D: 'argues' }, correct: 'B' },
+                        { number: 6, options: { A: 'misguided', B: 'misled', C: 'misdirected', D: 'misinformed' }, correct: 'B' },
+                        { number: 7, options: { A: 'error', B: 'doubt', C: 'illusion', D: 'impression' }, correct: 'C' },
+                        { number: 8, options: { A: 'expand', B: 'spread', C: 'widen', D: 'extend' }, correct: 'D' }
+                    ],
+                    explanation: 'En esta parte suelen decidir mucho las colocaciones: win trust, insight into, contrary to, care for, disputes claims, be misled, under no illusion, extend beyond.'
                 }
             ],
 
             fillBlanks: [
                 {
-                    id: 'fb1',
-                    text: 'The truth is nobody really knows how language first began. Did we all start talking at around the same time [9] of the manner in which our brains had begun to develop?\n\nAlthough there is a lack of clear evidence, people have come up with various theories about the origins of language.',
+                    id: 'fb_origin_language',
+                    title: 'The origin of language',
+                    instructions: 'For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.',
+                    note: 'Aquí tienes el texto entero con todos los huecos visibles y una zona de respuesta independiente para escribir una sola palabra.',
+                    text: `The truth is nobody really knows how language first began. Did we all start talking at around the same time {{9}} of the manner in which our brains had begun to develop?
+
+Although there is a lack of clear evidence, people have come up with various theories about the origins of language. One recent theory is that human beings have evolved in {{10}} a way that we are programmed for language from the moment of birth. In {{11}} words, language came about as a result of an evolutionary change in our brains at some stage.
+
+Language {{12}} well be programmed into the brain but, {{13}} this, people still need stimulus from others around them. From studies, we know that {{14}} children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so. This research shows, if {{15}} else, that language is a social activity, not something invented {{16}} isolation.`,
                     blanks: [
-                        { number: 9, answer: 'because', hints: ['conector causal', 'razón/motivo'] }
+                        { number: 9, answer: 'because' },
+                        { number: 10, answer: 'such' },
+                        { number: 11, answer: 'other' },
+                        { number: 12, answer: 'may' },
+                        { number: 13, answer: 'despite' },
+                        { number: 14, answer: 'if' },
+                        { number: 15, answer: 'nothing' },
+                        { number: 16, answer: 'in' }
                     ],
-                    explanation: 'La respuesta es "because". La pregunta es: "¿Empezamos a hablar todos al mismo tiempo PORQUE nuestros cerebros habían comenzado a desarrollarse de esa manera?" Este conector vincula causa y efecto.'
-                },
-                {
-                    id: 'fb2',
-                    text: 'One recent theory is that human beings have evolved in [10] a way that we are programmed for language from the moment of birth. In [11] words, language came about as a result of an evolutionary change in our brains at some stage.',
-                    blanks: [
-                        { number: 10, answer: 'such', hints: ['estructura correlativa', 'expresión: such...that'] },
-                        { number: 11, answer: 'other', hints: ['expresión idiomática', 'in other words = es decir'] }
-                    ],
-                    explanation: '"Such" completa "such a way that" (de tal manera que). "Other" completa "in other words" (en otras palabras) que introduce una reformulación de la idea anterior.'
-                },
-                {
-                    id: 'fb3',
-                    text: 'Language [12] well be programmed into the brain but, [13] this, people still need stimulus from others around them. From studies, we know that [14] children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so.',
-                    blanks: [
-                        { number: 12, answer: 'may', hints: ['verbo modal', 'posibilidad'] },
-                        { number: 13, answer: 'despite', hints: ['preposición de contraste', 'a pesar de'] },
-                        { number: 14, answer: 'if', hints: ['condicional', 'introduce hipótesis'] }
-                    ],
-                    explanation: '"May" indica posibilidad. "Despite" introduce contraste. "If" introduce condición hipotética. Todos son palabras funcionales que estructuran la lógica del argumento sobre el lenguaje.'
-                },
-                {
-                    id: 'fb4',
-                    text: 'This research shows, [15] that language is a social activity, not something invented [16] isolation. Language develops when children interact with other people.',
-                    blanks: [
-                        { number: 15, answer: 'else', hints: ['adverbio', 'expresión: or else'] },
-                        { number: 16, answer: 'in', hints: ['preposición', 'in isolation = en aislamiento'] }
-                    ],
-                    explanation: '"Else" completa la expresión correlativa que sugiere una alternativa o conclusión. "In" forma la locución "in isolation" (en aislamiento) que es lo opuesto a la actividad social.'
-                },
-                {
-                    id: 'fb5',
-                    text: 'Training sports champions requires much more than just natural talent. A rigorous and [18] regime combined with proper nutrition are essential. Athletes need [19] and dedication to reach the highest levels of performance.',
-                    blanks: [
-                        { number: 18, answer: 'comprehensive', hints: ['adjetivo', 'completo/integral'] },
-                        { number: 19, answer: 'discipline', hints: ['sustantivo', 'orden/disciplina'] }
-                    ],
-                    explanation: '"Comprehensive" significa integral/completo. "Discipline" significa disciplina/orden. Ambas palabras describen características necesarias para entrenar a campeones deportivos.'
+                    explanation: 'En Open Cloze suelen caer conectores y expresiones fijas: because of, such a way, in other words, may well, despite this, if children..., if nothing else, in isolation.'
                 }
             ],
 
             wordFormation: [
                 {
-                    id: 'wf1',
-                    text: 'What are the abilities that a (0) PROFESSIONAL person needs to guarantee that opponents can be (17) [COME] _____, speed, stamina and agility are essential, not to mention outstanding natural talent.',
-                    baseWord: 'COME',
-                    gapNumber: 17,
-                    answer: 'challenged',
-                    explanation: 'De "COME" se forma "overcome" (superar), pero en contexto pasivo necesita "challenged" (desafiados). Los oponentes deben poder ser desafiados. Se forma del verbo "challenge".'
-                },
-                {
-                    id: 'wf2',
-                    text: 'Both a rigorous and comprehensive (18) [FIT] _____ regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates that provide athletes with the energy they need to compete.',
-                    baseWord: 'FIT',
-                    gapNumber: 18,
-                    answer: 'training',
-                    explanation: '"FIT" → "training" (entrenamiento). Se necesita el sustantivo para "training regime" (régimen de entrenamiento). Aunque parece que viene de "fit", en este contexto se refiere a entrenamientos de acondicionamiento.'
-                },
-                {
-                    id: 'wf3',
-                    text: 'It is carbohydrates, rather than proteins and fat, that provide athletes with the (19) [ENDURE] _____ they need to compete. This means that pasta is more beneficial than eggs or meat.',
-                    baseWord: 'ENDURE',
-                    gapNumber: 19,
-                    answer: 'endurance',
-                    explanation: '"ENDURE" → "endurance" (resistencia/aguante). Se necesita el sustantivo: "provide the endurance" = proporcionar la resistencia. Es una cualidad física crucial en el deporte.'
-                },
-                {
-                    id: 'wf4',
-                    text: 'Such a diet enables them to move very energetically when required. Regular training to increase muscular (22) [STRONG] _____ is also vital, and this is typically achieved through weight training.',
-                    baseWord: 'STRONG',
-                    gapNumber: 22,
-                    answer: 'strength',
-                    explanation: '"STRONG" → "strength" (fuerza). Se necesita el sustantivo: "increase muscular strength" = aumentar la fuerza muscular. "Strong" es adjetivo, pero aquí necesita forma sustantiva.'
-                },
-                {
-                    id: 'wf5',
-                    text: 'Sports people are prone to injury but a quality training regime can ensure that the (24) [SEVERE] _____ of these can be minimized. Proper warm-up and cool-down routines are essential for injury prevention.',
-                    baseWord: 'SEVERE',
-                    gapNumber: 24,
-                    answer: 'severity',
-                    explanation: '"SEVERE" → "severity" (gravedad). Se necesita el sustantivo: "the severity of injuries" = la gravedad de las lesiones. Describe el grado de severidad que pueden alcanzar las lesiones.'
+                    id: 'wf_training_sports_champions',
+                    title: 'Training sports champions',
+                    instructions: 'For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap.',
+                    note: 'El texto aparece completo y en cada hueco se ve también la palabra base para que la respuesta se parezca más al formato real.',
+                    text: `What are the abilities that a professional athlete needs to guarantee that opponents can be {{17|COME}}? Clearly, speed, stamina and agility are essential, not to mention outstanding natural talent.
+
+Both a rigorous and comprehensive {{18|FIT}} regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates, rather than proteins and fat, that provide athletes with the {{19|ENDURE}} they need to compete. This means that pasta is more {{20|BENEFIT}} than eggs or meat.
+
+Such a diet enables them to move very {{21|ENERGY}} when required. Regular training to increase muscular {{22|STRONG}} is also vital, and this is typically achieved through weight training. It is, of course, important to emphasize the role of {{23|DETERMINE}} in an athlete’s success, since training can be exhausting. Sports people are prone to injury but a quality training regime can ensure that the {{24|SEVERE}} of these can be minimized.`,
+                    blanks: [
+                        { number: 17, base: 'COME', answer: 'overcome' },
+                        { number: 18, base: 'FIT', answer: 'fitness' },
+                        { number: 19, base: 'ENDURE', answer: 'endurance' },
+                        { number: 20, base: 'BENEFIT', answer: 'beneficial' },
+                        { number: 21, base: 'ENERGY', answer: 'energetically' },
+                        { number: 22, base: 'STRONG', answer: 'strength' },
+                        { number: 23, base: 'DETERMINE', answer: 'determination' },
+                        { number: 24, base: 'SEVERE', answer: 'severity' }
+                    ],
+                    explanation: 'Aquí importa mucho reconocer la categoría gramatical necesaria: overcome (verbo), fitness / endurance / strength / determination / severity (sustantivos), beneficial (adjetivo) y energetically (adverbio).'
                 }
             ],
 
             sentenceTransformation: [
                 {
-                    id: 'st1',
-                    original: 'My brother now earns far less than he did when he was younger.',
-                    givenWord: 'NEARLY',
-                    answer: 'My brother doesn\'t earn nearly as much now as he did when he was younger.',
-                    hint: 'Usa "nearly as much as" para hacer una comparación negativa',
-                    explanation: 'Transformación: "Earns far less" = "doesn\'t earn nearly as much". Ambas expresiones significan lo mismo pero usan estructuras gramaticales diferentes.'
-                },
-                {
-                    id: 'st2',
-                    original: 'They are demolishing the old bus station and replacing it with a new one.',
-                    givenWord: 'PULLED',
-                    answer: 'The old bus station is being pulled down and replaced with a new one.',
-                    hint: 'Usa voz pasiva. "Pull down" = demoler (phrasal verb)',
-                    explanation: 'Transformación a pasiva: "Pull down" es un phrasal verb que significa demoler. "is being pulled down" (está siendo demolida) expresa la misma acción en voz pasiva.'
-                },
-                {
-                    id: 'st3',
-                    original: 'The number of students now at university has reached an all-time high, apparently.',
-                    givenWord: 'THE',
-                    answer: 'The number of students now at university is apparently at an all-time high.',
-                    hint: 'Reorganiza la oración manteniendo el mismo significado',
-                    explanation: 'Transformación de estructura: "has reached" se cambia por "is at". Ambas expresiones comunican que el número ha alcanzado un máximo histórico.'
-                },
-                {
-                    id: 'st4',
-                    original: 'I\'m disappointed with the Fishers\' new album when I compare it to their previous one.',
-                    givenWord: 'COMPARISON',
-                    answer: 'I think the Fishers\' new album is disappointing in comparison with their previous one.',
-                    hint: 'Usa "in comparison with" para expresar la comparación',
-                    explanation: 'Transformación: "when I compare" se cambia a "in comparison with". "In comparison with" es una locución preposicional que expresa comparación de manera más formal.'
-                },
-                {
-                    id: 'st5',
-                    original: 'Anna got the job even though she didn\'t have much experience in public relations.',
-                    givenWord: 'SPITE',
-                    answer: 'Anna got the job in spite of her lack of experience in public relations.',
-                    hint: 'Usa "in spite of" + sustantivo para expresar el contraste',
-                    explanation: 'Transformación: "even though" se reemplaza con "in spite of". "didn\'t have much experience" se convierte en "her lack of experience". Ambas expresan el mismo contraste.'
+                    id: 'st_key_transformations',
+                    title: 'Key word transformations',
+                    instructions: 'For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.',
+                    note: 'En esta versión cada pregunta enseña la oración original, la palabra obligatoria y un hueco para escribir solo el fragmento que falta.',
+                    items: [
+                        {
+                            number: 25,
+                            original: 'My brother now earns far less than he did when he was younger.',
+                            givenWord: 'NEARLY',
+                            prefix: 'My brother',
+                            suffix: 'much now as he did when he was younger.',
+                            answer: "doesn't earn nearly as much"
+                        },
+                        {
+                            number: 26,
+                            original: 'They are demolishing the old bus station and replacing it with a new one.',
+                            givenWord: 'PULLED',
+                            prefix: 'The old bus station is',
+                            suffix: 'with a new one.',
+                            answer: 'being pulled down and replaced'
+                        },
+                        {
+                            number: 27,
+                            original: 'The number of students now at university has reached an all-time high, apparently.',
+                            givenWord: 'THE',
+                            prefix: 'The number of students now at university is',
+                            suffix: 'been, apparently.',
+                            answer: 'the highest it has ever'
+                        },
+                        {
+                            number: 28,
+                            original: 'I’m disappointed with the Fishers’ new album when I compare it to their previous one.',
+                            givenWord: 'COMPARISON',
+                            prefix: 'I think the Fishers’ new album is',
+                            suffix: 'their previous one.',
+                            answer: 'disappointing in comparison with'
+                        },
+                        {
+                            number: 29,
+                            original: 'Anna got the job even though she didn’t have much experience in public relations.',
+                            givenWord: 'SPITE',
+                            prefix: 'Anna got the job',
+                            suffix: 'of experience in public relations.',
+                            answer: 'in spite of her lack'
+                        },
+                        {
+                            number: 30,
+                            original: '‘I must warn you how dangerous it is to cycle at night without any lights,’ said the police officer to Max.',
+                            givenWord: 'DANGERS',
+                            prefix: 'Max received a',
+                            suffix: 'at night without any lights from the police officer.',
+                            answer: 'warning about the dangers of cycling'
+                        }
+                    ],
+                    explanation: 'En key word transformations conviene detectar la estructura equivalente exacta: nearly as much, being pulled down, the highest it has ever, in comparison with, in spite of, and warning about the dangers of cycling.'
                 }
             ]
         };
 
-        // ========== VARIABLES GLOBALES ==========
         let currentExerciseType = null;
         let currentExerciseIndex = 0;
+        let currentExercises = [];
         let userAnswers = {};
         let showResults = false;
-        let currentExercises = [];
-
-        // ========== FUNCIONES PRINCIPALES ==========
 
         function selectExerciseType(type) {
             currentExerciseType = type;
             currentExerciseIndex = 0;
+            currentExercises = exerciseData[type];
             userAnswers = {};
             showResults = false;
-            currentExercises = exerciseData[type];
 
             document.getElementById('homeScreen').style.display = 'none';
             document.getElementById('exerciseScreen').classList.add('active');
-
             loadExercise(0);
         }
 
@@ -763,23 +868,28 @@
             document.getElementById('homeScreen').style.display = 'grid';
             document.getElementById('exerciseScreen').classList.remove('active');
             currentExerciseType = null;
+            currentExercises = [];
+            showResults = false;
+            userAnswers = {};
+            document.getElementById('resultSummary').classList.remove('show');
+            document.getElementById('explanation').classList.remove('show');
         }
 
         function loadExercise(index) {
             currentExerciseIndex = index;
-            const exercise = currentExercises[index];
             showResults = false;
-
             updateProgress();
-            renderExerciseContent(exercise);
+            renderExerciseContent(currentExercises[index]);
             updateButtons();
-            document.querySelector('#explanation').classList.remove('show');
+            document.getElementById('resultSummary').classList.remove('show');
+            document.getElementById('explanation').classList.remove('show');
         }
 
         function updateProgress() {
-            const progress = ((currentExerciseIndex + 1) / currentExercises.length) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
-            document.getElementById('exerciseNumber').textContent = `Ejercicio ${currentExerciseIndex + 1} de ${currentExercises.length}`;
+            const total = currentExercises.length || 1;
+            const progress = ((currentExerciseIndex + 1) / total) * 100;
+            document.getElementById('exerciseNumber').textContent = `Ejercicio ${currentExerciseIndex + 1} de ${total}`;
+            document.getElementById('progressBar').style.width = `${progress}%`;
 
             const typeTexts = {
                 multipleChoice: '📝 Multiple Choice',
@@ -787,12 +897,25 @@
                 wordFormation: '🔄 Word Formation',
                 sentenceTransformation: '✏️ Sentence Transformation'
             };
+
             document.getElementById('exerciseType').textContent = typeTexts[currentExerciseType];
         }
 
         function renderExerciseContent(exercise) {
             const content = document.getElementById('exerciseContent');
             content.innerHTML = '';
+
+            const intro = document.createElement('div');
+            intro.className = 'exercise-intro';
+            intro.innerHTML = `
+                <h3 class="exercise-title">${exercise.title}</h3>
+                <p class="exercise-subtitle">Formato adaptado para que el alumno vea el texto completo y los huecos numerados.</p>
+                <div class="instruction-strip">
+                    ${exercise.instructions}
+                    ${exercise.note ? `<div class="mini-note">💡 ${exercise.note}</div>` : ''}
+                </div>
+            `;
+            content.appendChild(intro);
 
             if (currentExerciseType === 'multipleChoice') {
                 renderMultipleChoice(exercise, content);
@@ -805,255 +928,388 @@
             }
         }
 
-        // ========== RENDER: MULTIPLE CHOICE ==========
         function renderMultipleChoice(exercise, container) {
-            const textDiv = document.createElement('p');
-            textDiv.className = 'exercise-text';
-            textDiv.innerHTML = exercise.text.replace('[GAP]', '<span class="gap-placeholder">[GAP]</span>');
-            container.appendChild(textDiv);
+            container.appendChild(createPassageBlock(exercise.text));
 
-            const optionsDiv = document.createElement('div');
-            optionsDiv.className = 'options-grid';
+            const section = document.createElement('div');
+            section.innerHTML = `<div class="section-title">✅ Respuestas para cada hueco</div>`;
+            const list = document.createElement('div');
+            list.className = 'question-list';
 
-            exercise.options.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.className = 'option-button';
-                button.textContent = option;
-                button.disabled = showResults;
+            exercise.questions.forEach((question) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
 
-                if (userAnswers[exercise.id] === index) {
-                    button.classList.add('selected');
-                }
+                const header = document.createElement('div');
+                header.className = 'question-header';
+                header.innerHTML = `
+                    <span class="question-number-badge">${question.number}</span>
+                    <div class="question-card-title">Elige la opción correcta para el hueco ${question.number}</div>
+                `;
+                card.appendChild(header);
 
-                if (showResults) {
-                    if (index === exercise.correct) {
-                        button.classList.add('correct');
-                        button.innerHTML = option + ' <span class="icon">✓</span>';
-                    } else if (userAnswers[exercise.id] === index) {
-                        button.classList.add('incorrect');
-                        button.innerHTML = option + ' <span class="icon">✗</span>';
+                const optionsGrid = document.createElement('div');
+                optionsGrid.className = 'options-grid';
+
+                Object.entries(question.options).forEach(([letter, text]) => {
+                    const button = document.createElement('button');
+                    button.className = 'option-button';
+                    button.type = 'button';
+                    button.disabled = showResults;
+
+                    const selected = userAnswers[questionKey(exercise.id, question.number)] === letter;
+                    if (selected) button.classList.add('selected');
+
+                    if (showResults) {
+                        if (letter === question.correct) button.classList.add('correct');
+                        if (selected && letter !== question.correct) button.classList.add('incorrect');
                     }
-                }
 
-                button.addEventListener('click', () => {
-                    if (!showResults) {
-                        userAnswers[exercise.id] = index;
+                    button.innerHTML = `
+                        <span class="option-letter">${letter}</span>
+                        <span>${text}</span>
+                    `;
+
+                    button.addEventListener('click', () => {
+                        if (showResults) return;
+                        userAnswers[questionKey(exercise.id, question.number)] = letter;
                         renderExerciseContent(exercise);
-                    }
+                    });
+
+                    optionsGrid.appendChild(button);
                 });
 
-                optionsDiv.appendChild(button);
+                card.appendChild(optionsGrid);
+
+                if (showResults) {
+                    const selected = userAnswers[questionKey(exercise.id, question.number)];
+                    const status = document.createElement('div');
+                    const isCorrect = selected === question.correct;
+                    status.className = `mc-status ${isCorrect ? 'correct' : 'incorrect'}`;
+
+                    if (isCorrect) {
+                        status.textContent = `✓ Correcto. La respuesta es ${question.correct}: ${question.options[question.correct]}.`;
+                    } else if (selected) {
+                        status.textContent = `✗ Tu respuesta fue ${selected}. La correcta es ${question.correct}: ${question.options[question.correct]}.`;
+                    } else {
+                        status.textContent = `✗ No has respondido. La correcta es ${question.correct}: ${question.options[question.correct]}.`;
+                    }
+                    card.appendChild(status);
+                }
+
+                list.appendChild(card);
             });
 
-            container.appendChild(optionsDiv);
+            section.appendChild(list);
+            container.appendChild(section);
         }
 
-        // ========== RENDER: FILL BLANKS ==========
         function renderFillBlanks(exercise, container) {
-            const textDiv = document.createElement('p');
-            textDiv.className = 'exercise-text';
-            let displayText = exercise.text;
-            exercise.blanks.forEach((blank) => {
-                displayText = displayText.replace(`[${blank.number}]`, `<span class="gap-placeholder">[${blank.number}]</span>`);
-            });
-            textDiv.innerHTML = displayText;
-            container.appendChild(textDiv);
+            container.appendChild(createPassageBlock(exercise.text));
+
+            const section = document.createElement('div');
+            section.innerHTML = `<div class="section-title">🖊️ Hoja de respuestas</div>`;
+            const grid = document.createElement('div');
+            grid.className = 'answer-grid';
 
             exercise.blanks.forEach((blank) => {
-                const group = document.createElement('div');
-                group.className = 'input-group';
+                const card = document.createElement('div');
+                card.className = 'answer-card';
 
-                const label = document.createElement('label');
-                label.className = 'input-label';
-                label.textContent = `Gap (${blank.number})${blank.hints ? ' - ' + blank.hints.join(', ') : ''}`;
-                group.appendChild(label);
+                const header = document.createElement('div');
+                header.className = 'answer-card-header';
+                header.innerHTML = `
+                    <span class="gap-chip">${blank.number}</span>
+                    <span>Una sola palabra</span>
+                `;
+                card.appendChild(header);
 
                 const input = document.createElement('input');
                 input.type = 'text';
                 input.className = 'input-field';
-                input.placeholder = 'Escribe la palabra...';
+                input.placeholder = 'Escribe aquí';
                 input.disabled = showResults;
-                input.value = userAnswers[`${exercise.id}-blank-${blank.number}`] || '';
-
+                input.value = userAnswers[blankKey(exercise.id, blank.number)] || '';
                 input.addEventListener('input', (e) => {
-                    userAnswers[`${exercise.id}-blank-${blank.number}`] = e.target.value;
+                    userAnswers[blankKey(exercise.id, blank.number)] = e.target.value;
                 });
+                card.appendChild(input);
 
-                group.appendChild(input);
+                const help = document.createElement('div');
+                help.className = 'answer-help';
+                help.textContent = 'Recuerda: solo una palabra por hueco.';
+                card.appendChild(help);
 
                 if (showResults) {
-                    const feedback = document.createElement('p');
-                    feedback.className = 'feedback';
-                    const userAnswer = userAnswers[`${exercise.id}-blank-${blank.number}`]?.toLowerCase().trim() || '';
-                    const isCorrect = userAnswer === blank.answer.toLowerCase().trim();
-
-                    if (isCorrect) {
-                        feedback.textContent = '✓ Correcto: ' + blank.answer;
-                        feedback.classList.add('correct');
-                    } else {
-                        feedback.textContent = '✗ Respuesta correcta: ' + blank.answer;
-                        feedback.classList.add('incorrect');
-                    }
-                    group.appendChild(feedback);
+                    const feedback = document.createElement('div');
+                    const correct = isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answer);
+                    feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
+                    feedback.textContent = correct
+                        ? `✓ Correcto: ${blank.answer.toUpperCase()}`
+                        : `✗ Respuesta correcta: ${blank.answer.toUpperCase()}`;
+                    card.appendChild(feedback);
                 }
 
-                container.appendChild(group);
+                grid.appendChild(card);
             });
+
+            section.appendChild(grid);
+            container.appendChild(section);
         }
 
-        // ========== RENDER: WORD FORMATION ==========
         function renderWordFormation(exercise, container) {
-            const textDiv = document.createElement('p');
-            textDiv.className = 'exercise-text';
-            textDiv.innerHTML = exercise.text.replace(`[${exercise.baseWord}]`, `<span class="gap-placeholder">[${exercise.baseWord}]</span>`);
-            container.appendChild(textDiv);
+            container.appendChild(createPassageBlock(exercise.text));
 
-            const group = document.createElement('div');
-            group.className = 'input-group';
+            const section = document.createElement('div');
+            section.innerHTML = `<div class="section-title">🔤 Respuestas y palabra base</div>`;
 
-            const label = document.createElement('label');
-            label.className = 'input-label';
-            label.textContent = `Forma la palabra base: ${exercise.baseWord}`;
-            group.appendChild(label);
+            const rows = document.createElement('div');
+            rows.className = 'word-rows';
 
-            const rowDiv = document.createElement('div');
-            rowDiv.className = 'word-formation-row';
+            exercise.blanks.forEach((blank) => {
+                const card = document.createElement('div');
+                card.className = 'answer-card';
 
-            const baseWordSpan = document.createElement('span');
-            baseWordSpan.className = 'base-word-badge';
-            baseWordSpan.textContent = exercise.baseWord;
-            rowDiv.appendChild(baseWordSpan);
+                const header = document.createElement('div');
+                header.className = 'answer-card-header';
+                header.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:0.65rem;">
+                        <span class="gap-chip">${blank.number}</span>
+                        <span class="base-word-badge">${blank.base}</span>
+                    </div>
+                    <span>Forma correcta</span>
+                `;
+                card.appendChild(header);
 
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.className = 'input-field';
-            input.placeholder = 'Escribe la forma correcta...';
-            input.disabled = showResults;
-            input.value = userAnswers[exercise.id] || '';
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'input-field';
+                input.placeholder = 'Transforma la palabra base';
+                input.disabled = showResults;
+                input.value = userAnswers[blankKey(exercise.id, blank.number)] || '';
+                input.addEventListener('input', (e) => {
+                    userAnswers[blankKey(exercise.id, blank.number)] = e.target.value;
+                });
+                card.appendChild(input);
 
-            input.addEventListener('input', (e) => {
-                userAnswers[exercise.id] = e.target.value;
-            });
+                const help = document.createElement('div');
+                help.className = 'answer-help';
+                help.textContent = `Palabra base: ${blank.base}`;
+                card.appendChild(help);
 
-            rowDiv.appendChild(input);
-            group.appendChild(rowDiv);
-
-            if (showResults) {
-                const feedback = document.createElement('p');
-                feedback.className = 'feedback';
-                const userAnswer = userAnswers[exercise.id]?.toLowerCase().trim() || '';
-                const isCorrect = userAnswer === exercise.answer.toLowerCase().trim();
-
-                if (isCorrect) {
-                    feedback.textContent = '✓ Correcto: ' + exercise.answer;
-                    feedback.classList.add('correct');
-                } else {
-                    feedback.textContent = '✗ Respuesta correcta: ' + exercise.answer;
-                    feedback.classList.add('incorrect');
+                if (showResults) {
+                    const feedback = document.createElement('div');
+                    const correct = isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answer);
+                    feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
+                    feedback.textContent = correct
+                        ? `✓ Correcto: ${blank.answer.toUpperCase()}`
+                        : `✗ Respuesta correcta: ${blank.answer.toUpperCase()}`;
+                    card.appendChild(feedback);
                 }
-                group.appendChild(feedback);
-            }
 
-            container.appendChild(group);
-        }
-
-        // ========== RENDER: SENTENCE TRANSFORMATION ==========
-        function renderSentenceTransformation(exercise, container) {
-            const transformGroup = document.createElement('div');
-            transformGroup.className = 'transformation-box';
-
-            const originalSection = document.createElement('div');
-            originalSection.className = 'sentence-section';
-            originalSection.innerHTML = `
-                <div class="sentence-label">Original sentence:</div>
-                <div class="sentence-text">"${exercise.original}"</div>
-            `;
-            transformGroup.appendChild(originalSection);
-
-            const givenWordBox = document.createElement('div');
-            givenWordBox.className = 'given-word-box';
-            givenWordBox.innerHTML = `
-                <div class="given-word-label">Complete using:</div>
-                <div class="given-word-text">${exercise.givenWord}</div>
-            `;
-            transformGroup.appendChild(givenWordBox);
-
-            const hintBox = document.createElement('p');
-            hintBox.className = 'transformation-hint';
-            hintBox.textContent = '💡 ' + exercise.hint;
-            transformGroup.appendChild(hintBox);
-
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.className = 'input-field';
-            input.placeholder = 'Write the transformed sentence...';
-            input.disabled = showResults;
-            input.value = userAnswers[exercise.id] || '';
-
-            input.addEventListener('input', (e) => {
-                userAnswers[exercise.id] = e.target.value;
+                rows.appendChild(card);
             });
 
-            transformGroup.appendChild(input);
-
-            if (showResults) {
-                const resultBox = document.createElement('div');
-                resultBox.style.marginTop = '1rem';
-                resultBox.style.padding = '1rem';
-                resultBox.style.borderRadius = '8px';
-                resultBox.style.borderLeft = '4px solid #ffc107';
-                resultBox.style.background = '#fff3cd';
-
-                const title = document.createElement('p');
-                title.style.fontWeight = 'bold';
-                title.style.marginBottom = '0.5rem';
-                title.style.color = '#f57f17';
-                title.textContent = '📋 Respuesta aceptada:';
-                resultBox.appendChild(title);
-
-                const answerText = document.createElement('p');
-                answerText.textContent = exercise.answer;
-                answerText.style.color = '#333';
-                answerText.style.fontStyle = 'italic';
-                answerText.style.fontWeight = '500';
-                resultBox.appendChild(answerText);
-
-                transformGroup.appendChild(resultBox);
-            }
-
-            container.appendChild(transformGroup);
+            section.appendChild(rows);
+            container.appendChild(section);
         }
 
-        // ========== CHECK ANSWER ==========
+        function renderSentenceTransformation(exercise, container) {
+            const list = document.createElement('div');
+            list.className = 'transformation-list';
+
+            exercise.items.forEach((item) => {
+                const block = document.createElement('div');
+                block.className = 'transform-item';
+
+                block.innerHTML = `
+                    <div class="transform-top">
+                        <span class="question-number-badge">${item.number}</span>
+                        <div class="transform-body">
+                            <div class="transform-original">${item.original}</div>
+                            <div class="given-word-box">Palabra dada: ${item.givenWord}</div>
+                            <div class="transform-complete-line">
+                                <span class="transform-prefix">${item.prefix}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                const line = block.querySelector('.transform-complete-line');
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'input-field transform-input';
+                input.placeholder = 'Escribe solo las palabras que faltan';
+                input.disabled = showResults;
+                input.value = userAnswers[transformKey(exercise.id, item.number)] || '';
+                input.addEventListener('input', (e) => {
+                    userAnswers[transformKey(exercise.id, item.number)] = e.target.value;
+                });
+
+                line.appendChild(input);
+
+                const suffix = document.createElement('span');
+                suffix.className = 'transform-suffix';
+                suffix.textContent = item.suffix;
+                line.appendChild(suffix);
+
+                const help = document.createElement('div');
+                help.className = 'answer-help';
+                help.textContent = 'Escribe entre 3 y 6 palabras incluyendo la palabra dada.';
+                block.appendChild(help);
+
+                if (showResults) {
+                    const correct = isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)]);
+                    const feedback = document.createElement('div');
+                    feedback.className = `transform-feedback ${correct ? 'correct' : 'incorrect'}`;
+                    feedback.textContent = correct
+                        ? '✓ Correcto.'
+                        : `✗ Respuesta correcta: ${item.answer.toUpperCase()}`;
+                    block.appendChild(feedback);
+
+                    const preview = document.createElement('div');
+                    preview.className = 'answer-preview';
+                    preview.innerHTML = `<strong>Oración completa aceptada:</strong><br>${item.prefix} ${item.answer} ${item.suffix}`;
+                    block.appendChild(preview);
+                }
+
+                list.appendChild(block);
+            });
+
+            container.appendChild(list);
+        }
+
+        function createPassageBlock(text) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'exercise-passage';
+            wrapper.innerHTML = formatPassageHtml(text);
+            return wrapper;
+        }
+
+        function formatPassageHtml(text) {
+            const paragraphs = text.split('\n\n').map(paragraph => {
+                let html = paragraph;
+
+                html = html.replace(/\{\{(\d+)\|([A-Z]+)\}\}/g, (_, number, base) => {
+                    return `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span><span class="gap-base-inline">${base}</span></span>`;
+                });
+
+                html = html.replace(/\{\{(\d+)\}\}/g, (_, number) => {
+                    return `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span></span>`;
+                });
+
+                return `<p>${html}</p>`;
+            });
+
+            return paragraphs.join('');
+        }
+
+        function questionKey(exerciseId, number) {
+            return `${exerciseId}-q-${number}`;
+        }
+
+        function blankKey(exerciseId, number) {
+            return `${exerciseId}-blank-${number}`;
+        }
+
+        function transformKey(exerciseId, number) {
+            return `${exerciseId}-transform-${number}`;
+        }
+
+        function normalizeText(value) {
+            return (value || '')
+                .toLowerCase()
+                .replace(/[’‘]/g, "'")
+                .replace(/[^a-z0-9'\s-]/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function isSingleAnswerCorrect(userValue, correctAnswer) {
+            return normalizeText(userValue) === normalizeText(correctAnswer);
+        }
+
+        function isTransformationCorrect(item, userValue) {
+            const normalizedInput = normalizeText(userValue);
+            const normalizedAnswer = normalizeText(item.answer);
+            const fullSentence = `${item.prefix} ${item.answer} ${item.suffix}`;
+            const normalizedFull = normalizeText(fullSentence);
+            return normalizedInput === normalizedAnswer || normalizedInput === normalizedFull;
+        }
+
+        function getScore(exercise) {
+            if (currentExerciseType === 'multipleChoice') {
+                const total = exercise.questions.length;
+                const correct = exercise.questions.filter(q => userAnswers[questionKey(exercise.id, q.number)] === q.correct).length;
+                return { correct, total };
+            }
+
+            if (currentExerciseType === 'fillBlanks' || currentExerciseType === 'wordFormation') {
+                const total = exercise.blanks.length;
+                const correct = exercise.blanks.filter(blank => isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answer)).length;
+                return { correct, total };
+            }
+
+            const total = exercise.items.length;
+            const correct = exercise.items.filter(item => isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)])).length;
+            return { correct, total };
+        }
+
         function checkAnswer() {
             showResults = true;
             const exercise = currentExercises[currentExerciseIndex];
             renderExerciseContent(exercise);
 
-            const explanationDiv = document.querySelector('#explanation');
-            explanationDiv.classList.add('show');
-            explanationDiv.innerHTML = `<h3>📚 Explicación</h3><p>${exercise.explanation}</p>`;
+            const score = getScore(exercise);
+            const summary = document.getElementById('resultSummary');
+            summary.classList.add('show');
+            summary.innerHTML = `
+                <h3>📊 Resultado</h3>
+                <p>Has acertado <strong>${score.correct}</strong> de <strong>${score.total}</strong> respuestas.</p>
+            `;
+
+            const explanation = document.getElementById('explanation');
+            explanation.classList.add('show');
+            explanation.innerHTML = `
+                <h3>📚 Pista de corrección</h3>
+                <p>${exercise.explanation}</p>
+            `;
 
             updateButtons();
         }
 
         function updateButtons() {
             const buttonGroup = document.getElementById('buttonGroup');
+            buttonGroup.innerHTML = '';
+
+            const backBtn = document.createElement('button');
+            backBtn.className = 'button button-back';
+            backBtn.textContent = '← Volver';
+            backBtn.onclick = goHome;
+            buttonGroup.appendChild(backBtn);
 
             if (!showResults) {
-                buttonGroup.innerHTML = `
-                    <button class="button button-back" onclick="goHome()">← Volver</button>
-                    <button class="button button-check" id="checkBtn">Comprobar ✓</button>
-                `;
-                document.getElementById('checkBtn').addEventListener('click', checkAnswer);
-            } else {
-                const html = `
-                    <button class="button button-back" onclick="goHome()">← Volver</button>
-                    <button class="button button-retry" onclick="retryExercise()">Intentar de Nuevo 🔄</button>
-                    ${currentExerciseIndex < currentExercises.length - 1 ? '<button class="button button-next" onclick="nextExercise()">Siguiente ▶️</button>' : '<button class="button button-next" disabled>Fin ✓</button>'}
-                `;
-                buttonGroup.innerHTML = html;
-                buttonGroup.classList.add('full');
+                const checkBtn = document.createElement('button');
+                checkBtn.className = 'button button-check';
+                checkBtn.textContent = 'Comprobar ✓';
+                checkBtn.onclick = checkAnswer;
+                buttonGroup.appendChild(checkBtn);
+                return;
+            }
+
+            const retryBtn = document.createElement('button');
+            retryBtn.className = 'button button-retry';
+            retryBtn.textContent = 'Intentar de nuevo 🔄';
+            retryBtn.onclick = retryExercise;
+            buttonGroup.appendChild(retryBtn);
+
+            if (currentExerciseIndex < currentExercises.length - 1) {
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'button button-next';
+                nextBtn.textContent = 'Siguiente ▶';
+                nextBtn.onclick = nextExercise;
+                buttonGroup.appendChild(nextBtn);
             }
         }
 
@@ -1067,7 +1323,6 @@
             }
         }
 
-        // Iniciar
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('homeScreen').style.display = 'grid';
         });
