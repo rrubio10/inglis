@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambridge English Practice Hub</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
             --bg-1: #667eea;
@@ -38,33 +34,15 @@
             color: var(--text);
         }
 
-        .container {
-            max-width: 1080px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1120px; margin: 0 auto; }
+        .header { text-align: center; color: white; margin-bottom: 2rem; }
+        .header h1 { font-size: 2.7rem; margin-bottom: 0.5rem; text-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+        .header p { opacity: 0.95; font-size: 1.05rem; }
 
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 2rem;
-        }
+        .screen { display: none; }
+        .screen.active { display: block; }
 
-        .header h1 {
-            font-size: 2.7rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-
-        .header p {
-            opacity: 0.95;
-            font-size: 1.05rem;
-        }
-
-        .home-screen {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
-        }
+        .home-screen, .type-screen { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
 
         .exercise-card {
             background: rgba(255,255,255,0.96);
@@ -76,29 +54,12 @@
             transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
-        .exercise-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 38px rgba(0,0,0,0.24);
-            border-color: rgba(79, 70, 229, 0.35);
-        }
+        .exercise-card:hover { transform: translateY(-6px); box-shadow: 0 18px 38px rgba(0,0,0,0.24); border-color: rgba(79,70,229,0.35); }
+        .exercise-card .icon { font-size: 2.3rem; margin-bottom: 0.9rem; }
+        .exercise-card h2 { font-size: 1.25rem; margin-bottom: 0.55rem; }
+        .exercise-card p { color: var(--muted); line-height: 1.55; font-size: 0.95rem; }
 
-        .exercise-card .icon {
-            font-size: 2.3rem;
-            margin-bottom: 0.9rem;
-        }
-
-        .exercise-card h2 {
-            font-size: 1.25rem;
-            margin-bottom: 0.55rem;
-        }
-
-        .exercise-card p {
-            color: var(--muted);
-            line-height: 1.55;
-            font-size: 0.95rem;
-        }
-
-        .exercise-card .count {
+        .count, .pill {
             margin-top: 1rem;
             display: inline-flex;
             align-items: center;
@@ -111,13 +72,7 @@
             border-radius: 999px;
         }
 
-        .exercise-screen {
-            display: none;
-        }
-
-        .exercise-screen.active {
-            display: block;
-        }
+        .pill { margin-top: 0; }
 
         .card {
             background: var(--card);
@@ -126,21 +81,29 @@
             box-shadow: 0 18px 45px rgba(0,0,0,0.22);
         }
 
-        .progress-section {
-            margin-bottom: 1.4rem;
+        .panel-card {
+            background: rgba(255,255,255,0.96);
+            border-radius: 22px;
+            padding: 1.5rem;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+            margin-bottom: 1.5rem;
         }
 
-        .progress-header {
+        .panel-header {
             display: flex;
+            flex-wrap: wrap;
+            align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            align-items: center;
             margin-bottom: 1rem;
         }
 
-        .progress-header h2 {
-            font-size: 1.25rem;
-        }
+        .panel-title { font-size: 1.5rem; color: #111827; }
+        .panel-subtitle { color: var(--muted); line-height: 1.6; margin-top: 0.35rem; }
+
+        .progress-section { margin-bottom: 1.4rem; }
+        .progress-header { display: flex; justify-content: space-between; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+        .progress-header h2 { font-size: 1.25rem; }
 
         .exercise-badge {
             display: inline-flex;
@@ -155,35 +118,11 @@
             white-space: nowrap;
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 999px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--bg-1), var(--bg-2));
-            transition: width 0.3s ease;
-        }
-
-        .exercise-intro {
-            margin-bottom: 1.2rem;
-        }
-
-        .exercise-title {
-            font-size: 1.85rem;
-            margin-bottom: 0.4rem;
-            color: #111827;
-        }
-
-        .exercise-subtitle {
-            color: var(--muted);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
+        .progress-bar { width: 100%; height: 10px; background: #e5e7eb; border-radius: 999px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--bg-1), var(--bg-2)); transition: width 0.3s ease; }
+        .exercise-intro { margin-bottom: 1.2rem; }
+        .exercise-title { font-size: 1.85rem; margin-bottom: 0.4rem; color: #111827; }
+        .exercise-subtitle { color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
 
         .instruction-strip {
             background: linear-gradient(135deg, #eff6ff, #eef2ff);
@@ -213,16 +152,8 @@
             margin-bottom: 1.4rem;
         }
 
-        .exercise-passage p {
-            font-size: 1.08rem;
-            line-height: 2;
-            margin-bottom: 1.25rem;
-            color: #222;
-        }
-
-        .exercise-passage p:last-child {
-            margin-bottom: 0;
-        }
+        .exercise-passage p { font-size: 1.08rem; line-height: 2; margin-bottom: 1.25rem; color: #222; }
+        .exercise-passage p:last-child { margin-bottom: 0; }
 
         .inline-gap {
             display: inline-flex;
@@ -233,18 +164,8 @@
             margin: 0 0.1rem;
         }
 
-        .gap-number {
-            font-weight: 800;
-            color: #111827;
-        }
-
-        .gap-line {
-            display: inline-block;
-            min-width: 78px;
-            border-bottom: 3px dotted #7c3aed;
-            transform: translateY(-2px);
-        }
-
+        .gap-number { font-weight: 800; color: #111827; }
+        .gap-line { display: inline-block; min-width: 78px; border-bottom: 3px dotted #7c3aed; transform: translateY(-2px); }
         .gap-base-inline {
             display: inline-flex;
             align-items: center;
@@ -258,35 +179,10 @@
             letter-spacing: 0.03em;
         }
 
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 1.08rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: #111827;
-        }
-
-        .question-list, .answer-grid, .transformation-list {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .question-card, .answer-card, .transform-item {
-            background: #f8fafc;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 1rem;
-        }
-
-        .question-header, .answer-card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-            margin-bottom: 0.85rem;
-        }
-
+        .section-title { display: flex; align-items: center; gap: 0.6rem; font-size: 1.08rem; font-weight: 800; margin-bottom: 1rem; color: #111827; }
+        .question-list, .answer-grid, .transformation-list { display: grid; gap: 1rem; }
+        .question-card, .answer-card, .transform-item { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1rem; }
+        .question-header, .answer-card-header { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.85rem; }
         .question-number-badge {
             display: inline-flex;
             align-items: center;
@@ -300,386 +196,158 @@
             font-weight: 800;
         }
 
-        .question-card-title {
-            font-weight: 700;
-            color: #111827;
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0.75rem;
-        }
-
+        .question-card-title { font-weight: 700; color: #111827; }
+        .options-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
         .option-button {
-            width: 100%;
-            text-align: left;
-            border: 2px solid #dbe4ff;
-            background: white;
-            border-radius: 14px;
-            padding: 0.9rem 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.98rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
+            width: 100%; text-align: left; border: 2px solid #dbe4ff; background: white; border-radius: 14px;
+            padding: 0.9rem 1rem; cursor: pointer; transition: all 0.2s ease; font-size: 0.98rem; display: flex; align-items: center; gap: 0.8rem;
         }
-
-        .option-button:hover:not(:disabled) {
-            border-color: var(--blue-2);
-            transform: translateY(-1px);
-            background: #f8faff;
-        }
-
-        .option-button.selected {
-            border-color: var(--blue-2);
-            background: var(--soft-blue);
-        }
-
-        .option-button.correct {
-            border-color: var(--green);
-            background: var(--green-bg);
-        }
-
-        .option-button.incorrect {
-            border-color: var(--red);
-            background: var(--red-bg);
-        }
-
+        .option-button:hover:not(:disabled) { border-color: var(--blue-2); transform: translateY(-1px); background: #f8faff; }
+        .option-button.selected { border-color: var(--blue-2); background: var(--soft-blue); }
+        .option-button.correct { border-color: var(--green); background: var(--green-bg); }
+        .option-button.incorrect { border-color: var(--red); background: var(--red-bg); }
         .option-letter {
-            width: 32px;
-            height: 32px;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #eef2ff;
-            color: var(--blue);
-            font-weight: 800;
-            flex-shrink: 0;
+            width: 32px; height: 32px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
+            background: #eef2ff; color: var(--blue); font-weight: 800; flex-shrink: 0;
         }
-
-        .option-button.correct .option-letter {
-            background: #dcfce7;
-            color: var(--green);
-        }
-
-        .option-button.incorrect .option-letter {
-            background: #fee2e2;
-            color: var(--red);
-        }
+        .option-button.correct .option-letter { background: #dcfce7; color: var(--green); }
+        .option-button.incorrect .option-letter { background: #fee2e2; color: var(--red); }
 
         .mc-status, .feedback, .transform-feedback {
-            margin-top: 0.85rem;
-            padding: 0.8rem 0.9rem;
-            border-radius: 12px;
-            font-weight: 700;
-            line-height: 1.5;
+            margin-top: 0.85rem; padding: 0.8rem 0.9rem; border-radius: 12px; font-weight: 700; line-height: 1.5;
         }
+        .feedback.correct, .transform-feedback.correct, .mc-status.correct { background: var(--green-bg); color: #166534; border: 1px solid #bbf7d0; }
+        .feedback.incorrect, .transform-feedback.incorrect, .mc-status.incorrect { background: var(--red-bg); color: #991b1b; border: 1px solid #fecaca; }
 
-        .feedback.correct, .transform-feedback.correct, .mc-status.correct {
-            background: var(--green-bg);
-            color: #166534;
-            border: 1px solid #bbf7d0;
-        }
-
-        .feedback.incorrect, .transform-feedback.incorrect, .mc-status.incorrect {
-            background: var(--red-bg);
-            color: #991b1b;
-            border: 1px solid #fecaca;
-        }
-
-        .answer-grid {
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-        }
-
-        .answer-card-header {
-            justify-content: space-between;
-        }
-
+        .answer-grid { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+        .answer-card-header { justify-content: space-between; }
         .gap-chip {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 42px;
-            height: 42px;
-            padding: 0 0.6rem;
-            border-radius: 12px;
-            background: #111827;
-            color: white;
-            font-weight: 800;
+            display: inline-flex; align-items: center; justify-content: center; min-width: 42px; height: 42px;
+            padding: 0 0.6rem; border-radius: 12px; background: #111827; color: white; font-weight: 800;
         }
-
         .base-word-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.45rem 0.7rem;
-            border-radius: 10px;
-            background: #ede9fe;
-            color: #5b21b6;
-            font-size: 0.84rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
+            display: inline-flex; align-items: center; justify-content: center; padding: 0.45rem 0.7rem;
+            border-radius: 10px; background: #ede9fe; color: #5b21b6; font-size: 0.84rem; font-weight: 800; letter-spacing: 0.04em;
         }
 
         .input-field {
-            width: 100%;
-            border: 2px solid #d1d5db;
-            background: white;
-            border-radius: 12px;
-            padding: 0.9rem 1rem;
-            font-size: 1rem;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-            font-family: inherit;
+            width: 100%; border: 2px solid #d1d5db; background: white; border-radius: 12px; padding: 0.9rem 1rem;
+            font-size: 1rem; transition: border-color 0.2s ease, box-shadow 0.2s ease; font-family: inherit;
         }
-
-        .input-field:focus {
-            outline: none;
-            border-color: var(--blue-2);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
-        }
-
-        .input-field:disabled {
-            background: #f3f4f6;
-            color: #6b7280;
-            cursor: not-allowed;
-        }
-
-        .answer-help {
-            color: var(--muted);
-            font-size: 0.9rem;
-            margin-top: 0.55rem;
-            line-height: 1.45;
-        }
-
-        .word-rows {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .transform-item {
-            padding: 1.1rem;
-        }
-
-        .transform-top {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.9rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .transform-body {
-            flex: 1;
-        }
-
-        .transform-original {
-            color: #111827;
-            line-height: 1.6;
-            margin-bottom: 0.8rem;
-        }
-
+        .input-field:focus { outline: none; border-color: var(--blue-2); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12); }
+        .input-field:disabled { background: #f3f4f6; color: #6b7280; cursor: not-allowed; }
+        .answer-help { color: var(--muted); font-size: 0.9rem; margin-top: 0.55rem; line-height: 1.45; }
+        .word-rows { display: grid; gap: 1rem; }
+        .transform-item { padding: 1.1rem; }
+        .transform-top { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 0.8rem; }
+        .transform-body { flex: 1; }
+        .transform-original { color: #111827; line-height: 1.6; margin-bottom: 0.8rem; }
         .given-word-box {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            background: #fff7ed;
-            color: #9a3412;
-            border: 1px solid #fed7aa;
-            border-radius: 999px;
-            padding: 0.42rem 0.8rem;
-            font-size: 0.9rem;
-            font-weight: 800;
-            margin-bottom: 0.9rem;
+            display: inline-flex; align-items: center; gap: 0.45rem; background: #fff7ed; color: #9a3412; border: 1px solid #fed7aa;
+            border-radius: 999px; padding: 0.42rem 0.8rem; font-size: 0.9rem; font-weight: 800; margin-bottom: 0.9rem;
         }
-
-        .transform-complete-line {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.45rem;
-            line-height: 1.9;
-            font-size: 1.02rem;
-        }
-
-        .transform-prefix, .transform-suffix {
-            color: #222;
-        }
-
-        .transform-input {
-            min-width: 280px;
-            flex: 1 1 320px;
-        }
+        .transform-complete-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; line-height: 1.9; font-size: 1.02rem; }
+        .transform-input { min-width: 280px; flex: 1 1 320px; }
 
         .answer-preview {
-            margin-top: 0.9rem;
-            padding: 0.85rem 0.95rem;
-            border-radius: 12px;
-            background: #fff7ed;
-            border: 1px solid #fed7aa;
-            color: #9a3412;
-            line-height: 1.55;
-            font-weight: 700;
+            margin-top: 0.9rem; padding: 0.85rem 0.95rem; border-radius: 12px; background: #fff7ed;
+            border: 1px solid #fed7aa; color: #9a3412; line-height: 1.55; font-weight: 700;
         }
 
         .result-summary, .explanation {
-            display: none;
-            margin-top: 1rem;
-            margin-bottom: 1.2rem;
-            border-radius: 16px;
-            padding: 1rem 1.1rem;
-            border: 1px solid #bfdbfe;
-            background: linear-gradient(135deg, #eff6ff, #eef2ff);
+            display: none; margin-top: 1rem; margin-bottom: 1.2rem; border-radius: 16px; padding: 1rem 1.1rem;
+            border: 1px solid #bfdbfe; background: linear-gradient(135deg, #eff6ff, #eef2ff);
         }
+        .result-summary.show, .explanation.show { display: block; }
+        .result-summary h3, .explanation h3 { margin-bottom: 0.45rem; color: #1d4ed8; }
+        .result-summary p, .explanation p { line-height: 1.6; color: #1f2937; }
 
-        .result-summary.show, .explanation.show {
-            display: block;
-        }
-
-        .result-summary h3, .explanation h3 {
-            margin-bottom: 0.45rem;
-            color: #1d4ed8;
-        }
-
-        .result-summary p, .explanation p {
-            line-height: 1.6;
-            color: #1f2937;
-        }
-
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.9rem;
-            margin-top: 1rem;
-        }
-
+        .button-group { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1rem; }
         .button {
-            border: none;
-            border-radius: 14px;
-            padding: 0.95rem 1.25rem;
-            font-size: 1rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            border: none; border-radius: 14px; padding: 0.95rem 1.25rem; font-size: 1rem; font-weight: 800;
+            cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
         }
+        .button:hover:not(:disabled) { transform: translateY(-2px); }
+        .button:disabled { cursor: not-allowed; opacity: 0.55; }
+        .button-back { background: #374151; color: white; }
+        .button-check { background: linear-gradient(135deg, var(--bg-1), var(--bg-2)); color: white; box-shadow: 0 10px 25px rgba(99, 102, 241, 0.28); }
+        .button-retry { background: #f59e0b; color: white; }
+        .button-next { background: #16a34a; color: white; }
+        .button-secondary { background: rgba(255,255,255,0.92); color: #312e81; border: 2px solid #c7d2fe; }
 
-        .button:hover:not(:disabled) {
-            transform: translateY(-2px);
+        .json-status {
+            margin: 0 auto 1.5rem; max-width: 1120px; background: rgba(255,255,255,0.94); border-radius: 18px; padding: 1rem 1.2rem;
+            color: #1f2937; box-shadow: 0 12px 30px rgba(0,0,0,0.18); display: none;
         }
-
-        .button:disabled {
-            cursor: not-allowed;
-            opacity: 0.55;
-        }
-
-        .button-back {
-            background: #374151;
-            color: white;
-        }
-
-        .button-check {
-            background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
-            color: white;
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.28);
-        }
-
-        .button-retry {
-            background: #f59e0b;
-            color: white;
-        }
-
-        .button-next {
-            background: #16a34a;
-            color: white;
-        }
-
-        .footer {
-            text-align: center;
-            color: rgba(255,255,255,0.92);
-            margin-top: 1.4rem;
-            font-size: 0.95rem;
-        }
+        .json-status.show { display: block; }
+        .json-status.error { border-left: 5px solid #f59e0b; }
+        .json-status.success { border-left: 5px solid #16a34a; }
+        .json-status p { line-height: 1.6; }
+        .json-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.9rem; }
+        .hidden { display: none !important; }
+        .footer { text-align: center; color: rgba(255,255,255,0.92); margin-top: 1.4rem; font-size: 0.95rem; }
 
         @media (max-width: 760px) {
-            body {
-                padding: 1.2rem 0.8rem;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .card {
-                padding: 1rem;
-            }
-
-            .progress-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .exercise-title {
-                font-size: 1.5rem;
-            }
-
-            .exercise-passage {
-                padding: 1rem;
-            }
-
-            .exercise-passage p {
-                font-size: 1rem;
-                line-height: 1.85;
-            }
-
-            .options-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .transform-input {
-                min-width: 100%;
-            }
+            body { padding: 1.2rem 0.8rem; }
+            .header h1 { font-size: 2rem; }
+            .card, .panel-card { padding: 1rem; }
+            .progress-header, .panel-header { flex-direction: column; align-items: flex-start; }
+            .exercise-title { font-size: 1.5rem; }
+            .exercise-passage { padding: 1rem; }
+            .exercise-passage p { font-size: 1rem; line-height: 1.85; }
+            .options-grid { grid-template-columns: 1fr; }
+            .transform-input { min-width: 100%; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Cambridge English Practice 🎓</h1>
-            <p>Ahora cada parte se ve con el texto completo y los huecos como en un examen real.</p>
+            <h1 id="appTitle">Cambridge English Practice 🎓</h1>
+            <p id="appSubtitle">Cargando ejercicios...</p>
+        </div>
+    </div>
+
+    <div id="jsonStatus" class="json-status">
+        <p id="jsonStatusText"></p>
+        <div class="json-actions">
+            <button id="retryLoadBtn" class="button button-secondary" type="button">Reintentar carga automática</button>
+            <button id="selectJsonBtn" class="button button-secondary" type="button">Seleccionar exercises.json</button>
+            <input id="jsonFileInput" type="file" accept="application/json,.json" class="hidden">
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="homeScreen" class="screen active">
+            <div class="panel-card">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title">Selecciona un bloque de ejercicios</h2>
+                        <p class="panel-subtitle">Al pulsar un bloque no irás directo al ejercicio: primero verás los tipos de actividad disponibles dentro de ese bloque.</p>
+                    </div>
+                    <span class="pill" id="setCounter">0 bloques</span>
+                </div>
+            </div>
+            <div id="exerciseSetGrid" class="home-screen"></div>
         </div>
 
-        <div id="homeScreen" class="home-screen">
-            <div class="exercise-card" onclick="selectExerciseType('multipleChoice')">
-                <div class="icon">📝</div>
-                <h2>Multiple Choice</h2>
-                <p>Texto completo con todos los huecos numerados y una sección de respuestas por cada pregunta.</p>
-                <div class="count">1 texto completo</div>
+        <div id="typeSelectionScreen" class="screen">
+            <div class="panel-card">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title" id="selectedSetTitle">Tipos de ejercicio</h2>
+                        <p class="panel-subtitle" id="selectedSetDescription"></p>
+                    </div>
+                    <span class="pill" id="selectedSetLevel"></span>
+                </div>
+                <div class="button-group">
+                    <button class="button button-back" type="button" onclick="goHome()">← Volver a bloques</button>
+                </div>
             </div>
-
-            <div class="exercise-card" onclick="selectExerciseType('fillBlanks')">
-                <div class="icon">✍️</div>
-                <h2>Fill the Gaps</h2>
-                <p>Lectura completa con todos los huecos visibles y una hoja de respuestas para escribir una palabra.</p>
-                <div class="count">1 texto completo</div>
-            </div>
-
-            <div class="exercise-card" onclick="selectExerciseType('wordFormation')">
-                <div class="icon">🔄</div>
-                <h2>Word Formation</h2>
-                <p>Texto completo con huecos y palabra base indicada en cada caso, tal y como aparece en Cambridge.</p>
-                <div class="count">1 texto completo</div>
-            </div>
-
-            <div class="exercise-card" onclick="selectExerciseType('sentenceTransformation')">
-                <div class="icon">✏️</div>
-                <h2>Sentence Transformation</h2>
-                <p>Las frases salen completas, con la palabra dada y un espacio para escribir solo el fragmento que falta.</p>
-                <div class="count">1 bloque de preguntas</div>
-            </div>
+            <div id="exerciseTypeGrid" class="type-screen"></div>
         </div>
 
-        <div id="exerciseScreen" class="exercise-screen">
+        <div id="exerciseScreen" class="screen">
             <div class="card">
                 <div class="progress-section">
                     <div class="progress-header">
@@ -692,239 +360,213 @@
                 </div>
 
                 <div class="exercise-content" id="exerciseContent"></div>
-
                 <div id="resultSummary" class="result-summary"></div>
                 <div id="explanation" class="explanation"></div>
 
-                <div class="button-group" id="buttonGroup">
-                    <button class="button button-back" onclick="goHome()">← Volver</button>
-                    <button class="button button-check" id="checkBtn">Comprobar ✓</button>
-                </div>
+                <div class="button-group" id="buttonGroup"></div>
             </div>
         </div>
 
         <div class="footer">
-            <p>📖 Diseño actualizado para mostrar textos completos y respuestas por formato</p>
+            <p id="appFooter">📖 Datos cargados desde exercises.json</p>
         </div>
     </div>
 
     <script>
-        const exerciseData = {
-            multipleChoice: [
-                {
-                    id: 'mc_black_bears',
-                    title: 'Studying black bears',
-                    instructions: 'For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.',
-                    note: 'Ahora ya no se muestra un trozo suelto del texto: ves todo el pasaje y debajo eliges una opción distinta para cada hueco.',
-                    text: `After years studying North America’s black bears in the usual way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to {{1}} their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.
-
-The {{2}} this has given him into their behaviour has allowed him to dispel certain myths about bears. {{3}} to popular belief, he contends that bears do not {{4}} as much for fruit as previously supposed. He also {{5}} claims that they are ferocious. He says that people should not be {{6}} by behaviour such as swatting paws on the ground, as this is a defensive, rather than an aggressive, act.
-
-However, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no {{7}} about their feelings for him. It is clear that their interest in him does not {{8}} beyond the food he brings.`,
-                    questions: [
-                        { number: 1, options: { A: 'catch', B: 'win', C: 'achieve', D: 'receive' }, correct: 'B' },
-                        { number: 2, options: { A: 'perception', B: 'awareness', C: 'insight', D: 'vision' }, correct: 'C' },
-                        { number: 3, options: { A: 'Opposite', B: 'Opposed', C: 'Contrary', D: 'Contradictory' }, correct: 'C' },
-                        { number: 4, options: { A: 'care', B: 'bother', C: 'desire', D: 'hope' }, correct: 'A' },
-                        { number: 5, options: { A: 'concludes', B: 'disputes', C: 'reasons', D: 'argues' }, correct: 'B' },
-                        { number: 6, options: { A: 'misguided', B: 'misled', C: 'misdirected', D: 'misinformed' }, correct: 'B' },
-                        { number: 7, options: { A: 'error', B: 'doubt', C: 'illusion', D: 'impression' }, correct: 'C' },
-                        { number: 8, options: { A: 'expand', B: 'spread', C: 'widen', D: 'extend' }, correct: 'D' }
-                    ],
-                    explanation: 'En esta parte suelen decidir mucho las colocaciones: win trust, insight into, contrary to, care for, disputes claims, be misled, under no illusion, extend beyond.'
-                }
-            ],
-
-            fillBlanks: [
-                {
-                    id: 'fb_origin_language',
-                    title: 'The origin of language',
-                    instructions: 'For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.',
-                    note: 'Aquí tienes el texto entero con todos los huecos visibles y una zona de respuesta independiente para escribir una sola palabra.',
-                    text: `The truth is nobody really knows how language first began. Did we all start talking at around the same time {{9}} of the manner in which our brains had begun to develop?
-
-Although there is a lack of clear evidence, people have come up with various theories about the origins of language. One recent theory is that human beings have evolved in {{10}} a way that we are programmed for language from the moment of birth. In {{11}} words, language came about as a result of an evolutionary change in our brains at some stage.
-
-Language {{12}} well be programmed into the brain but, {{13}} this, people still need stimulus from others around them. From studies, we know that {{14}} children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so. This research shows, if {{15}} else, that language is a social activity, not something invented {{16}} isolation.`,
-                    blanks: [
-                        { number: 9, answer: 'because' },
-                        { number: 10, answer: 'such' },
-                        { number: 11, answer: 'other' },
-                        { number: 12, answer: 'may' },
-                        { number: 13, answer: 'despite' },
-                        { number: 14, answer: 'if' },
-                        { number: 15, answer: 'nothing' },
-                        { number: 16, answer: 'in' }
-                    ],
-                    explanation: 'En Open Cloze suelen caer conectores y expresiones fijas: because of, such a way, in other words, may well, despite this, if children..., if nothing else, in isolation.'
-                }
-            ],
-
-            wordFormation: [
-                {
-                    id: 'wf_training_sports_champions',
-                    title: 'Training sports champions',
-                    instructions: 'For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap.',
-                    note: 'El texto aparece completo y en cada hueco se ve también la palabra base para que la respuesta se parezca más al formato real.',
-                    text: `What are the abilities that a professional athlete needs to guarantee that opponents can be {{17|COME}}? Clearly, speed, stamina and agility are essential, not to mention outstanding natural talent.
-
-Both a rigorous and comprehensive {{18|FIT}} regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates, rather than proteins and fat, that provide athletes with the {{19|ENDURE}} they need to compete. This means that pasta is more {{20|BENEFIT}} than eggs or meat.
-
-Such a diet enables them to move very {{21|ENERGY}} when required. Regular training to increase muscular {{22|STRONG}} is also vital, and this is typically achieved through weight training. It is, of course, important to emphasize the role of {{23|DETERMINE}} in an athlete’s success, since training can be exhausting. Sports people are prone to injury but a quality training regime can ensure that the {{24|SEVERE}} of these can be minimized.`,
-                    blanks: [
-                        { number: 17, base: 'COME', answer: 'overcome' },
-                        { number: 18, base: 'FIT', answer: 'fitness' },
-                        { number: 19, base: 'ENDURE', answer: 'endurance' },
-                        { number: 20, base: 'BENEFIT', answer: 'beneficial' },
-                        { number: 21, base: 'ENERGY', answer: 'energetically' },
-                        { number: 22, base: 'STRONG', answer: 'strength' },
-                        { number: 23, base: 'DETERMINE', answer: 'determination' },
-                        { number: 24, base: 'SEVERE', answer: 'severity' }
-                    ],
-                    explanation: 'Aquí importa mucho reconocer la categoría gramatical necesaria: overcome (verbo), fitness / endurance / strength / determination / severity (sustantivos), beneficial (adjetivo) y energetically (adverbio).'
-                }
-            ],
-
-            sentenceTransformation: [
-                {
-                    id: 'st_key_transformations',
-                    title: 'Key word transformations',
-                    instructions: 'For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.',
-                    note: 'En esta versión cada pregunta enseña la oración original, la palabra obligatoria y un hueco para escribir solo el fragmento que falta.',
-                    items: [
-                        {
-                            number: 25,
-                            original: 'My brother now earns far less than he did when he was younger.',
-                            givenWord: 'NEARLY',
-                            prefix: 'My brother',
-                            suffix: 'much now as he did when he was younger.',
-                            answer: "doesn't earn nearly as much"
-                        },
-                        {
-                            number: 26,
-                            original: 'They are demolishing the old bus station and replacing it with a new one.',
-                            givenWord: 'PULLED',
-                            prefix: 'The old bus station is',
-                            suffix: 'with a new one.',
-                            answer: 'being pulled down and replaced'
-                        },
-                        {
-                            number: 27,
-                            original: 'The number of students now at university has reached an all-time high, apparently.',
-                            givenWord: 'THE',
-                            prefix: 'The number of students now at university is',
-                            suffix: 'been, apparently.',
-                            answer: 'the highest it has ever'
-                        },
-                        {
-                            number: 28,
-                            original: 'I’m disappointed with the Fishers’ new album when I compare it to their previous one.',
-                            givenWord: 'COMPARISON',
-                            prefix: 'I think the Fishers’ new album is',
-                            suffix: 'their previous one.',
-                            answer: 'disappointing in comparison with'
-                        },
-                        {
-                            number: 29,
-                            original: 'Anna got the job even though she didn’t have much experience in public relations.',
-                            givenWord: 'SPITE',
-                            prefix: 'Anna got the job',
-                            suffix: 'of experience in public relations.',
-                            answer: 'in spite of her lack'
-                        },
-                        {
-                            number: 30,
-                            original: '‘I must warn you how dangerous it is to cycle at night without any lights,’ said the police officer to Max.',
-                            givenWord: 'DANGERS',
-                            prefix: 'Max received a',
-                            suffix: 'at night without any lights from the police officer.',
-                            answer: 'warning about the dangers of cycling'
-                        }
-                    ],
-                    explanation: 'En key word transformations conviene detectar la estructura equivalente exacta: nearly as much, being pulled down, the highest it has ever, in comparison with, in spite of, and warning about the dangers of cycling.'
-                }
-            ]
-        };
-
+        let appData = null;
+        let selectedSet = null;
         let currentExerciseType = null;
         let currentExerciseIndex = 0;
-        let currentExercises = [];
         let userAnswers = {};
         let showResults = false;
+        let currentExercises = [];
 
-        function selectExerciseType(type) {
-            currentExerciseType = type;
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        function setStatus(message, type = 'error', visible = true) {
+            const box = document.getElementById('jsonStatus');
+            const text = document.getElementById('jsonStatusText');
+            box.className = `json-status ${type}${visible ? ' show' : ''}`;
+            text.textContent = message;
+        }
+
+        function applyAppMeta() {
+            const meta = appData?.app || {};
+            document.getElementById('appTitle').textContent = meta.title || 'Cambridge English Practice 🎓';
+            document.getElementById('appSubtitle').textContent = meta.subtitle || 'Selecciona un bloque y después el tipo de ejercicio.';
+            document.getElementById('appFooter').textContent = meta.footer || '📖 Datos cargados desde exercises.json';
+        }
+
+        function getTypeMeta(typeKey) {
+            return appData?.exerciseTypes?.[typeKey] || {
+                label: typeKey,
+                icon: '📘',
+                description: 'Tipo de ejercicio'
+            };
+        }
+
+        function getOrderedTypeKeys(typeMap = {}) {
+            const preferred = appData?.app?.exerciseTypeOrder || [];
+            const available = Object.keys(typeMap || {}).filter(key => Array.isArray(typeMap[key]) && typeMap[key].length > 0);
+            const ordered = preferred.filter(key => available.includes(key));
+            const rest = available.filter(key => !ordered.includes(key));
+            return [...ordered, ...rest];
+        }
+
+        async function loadExercisesJson() {
+            try {
+                setStatus('Cargando exercises.json...', 'success', true);
+                const response = await fetch('exercises.json', { cache: 'no-store' });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                appData = await response.json();
+                validateAppData(appData);
+                applyAppMeta();
+                renderHome();
+                setStatus('exercises.json cargado correctamente.', 'success', true);
+            } catch (error) {
+                setStatus('No se ha podido cargar exercises.json automáticamente. Si abriste el HTML con doble clic, es normal que el navegador bloquee el fetch local. Usa Live Server / un servidor local o pulsa “Seleccionar exercises.json”.', 'error', true);
+                console.error(error);
+            }
+        }
+
+        function validateAppData(data) {
+            if (!data || !Array.isArray(data.exerciseSets)) {
+                throw new Error('El JSON no tiene la clave exerciseSets con un array válido.');
+            }
+        }
+
+        function renderHome() {
+            applyAppMeta();
+            selectedSet = null;
+            currentExerciseType = null;
             currentExerciseIndex = 0;
-            currentExercises = exerciseData[type];
             userAnswers = {};
             showResults = false;
 
-            document.getElementById('homeScreen').style.display = 'none';
-            document.getElementById('exerciseScreen').classList.add('active');
-            loadExercise(0);
+            const grid = document.getElementById('exerciseSetGrid');
+            const sets = appData.exerciseSets || [];
+            document.getElementById('setCounter').textContent = `${sets.length} bloque${sets.length === 1 ? '' : 's'}`;
+            grid.innerHTML = '';
+
+            sets.forEach((setItem, index) => {
+                const availableTypes = getOrderedTypeKeys(setItem.types);
+                let totalActivities = 0;
+                availableTypes.forEach(typeKey => {
+                    totalActivities += (setItem.types[typeKey] || []).length;
+                });
+
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+                card.innerHTML = `
+                    <div class="icon">📚</div>
+                    <h2>${setItem.title || `Exercise ${index + 1}`}</h2>
+                    <p>${setItem.description || 'Bloque de ejercicios'}</p>
+                    <div class="count">${availableTypes.length} tipos · ${totalActivities} actividad${totalActivities === 1 ? '' : 'es'}</div>
+                `;
+                card.addEventListener('click', () => selectExerciseSet(setItem.id));
+                grid.appendChild(card);
+            });
+
+            showScreen('homeScreen');
+        }
+
+        function selectExerciseSet(setId) {
+            selectedSet = (appData.exerciseSets || []).find(item => item.id === setId) || null;
+            if (!selectedSet) return;
+
+            document.getElementById('selectedSetTitle').textContent = selectedSet.title || 'Tipos de ejercicio';
+            document.getElementById('selectedSetDescription').textContent = selectedSet.description || 'Selecciona un tipo de actividad.';
+            document.getElementById('selectedSetLevel').textContent = selectedSet.level || 'Sin nivel';
+
+            const grid = document.getElementById('exerciseTypeGrid');
+            grid.innerHTML = '';
+
+            getOrderedTypeKeys(selectedSet.types).forEach(typeKey => {
+                const meta = getTypeMeta(typeKey);
+                const count = (selectedSet.types[typeKey] || []).length;
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+                card.innerHTML = `
+                    <div class="icon">${meta.icon || '📘'}</div>
+                    <h2>${meta.label || typeKey}</h2>
+                    <p>${meta.description || 'Tipo de ejercicio'}</p>
+                    <div class="count">${count} bloque${count === 1 ? '' : 's'} de este tipo</div>
+                `;
+                card.addEventListener('click', () => selectExerciseType(typeKey));
+                grid.appendChild(card);
+            });
+
+            showScreen('typeSelectionScreen');
         }
 
         function goHome() {
-            document.getElementById('homeScreen').style.display = 'grid';
-            document.getElementById('exerciseScreen').classList.remove('active');
-            currentExerciseType = null;
-            currentExercises = [];
-            showResults = false;
+            renderHome();
+        }
+
+        function goTypeSelection() {
+            if (!selectedSet) {
+                goHome();
+                return;
+            }
+            selectExerciseSet(selectedSet.id);
+        }
+
+        function selectExerciseType(typeKey) {
+            currentExerciseType = typeKey;
+            currentExerciseIndex = 0;
             userAnswers = {};
-            document.getElementById('resultSummary').classList.remove('show');
-            document.getElementById('explanation').classList.remove('show');
+            showResults = false;
+            currentExercises = selectedSet?.types?.[typeKey] || [];
+            if (!currentExercises.length) return;
+            showScreen('exerciseScreen');
+            loadExercise(0);
         }
 
         function loadExercise(index) {
             currentExerciseIndex = index;
             showResults = false;
-            updateProgress();
             renderExerciseContent(currentExercises[index]);
+            updateProgress();
             updateButtons();
             document.getElementById('resultSummary').classList.remove('show');
             document.getElementById('explanation').classList.remove('show');
         }
 
         function updateProgress() {
-            const total = currentExercises.length || 1;
-            const progress = ((currentExerciseIndex + 1) / total) * 100;
-            document.getElementById('exerciseNumber').textContent = `Ejercicio ${currentExerciseIndex + 1} de ${total}`;
-            document.getElementById('progressBar').style.width = `${progress}%`;
-
-            const typeTexts = {
-                multipleChoice: '📝 Multiple Choice',
-                fillBlanks: '✍️ Fill the Gaps',
-                wordFormation: '🔄 Word Formation',
-                sentenceTransformation: '✏️ Sentence Transformation'
-            };
-
-            document.getElementById('exerciseType').textContent = typeTexts[currentExerciseType];
+            const progress = currentExercises.length ? ((currentExerciseIndex + 1) / currentExercises.length) * 100 : 0;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('exerciseNumber').textContent = `Ejercicio ${currentExerciseIndex + 1} de ${currentExercises.length}`;
+            const meta = getTypeMeta(currentExerciseType);
+            document.getElementById('exerciseType').textContent = `${meta.icon || '📘'} ${meta.label || currentExerciseType}`;
         }
 
         function renderExerciseContent(exercise) {
-            const content = document.getElementById('exerciseContent');
-            content.innerHTML = '';
+            const container = document.getElementById('exerciseContent');
+            container.innerHTML = '';
 
             const intro = document.createElement('div');
             intro.className = 'exercise-intro';
             intro.innerHTML = `
-                <h3 class="exercise-title">${exercise.title}</h3>
-                <p class="exercise-subtitle">Formato adaptado para que el alumno vea el texto completo y los huecos numerados.</p>
+                <h2 class="exercise-title">${exercise.title || 'Ejercicio'}</h2>
+                <p class="exercise-subtitle">Bloque: ${selectedSet?.title || '-'} · Tipo: ${getTypeMeta(currentExerciseType).label || currentExerciseType}</p>
                 <div class="instruction-strip">
-                    ${exercise.instructions}
-                    ${exercise.note ? `<div class="mini-note">💡 ${exercise.note}</div>` : ''}
+                    ${exercise.instructions || ''}
+                    ${exercise.note ? `<div class="mini-note">${exercise.note}</div>` : ''}
                 </div>
             `;
-            content.appendChild(intro);
+            container.appendChild(intro);
 
             if (currentExerciseType === 'multipleChoice') {
-                renderMultipleChoice(exercise, content);
+                renderMultipleChoice(exercise, container);
             } else if (currentExerciseType === 'fillBlanks') {
-                renderFillBlanks(exercise, content);
+                renderFillBlanks(exercise, container);
             } else if (currentExerciseType === 'wordFormation') {
-                renderWordFormation(exercise, content);
+                renderWordFormation(exercise, container);
             } else if (currentExerciseType === 'sentenceTransformation') {
-                renderSentenceTransformation(exercise, content);
+                renderSentenceTransformation(exercise, container);
             }
         }
 
@@ -932,21 +574,19 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
             container.appendChild(createPassageBlock(exercise.text));
 
             const section = document.createElement('div');
-            section.innerHTML = `<div class="section-title">✅ Respuestas para cada hueco</div>`;
+            section.innerHTML = `<div class="section-title">✅ Respuestas</div>`;
             const list = document.createElement('div');
             list.className = 'question-list';
 
             exercise.questions.forEach((question) => {
                 const card = document.createElement('div');
                 card.className = 'question-card';
-
-                const header = document.createElement('div');
-                header.className = 'question-header';
-                header.innerHTML = `
-                    <span class="question-number-badge">${question.number}</span>
-                    <div class="question-card-title">Elige la opción correcta para el hueco ${question.number}</div>
+                card.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number-badge">${question.number}</span>
+                        <div class="question-card-title">Elige la opción correcta para el hueco ${question.number}</div>
+                    </div>
                 `;
-                card.appendChild(header);
 
                 const optionsGrid = document.createElement('div');
                 optionsGrid.className = 'options-grid';
@@ -954,28 +594,21 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
                 Object.entries(question.options).forEach(([letter, text]) => {
                     const button = document.createElement('button');
                     button.className = 'option-button';
-                    button.type = 'button';
                     button.disabled = showResults;
-
                     const selected = userAnswers[questionKey(exercise.id, question.number)] === letter;
                     if (selected) button.classList.add('selected');
 
                     if (showResults) {
                         if (letter === question.correct) button.classList.add('correct');
-                        if (selected && letter !== question.correct) button.classList.add('incorrect');
+                        else if (selected) button.classList.add('incorrect');
                     }
 
-                    button.innerHTML = `
-                        <span class="option-letter">${letter}</span>
-                        <span>${text}</span>
-                    `;
-
+                    button.innerHTML = `<span class="option-letter">${letter}</span><span>${text}</span>`;
                     button.addEventListener('click', () => {
                         if (showResults) return;
                         userAnswers[questionKey(exercise.id, question.number)] = letter;
                         renderExerciseContent(exercise);
                     });
-
                     optionsGrid.appendChild(button);
                 });
 
@@ -986,7 +619,6 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
                     const status = document.createElement('div');
                     const isCorrect = selected === question.correct;
                     status.className = `mc-status ${isCorrect ? 'correct' : 'incorrect'}`;
-
                     if (isCorrect) {
                         status.textContent = `✓ Correcto. La respuesta es ${question.correct}: ${question.options[question.correct]}.`;
                     } else if (selected) {
@@ -1015,14 +647,12 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
             exercise.blanks.forEach((blank) => {
                 const card = document.createElement('div');
                 card.className = 'answer-card';
-
-                const header = document.createElement('div');
-                header.className = 'answer-card-header';
-                header.innerHTML = `
-                    <span class="gap-chip">${blank.number}</span>
-                    <span>Una sola palabra</span>
+                card.innerHTML = `
+                    <div class="answer-card-header">
+                        <span class="gap-chip">${blank.number}</span>
+                        <span>Una sola palabra</span>
+                    </div>
                 `;
-                card.appendChild(header);
 
                 const input = document.createElement('input');
                 input.type = 'text';
@@ -1044,9 +674,7 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
                     const feedback = document.createElement('div');
                     const correct = isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answer);
                     feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
-                    feedback.textContent = correct
-                        ? `✓ Correcto: ${blank.answer.toUpperCase()}`
-                        : `✗ Respuesta correcta: ${blank.answer.toUpperCase()}`;
+                    feedback.textContent = correct ? `✓ Correcto: ${blank.answer.toUpperCase()}` : `✗ Respuesta correcta: ${blank.answer.toUpperCase()}`;
                     card.appendChild(feedback);
                 }
 
@@ -1062,24 +690,21 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
 
             const section = document.createElement('div');
             section.innerHTML = `<div class="section-title">🔤 Respuestas y palabra base</div>`;
-
             const rows = document.createElement('div');
             rows.className = 'word-rows';
 
             exercise.blanks.forEach((blank) => {
                 const card = document.createElement('div');
                 card.className = 'answer-card';
-
-                const header = document.createElement('div');
-                header.className = 'answer-card-header';
-                header.innerHTML = `
-                    <div style="display:flex; align-items:center; gap:0.65rem;">
-                        <span class="gap-chip">${blank.number}</span>
-                        <span class="base-word-badge">${blank.base}</span>
+                card.innerHTML = `
+                    <div class="answer-card-header">
+                        <div style="display:flex; align-items:center; gap:0.65rem;">
+                            <span class="gap-chip">${blank.number}</span>
+                            <span class="base-word-badge">${blank.base}</span>
+                        </div>
+                        <span>Forma correcta</span>
                     </div>
-                    <span>Forma correcta</span>
                 `;
-                card.appendChild(header);
 
                 const input = document.createElement('input');
                 input.type = 'text';
@@ -1101,9 +726,7 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
                     const feedback = document.createElement('div');
                     const correct = isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answer);
                     feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
-                    feedback.textContent = correct
-                        ? `✓ Correcto: ${blank.answer.toUpperCase()}`
-                        : `✗ Respuesta correcta: ${blank.answer.toUpperCase()}`;
+                    feedback.textContent = correct ? `✓ Correcto: ${blank.answer.toUpperCase()}` : `✗ Respuesta correcta: ${blank.answer.toUpperCase()}`;
                     card.appendChild(feedback);
                 }
 
@@ -1121,7 +744,6 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
             exercise.items.forEach((item) => {
                 const block = document.createElement('div');
                 block.className = 'transform-item';
-
                 block.innerHTML = `
                     <div class="transform-top">
                         <span class="question-number-badge">${item.number}</span>
@@ -1129,14 +751,13 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
                             <div class="transform-original">${item.original}</div>
                             <div class="given-word-box">Palabra dada: ${item.givenWord}</div>
                             <div class="transform-complete-line">
-                                <span class="transform-prefix">${item.prefix}</span>
+                                <span>${item.prefix}</span>
                             </div>
                         </div>
                     </div>
                 `;
 
                 const line = block.querySelector('.transform-complete-line');
-
                 const input = document.createElement('input');
                 input.type = 'text';
                 input.className = 'input-field transform-input';
@@ -1146,11 +767,9 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
                 input.addEventListener('input', (e) => {
                     userAnswers[transformKey(exercise.id, item.number)] = e.target.value;
                 });
-
                 line.appendChild(input);
 
                 const suffix = document.createElement('span');
-                suffix.className = 'transform-suffix';
                 suffix.textContent = item.suffix;
                 line.appendChild(suffix);
 
@@ -1163,9 +782,7 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
                     const correct = isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)]);
                     const feedback = document.createElement('div');
                     feedback.className = `transform-feedback ${correct ? 'correct' : 'incorrect'}`;
-                    feedback.textContent = correct
-                        ? '✓ Correcto.'
-                        : `✗ Respuesta correcta: ${item.answer.toUpperCase()}`;
+                    feedback.textContent = correct ? '✓ Correcto.' : `✗ Respuesta correcta: ${item.answer.toUpperCase()}`;
                     block.appendChild(feedback);
 
                     const preview = document.createElement('div');
@@ -1183,39 +800,22 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
         function createPassageBlock(text) {
             const wrapper = document.createElement('div');
             wrapper.className = 'exercise-passage';
-            wrapper.innerHTML = formatPassageHtml(text);
+            wrapper.innerHTML = formatPassageHtml(text || '');
             return wrapper;
         }
 
         function formatPassageHtml(text) {
-            const paragraphs = text.split('\n\n').map(paragraph => {
+            return (text || '').split('\n\n').map(paragraph => {
                 let html = paragraph;
-
-                html = html.replace(/\{\{(\d+)\|([A-Z]+)\}\}/g, (_, number, base) => {
-                    return `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span><span class="gap-base-inline">${base}</span></span>`;
-                });
-
-                html = html.replace(/\{\{(\d+)\}\}/g, (_, number) => {
-                    return `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span></span>`;
-                });
-
+                html = html.replace(/\{\{(\d+)\|([A-Z]+)\}\}/g, (_, number, base) => `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span><span class="gap-base-inline">${base}</span></span>`);
+                html = html.replace(/\{\{(\d+)\}\}/g, (_, number) => `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span></span>`);
                 return `<p>${html}</p>`;
-            });
-
-            return paragraphs.join('');
+            }).join('');
         }
 
-        function questionKey(exerciseId, number) {
-            return `${exerciseId}-q-${number}`;
-        }
-
-        function blankKey(exerciseId, number) {
-            return `${exerciseId}-blank-${number}`;
-        }
-
-        function transformKey(exerciseId, number) {
-            return `${exerciseId}-transform-${number}`;
-        }
+        function questionKey(exerciseId, number) { return `${exerciseId}-q-${number}`; }
+        function blankKey(exerciseId, number) { return `${exerciseId}-blank-${number}`; }
+        function transformKey(exerciseId, number) { return `${exerciseId}-transform-${number}`; }
 
         function normalizeText(value) {
             return (value || '')
@@ -1233,8 +833,7 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
         function isTransformationCorrect(item, userValue) {
             const normalizedInput = normalizeText(userValue);
             const normalizedAnswer = normalizeText(item.answer);
-            const fullSentence = `${item.prefix} ${item.answer} ${item.suffix}`;
-            const normalizedFull = normalizeText(fullSentence);
+            const normalizedFull = normalizeText(`${item.prefix} ${item.answer} ${item.suffix}`);
             return normalizedInput === normalizedAnswer || normalizedInput === normalizedFull;
         }
 
@@ -1244,13 +843,11 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
                 const correct = exercise.questions.filter(q => userAnswers[questionKey(exercise.id, q.number)] === q.correct).length;
                 return { correct, total };
             }
-
             if (currentExerciseType === 'fillBlanks' || currentExerciseType === 'wordFormation') {
                 const total = exercise.blanks.length;
                 const correct = exercise.blanks.filter(blank => isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answer)).length;
                 return { correct, total };
             }
-
             const total = exercise.items.length;
             const correct = exercise.items.filter(item => isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)])).length;
             return { correct, total };
@@ -1264,17 +861,11 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
             const score = getScore(exercise);
             const summary = document.getElementById('resultSummary');
             summary.classList.add('show');
-            summary.innerHTML = `
-                <h3>📊 Resultado</h3>
-                <p>Has acertado <strong>${score.correct}</strong> de <strong>${score.total}</strong> respuestas.</p>
-            `;
+            summary.innerHTML = `<h3>📊 Resultado</h3><p>Has acertado <strong>${score.correct}</strong> de <strong>${score.total}</strong> respuestas.</p>`;
 
             const explanation = document.getElementById('explanation');
             explanation.classList.add('show');
-            explanation.innerHTML = `
-                <h3>📚 Pista de corrección</h3>
-                <p>${exercise.explanation}</p>
-            `;
+            explanation.innerHTML = `<h3>📚 Pista de corrección</h3><p>${exercise.explanation || ''}</p>`;
 
             updateButtons();
         }
@@ -1283,11 +874,17 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
             const buttonGroup = document.getElementById('buttonGroup');
             buttonGroup.innerHTML = '';
 
-            const backBtn = document.createElement('button');
-            backBtn.className = 'button button-back';
-            backBtn.textContent = '← Volver';
-            backBtn.onclick = goHome;
-            buttonGroup.appendChild(backBtn);
+            const backTypesBtn = document.createElement('button');
+            backTypesBtn.className = 'button button-back';
+            backTypesBtn.textContent = '← Volver a tipos';
+            backTypesBtn.onclick = goTypeSelection;
+            buttonGroup.appendChild(backTypesBtn);
+
+            const backHomeBtn = document.createElement('button');
+            backHomeBtn.className = 'button button-secondary';
+            backHomeBtn.textContent = '⌂ Ir a bloques';
+            backHomeBtn.onclick = goHome;
+            buttonGroup.appendChild(backHomeBtn);
 
             if (!showResults) {
                 const checkBtn = document.createElement('button');
@@ -1313,18 +910,33 @@ Such a diet enables them to move very {{21|ENERGY}} when required. Regular train
             }
         }
 
-        function retryExercise() {
-            loadExercise(currentExerciseIndex);
-        }
+        function retryExercise() { loadExercise(currentExerciseIndex); }
+        function nextExercise() { if (currentExerciseIndex < currentExercises.length - 1) loadExercise(currentExerciseIndex + 1); }
 
-        function nextExercise() {
-            if (currentExerciseIndex < currentExercises.length - 1) {
-                loadExercise(currentExerciseIndex + 1);
-            }
+        function handleJsonFile(event) {
+            const file = event.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = () => {
+                try {
+                    appData = JSON.parse(reader.result);
+                    validateAppData(appData);
+                    applyAppMeta();
+                    renderHome();
+                    setStatus(`Archivo ${file.name} cargado correctamente.`, 'success', true);
+                } catch (error) {
+                    setStatus('El archivo seleccionado no es un exercises.json válido.', 'error', true);
+                    console.error(error);
+                }
+            };
+            reader.readAsText(file, 'utf-8');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('homeScreen').style.display = 'grid';
+            document.getElementById('retryLoadBtn').addEventListener('click', loadExercisesJson);
+            document.getElementById('selectJsonBtn').addEventListener('click', () => document.getElementById('jsonFileInput').click());
+            document.getElementById('jsonFileInput').addEventListener('change', handleJsonFile);
+            loadExercisesJson();
         });
     </script>
 </body>

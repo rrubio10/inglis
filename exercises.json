@@ -1,259 +1,164 @@
 {
-  "metadata": {
-    "title": "English Practice Hub - Cambridge Exercises",
-    "version": "1.0",
-    "lastUpdated": "2024",
-    "description": "Ejercicios basados en Cambridge English Exams",
-    "exerciseCount": 10,
-    "levels": ["A1", "A2", "B1", "B2", "C1", "C2"]
-  },
-  
-  "exercises": {
-    "multipleChoice": [
-      {
-        "id": "mc1",
-        "level": "B1",
-        "source": "Cambridge PET",
-        "text": "She ___ to the cinema every weekend.",
-        "options": ["go", "goes", "going", "gone"],
-        "correctIndex": 1,
-        "explanation": "Se usa 'goes' porque el sujeto es tercera persona singular (she) y el verbo requiere la forma conjugada.",
-        "grammar": "Present Simple - Third Person Singular"
-      },
-      {
-        "id": "mc2",
-        "level": "B2",
-        "source": "Cambridge FCE",
-        "text": "If I had known about the party, I ___ gone.",
-        "options": ["would have", "had", "would", "have"],
-        "correctIndex": 0,
-        "explanation": "'would have' se usa en condicionales de tercer tipo (mixed conditional) con 'had known'.",
-        "grammar": "Third Conditional - Mixed Conditional"
-      },
-      {
-        "id": "mc3",
-        "level": "B1",
-        "source": "Cambridge PET",
-        "text": "The project must be ___ by Friday.",
-        "options": ["completing", "completed", "complete", "completes"],
-        "correctIndex": 1,
-        "explanation": "Con 'must be' (pasiva), necesitamos el participio pasado 'completed'.",
-        "grammar": "Passive Voice - Must + be + past participle"
-      },
-      {
-        "id": "mc4",
-        "level": "B2",
-        "source": "Cambridge FCE",
-        "text": "By the time you arrive, I ___ dinner.",
-        "options": ["finished", "will have finished", "have finished", "finishing"],
-        "correctIndex": 1,
-        "explanation": "'will have finished' es el future perfect, expresando una acción que se completará antes de otra en el futuro.",
-        "grammar": "Future Perfect"
-      }
-    ],
-    
-    "fillBlanks": [
-      {
-        "id": "fb1",
-        "level": "B1",
-        "source": "Cambridge PET",
-        "text": "Despite the _____, the match continued. The players were very _____ to win.",
-        "blanks": [
-          {
-            "position": 1,
-            "answer": "rain",
-            "wordType": "noun",
-            "hints": ["clima", "4 letras"],
-            "alternativeAnswers": ["weather", "storm"]
-          },
-          {
-            "position": 2,
-            "answer": "determined",
-            "wordType": "adjective",
-            "hints": ["resueltos", "10 letras"],
-            "alternativeAnswers": ["eager", "keen"]
-          }
-        ],
-        "explanation": "Rain (lluvia) es una palabra común para clima. Determined (determinado) describe la actitud de los jugadores.",
-        "theme": "Sports"
-      },
-      {
-        "id": "fb2",
-        "level": "B1",
-        "source": "Cambridge PET",
-        "text": "The _____ between the two companies led to an ____ situation.",
-        "blanks": [
-          {
-            "position": 1,
-            "answer": "disagreement",
-            "wordType": "noun",
-            "hints": ["desacuerdo", "11 letras"],
-            "alternativeAnswers": ["conflict", "dispute"]
-          },
-          {
-            "position": 2,
-            "answer": "awkward",
-            "wordType": "adjective",
-            "hints": ["incómodo", "8 letras"],
-            "alternativeAnswers": ["difficult", "uncomfortable"]
-          }
-        ],
-        "explanation": "Disagreement (desacuerdo) es el sustantivo. Awkward (incómodo) describe la situación.",
-        "theme": "Business"
-      },
-      {
-        "id": "fb3",
-        "level": "B2",
-        "source": "Cambridge FCE",
-        "text": "The government announced a new _____ to combat _____ unemployment in rural areas.",
-        "blanks": [
-          {
-            "position": 1,
-            "answer": "policy",
-            "wordType": "noun",
-            "hints": ["política", "6 letras"],
-            "alternativeAnswers": ["plan", "strategy"]
-          },
-          {
-            "position": 2,
-            "answer": "rising",
-            "wordType": "adjective/gerund",
-            "hints": ["creciente", "6 letras"],
-            "alternativeAnswers": ["growing"]
-          }
-        ],
-        "explanation": "Policy (política) es el sustantivo apropiado. Rising (creciente) es un gerundio usado como adjetivo.",
-        "theme": "Politics"
-      }
-    ],
-    
-    "reorderBlanks": [
-      {
-        "id": "rb1",
-        "level": "B1",
-        "source": "Cambridge PET",
-        "text": "The company _____ (ESTABLISH) in 1995 and _____ (GROW) significantly since then.",
-        "blanks": [
-          {
-            "position": 1,
-            "baseWord": "ESTABLISH",
-            "correctForm": "was established",
-            "wordType": "passive verb",
-            "hints": ["pasiva, pasado"],
-            "explanation": "Pasiva en pasado simple para expresar que alguien estableció la empresa."
-          },
-          {
-            "position": 2,
-            "baseWord": "GROW",
-            "correctForm": "has grown",
-            "wordType": "present perfect",
-            "hints": ["present perfect", "desde entonces"],
-            "explanation": "Present perfect porque el crecimiento comenzó en el pasado y continúa hasta ahora."
-          }
-        ],
-        "explanation": "Primera: pasiva en pasado (was + participio pasado). Segunda: present perfect porque continúa hasta ahora.",
-        "grammar": "Passive Voice + Present Perfect"
-      },
-      {
-        "id": "rb2",
-        "level": "B1",
-        "source": "Cambridge PET",
-        "text": "If she _____ (STUDY) harder, she _____ (PASS) the exam.",
-        "blanks": [
-          {
-            "position": 1,
-            "baseWord": "STUDY",
-            "correctForm": "studied",
-            "wordType": "past simple",
-            "hints": ["conditional, pasado"],
-            "explanation": "Pasado simple para el primer condicional."
-          },
-          {
-            "position": 2,
-            "baseWord": "PASS",
-            "correctForm": "would pass",
-            "wordType": "conditional",
-            "hints": ["would + base verb", "condicional"],
-            "explanation": "Would + infinitivo para el resultado del condicional."
-          }
-        ],
-        "explanation": "Condicional simple: pasado simple + would + infinitivo.",
-        "grammar": "Second Conditional"
-      },
-      {
-        "id": "rb3",
-        "level": "B1",
-        "source": "Cambridge PET",
-        "text": "The document _____ (LOSE) during the move, which is unfortunate.",
-        "blanks": [
-          {
-            "position": 1,
-            "baseWord": "LOSE",
-            "correctForm": "was lost",
-            "wordType": "passive verb",
-            "hints": ["pasiva, pasado simple"],
-            "explanation": "Pasiva en pasado simple para expresar que alguien perdió el documento."
-          }
-        ],
-        "explanation": "Pasiva en pasado simple: was + participio pasado.",
-        "grammar": "Passive Voice - Past Simple"
-      }
-    ],
-    
-    "rewrite": [
-      {
-        "id": "rw1",
-        "level": "B1",
-        "source": "Cambridge PET",
-        "original": "She is so intelligent that everyone respects her.",
-        "instruction": "Reescribe usando 'Such... that' en lugar de 'So... that'",
-        "correctAnswers": [
-          "She is such an intelligent person that everyone respects her.",
-          "She is such a clever person that everyone respects her.",
-          "She is such an intelligent woman that everyone respects her."
-        ],
-        "hints": [
-          "Usa 'Such + a/an + adjective + noun'",
-          "La estructura cambia pero el significado es igual"
-        ],
-        "explanation": "Such + a/an + adjective + noun + that = So + adjective + that. Ambas expresan resultado.",
-        "grammar": "So... that vs Such... that"
-      },
-      {
-        "id": "rw2",
-        "level": "B1",
-        "source": "Cambridge PET",
-        "original": "I haven't seen her since 2019.",
-        "instruction": "Reescribe sin usar 'since', expresando el tiempo transcurrido",
-        "correctAnswers": [
-          "It's been years since I last saw her.",
-          "It has been a long time since I saw her.",
-          "I last saw her in 2019."
-        ],
-        "hints": [
-          "Cambia la perspectiva temporal",
-          "Puedes usar 'last saw' en lugar de 'haven't seen'"
-        ],
-        "explanation": "Se puede expresar lo mismo enfatizando el tiempo transcurrido en lugar de la acción.",
-        "grammar": "Present Perfect vs Past Simple"
-      }
+  "app": {
+    "title": "Cambridge English Practice 🎓",
+    "subtitle": "Primero eliges un bloque de ejercicios y después el tipo de actividad.",
+    "footer": "📖 App preparada para cargar muchos ejercicios desde exercises.json",
+    "exerciseTypeOrder": [
+      "multipleChoice",
+      "fillBlanks",
+      "wordFormation",
+      "sentenceTransformation"
     ]
   },
-
-  "guidelines": {
-    "addingNewExercises": "Usa esta estructura JSON para agregar nuevos ejercicios de tus investigaciones de Cambridge",
-    "sources": [
-      "Cambridge PET (A2-B1)",
-      "Cambridge FCE (B2)",
-      "Cambridge CAE (C1)",
-      "Cambridge CPE (C2)"
-    ],
-    "tips": [
-      "Asegúrate de incluir explicaciones en ambos idiomas",
-      "Proporciona pistas útiles para los estudiantes",
-      "Categoriza por nivel de dificultad",
-      "Incluye alternativas donde sea posible",
-      "Menciona la fuente del ejercicio"
-    ]
-  }
+  "exerciseTypes": {
+    "multipleChoice": {
+      "label": "Multiple Choice",
+      "icon": "📝",
+      "description": "Texto completo con todos los huecos numerados y una sección de respuestas por cada pregunta."
+    },
+    "fillBlanks": {
+      "label": "Fill the Gaps",
+      "icon": "✍️",
+      "description": "Lectura completa con todos los huecos visibles y una hoja de respuestas para escribir una palabra."
+    },
+    "wordFormation": {
+      "label": "Word Formation",
+      "icon": "🔄",
+      "description": "Texto completo con huecos y palabra base indicada en cada caso, tal y como aparece en Cambridge."
+    },
+    "sentenceTransformation": {
+      "label": "Sentence Transformation",
+      "icon": "✏️",
+      "description": "Las frases salen completas, con la palabra dada y un espacio para escribir solo el fragmento que falta."
+    }
+  },
+  "exerciseSets": [
+    {
+      "id": "exercise_1",
+      "title": "Exercise 1",
+      "description": "Bloque de ejemplo con los cuatro tipos de ejercicio.",
+      "level": "B2 First / C1 Advanced",
+      "types": {
+        "multipleChoice": [
+          {
+            "id": "mc_black_bears",
+            "title": "Studying black bears",
+            "instructions": "For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.",
+            "note": "Ahora ya no se muestra un trozo suelto del texto: ves todo el pasaje y debajo eliges una opción distinta para cada hueco.",
+            "text": "After years studying North America’s black bears in the usual way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to {{1}} their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.\n\nThe {{2}} this has given him into their behaviour has allowed him to dispel certain myths about bears. {{3}} to popular belief, he contends that bears do not {{4}} as much for fruit as previously supposed. He also {{5}} claims that they are ferocious. He says that people should not be {{6}} by behaviour such as swatting paws on the ground, as this is a defensive, rather than an aggressive, act.\n\nHowever, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no {{7}} about their feelings for him. It is clear that their interest in him does not {{8}} beyond the food he brings.",
+            "questions": [
+              { "number": 1, "options": { "A": "catch", "B": "win", "C": "achieve", "D": "receive" }, "correct": "B" },
+              { "number": 2, "options": { "A": "perception", "B": "awareness", "C": "insight", "D": "vision" }, "correct": "C" },
+              { "number": 3, "options": { "A": "Opposite", "B": "Opposed", "C": "Contrary", "D": "Contradictory" }, "correct": "C" },
+              { "number": 4, "options": { "A": "care", "B": "bother", "C": "desire", "D": "hope" }, "correct": "A" },
+              { "number": 5, "options": { "A": "concludes", "B": "disputes", "C": "reasons", "D": "argues" }, "correct": "B" },
+              { "number": 6, "options": { "A": "misguided", "B": "misled", "C": "misdirected", "D": "misinformed" }, "correct": "B" },
+              { "number": 7, "options": { "A": "error", "B": "doubt", "C": "illusion", "D": "impression" }, "correct": "C" },
+              { "number": 8, "options": { "A": "expand", "B": "spread", "C": "widen", "D": "extend" }, "correct": "D" }
+            ],
+            "explanation": "En esta parte suelen decidir mucho las colocaciones: win trust, insight into, contrary to, care for, disputes claims, be misled, under no illusion, extend beyond."
+          }
+        ],
+        "fillBlanks": [
+          {
+            "id": "fb_origin_language",
+            "title": "The origin of language",
+            "instructions": "For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.",
+            "note": "Aquí tienes el texto entero con todos los huecos visibles y una zona de respuesta independiente para escribir una sola palabra.",
+            "text": "The truth is nobody really knows how language first began. Did we all start talking at around the same time {{9}} of the manner in which our brains had begun to develop?\n\nAlthough there is a lack of clear evidence, people have come up with various theories about the origins of language. One recent theory is that human beings have evolved in {{10}} a way that we are programmed for language from the moment of birth. In {{11}} words, language came about as a result of an evolutionary change in our brains at some stage.\n\nLanguage {{12}} well be programmed into the brain but, {{13}} this, people still need stimulus from others around them. From studies, we know that {{14}} children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so. This research shows, if {{15}} else, that language is a social activity, not something invented {{16}} isolation.",
+            "blanks": [
+              { "number": 9, "answer": "because" },
+              { "number": 10, "answer": "such" },
+              { "number": 11, "answer": "other" },
+              { "number": 12, "answer": "may" },
+              { "number": 13, "answer": "despite" },
+              { "number": 14, "answer": "if" },
+              { "number": 15, "answer": "nothing" },
+              { "number": 16, "answer": "in" }
+            ],
+            "explanation": "En Open Cloze suelen caer conectores y expresiones fijas: because of, such a way, in other words, may well, despite this, if children..., if nothing else, in isolation."
+          }
+        ],
+        "wordFormation": [
+          {
+            "id": "wf_training_sports_champions",
+            "title": "Training sports champions",
+            "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap.",
+            "note": "El texto aparece completo y en cada hueco se ve también la palabra base para que la respuesta se parezca más al formato real.",
+            "text": "What are the abilities that a professional athlete needs to guarantee that opponents can be {{17|COME}}? Clearly, speed, stamina and agility are essential, not to mention outstanding natural talent.\n\nBoth a rigorous and comprehensive {{18|FIT}} regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates, rather than proteins and fat, that provide athletes with the {{19|ENDURE}} they need to compete. This means that pasta is more {{20|BENEFIT}} than eggs or meat.\n\nSuch a diet enables them to move very {{21|ENERGY}} when required. Regular training to increase muscular {{22|STRONG}} is also vital, and this is typically achieved through weight training. It is, of course, important to emphasize the role of {{23|DETERMINE}} in an athlete’s success, since training can be exhausting. Sports people are prone to injury but a quality training regime can ensure that the {{24|SEVERE}} of these can be minimized.",
+            "blanks": [
+              { "number": 17, "base": "COME", "answer": "overcome" },
+              { "number": 18, "base": "FIT", "answer": "fitness" },
+              { "number": 19, "base": "ENDURE", "answer": "endurance" },
+              { "number": 20, "base": "BENEFIT", "answer": "beneficial" },
+              { "number": 21, "base": "ENERGY", "answer": "energetically" },
+              { "number": 22, "base": "STRONG", "answer": "strength" },
+              { "number": 23, "base": "DETERMINE", "answer": "determination" },
+              { "number": 24, "base": "SEVERE", "answer": "severity" }
+            ],
+            "explanation": "Aquí importa mucho reconocer la categoría gramatical necesaria: overcome (verbo), fitness / endurance / strength / determination / severity (sustantivos), beneficial (adjetivo) y energetically (adverbio)."
+          }
+        ],
+        "sentenceTransformation": [
+          {
+            "id": "st_key_transformations",
+            "title": "Key word transformations",
+            "instructions": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
+            "note": "En esta versión cada pregunta enseña la oración original, la palabra obligatoria y un hueco para escribir solo el fragmento que falta.",
+            "items": [
+              {
+                "number": 25,
+                "original": "My brother now earns far less than he did when he was younger.",
+                "givenWord": "NEARLY",
+                "prefix": "My brother",
+                "suffix": "much now as he did when he was younger.",
+                "answer": "doesn't earn nearly as much"
+              },
+              {
+                "number": 26,
+                "original": "They are demolishing the old bus station and replacing it with a new one.",
+                "givenWord": "PULLED",
+                "prefix": "The old bus station is",
+                "suffix": "with a new one.",
+                "answer": "being pulled down and replaced"
+              },
+              {
+                "number": 27,
+                "original": "The number of students now at university has reached an all-time high, apparently.",
+                "givenWord": "THE",
+                "prefix": "The number of students now at university is",
+                "suffix": "been, apparently.",
+                "answer": "the highest it has ever"
+              },
+              {
+                "number": 28,
+                "original": "I’m disappointed with the Fishers’ new album when I compare it to their previous one.",
+                "givenWord": "COMPARISON",
+                "prefix": "I think the Fishers’ new album is",
+                "suffix": "their previous one.",
+                "answer": "disappointing in comparison with"
+              },
+              {
+                "number": 29,
+                "original": "Anna got the job even though she didn’t have much experience in public relations.",
+                "givenWord": "SPITE",
+                "prefix": "Anna got the job",
+                "suffix": "of experience in public relations.",
+                "answer": "in spite of her lack"
+              },
+              {
+                "number": 30,
+                "original": "‘I must warn you how dangerous it is to cycle at night without any lights,’ said the police officer to Max.",
+                "givenWord": "DANGERS",
+                "prefix": "Max received a",
+                "suffix": "at night without any lights from the police officer.",
+                "answer": "warning about the dangers of cycling"
+              }
+            ],
+            "explanation": "En key word transformations conviene detectar la estructura equivalente exacta: nearly as much, being pulled down, the highest it has ever, in comparison with, in spite of, and warning about the dangers of cycling."
+          }
+        ]
+      }
+    }
+  ]
 }
