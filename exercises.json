@@ -1,8 +1,8 @@
 {
   "app": {
     "title": "Cambridge English Practice 🎓",
-    "subtitle": "Primero eliges un bloque oficial y después el tipo de ejercicio disponible en ese bloque.",
-    "footer": "📖 Contenido organizado desde exercises.json para poder seguir añadiendo más material oficial."
+    "subtitle": "Material oficial de Cambridge C1 Advanced agrupado por tipo de ejercicio. En cada tipo encontrarás varios ejercicios oficiales.",
+    "footer": "📖 Material oficial de Cambridge C1 Advanced agrupado por tipo | Multiple Choice, Fill the Gaps, Word Formation y Sentence Transformation"
   },
   "exerciseTypes": {
     "multipleChoice": {
@@ -26,1025 +26,1167 @@
       "description": "Transformaciones tipo Part 4, tanto en formato examen como en ejercicios de paráfrasis."
     }
   },
-  "exerciseSets": [
-    {
-      "id": "specs_sample_paper",
-      "title": "Official Sample Paper 3",
-      "description": "Bloque oficial de Specifications and Sample Papers con las cuatro partes que te interesan.",
-      "source": {
-        "file": "Cambridge_C1_Advanced_Oficial_Compilado.pdf",
-        "pages": "10–14"
-      },
-      "types": {
-        "multipleChoice": [
+  "exercisesByType": {
+    "multipleChoice": [
+      {
+        "id": "sp3_black_bears",
+        "title": "Studying black bears",
+        "instructions": "For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.",
+        "note": "Texto oficial completo del ejercicio de Part 1.",
+        "source": {
+          "pages": "10, 14",
+          "resource": "Specifications and Sample Papers",
+          "collectionTitle": "Official Sample Paper 3 – Part 1",
+          "setPages": "10, 14"
+        },
+        "text": "After years studying North America’s black bears in the conventional way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to {{1}} their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.\n\nThe {{2}} this has given him into their behaviour has allowed him to dispel certain myths about bears. {{3}} to popular belief, he contends that bears do not {{4}} as much for fruit as previously supposed. He also {{5}} claims that they are ferocious. He says that people should not be {{6}} by behaviour such as swatting paws on the ground, as this is a defensive, rather than an aggressive, act.\n\nHowever, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no {{7}} about their feelings for him. It is clear that their interest in him does not {{8}} beyond the food he brings.",
+        "questions": [
           {
-            "id": "sp3_black_bears",
-            "title": "Studying black bears",
-            "instructions": "For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.",
-            "note": "Texto oficial completo del ejercicio de Part 1.",
-            "source": {
-              "pages": "10, 14"
+            "number": 1,
+            "options": {
+              "A": "catch",
+              "B": "win",
+              "C": "achieve",
+              "D": "receive"
             },
-            "text": "After years studying North America’s black bears in the conventional way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to {{1}} their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.\n\nThe {{2}} this has given him into their behaviour has allowed him to dispel certain myths about bears. {{3}} to popular belief, he contends that bears do not {{4}} as much for fruit as previously supposed. He also {{5}} claims that they are ferocious. He says that people should not be {{6}} by behaviour such as swatting paws on the ground, as this is a defensive, rather than an aggressive, act.\n\nHowever, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no {{7}} about their feelings for him. It is clear that their interest in him does not {{8}} beyond the food he brings.",
-            "questions": [
-              {
-                "number": 1,
-                "options": {
-                  "A": "catch",
-                  "B": "win",
-                  "C": "achieve",
-                  "D": "receive"
-                },
-                "correct": "B"
-              },
-              {
-                "number": 2,
-                "options": {
-                  "A": "perception",
-                  "B": "awareness",
-                  "C": "insight",
-                  "D": "vision"
-                },
-                "correct": "C"
-              },
-              {
-                "number": 3,
-                "options": {
-                  "A": "Opposite",
-                  "B": "Opposed",
-                  "C": "Contrary",
-                  "D": "Contradictory"
-                },
-                "correct": "C"
-              },
-              {
-                "number": 4,
-                "options": {
-                  "A": "care",
-                  "B": "bother",
-                  "C": "desire",
-                  "D": "hope"
-                },
-                "correct": "A"
-              },
-              {
-                "number": 5,
-                "options": {
-                  "A": "concludes",
-                  "B": "disputes",
-                  "C": "reasons",
-                  "D": "argues"
-                },
-                "correct": "B"
-              },
-              {
-                "number": 6,
-                "options": {
-                  "A": "misguided",
-                  "B": "misled",
-                  "C": "misdirected",
-                  "D": "misinformed"
-                },
-                "correct": "B"
-              },
-              {
-                "number": 7,
-                "options": {
-                  "A": "error",
-                  "B": "doubt",
-                  "C": "illusion",
-                  "D": "impression"
-                },
-                "correct": "C"
-              },
-              {
-                "number": 8,
-                "options": {
-                  "A": "expand",
-                  "B": "spread",
-                  "C": "widen",
-                  "D": "extend"
-                },
-                "correct": "D"
-              }
-            ],
-            "explanation": "Fíjate en las colocaciones: win trust, insight into, contrary to, care for, disputes claims, be misled, under no illusion y extend beyond."
-          }
-        ],
-        "fillBlanks": [
-          {
-            "id": "sp3_origin_language",
-            "title": "The origin of language",
-            "instructions": "For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.",
-            "note": "Texto oficial completo del Open Cloze.",
-            "source": {
-              "pages": "11, 14"
-            },
-            "text": "The truth is nobody really knows how language first began. Did we all start talking at around the same time {{9}} of the manner in which our brains had begun to develop?\n\nAlthough there is a lack of clear evidence, people have come up with various theories about the origins of language. One recent theory is that human beings have evolved in {{10}} a way that we are programmed for language from the moment of birth. In {{11}} words, language came about as a result of an evolutionary change in our brains at some stage.\n\nLanguage {{12}} well be programmed into the brain but, {{13}} this, people still need stimulus from others around them. From studies, we know that {{14}} children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so. This research shows, if {{15}} else, that language is a social activity, not something invented {{16}} isolation.",
-            "blanks": [
-              {
-                "number": 9,
-                "answers": [
-                  "because"
-                ]
-              },
-              {
-                "number": 10,
-                "answers": [
-                  "such"
-                ]
-              },
-              {
-                "number": 11,
-                "answers": [
-                  "other"
-                ]
-              },
-              {
-                "number": 12,
-                "answers": [
-                  "could",
-                  "may",
-                  "might"
-                ]
-              },
-              {
-                "number": 13,
-                "answers": [
-                  "despite"
-                ]
-              },
-              {
-                "number": 14,
-                "answers": [
-                  "if",
-                  "when",
-                  "whenever"
-                ]
-              },
-              {
-                "number": 15,
-                "answers": [
-                  "nothing",
-                  "little"
-                ]
-              },
-              {
-                "number": 16,
-                "answers": [
-                  "in"
-                ]
-              }
-            ],
-            "explanation": "Aquí mandan los conectores y expresiones fijas: because of, such a way, in other words, could/may/might well, despite this, if/when/whenever, if nothing/little else, in isolation."
-          }
-        ],
-        "wordFormation": [
-          {
-            "id": "sp3_training_sports_champions",
-            "title": "Training sports champions",
-            "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap.",
-            "note": "Texto oficial completo del Part 3.",
-            "source": {
-              "pages": "11, 14"
-            },
-            "text": "What are the abilities that a professional sports person needs? To guarantee that opponents can be {{17|COME}}, speed, stamina and agility are essential, not to mention outstanding natural talent. Both a rigorous and comprehensive {{18|FIT}} regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates, rather than proteins and fat, that provide athletes with the {{19|ENDURE}} they need to compete. This means that pasta is more {{20|BENEFIT}} than eggs or meat. Such a diet enables them to move very energetically when required. Failure to follow a sensible diet can result in the {{21|ABLE}} to maintain stamina. Regular training to increase muscular {{22|STRONG}} is also a vital part of a professional’s regime, and this is {{23|TYPE}} done by exercising with weights. Sports people are prone to injury but a quality training regime can ensure that the {{24|SEVERE}} of these can be minimised.",
-            "blanks": [
-              {
-                "number": 17,
-                "base": "COME",
-                "answers": [
-                  "overcome"
-                ]
-              },
-              {
-                "number": 18,
-                "base": "FIT",
-                "answers": [
-                  "fitness"
-                ]
-              },
-              {
-                "number": 19,
-                "base": "ENDURE",
-                "answers": [
-                  "endurance"
-                ]
-              },
-              {
-                "number": 20,
-                "base": "BENEFIT",
-                "answers": [
-                  "beneficial"
-                ]
-              },
-              {
-                "number": 21,
-                "base": "ABLE",
-                "answers": [
-                  "inability"
-                ]
-              },
-              {
-                "number": 22,
-                "base": "STRONG",
-                "answers": [
-                  "strength"
-                ]
-              },
-              {
-                "number": 23,
-                "base": "TYPE",
-                "answers": [
-                  "typically"
-                ]
-              },
-              {
-                "number": 24,
-                "base": "SEVERE",
-                "answers": [
-                  "severity"
-                ]
-              }
-            ],
-            "explanation": "Busca la categoría gramatical que pide el hueco: overcome (verbo), fitness/endurance/inability/strength/severity (sustantivos), beneficial (adjetivo) y typically (adverbio)."
-          }
-        ],
-        "sentenceTransformation": [
-          {
-            "id": "sp3_key_transformations",
-            "title": "Key word transformations",
-            "mode": "exam",
-            "instructions": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
-            "note": "Bloque oficial completo de Part 4.",
-            "source": {
-              "pages": "12, 14"
-            },
-            "items": [
-              {
-                "number": 25,
-                "original": "My brother now earns far less than he did when he was younger.",
-                "givenWord": "NEARLY",
-                "prefix": "My brother",
-                "suffix": "much now as he did when he was younger.",
-                "answers": [
-                  "doesn't earn nearly as",
-                  "does not earn nearly as",
-                  "doesn't make nearly as",
-                  "does not make nearly as",
-                  "doesn't earn nearly so",
-                  "does not earn nearly so",
-                  "doesn't make nearly so",
-                  "does not make nearly so"
-                ]
-              },
-              {
-                "number": 26,
-                "original": "They are demolishing the old bus station and replacing it with a new one.",
-                "givenWord": "PULLED",
-                "prefix": "The old bus station is",
-                "suffix": "with a new one.",
-                "answers": [
-                  "being pulled down and replaced",
-                  "being pulled down and being replaced",
-                  "being pulled down to be replaced",
-                  "to be pulled down and replaced"
-                ]
-              },
-              {
-                "number": 27,
-                "original": "The number of students now at university has reached an all-time high, apparently.",
-                "givenWord": "THE",
-                "prefix": "The number of students now at university is",
-                "suffix": "been, apparently.",
-                "answers": [
-                  "the highest that it has ever",
-                  "the highest which it has ever",
-                  "the highest it has ever",
-                  "the highest that it's ever",
-                  "the highest which it's ever",
-                  "the highest it's ever"
-                ]
-              },
-              {
-                "number": 28,
-                "original": "I’m disappointed with the Fishers’ new album when I compare it to their previous one.",
-                "givenWord": "COMPARISON",
-                "prefix": "I think the Fishers’ new album is",
-                "suffix": "their previous one.",
-                "answers": [
-                  "disappointing in comparison with",
-                  "disappointing in comparison to",
-                  "a disappointment in comparison with",
-                  "a disappointment in comparison to"
-                ]
-              },
-              {
-                "number": 29,
-                "original": "Anna got the job even though she didn’t have much experience in public relations.",
-                "givenWord": "SPITE",
-                "prefix": "Anna got the job",
-                "suffix": "of experience in public relations.",
-                "answers": [
-                  "in spite of a lack",
-                  "in spite of her lack"
-                ]
-              },
-              {
-                "number": 30,
-                "original": "‘I must warn you how dangerous it is to cycle at night without any lights,’ said the police officer to Max.",
-                "givenWord": "DANGERS",
-                "prefix": "Max received a",
-                "suffix": "at night without any lights from the police officer.",
-                "answers": [
-                  "warning about the dangers of cycling",
-                  "warning regarding the dangers of cycling",
-                  "warning concerning the dangers of cycling"
-                ]
-              }
-            ],
-            "explanation": "En Part 4 cuenta mucho detectar la estructura equivalente exacta: nearly as/so, pulled down, the highest it has ever been, in comparison with/to, in spite of a/her lack y warning about/regarding/concerning."
-          }
-        ]
-      }
-    },
-    {
-      "id": "handbook_sample_test",
-      "title": "Official Handbook Sample Test",
-      "description": "Bloque del handbook oficial con otro Part 1, Part 2, Part 3 y Part 4 completos.",
-      "source": {
-        "file": "Cambridge_C1_Advanced_Oficial_Compilado.pdf",
-        "pages": "4–8"
-      },
-      "types": {
-        "multipleChoice": [
-          {
-            "id": "hb_salt_mines",
-            "title": "New uses for salt mines",
-            "instructions": "For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.",
-            "note": "Part 1 del handbook oficial.",
-            "source": {
-              "pages": "4, 8"
-            },
-            "text": "Geological deposits of salt were formed millions of years ago, when what is now land lay under the sea. It is hard to believe that salt is now such a cheap {{1}}, because centuries ago it was the commercial {{2}} of today’s oil. The men who mined salt became wealthy and, although the work was {{3}} and frequently dangerous, a job in a salt mine was highly {{4}}.\n\nNowadays, the specific microclimates in disused mines have been {{5}} for the treatment of respiratory illnesses such as asthma, and the silent, dark surroundings in a mine are considered {{6}} in encouraging patients to relax.\n\nIn addition, some disused mines have been {{7}} to different commercial enterprises, although keeping up-to-date with the technology of mining is essential to {{8}} visitors’ safety. Some of the largest underground chambers even host concerts, conferences and business meetings.",
-            "questions": [
-              {
-                "number": 1,
-                "options": {
-                  "A": "provision",
-                  "B": "utility",
-                  "C": "material",
-                  "D": "commodity"
-                },
-                "correct": "D"
-              },
-              {
-                "number": 2,
-                "options": {
-                  "A": "match",
-                  "B": "similarity",
-                  "C": "parallel",
-                  "D": "equivalent"
-                },
-                "correct": "D"
-              },
-              {
-                "number": 3,
-                "options": {
-                  "A": "critical",
-                  "B": "demanding",
-                  "C": "extreme",
-                  "D": "straining"
-                },
-                "correct": "B"
-              },
-              {
-                "number": 4,
-                "options": {
-                  "A": "regarded",
-                  "B": "admired",
-                  "C": "approved",
-                  "D": "honoured"
-                },
-                "correct": "A"
-              },
-              {
-                "number": 5,
-                "options": {
-                  "A": "exploited",
-                  "B": "extracted",
-                  "C": "exposed",
-                  "D": "extended"
-                },
-                "correct": "A"
-              },
-              {
-                "number": 6,
-                "options": {
-                  "A": "profitable",
-                  "B": "agreeable",
-                  "C": "beneficial",
-                  "D": "popular"
-                },
-                "correct": "C"
-              },
-              {
-                "number": 7,
-                "options": {
-                  "A": "put down",
-                  "B": "turned over",
-                  "C": "made out",
-                  "D": "set about"
-                },
-                "correct": "B"
-              },
-              {
-                "number": 8,
-                "options": {
-                  "A": "enable",
-                  "B": "retain",
-                  "C": "ensure",
-                  "D": "support"
-                },
-                "correct": "C"
-              }
-            ],
-            "explanation": "Aquí destacan las colocaciones y el significado contextual: commodity, equivalent, demanding, highly regarded, exploited, beneficial, turned over y ensure safety."
-          }
-        ],
-        "fillBlanks": [
-          {
-            "id": "hb_managing_change",
-            "title": "Managing change",
-            "instructions": "For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.",
-            "note": "Open cloze del handbook oficial.",
-            "source": {
-              "pages": "5, 8"
-            },
-            "text": "Most people find change unsettling and difficult to adapt to. Many societies have experienced {{9}} rapid change in the early years of the 21st century that life can feel very daunting {{10}} times. Various commentators have {{11}} forward suggestions for coping with change on a personal level.\n\nOne suggestion involves thinking of three solutions to a problem, rather {{12}} two. Apparently, many people faced {{13}} change respond by considering two possible courses of action, but invariably tend to reject both of these. However, thinking instead of three potential solutions is a strategy which, according to research, provides a reliable way of finding a solution to the initial problem.\n\nAnother strategy advocates learning to avoid set patterns of routine behaviour. Something simple, {{14}} taking another route to work at {{15}} once a week, is seen as encouraging confidence in the face of uncertainty. {{16}} the simplicity of these ideas, they nevertheless help prepare people mentally to manage major change if necessary.",
-            "blanks": [
-              {
-                "number": 9,
-                "answers": [
-                  "such"
-                ]
-              },
-              {
-                "number": 10,
-                "answers": [
-                  "at"
-                ]
-              },
-              {
-                "number": 11,
-                "answers": [
-                  "put"
-                ]
-              },
-              {
-                "number": 12,
-                "answers": [
-                  "than"
-                ]
-              },
-              {
-                "number": 13,
-                "answers": [
-                  "with",
-                  "by"
-                ]
-              },
-              {
-                "number": 14,
-                "answers": [
-                  "like"
-                ]
-              },
-              {
-                "number": 15,
-                "answers": [
-                  "least"
-                ]
-              },
-              {
-                "number": 16,
-                "answers": [
-                  "despite"
-                ]
-              }
-            ],
-            "explanation": "Las respuestas se apoyan en estructuras muy fijas: such...that, at times, put forward, rather than, faced with/by, like, at least y despite."
-          }
-        ],
-        "wordFormation": [
-          {
-            "id": "hb_fashion_science",
-            "title": "Fashion and Science",
-            "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap.",
-            "note": "Word formation del handbook oficial.",
-            "source": {
-              "pages": "5, 8"
-            },
-            "text": "At first glance science and fashion could not be more dissimilar. Science is generally considered to be a {{17|PURSUE}} that is slow-paced, serious and worthy, whereas fashion is frivolous, impulsive and often {{18|PREDICT}}.\n\nBut fashion owes more to science than some {{19|ENTHUSE}} might like to admit. Fashion houses adopt new materials in order to {{20|DISTINCT}} themselves from their various {{21|COMPETE}}. One designer recently showed off a liquid that can be used to produce clothes that are seamless.\n\nAs cotton is {{22|INCREASE}} having to compete with other crops for land, and oil-based fabrics become less acceptable, scientists are working to develop {{23|REPLACE}} for these products. Sportswear, for example, has been transformed thanks to the use of {{24|INNOVATE}} materials and scientific designs, greatly improving the performance of athletes.",
-            "blanks": [
-              {
-                "number": 17,
-                "base": "PURSUE",
-                "answers": [
-                  "pursuit"
-                ]
-              },
-              {
-                "number": 18,
-                "base": "PREDICT",
-                "answers": [
-                  "unpredictable"
-                ]
-              },
-              {
-                "number": 19,
-                "base": "ENTHUSE",
-                "answers": [
-                  "enthusiasts"
-                ]
-              },
-              {
-                "number": 20,
-                "base": "DISTINCT",
-                "answers": [
-                  "distinguish"
-                ]
-              },
-              {
-                "number": 21,
-                "base": "COMPETE",
-                "answers": [
-                  "competitors"
-                ]
-              },
-              {
-                "number": 22,
-                "base": "INCREASE",
-                "answers": [
-                  "increasingly"
-                ]
-              },
-              {
-                "number": 23,
-                "base": "REPLACE",
-                "answers": [
-                  "replacements"
-                ]
-              },
-              {
-                "number": 24,
-                "base": "INNOVATE",
-                "answers": [
-                  "innovative"
-                ]
-              }
-            ],
-            "explanation": "Aquí hay cambios de clase léxica muy claros: pursuit, unpredictable, enthusiasts, distinguish, competitors, increasingly, replacements e innovative."
-          }
-        ],
-        "sentenceTransformation": [
-          {
-            "id": "hb_key_transformations",
-            "title": "Paper-based sample test transformations",
-            "mode": "exam",
-            "instructions": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
-            "note": "Part 4 del handbook oficial.",
-            "source": {
-              "pages": "6, 8"
-            },
-            "items": [
-              {
-                "number": 25,
-                "original": "As long as you explain the process clearly at the conference, your boss will be pleased.",
-                "givenWord": "GIVE",
-                "prefix": "If",
-                "suffix": "the process at the conference, your boss will be pleased.",
-                "answers": [
-                  "you give a clear explanation of",
-                  "you give a clear explanation about"
-                ]
-              },
-              {
-                "number": 26,
-                "original": "They say that a visitor to the national art gallery damaged an 18th-century painting.",
-                "givenWord": "ALLEGED",
-                "prefix": "A visitor to the national art gallery",
-                "suffix": "an 18th-century painting.",
-                "answers": [
-                  "is alleged to have damaged"
-                ]
-              },
-              {
-                "number": 27,
-                "original": "I really don’t mind whether Jill chooses to come on holiday with us or not.",
-                "givenWord": "DIFFERENCE",
-                "prefix": "It really",
-                "suffix": "whether Jill chooses to come on holiday with us or not.",
-                "answers": [
-                  "makes no difference to me",
-                  "makes very little difference to me"
-                ]
-              },
-              {
-                "number": 28,
-                "original": "Without the help that Joe gave me, I don’t think I’d have finished the course.",
-                "givenWord": "BEEN",
-                "prefix": "If it",
-                "suffix": "help, I don’t think I’d have finished the course.",
-                "answers": [
-                  "hadn't been for Joe's",
-                  "had not been for Joe's"
-                ]
-              },
-              {
-                "number": 29,
-                "original": "We can assure our customers that we will take every possible measure to maintain the quality of the products on our shelves.",
-                "givenWord": "TAKES",
-                "prefix": "We can assure our customers that we will",
-                "suffix": "to maintain the quality of the products on our shelves.",
-                "answers": [
-                  "do whatever it takes",
-                  "do everything it takes",
-                  "do all it takes",
-                  "do anything it takes"
-                ]
-              },
-              {
-                "number": 30,
-                "original": "Following some complaints by local residents, the government withdrew its proposal to build a new runway at the airport.",
-                "givenWord": "LIGHT",
-                "prefix": "The government’s proposal to build a new runway at the airport",
-                "suffix": "some complaints by local residents.",
-                "answers": [
-                  "was withdrawn in the light of",
-                  "was withdrawn in light of"
-                ]
-              }
-            ],
-            "explanation": "En este bloque conviene reconocer pasiva, expresiones fijas y perífrasis: give a clear explanation, is alleged to have, makes no difference, had not been for, do whatever it takes e in the light of."
-          }
-        ]
-      }
-    },
-    {
-      "id": "part1_lesson_plan",
-      "title": "Official Part 1 Lesson Worksheet",
-      "description": "Práctica oficial de Part 1 basada en el worksheet del PDF de Cambridge.",
-      "source": {
-        "file": "Cambridge_C1_Advanced_Oficial_Compilado.pdf",
-        "pages": "37–41"
-      },
-      "types": {
-        "multipleChoice": [
-          {
-            "id": "lp_music_brain",
-            "title": "What we know about music and the brain",
-            "instructions": "Worksheet-based Part 1 practice. Choose the best word for each gap.",
-            "note": "Actividad oficial de preparación. Las opciones se reconstruyen a partir del worksheet y de la clave del mismo bloque.",
-            "source": {
-              "pages": "37–41"
-            },
-            "text": "Work on the human brain has indicated how different parts are centres of activity for different skills, feelings, perceptions and so on. It has also been shown that the left and right hemispheres, or halves, of the brain are {{1}} for different functions. While language is processed in the left, or analytical hemisphere, music is processed in the right, or emotional hemisphere. {{2}} of music like tone, pitch and melody are all probably processed in different parts of the brain. Some features of musical experience are processed not just in the auditory parts of the brain, but in the visual ones. We don’t yet fully understand the {{3}} of this.\n\nThe tempo of music seems to be {{4}} related to its emotional impact, with fast music often felt as happier and slower music as sadder. It is the same with the major biological rhythm of the body: our heart {{5}} quickens when we’re happy, but slows when we’re sad. Military music may have evolved from attempts to get us ready for battle by using fast drumming to {{6}} our hearts into beating faster. Music is perhaps one of the most complex experiences the brain {{7}} with and it has become an absolutely vital part of our rituals and ceremonies. It has power beyond language to {{8}} mood and co-ordinate our emotional states.",
-            "questions": [
-              {
-                "number": 1,
-                "options": {
-                  "A": "responsible",
-                  "B": "amenable",
-                  "C": "dependable",
-                  "D": "reliable"
-                },
-                "correct": "A"
-              },
-              {
-                "number": 2,
-                "options": {
-                  "A": "Aspects",
-                  "B": "Views",
-                  "C": "Factors",
-                  "D": "Pieces"
-                },
-                "correct": "A"
-              },
-              {
-                "number": 3,
-                "options": {
-                  "A": "implications",
-                  "B": "expectations",
-                  "C": "assumptions",
-                  "D": "propositions"
-                },
-                "correct": "A"
-              },
-              {
-                "number": 4,
-                "options": {
-                  "A": "directly",
-                  "B": "surely",
-                  "C": "plainly",
-                  "D": "evidently"
-                },
-                "correct": "A"
-              },
-              {
-                "number": 5,
-                "options": {
-                  "A": "rate",
-                  "B": "pulse",
-                  "C": "speed",
-                  "D": "pace"
-                },
-                "correct": "A"
-              },
-              {
-                "number": 6,
-                "options": {
-                  "A": "stimulate",
-                  "B": "activate",
-                  "C": "motivate",
-                  "D": "animate"
-                },
-                "correct": "A"
-              },
-              {
-                "number": 7,
-                "options": {
-                  "A": "copes",
-                  "B": "manages",
-                  "C": "bears",
-                  "D": "holds"
-                },
-                "correct": "A"
-              },
-              {
-                "number": 8,
-                "options": {
-                  "A": "communicate",
-                  "B": "notify",
-                  "C": "report",
-                  "D": "associate"
-                },
-                "correct": "A"
-              }
-            ],
-            "explanation": "Este bloque sale de un worksheet oficial de Part 1. La clave da las ocho palabras correctas y el mismo material aporta los grupos léxicos usados aquí como opciones."
-          }
-        ],
-        "fillBlanks": [],
-        "wordFormation": [],
-        "sentenceTransformation": []
-      }
-    },
-    {
-      "id": "part4_lesson_plan",
-      "title": "Official Part 4 Lesson Plan",
-      "description": "Material oficial de Cambridge para practicar Sentence Transformation con worksheet y sample task.",
-      "source": {
-        "file": "Cambridge_C1_Advanced_Oficial_Compilado.pdf",
-        "pages": "43–48"
-      },
-      "types": {
-        "multipleChoice": [],
-        "fillBlanks": [],
-        "wordFormation": [],
-        "sentenceTransformation": [
-          {
-            "id": "lp4_paraphrase_drill",
-            "title": "Paraphrase drill worksheet",
-            "mode": "fullSentence",
-            "instructions": "Produce a paraphrase of the first sentence using the word given.",
-            "note": "Actividad oficial de paráfrasis del worksheet. Aquí se responde con la oración completa.",
-            "source": {
-              "pages": "45, 47"
-            },
-            "items": [
-              {
-                "number": 1,
-                "original": "The machine doesn’t work.",
-                "givenWord": "ORDER",
-                "answers": [
-                  "The machine's out of order.",
-                  "The machine is out of order."
-                ]
-              },
-              {
-                "number": 2,
-                "original": "There’s no point in doing that.",
-                "givenWord": "WASTE",
-                "answers": [
-                  "It's a waste of time doing that.",
-                  "It is a waste of time doing that."
-                ]
-              },
-              {
-                "number": 3,
-                "original": "She couldn’t decide.",
-                "givenWord": "MIND",
-                "answers": [
-                  "She couldn't make her mind up.",
-                  "She couldn't make up her mind.",
-                  "She could not make her mind up.",
-                  "She could not make up her mind."
-                ]
-              },
-              {
-                "number": 4,
-                "original": "Could you look after the children?",
-                "givenWord": "CARE",
-                "answers": [
-                  "Could you take care of the children?"
-                ]
-              },
-              {
-                "number": 5,
-                "original": "I don’t feel like going out.",
-                "givenWord": "MOOD",
-                "answers": [
-                  "I'm not in the mood to go out.",
-                  "I'm not in the mood for going out.",
-                  "I am not in the mood to go out.",
-                  "I am not in the mood for going out."
-                ]
-              },
-              {
-                "number": 6,
-                "original": "I like coffee better than tea.",
-                "givenWord": "PREFER",
-                "answers": [
-                  "I prefer coffee to tea."
-                ]
-              },
-              {
-                "number": 7,
-                "original": "Please don’t leave your seats.",
-                "givenWord": "REMAIN",
-                "answers": [
-                  "Please remain in your seats."
-                ]
-              },
-              {
-                "number": 8,
-                "original": "You’re entitled to vote.",
-                "givenWord": "RIGHT",
-                "answers": [
-                  "You have the right to vote."
-                ]
-              },
-              {
-                "number": 9,
-                "original": "I don’t mind.",
-                "givenWord": "SAME",
-                "answers": [
-                  "It's all the same to me.",
-                  "It is all the same to me."
-                ]
-              },
-              {
-                "number": 10,
-                "original": "I didn’t mean to interrupt the meeting.",
-                "givenWord": "INTENTION",
-                "answers": [
-                  "I had no intention of interrupting the meeting."
-                ]
-              },
-              {
-                "number": 11,
-                "original": "The guide pointed out the paintings.",
-                "givenWord": "ATTENTION",
-                "answers": [
-                  "The guide drew our attention to the paintings."
-                ]
-              },
-              {
-                "number": 12,
-                "original": "John never explained why he left.",
-                "givenWord": "EXPLANATION",
-                "answers": [
-                  "John never gave an explanation for why he left.",
-                  "John never gave an explanation for leaving."
-                ]
-              },
-              {
-                "number": 13,
-                "original": "I’ve run out of money.",
-                "givenWord": "LEFT",
-                "answers": [
-                  "I've no money left.",
-                  "I haven't any money left.",
-                  "I have no money left.",
-                  "I have not any money left."
-                ]
-              },
-              {
-                "number": 14,
-                "original": "I’ve known Marcia since 2004.",
-                "givenWord": "MET",
-                "answers": [
-                  "I met Marcia in 2004."
-                ]
-              },
-              {
-                "number": 15,
-                "original": "I really admire someone like that.",
-                "givenWord": "LOOK",
-                "answers": [
-                  "I really look up to someone like that."
-                ]
-              },
-              {
-                "number": 16,
-                "original": "It was wrong of us to say that.",
-                "givenWord": "SHOULDN'T",
-                "answers": [
-                  "We shouldn't have said that.",
-                  "We should not have said that."
-                ]
-              }
-            ],
-            "explanation": "Este worksheet trabaja equivalencias muy comunes: out of order, a waste of time, make up one’s mind, take care of, be in the mood, prefer A to B, draw attention to, look up to y should(n’t) have + participio."
+            "correct": "B"
           },
           {
-            "id": "lp4_sample_task",
-            "title": "Sample task",
-            "mode": "exam",
-            "instructions": "For questions 1 – 6, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
-            "note": "Sample task oficial del lesson plan.",
-            "source": {
-              "pages": "46, 48"
+            "number": 2,
+            "options": {
+              "A": "perception",
+              "B": "awareness",
+              "C": "insight",
+              "D": "vision"
             },
-            "items": [
-              {
-                "number": 1,
-                "original": "There were a lot of things that we had to think about before we could accept their offer.",
-                "givenWord": "OBLIGED",
-                "prefix": "There were several things that we",
-                "suffix": "consideration before we could accept their offer.",
-                "answers": [
-                  "were obliged to take into"
-                ]
-              },
-              {
-                "number": 2,
-                "original": "I know that it was wrong of me to shout in front of the customers.",
-                "givenWord": "RAISED",
-                "prefix": "I know that I should",
-                "suffix": "in front of the customers.",
-                "answers": [
-                  "not have raised my voice"
-                ]
-              },
-              {
-                "number": 3,
-                "original": "If you need any help, you can always call me.",
-                "givenWord": "HESITATE",
-                "prefix": "If you need any help,",
-                "suffix": "me.",
-                "answers": [
-                  "don't hesitate to call",
-                  "do not hesitate to call"
-                ]
-              },
-              {
-                "number": 4,
-                "original": "It hasn’t rained quite as much this year as in previous years.",
-                "givenWord": "SLIGHTLY",
-                "prefix": "This year, it has rained",
-                "suffix": "did in previous years.",
-                "answers": [
-                  "slightly less than it"
-                ]
-              },
-              {
-                "number": 5,
-                "original": "Unless the weather improves, they will have to stop the tennis match.",
-                "givenWord": "MEAN",
-                "prefix": "If the weather doesn’t get",
-                "suffix": "stopping the tennis match.",
-                "answers": [
-                  "any better it will mean"
-                ]
-              },
-              {
-                "number": 6,
-                "original": "I don’t mind whether we stay in or go out this evening, but John wants to go to the cinema.",
-                "givenWord": "DIFFERENCE",
-                "prefix": "It doesn’t",
-                "suffix": "whether we stay in or go out this evening, but John wants to go to the cinema.",
-                "answers": [
-                  "make any difference to me",
-                  "make much difference to me"
-                ]
-              }
-            ],
-            "explanation": "En este sample task aparecen varias transformaciones muy típicas: take into consideration, should not have + participio, don’t hesitate to, slightly less than, any better it will mean y make any/much difference to me."
+            "correct": "C"
+          },
+          {
+            "number": 3,
+            "options": {
+              "A": "Opposite",
+              "B": "Opposed",
+              "C": "Contrary",
+              "D": "Contradictory"
+            },
+            "correct": "C"
+          },
+          {
+            "number": 4,
+            "options": {
+              "A": "care",
+              "B": "bother",
+              "C": "desire",
+              "D": "hope"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 5,
+            "options": {
+              "A": "concludes",
+              "B": "disputes",
+              "C": "reasons",
+              "D": "argues"
+            },
+            "correct": "B"
+          },
+          {
+            "number": 6,
+            "options": {
+              "A": "misguided",
+              "B": "misled",
+              "C": "misdirected",
+              "D": "misinformed"
+            },
+            "correct": "B"
+          },
+          {
+            "number": 7,
+            "options": {
+              "A": "error",
+              "B": "doubt",
+              "C": "illusion",
+              "D": "impression"
+            },
+            "correct": "C"
+          },
+          {
+            "number": 8,
+            "options": {
+              "A": "expand",
+              "B": "spread",
+              "C": "widen",
+              "D": "extend"
+            },
+            "correct": "D"
           }
-        ]
+        ],
+        "explanation": "Fíjate en las colocaciones: win trust, insight into, contrary to, care for, disputes claims, be misled, under no illusion y extend beyond."
+      },
+      {
+        "id": "hb_salt_mines",
+        "title": "New uses for salt mines",
+        "instructions": "For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.",
+        "note": "Part 1 del handbook oficial.",
+        "source": {
+          "pages": "4, 8",
+          "resource": "C1 Advanced Handbook",
+          "collectionTitle": "Official Handbook Sample Test – Part 1",
+          "setPages": "4, 8"
+        },
+        "text": "Geological deposits of salt were formed millions of years ago, when what is now land lay under the sea. It is hard to believe that salt is now such a cheap {{1}}, because centuries ago it was the commercial {{2}} of today’s oil. The men who mined salt became wealthy and, although the work was {{3}} and frequently dangerous, a job in a salt mine was highly {{4}}.\n\nNowadays, the specific microclimates in disused mines have been {{5}} for the treatment of respiratory illnesses such as asthma, and the silent, dark surroundings in a mine are considered {{6}} in encouraging patients to relax.\n\nIn addition, some disused mines have been {{7}} to different commercial enterprises, although keeping up-to-date with the technology of mining is essential to {{8}} visitors’ safety. Some of the largest underground chambers even host concerts, conferences and business meetings.",
+        "questions": [
+          {
+            "number": 1,
+            "options": {
+              "A": "provision",
+              "B": "utility",
+              "C": "material",
+              "D": "commodity"
+            },
+            "correct": "D"
+          },
+          {
+            "number": 2,
+            "options": {
+              "A": "match",
+              "B": "similarity",
+              "C": "parallel",
+              "D": "equivalent"
+            },
+            "correct": "D"
+          },
+          {
+            "number": 3,
+            "options": {
+              "A": "critical",
+              "B": "demanding",
+              "C": "extreme",
+              "D": "straining"
+            },
+            "correct": "B"
+          },
+          {
+            "number": 4,
+            "options": {
+              "A": "regarded",
+              "B": "admired",
+              "C": "approved",
+              "D": "honoured"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 5,
+            "options": {
+              "A": "exploited",
+              "B": "extracted",
+              "C": "exposed",
+              "D": "extended"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 6,
+            "options": {
+              "A": "profitable",
+              "B": "agreeable",
+              "C": "beneficial",
+              "D": "popular"
+            },
+            "correct": "C"
+          },
+          {
+            "number": 7,
+            "options": {
+              "A": "put down",
+              "B": "turned over",
+              "C": "made out",
+              "D": "set about"
+            },
+            "correct": "B"
+          },
+          {
+            "number": 8,
+            "options": {
+              "A": "enable",
+              "B": "retain",
+              "C": "ensure",
+              "D": "support"
+            },
+            "correct": "C"
+          }
+        ],
+        "explanation": "Aquí destacan las colocaciones y el significado contextual: commodity, equivalent, demanding, highly regarded, exploited, beneficial, turned over y ensure safety."
+      },
+      {
+        "id": "lp_music_brain",
+        "title": "What we know about music and the brain",
+        "instructions": "Worksheet-based Part 1 practice. Choose the best word for each gap.",
+        "note": "Actividad oficial de preparación. Las opciones se reconstruyen a partir del worksheet y de la clave del mismo bloque.",
+        "source": {
+          "pages": "37–41",
+          "collectionTitle": "Official Part 1 Worksheet – Music and the Brain",
+          "setPages": "37–41"
+        },
+        "text": "Work on the human brain has indicated how different parts are centres of activity for different skills, feelings, perceptions and so on. It has also been shown that the left and right hemispheres, or halves, of the brain are {{1}} for different functions. While language is processed in the left, or analytical hemisphere, music is processed in the right, or emotional hemisphere. {{2}} of music like tone, pitch and melody are all probably processed in different parts of the brain. Some features of musical experience are processed not just in the auditory parts of the brain, but in the visual ones. We don’t yet fully understand the {{3}} of this.\n\nThe tempo of music seems to be {{4}} related to its emotional impact, with fast music often felt as happier and slower music as sadder. It is the same with the major biological rhythm of the body: our heart {{5}} quickens when we’re happy, but slows when we’re sad. Military music may have evolved from attempts to get us ready for battle by using fast drumming to {{6}} our hearts into beating faster. Music is perhaps one of the most complex experiences the brain {{7}} with and it has become an absolutely vital part of our rituals and ceremonies. It has power beyond language to {{8}} mood and co-ordinate our emotional states.",
+        "questions": [
+          {
+            "number": 1,
+            "options": {
+              "A": "responsible",
+              "B": "amenable",
+              "C": "dependable",
+              "D": "reliable"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 2,
+            "options": {
+              "A": "Aspects",
+              "B": "Views",
+              "C": "Factors",
+              "D": "Pieces"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 3,
+            "options": {
+              "A": "implications",
+              "B": "expectations",
+              "C": "assumptions",
+              "D": "propositions"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 4,
+            "options": {
+              "A": "directly",
+              "B": "surely",
+              "C": "plainly",
+              "D": "evidently"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 5,
+            "options": {
+              "A": "rate",
+              "B": "pulse",
+              "C": "speed",
+              "D": "pace"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 6,
+            "options": {
+              "A": "stimulate",
+              "B": "activate",
+              "C": "motivate",
+              "D": "animate"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 7,
+            "options": {
+              "A": "copes",
+              "B": "manages",
+              "C": "bears",
+              "D": "holds"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 8,
+            "options": {
+              "A": "communicate",
+              "B": "notify",
+              "C": "report",
+              "D": "associate"
+            },
+            "correct": "A"
+          }
+        ],
+        "explanation": "Este bloque sale de un worksheet oficial de Part 1. La clave da las ocho palabras correctas y el mismo material aporta los grupos léxicos usados aquí como opciones."
+      },
+      {
+        "id": "dg_space_debris",
+        "title": "Mini example – The space age junk that surrounds our planet",
+        "instructions": "Official teacher-guide example for Part 1. For questions 1 – 3, read the text below and decide which answer (A, B, C or D) best fits each gap.",
+        "note": "Mini-ejemplo oficial del teacher guide. Son 3 preguntas ilustrativas, no un task completo de 8 huecos.",
+        "source": {
+          "resource": "Developing reading skills for C1 Advanced",
+          "pages": "11–12",
+          "collectionTitle": "Official Teacher Guide – Part 1 mini example",
+          "setPages": "11–12"
+        },
+        "text": "Since 1957, when the first satellite was launched into space, a vast amount of space debris has {{1}} in its wake. The rubbish, constantly orbiting around the Earth, consists of anything from tiny spots of paint to large bits of {{2}} rockets. It also includes equipment lost by astronauts during space {{3}} outside their craft.",
+        "questions": [
+          {
+            "number": 1,
+            "options": {
+              "A": "accumulated",
+              "B": "added",
+              "C": "swollen",
+              "D": "built"
+            },
+            "correct": "A"
+          },
+          {
+            "number": 2,
+            "options": {
+              "A": "rejected",
+              "B": "disposed",
+              "C": "discarded",
+              "D": "refused"
+            },
+            "correct": "C"
+          },
+          {
+            "number": 3,
+            "options": {
+              "A": "flights",
+              "B": "walks",
+              "C": "steps",
+              "D": "turns"
+            },
+            "correct": "B"
+          }
+        ],
+        "explanation": "Mini ejemplo oficial del guide para trabajar collocations y semantic precision: debris accumulates, discarded rockets y space walks."
       }
-    }
-  ]
+    ],
+    "fillBlanks": [
+      {
+        "id": "sp3_origin_language",
+        "title": "The origin of language",
+        "instructions": "For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.",
+        "note": "Texto oficial completo del Open Cloze.",
+        "source": {
+          "pages": "11, 14",
+          "resource": "Specifications and Sample Papers",
+          "collectionTitle": "Official Sample Paper 3 – Part 2",
+          "setPages": "11, 14"
+        },
+        "text": "The truth is nobody really knows how language first began. Did we all start talking at around the same time {{9}} of the manner in which our brains had begun to develop?\n\nAlthough there is a lack of clear evidence, people have come up with various theories about the origins of language. One recent theory is that human beings have evolved in {{10}} a way that we are programmed for language from the moment of birth. In {{11}} words, language came about as a result of an evolutionary change in our brains at some stage.\n\nLanguage {{12}} well be programmed into the brain but, {{13}} this, people still need stimulus from others around them. From studies, we know that {{14}} children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so. This research shows, if {{15}} else, that language is a social activity, not something invented {{16}} isolation.",
+        "blanks": [
+          {
+            "number": 9,
+            "answers": [
+              "because"
+            ]
+          },
+          {
+            "number": 10,
+            "answers": [
+              "such"
+            ]
+          },
+          {
+            "number": 11,
+            "answers": [
+              "other"
+            ]
+          },
+          {
+            "number": 12,
+            "answers": [
+              "could",
+              "may",
+              "might"
+            ]
+          },
+          {
+            "number": 13,
+            "answers": [
+              "despite"
+            ]
+          },
+          {
+            "number": 14,
+            "answers": [
+              "if",
+              "when",
+              "whenever"
+            ]
+          },
+          {
+            "number": 15,
+            "answers": [
+              "nothing",
+              "little"
+            ]
+          },
+          {
+            "number": 16,
+            "answers": [
+              "in"
+            ]
+          }
+        ],
+        "explanation": "Aquí mandan los conectores y expresiones fijas: because of, such a way, in other words, could/may/might well, despite this, if/when/whenever, if nothing/little else, in isolation."
+      },
+      {
+        "id": "hb_managing_change",
+        "title": "Managing change",
+        "instructions": "For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.",
+        "note": "Open cloze del handbook oficial.",
+        "source": {
+          "pages": "5, 8",
+          "resource": "C1 Advanced Handbook",
+          "collectionTitle": "Official Handbook Sample Test – Part 2",
+          "setPages": "5, 8"
+        },
+        "text": "Most people find change unsettling and difficult to adapt to. Many societies have experienced {{9}} rapid change in the early years of the 21st century that life can feel very daunting {{10}} times. Various commentators have {{11}} forward suggestions for coping with change on a personal level.\n\nOne suggestion involves thinking of three solutions to a problem, rather {{12}} two. Apparently, many people faced {{13}} change respond by considering two possible courses of action, but invariably tend to reject both of these. However, thinking instead of three potential solutions is a strategy which, according to research, provides a reliable way of finding a solution to the initial problem.\n\nAnother strategy advocates learning to avoid set patterns of routine behaviour. Something simple, {{14}} taking another route to work at {{15}} once a week, is seen as encouraging confidence in the face of uncertainty. {{16}} the simplicity of these ideas, they nevertheless help prepare people mentally to manage major change if necessary.",
+        "blanks": [
+          {
+            "number": 9,
+            "answers": [
+              "such"
+            ]
+          },
+          {
+            "number": 10,
+            "answers": [
+              "at"
+            ]
+          },
+          {
+            "number": 11,
+            "answers": [
+              "put"
+            ]
+          },
+          {
+            "number": 12,
+            "answers": [
+              "than"
+            ]
+          },
+          {
+            "number": 13,
+            "answers": [
+              "with",
+              "by"
+            ]
+          },
+          {
+            "number": 14,
+            "answers": [
+              "like"
+            ]
+          },
+          {
+            "number": 15,
+            "answers": [
+              "least"
+            ]
+          },
+          {
+            "number": 16,
+            "answers": [
+              "despite"
+            ]
+          }
+        ],
+        "explanation": "Las respuestas se apoyan en estructuras muy fijas: such...that, at times, put forward, rather than, faced with/by, like, at least y despite."
+      },
+      {
+        "id": "dg_edmund_de_waal",
+        "title": "Mini example – Edmund de Waal: ceramic artist",
+        "instructions": "Official teacher-guide example for Part 2. For questions 9 – 11, think of the word which best fits each gap. Use only one word in each gap.",
+        "note": "Mini-ejemplo oficial del teacher guide. Son 3 huecos ilustrativos.",
+        "source": {
+          "resource": "Developing reading skills for C1 Advanced",
+          "pages": "13–14",
+          "collectionTitle": "Official Teacher Guide – Part 2 mini example",
+          "setPages": "13–14"
+        },
+        "text": "Edmund de Waal ranks amongst the most accomplished ceramic artists of his generation. His white porcelain creations have their roots {{9}} ancient Chinese ceramics, but at the same time they look very modern.\n\nIn 2010, de Waal shot to wider fame {{10}} a bestselling author. The book he wrote told the story of a collection of carved Japanese figures. De Waal brilliantly interwove the history of the heirlooms with that of his fascinating great uncle to {{11}} they once belonged.",
+        "blanks": [
+          {
+            "number": 9,
+            "answers": [
+              "in"
+            ]
+          },
+          {
+            "number": 10,
+            "answers": [
+              "as",
+              "becoming"
+            ]
+          },
+          {
+            "number": 11,
+            "answers": [
+              "whom"
+            ]
+          }
+        ],
+        "explanation": "Aquí aparecen una collocation fija (have roots in), una preposición/rol (as) y un relativo formal tras preposición (to whom)."
+      }
+    ],
+    "wordFormation": [
+      {
+        "id": "sp3_training_sports_champions",
+        "title": "Training sports champions",
+        "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap.",
+        "note": "Texto oficial completo del Part 3.",
+        "source": {
+          "pages": "11, 14",
+          "resource": "Specifications and Sample Papers",
+          "collectionTitle": "Official Sample Paper 3 – Part 3",
+          "setPages": "11, 14"
+        },
+        "text": "What are the abilities that a professional sports person needs? To guarantee that opponents can be {{17|COME}}, speed, stamina and agility are essential, not to mention outstanding natural talent. Both a rigorous and comprehensive {{18|FIT}} regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates, rather than proteins and fat, that provide athletes with the {{19|ENDURE}} they need to compete. This means that pasta is more {{20|BENEFIT}} than eggs or meat. Such a diet enables them to move very energetically when required. Failure to follow a sensible diet can result in the {{21|ABLE}} to maintain stamina. Regular training to increase muscular {{22|STRONG}} is also a vital part of a professional’s regime, and this is {{23|TYPE}} done by exercising with weights. Sports people are prone to injury but a quality training regime can ensure that the {{24|SEVERE}} of these can be minimised.",
+        "blanks": [
+          {
+            "number": 17,
+            "base": "COME",
+            "answers": [
+              "overcome"
+            ]
+          },
+          {
+            "number": 18,
+            "base": "FIT",
+            "answers": [
+              "fitness"
+            ]
+          },
+          {
+            "number": 19,
+            "base": "ENDURE",
+            "answers": [
+              "endurance"
+            ]
+          },
+          {
+            "number": 20,
+            "base": "BENEFIT",
+            "answers": [
+              "beneficial"
+            ]
+          },
+          {
+            "number": 21,
+            "base": "ABLE",
+            "answers": [
+              "inability"
+            ]
+          },
+          {
+            "number": 22,
+            "base": "STRONG",
+            "answers": [
+              "strength"
+            ]
+          },
+          {
+            "number": 23,
+            "base": "TYPE",
+            "answers": [
+              "typically"
+            ]
+          },
+          {
+            "number": 24,
+            "base": "SEVERE",
+            "answers": [
+              "severity"
+            ]
+          }
+        ],
+        "explanation": "Busca la categoría gramatical que pide el hueco: overcome (verbo), fitness/endurance/inability/strength/severity (sustantivos), beneficial (adjetivo) y typically (adverbio)."
+      },
+      {
+        "id": "hb_fashion_science",
+        "title": "Fashion and Science",
+        "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap.",
+        "note": "Word formation del handbook oficial.",
+        "source": {
+          "pages": "5, 8",
+          "resource": "C1 Advanced Handbook",
+          "collectionTitle": "Official Handbook Sample Test – Part 3",
+          "setPages": "5, 8"
+        },
+        "text": "At first glance science and fashion could not be more dissimilar. Science is generally considered to be a {{17|PURSUE}} that is slow-paced, serious and worthy, whereas fashion is frivolous, impulsive and often {{18|PREDICT}}.\n\nBut fashion owes more to science than some {{19|ENTHUSE}} might like to admit. Fashion houses adopt new materials in order to {{20|DISTINCT}} themselves from their various {{21|COMPETE}}. One designer recently showed off a liquid that can be used to produce clothes that are seamless.\n\nAs cotton is {{22|INCREASE}} having to compete with other crops for land, and oil-based fabrics become less acceptable, scientists are working to develop {{23|REPLACE}} for these products. Sportswear, for example, has been transformed thanks to the use of {{24|INNOVATE}} materials and scientific designs, greatly improving the performance of athletes.",
+        "blanks": [
+          {
+            "number": 17,
+            "base": "PURSUE",
+            "answers": [
+              "pursuit"
+            ]
+          },
+          {
+            "number": 18,
+            "base": "PREDICT",
+            "answers": [
+              "unpredictable"
+            ]
+          },
+          {
+            "number": 19,
+            "base": "ENTHUSE",
+            "answers": [
+              "enthusiasts"
+            ]
+          },
+          {
+            "number": 20,
+            "base": "DISTINCT",
+            "answers": [
+              "distinguish"
+            ]
+          },
+          {
+            "number": 21,
+            "base": "COMPETE",
+            "answers": [
+              "competitors"
+            ]
+          },
+          {
+            "number": 22,
+            "base": "INCREASE",
+            "answers": [
+              "increasingly"
+            ]
+          },
+          {
+            "number": 23,
+            "base": "REPLACE",
+            "answers": [
+              "replacements"
+            ]
+          },
+          {
+            "number": 24,
+            "base": "INNOVATE",
+            "answers": [
+              "innovative"
+            ]
+          }
+        ],
+        "explanation": "Aquí hay cambios de clase léxica muy claros: pursuit, unpredictable, enthusiasts, distinguish, competitors, increasingly, replacements e innovative."
+      },
+      {
+        "id": "dg_prehistoric_art",
+        "title": "Mini example – Prehistoric art",
+        "instructions": "Official teacher-guide example for Part 3. For questions 17 – 19, use the word given in capitals to form a word that fits in the gap.",
+        "note": "Mini-ejemplo oficial del teacher guide. Son 3 huecos ilustrativos.",
+        "source": {
+          "resource": "Developing reading skills for C1 Advanced",
+          "pages": "15",
+          "collectionTitle": "Official Teacher Guide – Part 3 mini example",
+          "setPages": "15"
+        },
+        "text": "A recent, truly awesome exhibition in London claims to display the oldest portrait and the earliest puppet. There is no {{17|SHORT}} of superlatives to describe this collection of figurative art made in Europe and Asia between 40,000 and 12,000 years ago. These {{18|STUN}} objects are the earliest evidence we have of humans who seem to have had minds like ours. Amazingly, the exhibits anticipate practically every modern {{19|ART}} tradition. For example, there are clear resemblances to the work of 20th-century painters such as Picasso.",
+        "blanks": [
+          {
+            "number": 17,
+            "base": "SHORT",
+            "answers": [
+              "shortage"
+            ]
+          },
+          {
+            "number": 18,
+            "base": "STUN",
+            "answers": [
+              "stunning"
+            ]
+          },
+          {
+            "number": 19,
+            "base": "ART",
+            "answers": [
+              "artistic"
+            ]
+          }
+        ],
+        "explanation": "El guide usa este mini texto para practicar categoría gramatical y cambios morfológicos: shortage, stunning y artistic."
+      }
+    ],
+    "sentenceTransformation": [
+      {
+        "id": "sp3_key_transformations",
+        "title": "Key word transformations",
+        "mode": "exam",
+        "instructions": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
+        "note": "Bloque oficial completo de Part 4.",
+        "source": {
+          "pages": "12, 14",
+          "resource": "Specifications and Sample Papers",
+          "collectionTitle": "Official Sample Paper 3 – Part 4",
+          "setPages": "12, 14"
+        },
+        "items": [
+          {
+            "number": 25,
+            "original": "My brother now earns far less than he did when he was younger.",
+            "givenWord": "NEARLY",
+            "prefix": "My brother",
+            "suffix": "much now as he did when he was younger.",
+            "answers": [
+              "doesn't earn nearly as",
+              "does not earn nearly as",
+              "doesn't make nearly as",
+              "does not make nearly as",
+              "doesn't earn nearly so",
+              "does not earn nearly so",
+              "doesn't make nearly so",
+              "does not make nearly so"
+            ]
+          },
+          {
+            "number": 26,
+            "original": "They are demolishing the old bus station and replacing it with a new one.",
+            "givenWord": "PULLED",
+            "prefix": "The old bus station is",
+            "suffix": "with a new one.",
+            "answers": [
+              "being pulled down and replaced",
+              "being pulled down and being replaced",
+              "being pulled down to be replaced",
+              "to be pulled down and replaced"
+            ]
+          },
+          {
+            "number": 27,
+            "original": "The number of students now at university has reached an all-time high, apparently.",
+            "givenWord": "THE",
+            "prefix": "The number of students now at university is",
+            "suffix": "been, apparently.",
+            "answers": [
+              "the highest that it has ever",
+              "the highest which it has ever",
+              "the highest it has ever",
+              "the highest that it's ever",
+              "the highest which it's ever",
+              "the highest it's ever"
+            ]
+          },
+          {
+            "number": 28,
+            "original": "I’m disappointed with the Fishers’ new album when I compare it to their previous one.",
+            "givenWord": "COMPARISON",
+            "prefix": "I think the Fishers’ new album is",
+            "suffix": "their previous one.",
+            "answers": [
+              "disappointing in comparison with",
+              "disappointing in comparison to",
+              "a disappointment in comparison with",
+              "a disappointment in comparison to"
+            ]
+          },
+          {
+            "number": 29,
+            "original": "Anna got the job even though she didn’t have much experience in public relations.",
+            "givenWord": "SPITE",
+            "prefix": "Anna got the job",
+            "suffix": "of experience in public relations.",
+            "answers": [
+              "in spite of a lack",
+              "in spite of her lack"
+            ]
+          },
+          {
+            "number": 30,
+            "original": "‘I must warn you how dangerous it is to cycle at night without any lights,’ said the police officer to Max.",
+            "givenWord": "DANGERS",
+            "prefix": "Max received a",
+            "suffix": "at night without any lights from the police officer.",
+            "answers": [
+              "warning about the dangers of cycling",
+              "warning regarding the dangers of cycling",
+              "warning concerning the dangers of cycling"
+            ]
+          }
+        ],
+        "explanation": "En Part 4 cuenta mucho detectar la estructura equivalente exacta: nearly as/so, pulled down, the highest it has ever been, in comparison with/to, in spite of a/her lack y warning about/regarding/concerning."
+      },
+      {
+        "id": "hb_key_transformations",
+        "title": "Paper-based sample test transformations",
+        "mode": "exam",
+        "instructions": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
+        "note": "Part 4 del handbook oficial.",
+        "source": {
+          "pages": "6, 8",
+          "resource": "C1 Advanced Handbook",
+          "collectionTitle": "Official Handbook Sample Test – Part 4",
+          "setPages": "6, 8"
+        },
+        "items": [
+          {
+            "number": 25,
+            "original": "As long as you explain the process clearly at the conference, your boss will be pleased.",
+            "givenWord": "GIVE",
+            "prefix": "If",
+            "suffix": "the process at the conference, your boss will be pleased.",
+            "answers": [
+              "you give a clear explanation of",
+              "you give a clear explanation about"
+            ]
+          },
+          {
+            "number": 26,
+            "original": "They say that a visitor to the national art gallery damaged an 18th-century painting.",
+            "givenWord": "ALLEGED",
+            "prefix": "A visitor to the national art gallery",
+            "suffix": "an 18th-century painting.",
+            "answers": [
+              "is alleged to have damaged"
+            ]
+          },
+          {
+            "number": 27,
+            "original": "I really don’t mind whether Jill chooses to come on holiday with us or not.",
+            "givenWord": "DIFFERENCE",
+            "prefix": "It really",
+            "suffix": "whether Jill chooses to come on holiday with us or not.",
+            "answers": [
+              "makes no difference to me",
+              "makes very little difference to me"
+            ]
+          },
+          {
+            "number": 28,
+            "original": "Without the help that Joe gave me, I don’t think I’d have finished the course.",
+            "givenWord": "BEEN",
+            "prefix": "If it",
+            "suffix": "help, I don’t think I’d have finished the course.",
+            "answers": [
+              "hadn't been for Joe's",
+              "had not been for Joe's"
+            ]
+          },
+          {
+            "number": 29,
+            "original": "We can assure our customers that we will take every possible measure to maintain the quality of the products on our shelves.",
+            "givenWord": "TAKES",
+            "prefix": "We can assure our customers that we will",
+            "suffix": "to maintain the quality of the products on our shelves.",
+            "answers": [
+              "do whatever it takes",
+              "do everything it takes",
+              "do all it takes",
+              "do anything it takes"
+            ]
+          },
+          {
+            "number": 30,
+            "original": "Following some complaints by local residents, the government withdrew its proposal to build a new runway at the airport.",
+            "givenWord": "LIGHT",
+            "prefix": "The government’s proposal to build a new runway at the airport",
+            "suffix": "some complaints by local residents.",
+            "answers": [
+              "was withdrawn in the light of",
+              "was withdrawn in light of"
+            ]
+          }
+        ],
+        "explanation": "En este bloque conviene reconocer pasiva, expresiones fijas y perífrasis: give a clear explanation, is alleged to have, makes no difference, had not been for, do whatever it takes e in the light of."
+      },
+      {
+        "id": "dg_part4_mini_examples",
+        "title": "Mini examples – sentence transformations",
+        "mode": "exam",
+        "instructions": "Official teacher-guide example for Part 4. For questions 25 – 27, complete the second sentence so that it has a similar meaning to the first sentence, using the word given.",
+        "note": "Mini-ejemplo oficial del teacher guide. Son 3 transformaciones ilustrativas.",
+        "source": {
+          "resource": "Developing reading skills for C1 Advanced",
+          "pages": "19–20",
+          "collectionTitle": "Official Teacher Guide – Part 4 mini example",
+          "setPages": "19–20"
+        },
+        "items": [
+          {
+            "number": 25,
+            "original": "All the evidence now points to Bond’s theory being wrong.",
+            "givenWord": "MISTAKEN",
+            "prefix": "All the evidence now indicates that",
+            "suffix": "came up with his theory.",
+            "answers": [
+              "Bond was mistaken when he",
+              "Bond had been mistaken when he"
+            ]
+          },
+          {
+            "number": 26,
+            "original": "I now wish that I’d bought a bigger television set.",
+            "givenWord": "SUCH",
+            "prefix": "I now regret",
+            "suffix": "television set.",
+            "answers": [
+              "buying such a small",
+              "buying such a little",
+              "purchasing such a small",
+              "purchasing such a little",
+              "having bought such a small",
+              "having bought such a little",
+              "having purchased such a small",
+              "having purchased such a little"
+            ]
+          },
+          {
+            "number": 27,
+            "original": "The interviewer asked the actor, ‘What are your plans, now that you have finished filming?’",
+            "givenWord": "WERE",
+            "prefix": "In the interview, the actor",
+            "suffix": "now that he had finished filming.",
+            "answers": [
+              "was asked what his plans were"
+            ]
+          }
+        ],
+        "explanation": "Mini ejemplo oficial del guide para practicar equivalencias frecuentes: be mistaken, regret + -ing, y estilo indirecto con backshift."
+      },
+      {
+        "id": "lp4_paraphrase_drill",
+        "title": "Paraphrase drill worksheet",
+        "mode": "fullSentence",
+        "instructions": "Produce a paraphrase of the first sentence using the word given.",
+        "note": "Actividad oficial de paráfrasis del worksheet. Aquí se responde con la oración completa.",
+        "source": {
+          "pages": "45, 47",
+          "resource": "Part 4 lesson plan",
+          "collectionTitle": "Official Lesson Plan – Part 4 paraphrase drill",
+          "setPages": "42–46"
+        },
+        "items": [
+          {
+            "number": 1,
+            "original": "The machine doesn’t work.",
+            "givenWord": "ORDER",
+            "answers": [
+              "The machine's out of order.",
+              "The machine is out of order."
+            ]
+          },
+          {
+            "number": 2,
+            "original": "There’s no point in doing that.",
+            "givenWord": "WASTE",
+            "answers": [
+              "It's a waste of time doing that.",
+              "It is a waste of time doing that."
+            ]
+          },
+          {
+            "number": 3,
+            "original": "She couldn’t decide.",
+            "givenWord": "MIND",
+            "answers": [
+              "She couldn't make her mind up.",
+              "She couldn't make up her mind.",
+              "She could not make her mind up.",
+              "She could not make up her mind."
+            ]
+          },
+          {
+            "number": 4,
+            "original": "Could you look after the children?",
+            "givenWord": "CARE",
+            "answers": [
+              "Could you take care of the children?"
+            ]
+          },
+          {
+            "number": 5,
+            "original": "I don’t feel like going out.",
+            "givenWord": "MOOD",
+            "answers": [
+              "I'm not in the mood to go out.",
+              "I'm not in the mood for going out.",
+              "I am not in the mood to go out.",
+              "I am not in the mood for going out."
+            ]
+          },
+          {
+            "number": 6,
+            "original": "I like coffee better than tea.",
+            "givenWord": "PREFER",
+            "answers": [
+              "I prefer coffee to tea."
+            ]
+          },
+          {
+            "number": 7,
+            "original": "Please don’t leave your seats.",
+            "givenWord": "REMAIN",
+            "answers": [
+              "Please remain in your seats."
+            ]
+          },
+          {
+            "number": 8,
+            "original": "You’re entitled to vote.",
+            "givenWord": "RIGHT",
+            "answers": [
+              "You have the right to vote."
+            ]
+          },
+          {
+            "number": 9,
+            "original": "I don’t mind.",
+            "givenWord": "SAME",
+            "answers": [
+              "It's all the same to me.",
+              "It is all the same to me."
+            ]
+          },
+          {
+            "number": 10,
+            "original": "I didn’t mean to interrupt the meeting.",
+            "givenWord": "INTENTION",
+            "answers": [
+              "I had no intention of interrupting the meeting."
+            ]
+          },
+          {
+            "number": 11,
+            "original": "The guide pointed out the paintings.",
+            "givenWord": "ATTENTION",
+            "answers": [
+              "The guide drew our attention to the paintings."
+            ]
+          },
+          {
+            "number": 12,
+            "original": "John never explained why he left.",
+            "givenWord": "EXPLANATION",
+            "answers": [
+              "John never gave an explanation for why he left.",
+              "John never gave an explanation for leaving."
+            ]
+          },
+          {
+            "number": 13,
+            "original": "I’ve run out of money.",
+            "givenWord": "LEFT",
+            "answers": [
+              "I've no money left.",
+              "I haven't any money left.",
+              "I have no money left.",
+              "I have not any money left."
+            ]
+          },
+          {
+            "number": 14,
+            "original": "I’ve known Marcia since 2004.",
+            "givenWord": "MET",
+            "answers": [
+              "I met Marcia in 2004."
+            ]
+          },
+          {
+            "number": 15,
+            "original": "I really admire someone like that.",
+            "givenWord": "LOOK",
+            "answers": [
+              "I really look up to someone like that."
+            ]
+          },
+          {
+            "number": 16,
+            "original": "It was wrong of us to say that.",
+            "givenWord": "SHOULDN'T",
+            "answers": [
+              "We shouldn't have said that.",
+              "We should not have said that."
+            ]
+          }
+        ],
+        "explanation": "Este worksheet trabaja equivalencias muy comunes: out of order, a waste of time, make up one’s mind, take care of, be in the mood, prefer A to B, draw attention to, look up to y should(n’t) have + participio."
+      },
+      {
+        "id": "lp4_sample_task",
+        "title": "Sample task",
+        "mode": "exam",
+        "instructions": "For questions 1 – 6, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
+        "note": "Sample task oficial del lesson plan.",
+        "source": {
+          "pages": "46, 48",
+          "resource": "Part 4 lesson plan",
+          "collectionTitle": "Official Lesson Plan – Part 4 sample task",
+          "setPages": "46–48"
+        },
+        "items": [
+          {
+            "number": 1,
+            "original": "There were a lot of things that we had to think about before we could accept their offer.",
+            "givenWord": "OBLIGED",
+            "prefix": "There were several things that we",
+            "suffix": "consideration before we could accept their offer.",
+            "answers": [
+              "were obliged to take into"
+            ]
+          },
+          {
+            "number": 2,
+            "original": "I know that it was wrong of me to shout in front of the customers.",
+            "givenWord": "RAISED",
+            "prefix": "I know that I should",
+            "suffix": "in front of the customers.",
+            "answers": [
+              "not have raised my voice"
+            ]
+          },
+          {
+            "number": 3,
+            "original": "If you need any help, you can always call me.",
+            "givenWord": "HESITATE",
+            "prefix": "If you need any help,",
+            "suffix": "me.",
+            "answers": [
+              "don't hesitate to call",
+              "do not hesitate to call"
+            ]
+          },
+          {
+            "number": 4,
+            "original": "It hasn’t rained quite as much this year as in previous years.",
+            "givenWord": "SLIGHTLY",
+            "prefix": "This year, it has rained",
+            "suffix": "did in previous years.",
+            "answers": [
+              "slightly less than it"
+            ]
+          },
+          {
+            "number": 5,
+            "original": "Unless the weather improves, they will have to stop the tennis match.",
+            "givenWord": "MEAN",
+            "prefix": "If the weather doesn’t get",
+            "suffix": "stopping the tennis match.",
+            "answers": [
+              "any better it will mean"
+            ]
+          },
+          {
+            "number": 6,
+            "original": "I don’t mind whether we stay in or go out this evening, but John wants to go to the cinema.",
+            "givenWord": "DIFFERENCE",
+            "prefix": "It doesn’t",
+            "suffix": "whether we stay in or go out this evening, but John wants to go to the cinema.",
+            "answers": [
+              "make any difference to me",
+              "make much difference to me"
+            ]
+          }
+        ],
+        "explanation": "En este sample task aparecen varias transformaciones muy típicas: take into consideration, should not have + participio, don’t hesitate to, slightly less than, any better it will mean y make any/much difference to me."
+      }
+    ]
+  }
 }

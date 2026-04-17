@@ -623,7 +623,7 @@
 
     <div id="loaderScreen" class="screen active">
       <div class="loader-box">
-        <h3>Cargando exercises.json</h3>
+        <h3>Cargando ejercicios oficiales</h3>
         <p id="loaderMessage">Intentando abrir el archivo externo con todos los bloques oficiales.</p>
         <div class="loader-actions">
           <button class="button button-ghost" onclick="retryLoad()">Reintentar</button>
@@ -663,10 +663,9 @@
   </div>
 
   <script>
-    const FALLBACK_JSON = 'exercises_completo.json';
+    const FALLBACK_JSON = 'exercises_por_tipos_c1.json';
     let appData = null;
-    let currentSet = null;
-    let currentType = null;
+        let currentType = null;
     let currentExercises = [];
     let currentExerciseIndex = 0;
     let userAnswers = {};
@@ -680,7 +679,7 @@
     });
 
     async function loadAppData() {
-      setLoaderMessage('Intentando abrir el archivo externo con todos los bloques oficiales.');
+      setLoaderMessage('Intentando abrir el archivo externo con todos los ejercicios oficiales agrupados por tipo.');
       try {
         const response = await fetch(FALLBACK_JSON, { cache: 'no-store' });
         if (!response.ok) throw new Error('No se pudo leer el JSON');
@@ -728,47 +727,33 @@
 
     function renderHomeScreen() {
       const screen = document.getElementById('homeScreen');
-      const cards = appData.exerciseSets.map(set => {
-        const counts = countTypesInSet(set);
-        const badges = Object.entries(counts)
-          .filter(([, count]) => count > 0)
-          .map(([type, count]) => `<span class="pill count">${appData.exerciseTypes[type].icon} ${appData.exerciseTypes[type].label}: ${count}</span>`)
-          .join('');
-
-        return `
-          <div class="set-card" onclick="openSet('${set.id}')">
-            <h3>${escapeHtml(set.title)}</h3>
-            <p>${escapeHtml(set.description || '')}</p>
-            <div class="set-meta">
-              <span class="pill">${escapeHtml(set.source?.file || 'Fuente oficial')}</span>
-              <span class="pill secondary">Páginas ${escapeHtml(set.source?.pages || '')}</span>
+      const cards = Object.entries(appData.exerciseTypes)
+        .filter(([type]) => (appData.exercisesByType?.[type] || []).length > 0)
+        .map(([type, meta]) => {
+          const total = (appData.exercisesByType?.[type] || []).length;
+          return `
+            <div class="type-card" onclick="openType('${type}')">
+              <h3>${meta.icon} ${escapeHtml(meta.label)}</h3>
+              <p>${escapeHtml(meta.description || '')}</p>
+              <div class="type-meta">
+                <span class="pill count">${total} ejercicio${total === 1 ? '' : 's'}</span>
+              </div>
             </div>
-            <div class="set-meta">${badges}</div>
-          </div>
-        `;
-      }).join('');
+          `;
+        }).join('');
 
       screen.innerHTML = `
         <div class="panel-card">
-          <div class="section-title">📚 Bloques oficiales disponibles</div>
-          <p class="meta-line">Haz clic en un bloque. Después verás solo los tipos de ejercicio que realmente existen dentro de ese material.</p>
+          <div class="section-title">📚 Tipos de ejercicio</div>
+          <p class="meta-line">Ahora los ejercicios están agrupados por tipo. Entra en uno y dentro verás todos los ejercicios oficiales disponibles.</p>
         </div>
-        <div class="set-grid">${cards}</div>
+        <div class="type-grid">${cards}</div>
       `;
     }
 
-    function countTypesInSet(set) {
-      const counts = {};
-      Object.keys(appData.exerciseTypes).forEach(type => {
-        counts[type] = Array.isArray(set.types?.[type]) ? set.types[type].length : 0;
-      });
-      return counts;
-    }
-
-    function openSet(setId) {
-      currentSet = appData.exerciseSets.find(set => set.id === setId);
-      currentType = null;
-      currentExercises = [];
+    function openType(type) {
+      currentType = type;
+      currentExercises = appData.exercisesByType?.[type] || [];
       currentExerciseIndex = 0;
       userAnswers = {};
       showResults = false;
@@ -778,50 +763,46 @@
 
     function renderTypeScreen() {
       const screen = document.getElementById('typeScreen');
-      const typeCards = Object.entries(appData.exerciseTypes)
-        .filter(([type]) => (currentSet.types?.[type] || []).length > 0)
-        .map(([type, meta]) => {
-          const total = currentSet.types[type].length;
-          return `
-            <div class="type-card" onclick="openType('${type}')">
-              <h3>${meta.icon} ${escapeHtml(meta.label)}</h3>
-              <p>${escapeHtml(meta.description || '')}</p>
-              <div class="type-meta">
-                <span class="pill count">${total} bloque${total === 1 ? '' : 's'}</span>
-                <span class="pill secondary">En ${escapeHtml(currentSet.title)}</span>
-              </div>
+      const meta = appData.exerciseTypes[currentType];
+      const cards = currentExercises.map((exercise, index) => {
+        const totalItems = getExerciseItemCount(exercise);
+        return `
+          <div class="set-card" onclick="openExercise(${index})">
+            <h3>${escapeHtml(exercise.title)}</h3>
+            <p>${escapeHtml(exercise.instructions || exercise.note || '')}</p>
+            <div class="set-meta">
+              <span class="pill">${escapeHtml(exercise.source?.resource || 'Fuente oficial')}</span>
+              <span class="pill secondary">Páginas ${escapeHtml(exercise.source?.pages || exercise.source?.setPages || '')}</span>
             </div>
-          `;
-        }).join('');
+            <div class="set-meta">
+              ${exercise.source?.collectionTitle ? `<span class="pill secondary">${escapeHtml(exercise.source.collectionTitle)}</span>` : ''}
+              <span class="pill count">${totalItems} ${currentType === 'sentenceTransformation' ? 'transformaciones' : currentType === 'multipleChoice' ? 'gaps' : 'huecos'}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
 
       screen.innerHTML = `
         <div class="panel-card">
-          <div class="section-title">🗂️ ${escapeHtml(currentSet.title)}</div>
-          <p class="meta-line">${escapeHtml(currentSet.description || '')}</p>
-          <div class="set-meta">
-            <span class="pill">${escapeHtml(currentSet.source?.file || 'Fuente oficial')}</span>
-            <span class="pill secondary">Páginas ${escapeHtml(currentSet.source?.pages || '')}</span>
-          </div>
+          <div class="section-title">${meta.icon} ${escapeHtml(meta.label)}</div>
+          <p class="meta-line">Hay <strong>${currentExercises.length}</strong> ejercicios oficiales en esta categoría. Elige cuál quieres abrir.</p>
           <div class="loader-actions" style="justify-content:flex-start; margin-top:1rem;">
-            <button class="button button-back" onclick="goHome()">← Volver a bloques</button>
+            <button class="button button-back" onclick="goHome()">← Volver a tipos</button>
           </div>
         </div>
-        <div class="type-grid">${typeCards}</div>
+        <div class="set-grid">${cards}</div>
       `;
     }
 
-    function openType(type) {
-      currentType = type;
-      currentExercises = currentSet.types[type] || [];
-      currentExerciseIndex = 0;
+    function openExercise(index) {
+      currentExerciseIndex = index;
       userAnswers = {};
       showResults = false;
-      loadExercise(0);
+      loadExercise(index);
       showScreen('exerciseScreen');
     }
 
     function goHome() {
-      currentSet = null;
       currentType = null;
       currentExercises = [];
       currentExerciseIndex = 0;
@@ -830,14 +811,15 @@
       showScreen('homeScreen');
     }
 
-    function goToTypes() {
+    function goToExerciseList() {
       showResults = false;
       userAnswers = {};
-      showScreen('typeScreen');
       renderTypeScreen();
+      showScreen('typeScreen');
     }
 
     function loadExercise(index) {
+
       currentExerciseIndex = index;
       showResults = false;
       updateProgress();
@@ -861,7 +843,7 @@
       document.getElementById('progressBar').style.width = progress + '%';
 
       const typeMeta = appData.exerciseTypes[currentType];
-      document.getElementById('exerciseNumber').textContent = `${currentSet.title} · ${currentExerciseIndex + 1} de ${currentExercises.length}`;
+      document.getElementById('exerciseNumber').textContent = `${typeMeta.label} · ${currentExerciseIndex + 1} de ${currentExercises.length}`;
       document.getElementById('exerciseType').textContent = `${typeMeta.icon} ${typeMeta.label}`;
 
       const sourceBox = document.getElementById('sourceBox');
@@ -870,13 +852,15 @@
         <div class="exercise-subtitle">${escapeHtml(exercise.instructions || '')}</div>
         ${exercise.note ? `<div class="meta-line" style="margin-top:0.45rem;">${escapeHtml(exercise.note)}</div>` : ''}
         <div class="set-meta" style="margin-top:0.75rem;">
-          <span class="pill">${escapeHtml(currentSet.source?.file || 'Fuente oficial')}</span>
-          <span class="pill secondary">Páginas ${escapeHtml(exercise.source?.pages || currentSet.source?.pages || '')}</span>
+          <span class="pill">${escapeHtml(exercise.source?.resource || 'Fuente oficial')}</span>
+          <span class="pill secondary">Páginas ${escapeHtml(exercise.source?.pages || exercise.source?.setPages || '')}</span>
+          ${exercise.source?.collectionTitle ? `<span class="pill secondary">${escapeHtml(exercise.source.collectionTitle)}</span>` : ''}
         </div>
       `;
     }
 
     function renderExerciseContent(exercise) {
+
       const content = document.getElementById('exerciseContent');
       content.innerHTML = '';
 
@@ -1253,6 +1237,12 @@
       return ensureArray(item.answers).some(answer => normalizeText(answer) === normalizedInput);
     }
 
+    function getExerciseItemCount(exercise) {
+      if (currentType === 'multipleChoice') return exercise.questions.length;
+      if (currentType === 'fillBlanks' || currentType === 'wordFormation') return exercise.blanks.length;
+      return exercise.items.length;
+    }
+
     function getScore(exercise) {
       if (currentType === 'multipleChoice') {
         const total = exercise.questions.length;
@@ -1302,14 +1292,14 @@
 
       if (!showResults) {
         group.innerHTML = `
-          <button class="button button-back" onclick="goToTypes()">← Tipos</button>
-          <button class="button button-ghost" onclick="goHome()">Bloques</button>
+          <button class="button button-back" onclick="goToExerciseList()">← Ejercicios</button>
+          <button class="button button-ghost" onclick="goHome()">Tipos</button>
           <button class="button button-check" onclick="checkAnswer()">Comprobar ✓</button>
         `;
       } else {
         const nextDisabled = currentExerciseIndex >= currentExercises.length - 1;
         group.innerHTML = `
-          <button class="button button-back" onclick="goToTypes()">← Tipos</button>
+          <button class="button button-back" onclick="goToExerciseList()">← Ejercicios</button>
           <button class="button button-retry" onclick="retryExercise()">Intentar de nuevo</button>
           <button class="button button-next" ${nextDisabled ? 'disabled' : ''} onclick="nextExercise()">Siguiente</button>
         `;
