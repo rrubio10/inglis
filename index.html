@@ -1,943 +1,1258 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cambridge English Practice Hub</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge English Practice</title>
+  <style>
+    :root {
+      --bg-1: #4f46e5;
+      --bg-2: #7c3aed;
+      --card: rgba(255,255,255,0.96);
+      --muted: #6b7280;
+      --text: #111827;
+      --soft-blue: #eef2ff;
+      --soft-violet: #f5f3ff;
+      --green: #16a34a;
+      --green-bg: #dcfce7;
+      --red: #dc2626;
+      --red-bg: #fee2e2;
+      --orange: #f59e0b;
+      --orange-bg: #fff7ed;
+      --border: #e5e7eb;
+      --shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
 
-        :root {
-            --bg-1: #667eea;
-            --bg-2: #764ba2;
-            --card: #ffffff;
-            --text: #1f2937;
-            --muted: #6b7280;
-            --line: #d1d5db;
-            --soft: #f3f4f6;
-            --soft-blue: #eef2ff;
-            --blue: #4f46e5;
-            --blue-2: #6366f1;
-            --green: #16a34a;
-            --green-bg: #ecfdf3;
-            --red: #dc2626;
-            --red-bg: #fef2f2;
-            --yellow: #f59e0b;
-            --yellow-bg: #fff7ed;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
-            min-height: 100vh;
-            padding: 2rem 1rem;
-            color: var(--text);
-        }
+    body {
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      color: var(--text);
+      padding: 1.25rem;
+    }
 
-        .container { max-width: 1120px; margin: 0 auto; }
-        .header { text-align: center; color: white; margin-bottom: 2rem; }
-        .header h1 { font-size: 2.7rem; margin-bottom: 0.5rem; text-shadow: 0 8px 30px rgba(0,0,0,0.15); }
-        .header p { opacity: 0.95; font-size: 1.05rem; }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
 
-        .screen { display: none; }
-        .screen.active { display: block; }
+    .header {
+      color: white;
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
 
-        .home-screen, .type-screen { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.45rem;
+    }
 
-        .exercise-card {
-            background: rgba(255,255,255,0.96);
-            border-radius: 18px;
-            padding: 1.5rem;
-            cursor: pointer;
-            border: 2px solid transparent;
-            box-shadow: 0 14px 35px rgba(0,0,0,0.18);
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
+    .header p {
+      opacity: 0.95;
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
 
-        .exercise-card:hover { transform: translateY(-6px); box-shadow: 0 18px 38px rgba(0,0,0,0.24); border-color: rgba(79,70,229,0.35); }
-        .exercise-card .icon { font-size: 2.3rem; margin-bottom: 0.9rem; }
-        .exercise-card h2 { font-size: 1.25rem; margin-bottom: 0.55rem; }
-        .exercise-card p { color: var(--muted); line-height: 1.55; font-size: 0.95rem; }
+    .screen { display: none; }
+    .screen.active { display: block; }
 
-        .count, .pill {
-            margin-top: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--blue);
-            background: var(--soft-blue);
-            padding: 0.4rem 0.7rem;
-            border-radius: 999px;
-        }
+    .card, .panel-card {
+      background: var(--card);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
 
-        .pill { margin-top: 0; }
+    .panel-card {
+      padding: 1.35rem;
+      margin-bottom: 1.25rem;
+    }
 
-        .card {
-            background: var(--card);
-            border-radius: 22px;
-            padding: 1.75rem;
-            box-shadow: 0 18px 45px rgba(0,0,0,0.22);
-        }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
 
-        .panel-card {
-            background: rgba(255,255,255,0.96);
-            border-radius: 22px;
-            padding: 1.5rem;
-            box-shadow: 0 18px 45px rgba(0,0,0,0.22);
-            margin-bottom: 1.5rem;
-        }
+    .panel-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
 
-        .panel-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
+    .panel-subtitle {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 0.35rem;
+    }
 
-        .panel-title { font-size: 1.5rem; color: #111827; }
-        .panel-subtitle { color: var(--muted); line-height: 1.6; margin-top: 0.35rem; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: var(--soft-blue);
+      color: var(--bg-1);
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
 
-        .progress-section { margin-bottom: 1.4rem; }
-        .progress-header { display: flex; justify-content: space-between; gap: 1rem; align-items: center; margin-bottom: 1rem; }
-        .progress-header h2 { font-size: 1.25rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
 
-        .exercise-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
-            color: white;
-            padding: 0.55rem 0.95rem;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
+    .set-card, .type-card {
+      background: rgba(255,255,255,0.98);
+      border-radius: 18px;
+      border: 2px solid transparent;
+      padding: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.10);
+    }
 
-        .progress-bar { width: 100%; height: 10px; background: #e5e7eb; border-radius: 999px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--bg-1), var(--bg-2)); transition: width 0.3s ease; }
-        .exercise-intro { margin-bottom: 1.2rem; }
-        .exercise-title { font-size: 1.85rem; margin-bottom: 0.4rem; color: #111827; }
-        .exercise-subtitle { color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+    .set-card:hover, .type-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(79,70,229,0.35);
+      box-shadow: 0 18px 34px rgba(0,0,0,0.16);
+    }
 
-        .instruction-strip {
-            background: linear-gradient(135deg, #eff6ff, #eef2ff);
-            border: 1px solid #c7d2fe;
-            border-radius: 14px;
-            padding: 1rem 1.1rem;
-            line-height: 1.6;
-            color: #312e81;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-        }
+    .set-top, .type-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 0.85rem;
+    }
 
-        .mini-note {
-            margin-top: 0.75rem;
-            font-size: 0.95rem;
-            color: #4338ca;
-            background: rgba(255,255,255,0.65);
-            border-radius: 10px;
-            padding: 0.75rem 0.85rem;
-        }
+    .set-title, .type-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
 
-        .exercise-passage {
-            background: #fafafa;
-            border: 1px solid #e5e7eb;
-            border-radius: 18px;
-            padding: 1.4rem;
-            margin-bottom: 1.4rem;
-        }
+    .set-desc, .type-desc {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
 
-        .exercise-passage p { font-size: 1.08rem; line-height: 2; margin-bottom: 1.25rem; color: #222; }
-        .exercise-passage p:last-child { margin-bottom: 0; }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.95rem;
+    }
 
-        .inline-gap {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            white-space: nowrap;
-            vertical-align: baseline;
-            margin: 0 0.1rem;
-        }
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #f3f4f6;
+      color: #374151;
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
 
-        .gap-number { font-weight: 800; color: #111827; }
-        .gap-line { display: inline-block; min-width: 78px; border-bottom: 3px dotted #7c3aed; transform: translateY(-2px); }
-        .gap-base-inline {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.18rem 0.45rem;
-            border-radius: 8px;
-            background: #ede9fe;
-            color: #5b21b6;
-            font-size: 0.82rem;
-            font-weight: 800;
-            letter-spacing: 0.03em;
-        }
+    .card {
+      padding: 1.4rem;
+    }
 
-        .section-title { display: flex; align-items: center; gap: 0.6rem; font-size: 1.08rem; font-weight: 800; margin-bottom: 1rem; color: #111827; }
-        .question-list, .answer-grid, .transformation-list { display: grid; gap: 1rem; }
-        .question-card, .answer-card, .transform-item { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1rem; }
-        .question-header, .answer-card-header { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.85rem; }
-        .question-number-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 42px;
-            height: 42px;
-            padding: 0 0.6rem;
-            border-radius: 12px;
-            background: #111827;
-            color: white;
-            font-weight: 800;
-        }
+    .top-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
 
-        .question-card-title { font-weight: 700; color: #111827; }
-        .options-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
-        .option-button {
-            width: 100%; text-align: left; border: 2px solid #dbe4ff; background: white; border-radius: 14px;
-            padding: 0.9rem 1rem; cursor: pointer; transition: all 0.2s ease; font-size: 0.98rem; display: flex; align-items: center; gap: 0.8rem;
-        }
-        .option-button:hover:not(:disabled) { border-color: var(--blue-2); transform: translateY(-1px); background: #f8faff; }
-        .option-button.selected { border-color: var(--blue-2); background: var(--soft-blue); }
-        .option-button.correct { border-color: var(--green); background: var(--green-bg); }
-        .option-button.incorrect { border-color: var(--red); background: var(--red-bg); }
-        .option-letter {
-            width: 32px; height: 32px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
-            background: #eef2ff; color: var(--blue); font-weight: 800; flex-shrink: 0;
-        }
-        .option-button.correct .option-letter { background: #dcfce7; color: var(--green); }
-        .option-button.incorrect .option-letter { background: #fee2e2; color: var(--red); }
+    .breadcrumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
 
-        .mc-status, .feedback, .transform-feedback {
-            margin-top: 0.85rem; padding: 0.8rem 0.9rem; border-radius: 12px; font-weight: 700; line-height: 1.5;
-        }
-        .feedback.correct, .transform-feedback.correct, .mc-status.correct { background: var(--green-bg); color: #166534; border: 1px solid #bbf7d0; }
-        .feedback.incorrect, .transform-feedback.incorrect, .mc-status.incorrect { background: var(--red-bg); color: #991b1b; border: 1px solid #fecaca; }
+    .breadcrumbs strong { color: var(--text); }
 
-        .answer-grid { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-        .answer-card-header { justify-content: space-between; }
-        .gap-chip {
-            display: inline-flex; align-items: center; justify-content: center; min-width: 42px; height: 42px;
-            padding: 0 0.6rem; border-radius: 12px; background: #111827; color: white; font-weight: 800;
-        }
-        .base-word-badge {
-            display: inline-flex; align-items: center; justify-content: center; padding: 0.45rem 0.7rem;
-            border-radius: 10px; background: #ede9fe; color: #5b21b6; font-size: 0.84rem; font-weight: 800; letter-spacing: 0.04em;
-        }
+    .exercise-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      color: white;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
 
-        .input-field {
-            width: 100%; border: 2px solid #d1d5db; background: white; border-radius: 12px; padding: 0.9rem 1rem;
-            font-size: 1rem; transition: border-color 0.2s ease, box-shadow 0.2s ease; font-family: inherit;
-        }
-        .input-field:focus { outline: none; border-color: var(--blue-2); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12); }
-        .input-field:disabled { background: #f3f4f6; color: #6b7280; cursor: not-allowed; }
-        .answer-help { color: var(--muted); font-size: 0.9rem; margin-top: 0.55rem; line-height: 1.45; }
-        .word-rows { display: grid; gap: 1rem; }
-        .transform-item { padding: 1.1rem; }
-        .transform-top { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 0.8rem; }
-        .transform-body { flex: 1; }
-        .transform-original { color: #111827; line-height: 1.6; margin-bottom: 0.8rem; }
-        .given-word-box {
-            display: inline-flex; align-items: center; gap: 0.45rem; background: #fff7ed; color: #9a3412; border: 1px solid #fed7aa;
-            border-radius: 999px; padding: 0.42rem 0.8rem; font-size: 0.9rem; font-weight: 800; margin-bottom: 0.9rem;
-        }
-        .transform-complete-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; line-height: 1.9; font-size: 1.02rem; }
-        .transform-input { min-width: 280px; flex: 1 1 320px; }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 0.9rem;
+    }
 
-        .answer-preview {
-            margin-top: 0.9rem; padding: 0.85rem 0.95rem; border-radius: 12px; background: #fff7ed;
-            border: 1px solid #fed7aa; color: #9a3412; line-height: 1.55; font-weight: 700;
-        }
+    .progress-header h2 {
+      font-size: 1.25rem;
+    }
 
-        .result-summary, .explanation {
-            display: none; margin-top: 1rem; margin-bottom: 1.2rem; border-radius: 16px; padding: 1rem 1.1rem;
-            border: 1px solid #bfdbfe; background: linear-gradient(135deg, #eff6ff, #eef2ff);
-        }
-        .result-summary.show, .explanation.show { display: block; }
-        .result-summary h3, .explanation h3 { margin-bottom: 0.45rem; color: #1d4ed8; }
-        .result-summary p, .explanation p { line-height: 1.6; color: #1f2937; }
+    .progress-bar {
+      height: 10px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+    }
 
-        .button-group { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1rem; }
-        .button {
-            border: none; border-radius: 14px; padding: 0.95rem 1.25rem; font-size: 1rem; font-weight: 800;
-            cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-        }
-        .button:hover:not(:disabled) { transform: translateY(-2px); }
-        .button:disabled { cursor: not-allowed; opacity: 0.55; }
-        .button-back { background: #374151; color: white; }
-        .button-check { background: linear-gradient(135deg, var(--bg-1), var(--bg-2)); color: white; box-shadow: 0 10px 25px rgba(99, 102, 241, 0.28); }
-        .button-retry { background: #f59e0b; color: white; }
-        .button-next { background: #16a34a; color: white; }
-        .button-secondary { background: rgba(255,255,255,0.92); color: #312e81; border: 2px solid #c7d2fe; }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--bg-1), var(--bg-2));
+      transition: width 0.25s ease;
+    }
 
-        .json-status {
-            margin: 0 auto 1.5rem; max-width: 1120px; background: rgba(255,255,255,0.94); border-radius: 18px; padding: 1rem 1.2rem;
-            color: #1f2937; box-shadow: 0 12px 30px rgba(0,0,0,0.18); display: none;
-        }
-        .json-status.show { display: block; }
-        .json-status.error { border-left: 5px solid #f59e0b; }
-        .json-status.success { border-left: 5px solid #16a34a; }
-        .json-status p { line-height: 1.6; }
-        .json-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.9rem; }
-        .hidden { display: none !important; }
-        .footer { text-align: center; color: rgba(255,255,255,0.92); margin-top: 1.4rem; font-size: 0.95rem; }
+    .exercise-title {
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      font-weight: 900;
+      margin-bottom: 0.45rem;
+    }
 
-        @media (max-width: 760px) {
-            body { padding: 1.2rem 0.8rem; }
-            .header h1 { font-size: 2rem; }
-            .card, .panel-card { padding: 1rem; }
-            .progress-header, .panel-header { flex-direction: column; align-items: flex-start; }
-            .exercise-title { font-size: 1.5rem; }
-            .exercise-passage { padding: 1rem; }
-            .exercise-passage p { font-size: 1rem; line-height: 1.85; }
-            .options-grid { grid-template-columns: 1fr; }
-            .transform-input { min-width: 100%; }
-        }
-    </style>
+    .exercise-subtitle, .source-strip {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0.9rem;
+    }
+
+    .instruction-strip {
+      background: linear-gradient(135deg, #eff6ff, #eef2ff);
+      border: 1px solid #c7d2fe;
+      border-radius: 16px;
+      padding: 1rem 1.05rem;
+      color: #312e81;
+      line-height: 1.6;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .mini-note {
+      margin-top: 0.75rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.7);
+      color: #4338ca;
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+
+    .exercise-passage {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .exercise-passage p {
+      font-size: 1.05rem;
+      line-height: 1.95;
+      margin-bottom: 1rem;
+    }
+
+    .exercise-passage p:last-child { margin-bottom: 0; }
+
+    .inline-gap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      margin: 0 0.08rem;
+    }
+
+    .gap-number { font-weight: 900; color: #111827; }
+    .gap-line { display: inline-block; min-width: 78px; border-bottom: 3px dotted var(--bg-2); transform: translateY(-2px); }
+    .gap-base-inline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.18rem 0.45rem;
+      border-radius: 8px;
+      background: var(--soft-violet);
+      color: #6d28d9;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 1.06rem;
+      font-weight: 900;
+      margin-bottom: 0.9rem;
+    }
+
+    .question-list, .answer-grid, .transformation-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .question-card, .answer-card, .transform-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+    .question-header, .answer-card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .left-inline {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .number-badge, .gap-chip {
+      min-width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.7rem;
+      border-radius: 12px;
+      background: #111827;
+      color: white;
+      font-weight: 900;
+    }
+
+    .base-word-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.42rem 0.75rem;
+      border-radius: 10px;
+      background: var(--soft-violet);
+      color: #6d28d9;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .option-button {
+      width: 100%;
+      text-align: left;
+      border: 2px solid #dbe4ff;
+      background: white;
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.18s ease;
+      font-size: 0.98rem;
+    }
+
+    .option-button:hover:not(:disabled) {
+      border-color: var(--bg-1);
+      transform: translateY(-1px);
+      background: #f8faff;
+    }
+
+    .option-button.selected { background: var(--soft-blue); border-color: var(--bg-1); }
+    .option-button.correct { background: var(--green-bg); border-color: var(--green); }
+    .option-button.incorrect { background: var(--red-bg); border-color: var(--red); }
+
+    .option-letter {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--soft-blue);
+      color: var(--bg-1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .option-button.correct .option-letter { background: #bbf7d0; color: #166534; }
+    .option-button.incorrect .option-letter { background: #fecaca; color: #991b1b; }
+
+    .answer-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .input-field {
+      width: 100%;
+      border: 2px solid #d1d5db;
+      border-radius: 12px;
+      padding: 0.88rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: white;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--bg-1);
+      box-shadow: 0 0 0 4px rgba(79,70,229,0.12);
+    }
+
+    .input-field:disabled {
+      background: #f3f4f6;
+      color: #6b7280;
+      cursor: not-allowed;
+    }
+
+    .answer-help {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-top: 0.6rem;
+    }
+
+    .feedback, .mc-status, .transform-feedback {
+      margin-top: 0.8rem;
+      padding: 0.82rem 0.92rem;
+      border-radius: 12px;
+      font-weight: 800;
+      line-height: 1.5;
+      border: 1px solid transparent;
+    }
+
+    .correct { background: var(--green-bg); color: #166534; border-color: #bbf7d0; }
+    .incorrect { background: var(--red-bg); color: #991b1b; border-color: #fecaca; }
+
+    .transform-top {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .transform-body { flex: 1; }
+    .transform-original { line-height: 1.6; margin-bottom: 0.8rem; }
+
+    .given-word-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--orange-bg);
+      color: #9a3412;
+      border: 1px solid #fed7aa;
+      border-radius: 999px;
+      padding: 0.42rem 0.8rem;
+      font-size: 0.9rem;
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+    }
+
+    .transform-complete-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      line-height: 1.9;
+    }
+
+    .transform-input { min-width: 280px; flex: 1 1 320px; }
+
+    .answer-preview {
+      margin-top: 0.85rem;
+      padding: 0.85rem 0.95rem;
+      border-radius: 12px;
+      background: var(--orange-bg);
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .result-summary, .explanation, .loader-box {
+      display: none;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      padding: 1rem 1.05rem;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #eff6ff, #eef2ff);
+      border: 1px solid #bfdbfe;
+    }
+
+    .result-summary.show, .explanation.show, .loader-box.show {
+      display: block;
+    }
+
+    .result-summary h3, .explanation h3, .loader-box h3 {
+      color: #1d4ed8;
+      margin-bottom: 0.45rem;
+    }
+
+    .result-summary p, .explanation p, .loader-box p { line-height: 1.6; }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .button {
+      border: none;
+      border-radius: 14px;
+      padding: 0.95rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .button:hover:not(:disabled) { transform: translateY(-2px); }
+    .button:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    .button-dark { background: #374151; color: white; }
+    .button-main { background: linear-gradient(135deg, var(--bg-1), var(--bg-2)); color: white; }
+    .button-orange { background: var(--orange); color: white; }
+    .button-green { background: var(--green); color: white; }
+
+    .json-input {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.6rem;
+    }
+
+    .footer {
+      color: rgba(255,255,255,0.96);
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 760px) {
+      body { padding: 0.85rem; }
+      .card, .panel-card { padding: 1rem; }
+      .options-grid { grid-template-columns: 1fr; }
+      .transform-input { min-width: 100%; }
+      .progress-header { align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1 id="appTitle">Cambridge English Practice 🎓</h1>
-            <p id="appSubtitle">Cargando ejercicios...</p>
-        </div>
+  <div class="container">
+    <div class="header">
+      <h1 id="appTitle">Cambridge English Practice 🎓</h1>
+      <p id="appSubtitle">Elige primero un bloque oficial y después el tipo de ejercicio.</p>
     </div>
 
-    <div id="jsonStatus" class="json-status">
-        <p id="jsonStatusText"></p>
-        <div class="json-actions">
-            <button id="retryLoadBtn" class="button button-secondary" type="button">Reintentar carga automática</button>
-            <button id="selectJsonBtn" class="button button-secondary" type="button">Seleccionar exercises.json</button>
-            <input id="jsonFileInput" type="file" accept="application/json,.json" class="hidden">
-        </div>
+    <div id="loaderBox" class="panel-card loader-box show">
+      <h3>📂 Cargando ejercicios</h3>
+      <p>La página intentará leer <strong>exercises.json</strong> automáticamente. Si has abierto el HTML con doble clic y el navegador bloquea la carga, selecciona el JSON manualmente aquí abajo.</p>
+      <div class="json-input">
+        <input type="file" id="jsonFileInput" accept="application/json">
+        <button class="button button-main" type="button" onclick="loadJsonFromFile()">Cargar JSON manualmente</button>
+      </div>
     </div>
 
-    <div class="container">
-        <div id="homeScreen" class="screen active">
-            <div class="panel-card">
-                <div class="panel-header">
-                    <div>
-                        <h2 class="panel-title">Selecciona un bloque de ejercicios</h2>
-                        <p class="panel-subtitle">Al pulsar un bloque no irás directo al ejercicio: primero verás los tipos de actividad disponibles dentro de ese bloque.</p>
-                    </div>
-                    <span class="pill" id="setCounter">0 bloques</span>
-                </div>
-            </div>
-            <div id="exerciseSetGrid" class="home-screen"></div>
+    <div id="homeScreen" class="screen"></div>
+    <div id="typeScreen" class="screen"></div>
+
+    <div id="exerciseScreen" class="screen">
+      <div class="card">
+        <div class="top-controls">
+          <div class="breadcrumbs" id="breadcrumbs"></div>
+          <div class="exercise-badge" id="exerciseBadge">📝 Multiple Choice</div>
         </div>
 
-        <div id="typeSelectionScreen" class="screen">
-            <div class="panel-card">
-                <div class="panel-header">
-                    <div>
-                        <h2 class="panel-title" id="selectedSetTitle">Tipos de ejercicio</h2>
-                        <p class="panel-subtitle" id="selectedSetDescription"></p>
-                    </div>
-                    <span class="pill" id="selectedSetLevel"></span>
-                </div>
-                <div class="button-group">
-                    <button class="button button-back" type="button" onclick="goHome()">← Volver a bloques</button>
-                </div>
-            </div>
-            <div id="exerciseTypeGrid" class="type-screen"></div>
+        <div class="progress-header">
+          <h2 id="exerciseCounter">Ejercicio 1 de 1</h2>
+          <span class="pill" id="exerciseSourcePill">Fuente oficial</span>
         </div>
+        <div class="progress-bar"><div id="progressFill" class="progress-fill" style="width:100%"></div></div>
 
-        <div id="exerciseScreen" class="screen">
-            <div class="card">
-                <div class="progress-section">
-                    <div class="progress-header">
-                        <h2 id="exerciseNumber">Ejercicio 1 de 1</h2>
-                        <span class="exercise-badge" id="exerciseType">📝 Multiple Choice</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressBar" style="width: 100%"></div>
-                    </div>
-                </div>
+        <div id="exerciseContent"></div>
+        <div id="resultSummary" class="result-summary"></div>
+        <div id="explanation" class="explanation"></div>
 
-                <div class="exercise-content" id="exerciseContent"></div>
-                <div id="resultSummary" class="result-summary"></div>
-                <div id="explanation" class="explanation"></div>
-
-                <div class="button-group" id="buttonGroup"></div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p id="appFooter">📖 Datos cargados desde exercises.json</p>
-        </div>
+        <div class="button-row" id="exerciseButtons"></div>
+      </div>
     </div>
 
-    <script>
-        let appData = null;
-        let selectedSet = null;
-        let currentExerciseType = null;
-        let currentExerciseIndex = 0;
-        let userAnswers = {};
-        let showResults = false;
-        let currentExercises = [];
-
-        function showScreen(screenId) {
-            document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
-        }
-
-        function setStatus(message, type = 'error', visible = true) {
-            const box = document.getElementById('jsonStatus');
-            const text = document.getElementById('jsonStatusText');
-            box.className = `json-status ${type}${visible ? ' show' : ''}`;
-            text.textContent = message;
-        }
-
-        function applyAppMeta() {
-            const meta = appData?.app || {};
-            document.getElementById('appTitle').textContent = meta.title || 'Cambridge English Practice 🎓';
-            document.getElementById('appSubtitle').textContent = meta.subtitle || 'Selecciona un bloque y después el tipo de ejercicio.';
-            document.getElementById('appFooter').textContent = meta.footer || '📖 Datos cargados desde exercises.json';
-        }
-
-        function getTypeMeta(typeKey) {
-            return appData?.exerciseTypes?.[typeKey] || {
-                label: typeKey,
-                icon: '📘',
-                description: 'Tipo de ejercicio'
-            };
-        }
-
-        function getOrderedTypeKeys(typeMap = {}) {
-            const preferred = appData?.app?.exerciseTypeOrder || [];
-            const available = Object.keys(typeMap || {}).filter(key => Array.isArray(typeMap[key]) && typeMap[key].length > 0);
-            const ordered = preferred.filter(key => available.includes(key));
-            const rest = available.filter(key => !ordered.includes(key));
-            return [...ordered, ...rest];
-        }
-
-        async function loadExercisesJson() {
-            try {
-                setStatus('Cargando exercises.json...', 'success', true);
-                const response = await fetch('exercises.json', { cache: 'no-store' });
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                appData = await response.json();
-                validateAppData(appData);
-                applyAppMeta();
-                renderHome();
-                setStatus('exercises.json cargado correctamente.', 'success', true);
-            } catch (error) {
-                setStatus('No se ha podido cargar exercises.json automáticamente. Si abriste el HTML con doble clic, es normal que el navegador bloquee el fetch local. Usa Live Server / un servidor local o pulsa “Seleccionar exercises.json”.', 'error', true);
-                console.error(error);
-            }
-        }
-
-        function validateAppData(data) {
-            if (!data || !Array.isArray(data.exerciseSets)) {
-                throw new Error('El JSON no tiene la clave exerciseSets con un array válido.');
-            }
-        }
-
-        function renderHome() {
-            applyAppMeta();
-            selectedSet = null;
-            currentExerciseType = null;
-            currentExerciseIndex = 0;
-            userAnswers = {};
-            showResults = false;
-
-            const grid = document.getElementById('exerciseSetGrid');
-            const sets = appData.exerciseSets || [];
-            document.getElementById('setCounter').textContent = `${sets.length} bloque${sets.length === 1 ? '' : 's'}`;
-            grid.innerHTML = '';
-
-            sets.forEach((setItem, index) => {
-                const availableTypes = getOrderedTypeKeys(setItem.types);
-                let totalActivities = 0;
-                availableTypes.forEach(typeKey => {
-                    totalActivities += (setItem.types[typeKey] || []).length;
-                });
-
-                const card = document.createElement('div');
-                card.className = 'exercise-card';
-                card.innerHTML = `
-                    <div class="icon">📚</div>
-                    <h2>${setItem.title || `Exercise ${index + 1}`}</h2>
-                    <p>${setItem.description || 'Bloque de ejercicios'}</p>
-                    <div class="count">${availableTypes.length} tipos · ${totalActivities} actividad${totalActivities === 1 ? '' : 'es'}</div>
-                `;
-                card.addEventListener('click', () => selectExerciseSet(setItem.id));
-                grid.appendChild(card);
-            });
-
-            showScreen('homeScreen');
-        }
-
-        function selectExerciseSet(setId) {
-            selectedSet = (appData.exerciseSets || []).find(item => item.id === setId) || null;
-            if (!selectedSet) return;
-
-            document.getElementById('selectedSetTitle').textContent = selectedSet.title || 'Tipos de ejercicio';
-            document.getElementById('selectedSetDescription').textContent = selectedSet.description || 'Selecciona un tipo de actividad.';
-            document.getElementById('selectedSetLevel').textContent = selectedSet.level || 'Sin nivel';
-
-            const grid = document.getElementById('exerciseTypeGrid');
-            grid.innerHTML = '';
-
-            getOrderedTypeKeys(selectedSet.types).forEach(typeKey => {
-                const meta = getTypeMeta(typeKey);
-                const count = (selectedSet.types[typeKey] || []).length;
-                const card = document.createElement('div');
-                card.className = 'exercise-card';
-                card.innerHTML = `
-                    <div class="icon">${meta.icon || '📘'}</div>
-                    <h2>${meta.label || typeKey}</h2>
-                    <p>${meta.description || 'Tipo de ejercicio'}</p>
-                    <div class="count">${count} bloque${count === 1 ? '' : 's'} de este tipo</div>
-                `;
-                card.addEventListener('click', () => selectExerciseType(typeKey));
-                grid.appendChild(card);
-            });
-
-            showScreen('typeSelectionScreen');
-        }
-
-        function goHome() {
-            renderHome();
-        }
-
-        function goTypeSelection() {
-            if (!selectedSet) {
-                goHome();
-                return;
-            }
-            selectExerciseSet(selectedSet.id);
-        }
-
-        function selectExerciseType(typeKey) {
-            currentExerciseType = typeKey;
-            currentExerciseIndex = 0;
-            userAnswers = {};
-            showResults = false;
-            currentExercises = selectedSet?.types?.[typeKey] || [];
-            if (!currentExercises.length) return;
-            showScreen('exerciseScreen');
-            loadExercise(0);
-        }
-
-        function loadExercise(index) {
-            currentExerciseIndex = index;
-            showResults = false;
-            renderExerciseContent(currentExercises[index]);
-            updateProgress();
-            updateButtons();
-            document.getElementById('resultSummary').classList.remove('show');
-            document.getElementById('explanation').classList.remove('show');
-        }
-
-        function updateProgress() {
-            const progress = currentExercises.length ? ((currentExerciseIndex + 1) / currentExercises.length) * 100 : 0;
-            document.getElementById('progressBar').style.width = progress + '%';
-            document.getElementById('exerciseNumber').textContent = `Ejercicio ${currentExerciseIndex + 1} de ${currentExercises.length}`;
-            const meta = getTypeMeta(currentExerciseType);
-            document.getElementById('exerciseType').textContent = `${meta.icon || '📘'} ${meta.label || currentExerciseType}`;
-        }
-
-        function renderExerciseContent(exercise) {
-            const container = document.getElementById('exerciseContent');
-            container.innerHTML = '';
-
-            const intro = document.createElement('div');
-            intro.className = 'exercise-intro';
-            intro.innerHTML = `
-                <h2 class="exercise-title">${exercise.title || 'Ejercicio'}</h2>
-                <p class="exercise-subtitle">Bloque: ${selectedSet?.title || '-'} · Tipo: ${getTypeMeta(currentExerciseType).label || currentExerciseType}</p>
-                <div class="instruction-strip">
-                    ${exercise.instructions || ''}
-                    ${exercise.note ? `<div class="mini-note">${exercise.note}</div>` : ''}
-                </div>
-            `;
-            container.appendChild(intro);
-
-            if (currentExerciseType === 'multipleChoice') {
-                renderMultipleChoice(exercise, container);
-            } else if (currentExerciseType === 'fillBlanks') {
-                renderFillBlanks(exercise, container);
-            } else if (currentExerciseType === 'wordFormation') {
-                renderWordFormation(exercise, container);
-            } else if (currentExerciseType === 'sentenceTransformation') {
-                renderSentenceTransformation(exercise, container);
-            }
-        }
-
-        function renderMultipleChoice(exercise, container) {
-            container.appendChild(createPassageBlock(exercise.text));
-
-            const section = document.createElement('div');
-            section.innerHTML = `<div class="section-title">✅ Respuestas</div>`;
-            const list = document.createElement('div');
-            list.className = 'question-list';
-
-            exercise.questions.forEach((question) => {
-                const card = document.createElement('div');
-                card.className = 'question-card';
-                card.innerHTML = `
-                    <div class="question-header">
-                        <span class="question-number-badge">${question.number}</span>
-                        <div class="question-card-title">Elige la opción correcta para el hueco ${question.number}</div>
-                    </div>
-                `;
-
-                const optionsGrid = document.createElement('div');
-                optionsGrid.className = 'options-grid';
-
-                Object.entries(question.options).forEach(([letter, text]) => {
-                    const button = document.createElement('button');
-                    button.className = 'option-button';
-                    button.disabled = showResults;
-                    const selected = userAnswers[questionKey(exercise.id, question.number)] === letter;
-                    if (selected) button.classList.add('selected');
-
-                    if (showResults) {
-                        if (letter === question.correct) button.classList.add('correct');
-                        else if (selected) button.classList.add('incorrect');
-                    }
-
-                    button.innerHTML = `<span class="option-letter">${letter}</span><span>${text}</span>`;
-                    button.addEventListener('click', () => {
-                        if (showResults) return;
-                        userAnswers[questionKey(exercise.id, question.number)] = letter;
-                        renderExerciseContent(exercise);
-                    });
-                    optionsGrid.appendChild(button);
-                });
-
-                card.appendChild(optionsGrid);
-
-                if (showResults) {
-                    const selected = userAnswers[questionKey(exercise.id, question.number)];
-                    const status = document.createElement('div');
-                    const isCorrect = selected === question.correct;
-                    status.className = `mc-status ${isCorrect ? 'correct' : 'incorrect'}`;
-                    if (isCorrect) {
-                        status.textContent = `✓ Correcto. La respuesta es ${question.correct}: ${question.options[question.correct]}.`;
-                    } else if (selected) {
-                        status.textContent = `✗ Tu respuesta fue ${selected}. La correcta es ${question.correct}: ${question.options[question.correct]}.`;
-                    } else {
-                        status.textContent = `✗ No has respondido. La correcta es ${question.correct}: ${question.options[question.correct]}.`;
-                    }
-                    card.appendChild(status);
-                }
-
-                list.appendChild(card);
-            });
-
-            section.appendChild(list);
-            container.appendChild(section);
-        }
-
-        function renderFillBlanks(exercise, container) {
-            container.appendChild(createPassageBlock(exercise.text));
-
-            const section = document.createElement('div');
-            section.innerHTML = `<div class="section-title">🖊️ Hoja de respuestas</div>`;
-            const grid = document.createElement('div');
-            grid.className = 'answer-grid';
-
-            exercise.blanks.forEach((blank) => {
-                const card = document.createElement('div');
-                card.className = 'answer-card';
-                card.innerHTML = `
-                    <div class="answer-card-header">
-                        <span class="gap-chip">${blank.number}</span>
-                        <span>Una sola palabra</span>
-                    </div>
-                `;
-
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.className = 'input-field';
-                input.placeholder = 'Escribe aquí';
-                input.disabled = showResults;
-                input.value = userAnswers[blankKey(exercise.id, blank.number)] || '';
-                input.addEventListener('input', (e) => {
-                    userAnswers[blankKey(exercise.id, blank.number)] = e.target.value;
-                });
-                card.appendChild(input);
-
-                const help = document.createElement('div');
-                help.className = 'answer-help';
-                help.textContent = 'Recuerda: solo una palabra por hueco.';
-                card.appendChild(help);
-
-                if (showResults) {
-                    const feedback = document.createElement('div');
-                    const correct = isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answer);
-                    feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
-                    feedback.textContent = correct ? `✓ Correcto: ${blank.answer.toUpperCase()}` : `✗ Respuesta correcta: ${blank.answer.toUpperCase()}`;
-                    card.appendChild(feedback);
-                }
-
-                grid.appendChild(card);
-            });
-
-            section.appendChild(grid);
-            container.appendChild(section);
-        }
-
-        function renderWordFormation(exercise, container) {
-            container.appendChild(createPassageBlock(exercise.text));
-
-            const section = document.createElement('div');
-            section.innerHTML = `<div class="section-title">🔤 Respuestas y palabra base</div>`;
-            const rows = document.createElement('div');
-            rows.className = 'word-rows';
-
-            exercise.blanks.forEach((blank) => {
-                const card = document.createElement('div');
-                card.className = 'answer-card';
-                card.innerHTML = `
-                    <div class="answer-card-header">
-                        <div style="display:flex; align-items:center; gap:0.65rem;">
-                            <span class="gap-chip">${blank.number}</span>
-                            <span class="base-word-badge">${blank.base}</span>
-                        </div>
-                        <span>Forma correcta</span>
-                    </div>
-                `;
-
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.className = 'input-field';
-                input.placeholder = 'Transforma la palabra base';
-                input.disabled = showResults;
-                input.value = userAnswers[blankKey(exercise.id, blank.number)] || '';
-                input.addEventListener('input', (e) => {
-                    userAnswers[blankKey(exercise.id, blank.number)] = e.target.value;
-                });
-                card.appendChild(input);
-
-                const help = document.createElement('div');
-                help.className = 'answer-help';
-                help.textContent = `Palabra base: ${blank.base}`;
-                card.appendChild(help);
-
-                if (showResults) {
-                    const feedback = document.createElement('div');
-                    const correct = isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answer);
-                    feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
-                    feedback.textContent = correct ? `✓ Correcto: ${blank.answer.toUpperCase()}` : `✗ Respuesta correcta: ${blank.answer.toUpperCase()}`;
-                    card.appendChild(feedback);
-                }
-
-                rows.appendChild(card);
-            });
-
-            section.appendChild(rows);
-            container.appendChild(section);
-        }
-
-        function renderSentenceTransformation(exercise, container) {
-            const list = document.createElement('div');
-            list.className = 'transformation-list';
-
-            exercise.items.forEach((item) => {
-                const block = document.createElement('div');
-                block.className = 'transform-item';
-                block.innerHTML = `
-                    <div class="transform-top">
-                        <span class="question-number-badge">${item.number}</span>
-                        <div class="transform-body">
-                            <div class="transform-original">${item.original}</div>
-                            <div class="given-word-box">Palabra dada: ${item.givenWord}</div>
-                            <div class="transform-complete-line">
-                                <span>${item.prefix}</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                const line = block.querySelector('.transform-complete-line');
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.className = 'input-field transform-input';
-                input.placeholder = 'Escribe solo las palabras que faltan';
-                input.disabled = showResults;
-                input.value = userAnswers[transformKey(exercise.id, item.number)] || '';
-                input.addEventListener('input', (e) => {
-                    userAnswers[transformKey(exercise.id, item.number)] = e.target.value;
-                });
-                line.appendChild(input);
-
-                const suffix = document.createElement('span');
-                suffix.textContent = item.suffix;
-                line.appendChild(suffix);
-
-                const help = document.createElement('div');
-                help.className = 'answer-help';
-                help.textContent = 'Escribe entre 3 y 6 palabras incluyendo la palabra dada.';
-                block.appendChild(help);
-
-                if (showResults) {
-                    const correct = isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)]);
-                    const feedback = document.createElement('div');
-                    feedback.className = `transform-feedback ${correct ? 'correct' : 'incorrect'}`;
-                    feedback.textContent = correct ? '✓ Correcto.' : `✗ Respuesta correcta: ${item.answer.toUpperCase()}`;
-                    block.appendChild(feedback);
-
-                    const preview = document.createElement('div');
-                    preview.className = 'answer-preview';
-                    preview.innerHTML = `<strong>Oración completa aceptada:</strong><br>${item.prefix} ${item.answer} ${item.suffix}`;
-                    block.appendChild(preview);
-                }
-
-                list.appendChild(block);
-            });
-
-            container.appendChild(list);
-        }
-
-        function createPassageBlock(text) {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'exercise-passage';
-            wrapper.innerHTML = formatPassageHtml(text || '');
-            return wrapper;
-        }
-
-        function formatPassageHtml(text) {
-            return (text || '').split('\n\n').map(paragraph => {
-                let html = paragraph;
-                html = html.replace(/\{\{(\d+)\|([A-Z]+)\}\}/g, (_, number, base) => `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span><span class="gap-base-inline">${base}</span></span>`);
-                html = html.replace(/\{\{(\d+)\}\}/g, (_, number) => `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span></span>`);
-                return `<p>${html}</p>`;
-            }).join('');
-        }
-
-        function questionKey(exerciseId, number) { return `${exerciseId}-q-${number}`; }
-        function blankKey(exerciseId, number) { return `${exerciseId}-blank-${number}`; }
-        function transformKey(exerciseId, number) { return `${exerciseId}-transform-${number}`; }
-
-        function normalizeText(value) {
-            return (value || '')
-                .toLowerCase()
-                .replace(/[’‘]/g, "'")
-                .replace(/[^a-z0-9'\s-]/g, '')
-                .replace(/\s+/g, ' ')
-                .trim();
-        }
-
-        function isSingleAnswerCorrect(userValue, correctAnswer) {
-            return normalizeText(userValue) === normalizeText(correctAnswer);
-        }
-
-        function isTransformationCorrect(item, userValue) {
-            const normalizedInput = normalizeText(userValue);
-            const normalizedAnswer = normalizeText(item.answer);
-            const normalizedFull = normalizeText(`${item.prefix} ${item.answer} ${item.suffix}`);
-            return normalizedInput === normalizedAnswer || normalizedInput === normalizedFull;
-        }
-
-        function getScore(exercise) {
-            if (currentExerciseType === 'multipleChoice') {
-                const total = exercise.questions.length;
-                const correct = exercise.questions.filter(q => userAnswers[questionKey(exercise.id, q.number)] === q.correct).length;
-                return { correct, total };
-            }
-            if (currentExerciseType === 'fillBlanks' || currentExerciseType === 'wordFormation') {
-                const total = exercise.blanks.length;
-                const correct = exercise.blanks.filter(blank => isSingleAnswerCorrect(userAnswers[blankKey(exercise.id, blank.number)], blank.answer)).length;
-                return { correct, total };
-            }
-            const total = exercise.items.length;
-            const correct = exercise.items.filter(item => isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)])).length;
-            return { correct, total };
-        }
-
-        function checkAnswer() {
-            showResults = true;
-            const exercise = currentExercises[currentExerciseIndex];
-            renderExerciseContent(exercise);
-
-            const score = getScore(exercise);
-            const summary = document.getElementById('resultSummary');
-            summary.classList.add('show');
-            summary.innerHTML = `<h3>📊 Resultado</h3><p>Has acertado <strong>${score.correct}</strong> de <strong>${score.total}</strong> respuestas.</p>`;
-
-            const explanation = document.getElementById('explanation');
-            explanation.classList.add('show');
-            explanation.innerHTML = `<h3>📚 Pista de corrección</h3><p>${exercise.explanation || ''}</p>`;
-
-            updateButtons();
-        }
-
-        function updateButtons() {
-            const buttonGroup = document.getElementById('buttonGroup');
-            buttonGroup.innerHTML = '';
-
-            const backTypesBtn = document.createElement('button');
-            backTypesBtn.className = 'button button-back';
-            backTypesBtn.textContent = '← Volver a tipos';
-            backTypesBtn.onclick = goTypeSelection;
-            buttonGroup.appendChild(backTypesBtn);
-
-            const backHomeBtn = document.createElement('button');
-            backHomeBtn.className = 'button button-secondary';
-            backHomeBtn.textContent = '⌂ Ir a bloques';
-            backHomeBtn.onclick = goHome;
-            buttonGroup.appendChild(backHomeBtn);
-
-            if (!showResults) {
-                const checkBtn = document.createElement('button');
-                checkBtn.className = 'button button-check';
-                checkBtn.textContent = 'Comprobar ✓';
-                checkBtn.onclick = checkAnswer;
-                buttonGroup.appendChild(checkBtn);
-                return;
-            }
-
-            const retryBtn = document.createElement('button');
-            retryBtn.className = 'button button-retry';
-            retryBtn.textContent = 'Intentar de nuevo 🔄';
-            retryBtn.onclick = retryExercise;
-            buttonGroup.appendChild(retryBtn);
-
-            if (currentExerciseIndex < currentExercises.length - 1) {
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'button button-next';
-                nextBtn.textContent = 'Siguiente ▶';
-                nextBtn.onclick = nextExercise;
-                buttonGroup.appendChild(nextBtn);
-            }
-        }
-
-        function retryExercise() { loadExercise(currentExerciseIndex); }
-        function nextExercise() { if (currentExerciseIndex < currentExercises.length - 1) loadExercise(currentExerciseIndex + 1); }
-
-        function handleJsonFile(event) {
-            const file = event.target.files?.[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = () => {
-                try {
-                    appData = JSON.parse(reader.result);
-                    validateAppData(appData);
-                    applyAppMeta();
-                    renderHome();
-                    setStatus(`Archivo ${file.name} cargado correctamente.`, 'success', true);
-                } catch (error) {
-                    setStatus('El archivo seleccionado no es un exercises.json válido.', 'error', true);
-                    console.error(error);
-                }
-            };
-            reader.readAsText(file, 'utf-8');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('retryLoadBtn').addEventListener('click', loadExercisesJson);
-            document.getElementById('selectJsonBtn').addEventListener('click', () => document.getElementById('jsonFileInput').click());
-            document.getElementById('jsonFileInput').addEventListener('change', handleJsonFile);
-            loadExercisesJson();
+    <div class="footer" id="appFooter">📖 Material organizado desde exercises.json para seguir ampliándolo con más bloques oficiales.</div>
+  </div>
+
+  <script>
+    let appData = null;
+    let selectedSet = null;
+    let currentTypeKey = null;
+    let currentExercises = [];
+    let currentExerciseIndex = 0;
+    let showResults = false;
+    let userAnswers = {};
+
+    const screens = {
+      home: () => document.getElementById('homeScreen'),
+      types: () => document.getElementById('typeScreen'),
+      exercise: () => document.getElementById('exerciseScreen')
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await tryAutoLoadJson();
+    });
+
+    async function tryAutoLoadJson() {
+      try {
+        const response = await fetch('exercises.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('No se pudo leer exercises.json');
+        const data = await response.json();
+        initialiseApp(data);
+      } catch (error) {
+        showLoaderBox(`No se pudo cargar el JSON automáticamente. ${error.message}`);
+      }
+    }
+
+    function showLoaderBox(message) {
+      const box = document.getElementById('loaderBox');
+      box.classList.add('show');
+      box.innerHTML = `
+        <h3>📂 Carga manual necesaria</h3>
+        <p>${message}</p>
+        <p>Selecciona <strong>exercises.json</strong> manualmente si estás abriendo el HTML desde <code>file://</code>.</p>
+        <div class="json-input">
+          <input type="file" id="jsonFileInput" accept="application/json">
+          <button class="button button-main" type="button" onclick="loadJsonFromFile()">Cargar JSON manualmente</button>
+        </div>
+      `;
+    }
+
+    async function loadJsonFromFile() {
+      const input = document.getElementById('jsonFileInput');
+      const file = input?.files?.[0];
+      if (!file) {
+        alert('Selecciona antes el archivo exercises.json.');
+        return;
+      }
+
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        initialiseApp(data);
+      } catch (error) {
+        alert('No se ha podido leer el JSON: ' + error.message);
+      }
+    }
+
+    function initialiseApp(data) {
+      appData = data;
+      selectedSet = null;
+      currentTypeKey = null;
+      currentExercises = [];
+      currentExerciseIndex = 0;
+      showResults = false;
+      userAnswers = {};
+
+      document.getElementById('appTitle').textContent = appData.app?.title || 'Cambridge English Practice';
+      document.getElementById('appSubtitle').textContent = appData.app?.subtitle || '';
+      document.getElementById('appFooter').textContent = appData.app?.footer || '';
+      document.getElementById('loaderBox').classList.remove('show');
+
+      renderHomeScreen();
+      activateScreen('home');
+    }
+
+    function activateScreen(name) {
+      Object.values(screens).forEach(getEl => getEl().classList.remove('active'));
+      screens[name]().classList.add('active');
+    }
+
+    function renderHomeScreen() {
+      const home = screens.home();
+      const sets = appData.exerciseSets || [];
+
+      home.innerHTML = `
+        <div class="panel-card">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">Bloques de ejercicios oficiales</div>
+              <div class="panel-subtitle">Al hacer clic en un bloque primero eliges el tipo de ejercicio disponible, y después accedes al texto completo.</div>
+            </div>
+            <span class="pill">${sets.length} bloque${sets.length === 1 ? '' : 's'}</span>
+          </div>
+          <div class="grid" id="setGrid"></div>
+        </div>
+      `;
+
+      const setGrid = document.getElementById('setGrid');
+      sets.forEach((setItem) => {
+        const typeCount = Object.keys(setItem.types || {}).filter(key => (setItem.types[key] || []).length).length;
+        const totalExercises = Object.values(setItem.types || {}).reduce((sum, list) => sum + (Array.isArray(list) ? list.length : 0), 0);
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'set-card';
+        card.innerHTML = `
+          <div class="set-top">
+            <div>
+              <div class="set-title">${escapeHtml(setItem.title)}</div>
+              <div class="set-desc">${escapeHtml(setItem.description || '')}</div>
+            </div>
+            <span class="pill">${escapeHtml(setItem.level || '')}</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-chip">📚 ${typeCount} tipo${typeCount === 1 ? '' : 's'}</span>
+            <span class="meta-chip">🧩 ${totalExercises} ejercicio${totalExercises === 1 ? '' : 's'}</span>
+            ${setItem.source?.collection ? `<span class="meta-chip">📄 ${escapeHtml(setItem.source.collection)}</span>` : ''}
+            ${setItem.source?.pages ? `<span class="meta-chip">📍 Páginas ${escapeHtml(setItem.source.pages)}</span>` : ''}
+          </div>
+        `;
+        card.addEventListener('click', () => selectSet(setItem.id));
+        setGrid.appendChild(card);
+      });
+    }
+
+    function selectSet(setId) {
+      selectedSet = (appData.exerciseSets || []).find(item => item.id === setId) || null;
+      currentTypeKey = null;
+      currentExercises = [];
+      currentExerciseIndex = 0;
+      showResults = false;
+      userAnswers = {};
+      renderTypeScreen();
+      activateScreen('types');
+    }
+
+    function renderTypeScreen() {
+      const typeScreen = screens.types();
+      if (!selectedSet) return;
+
+      const typesOrder = appData.app?.exerciseTypeOrder || Object.keys(appData.exerciseTypes || {});
+      typeScreen.innerHTML = `
+        <div class="panel-card">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">${escapeHtml(selectedSet.title)}</div>
+              <div class="panel-subtitle">${escapeHtml(selectedSet.description || '')}</div>
+            </div>
+            <span class="pill">${escapeHtml(selectedSet.level || '')}</span>
+          </div>
+          <div class="meta-row" style="margin-bottom:1rem;">
+            ${selectedSet.source?.collection ? `<span class="meta-chip">📄 ${escapeHtml(selectedSet.source.collection)}</span>` : ''}
+            ${selectedSet.source?.pages ? `<span class="meta-chip">📍 Páginas ${escapeHtml(selectedSet.source.pages)}</span>` : ''}
+            ${selectedSet.source?.notes ? `<span class="meta-chip">ℹ️ ${escapeHtml(selectedSet.source.notes)}</span>` : ''}
+          </div>
+          <div class="grid" id="typeGrid"></div>
+          <div class="button-row">
+            <button class="button button-dark" type="button" onclick="goHome()">← Volver a bloques</button>
+          </div>
+        </div>
+      `;
+
+      const typeGrid = document.getElementById('typeGrid');
+      typesOrder.forEach((typeKey) => {
+        const exercises = selectedSet.types?.[typeKey] || [];
+        if (!exercises.length) return;
+        const typeInfo = appData.exerciseTypes?.[typeKey] || { label: typeKey, icon: '📘', description: '' };
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'type-card';
+        card.innerHTML = `
+          <div class="type-top">
+            <div>
+              <div class="type-title">${escapeHtml(typeInfo.icon || '📘')} ${escapeHtml(typeInfo.label || typeKey)}</div>
+              <div class="type-desc">${escapeHtml(typeInfo.description || '')}</div>
+            </div>
+            <span class="pill">${exercises.length}</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-chip">Texto${exercises.length === 1 ? '' : 's'} completo${exercises.length === 1 ? '' : 's'}</span>
+          </div>
+        `;
+        card.addEventListener('click', () => openExerciseType(typeKey));
+        typeGrid.appendChild(card);
+      });
+    }
+
+    function openExerciseType(typeKey) {
+      currentTypeKey = typeKey;
+      currentExercises = selectedSet?.types?.[typeKey] || [];
+      currentExerciseIndex = 0;
+      showResults = false;
+      userAnswers = {};
+      loadExercise(0);
+      activateScreen('exercise');
+    }
+
+    function goHome() {
+      selectedSet = null;
+      currentTypeKey = null;
+      currentExercises = [];
+      showResults = false;
+      userAnswers = {};
+      activateScreen('home');
+    }
+
+    function goBackToTypes() {
+      currentTypeKey = null;
+      currentExercises = [];
+      showResults = false;
+      userAnswers = {};
+      renderTypeScreen();
+      activateScreen('types');
+    }
+
+    function loadExercise(index) {
+      currentExerciseIndex = index;
+      showResults = false;
+      updateExerciseHeader();
+      renderExerciseContent();
+      document.getElementById('resultSummary').classList.remove('show');
+      document.getElementById('explanation').classList.remove('show');
+      updateExerciseButtons();
+    }
+
+    function updateExerciseHeader() {
+      const exercise = currentExercises[currentExerciseIndex];
+      const total = currentExercises.length || 1;
+      const typeInfo = appData.exerciseTypes?.[currentTypeKey] || { label: currentTypeKey, icon: '📘' };
+      document.getElementById('exerciseCounter').textContent = `Ejercicio ${currentExerciseIndex + 1} de ${total}`;
+      document.getElementById('exerciseBadge').textContent = `${typeInfo.icon || '📘'} ${typeInfo.label || currentTypeKey}`;
+      document.getElementById('progressFill').style.width = `${((currentExerciseIndex + 1) / total) * 100}%`;
+      document.getElementById('exerciseSourcePill').textContent = exercise?.source?.pages ? `Fuente oficial · páginas ${exercise.source.pages}` : 'Fuente oficial';
+      document.getElementById('breadcrumbs').innerHTML = `
+        <span>${escapeHtml(selectedSet?.title || 'Bloque')}</span>
+        <span>›</span>
+        <strong>${escapeHtml(typeInfo.label || currentTypeKey)}</strong>
+      `;
+    }
+
+    function renderExerciseContent() {
+      const container = document.getElementById('exerciseContent');
+      const exercise = currentExercises[currentExerciseIndex];
+      container.innerHTML = '';
+
+      const intro = document.createElement('div');
+      intro.innerHTML = `
+        <div class="exercise-title">${escapeHtml(exercise.title)}</div>
+        <div class="exercise-subtitle">El texto aparece completo y los huecos se muestran directamente en el pasaje.</div>
+        ${exercise.source?.pages || selectedSet?.source?.collection ? `<div class="source-strip">${selectedSet?.source?.collection ? `Origen: ${escapeHtml(selectedSet.source.collection)}` : ''}${exercise.source?.pages ? ` · páginas ${escapeHtml(exercise.source.pages)}` : ''}</div>` : ''}
+        <div class="instruction-strip">
+          ${escapeHtml(exercise.instructions || '')}
+          ${exercise.note ? `<div class="mini-note">💡 ${escapeHtml(exercise.note)}</div>` : ''}
+        </div>
+      `;
+      container.appendChild(intro);
+
+      if (currentTypeKey === 'multipleChoice') {
+        renderMultipleChoice(exercise, container);
+      } else if (currentTypeKey === 'fillBlanks') {
+        renderFillBlanks(exercise, container);
+      } else if (currentTypeKey === 'wordFormation') {
+        renderWordFormation(exercise, container);
+      } else if (currentTypeKey === 'sentenceTransformation') {
+        renderSentenceTransformation(exercise, container);
+      }
+    }
+
+    function renderMultipleChoice(exercise, container) {
+      container.appendChild(createPassageBlock(exercise.text));
+
+      const section = document.createElement('div');
+      section.innerHTML = `<div class="section-title">✅ Respuestas para cada hueco</div>`;
+      const list = document.createElement('div');
+      list.className = 'question-list';
+
+      exercise.questions.forEach((question) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+          <div class="question-header">
+            <div class="left-inline">
+              <span class="number-badge">${question.number}</span>
+              <strong>Hueco ${question.number}</strong>
+            </div>
+          </div>
+        `;
+
+        const optionsGrid = document.createElement('div');
+        optionsGrid.className = 'options-grid';
+
+        Object.entries(question.options).forEach(([letter, text]) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'option-button';
+          button.disabled = showResults;
+          const selected = userAnswers[questionKey(exercise.id, question.number)] === letter;
+          if (selected) button.classList.add('selected');
+          if (showResults) {
+            if (letter === question.correct) button.classList.add('correct');
+            if (selected && letter !== question.correct) button.classList.add('incorrect');
+          }
+          button.innerHTML = `
+            <span class="option-letter">${letter}</span>
+            <span>${escapeHtml(text)}</span>
+          `;
+          button.addEventListener('click', () => {
+            if (showResults) return;
+            userAnswers[questionKey(exercise.id, question.number)] = letter;
+            renderExerciseContent();
+          });
+          optionsGrid.appendChild(button);
         });
-    </script>
+
+        card.appendChild(optionsGrid);
+
+        if (showResults) {
+          const selected = userAnswers[questionKey(exercise.id, question.number)];
+          const status = document.createElement('div');
+          const isCorrect = selected === question.correct;
+          status.className = `mc-status ${isCorrect ? 'correct' : 'incorrect'}`;
+          status.textContent = isCorrect
+            ? `✓ Correcto. La respuesta es ${question.correct}: ${question.options[question.correct]}.`
+            : selected
+              ? `✗ Tu respuesta fue ${selected}. La correcta es ${question.correct}: ${question.options[question.correct]}.`
+              : `✗ No has respondido. La correcta es ${question.correct}: ${question.options[question.correct]}.`;
+          card.appendChild(status);
+        }
+
+        list.appendChild(card);
+      });
+
+      section.appendChild(list);
+      container.appendChild(section);
+    }
+
+    function renderFillBlanks(exercise, container) {
+      container.appendChild(createPassageBlock(exercise.text));
+      const section = document.createElement('div');
+      section.innerHTML = `<div class="section-title">🖊️ Hoja de respuestas</div>`;
+      const grid = document.createElement('div');
+      grid.className = 'answer-grid';
+
+      exercise.blanks.forEach((blank) => {
+        const card = document.createElement('div');
+        card.className = 'answer-card';
+        card.innerHTML = `
+          <div class="answer-card-header">
+            <div class="left-inline">
+              <span class="gap-chip">${blank.number}</span>
+              <strong>Una sola palabra</strong>
+            </div>
+          </div>
+        `;
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'input-field';
+        input.placeholder = 'Escribe aquí';
+        input.disabled = showResults;
+        input.value = userAnswers[blankKey(exercise.id, blank.number)] || '';
+        input.addEventListener('input', (e) => {
+          userAnswers[blankKey(exercise.id, blank.number)] = e.target.value;
+        });
+        card.appendChild(input);
+
+        const help = document.createElement('div');
+        help.className = 'answer-help';
+        help.textContent = 'Recuerda: solo una palabra por hueco.';
+        card.appendChild(help);
+
+        if (showResults) {
+          const feedback = document.createElement('div');
+          const correct = isBlankCorrect(blank, userAnswers[blankKey(exercise.id, blank.number)]);
+          feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
+          feedback.textContent = correct
+            ? `✓ Correcto: ${formatAcceptedAnswers(blank).toUpperCase()}`
+            : `✗ Respuesta válida: ${formatAcceptedAnswers(blank).toUpperCase()}`;
+          card.appendChild(feedback);
+        }
+
+        grid.appendChild(card);
+      });
+
+      section.appendChild(grid);
+      container.appendChild(section);
+    }
+
+    function renderWordFormation(exercise, container) {
+      container.appendChild(createPassageBlock(exercise.text));
+      const section = document.createElement('div');
+      section.innerHTML = `<div class="section-title">🔤 Respuestas y palabra base</div>`;
+      const grid = document.createElement('div');
+      grid.className = 'question-list';
+
+      exercise.blanks.forEach((blank) => {
+        const card = document.createElement('div');
+        card.className = 'answer-card';
+        card.innerHTML = `
+          <div class="answer-card-header">
+            <div class="left-inline">
+              <span class="gap-chip">${blank.number}</span>
+              <span class="base-word-badge">${escapeHtml(blank.base)}</span>
+            </div>
+            <strong>Transformación</strong>
+          </div>
+        `;
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'input-field';
+        input.placeholder = 'Escribe la forma correcta';
+        input.disabled = showResults;
+        input.value = userAnswers[blankKey(exercise.id, blank.number)] || '';
+        input.addEventListener('input', (e) => {
+          userAnswers[blankKey(exercise.id, blank.number)] = e.target.value;
+        });
+        card.appendChild(input);
+
+        const help = document.createElement('div');
+        help.className = 'answer-help';
+        help.textContent = `Palabra base: ${blank.base}`;
+        card.appendChild(help);
+
+        if (showResults) {
+          const feedback = document.createElement('div');
+          const correct = isBlankCorrect(blank, userAnswers[blankKey(exercise.id, blank.number)]);
+          feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
+          feedback.textContent = correct
+            ? `✓ Correcto: ${blank.answer.toUpperCase()}`
+            : `✗ Respuesta correcta: ${blank.answer.toUpperCase()}`;
+          card.appendChild(feedback);
+        }
+
+        grid.appendChild(card);
+      });
+
+      section.appendChild(grid);
+      container.appendChild(section);
+    }
+
+    function renderSentenceTransformation(exercise, container) {
+      const list = document.createElement('div');
+      list.className = 'transformation-list';
+
+      exercise.items.forEach((item) => {
+        const block = document.createElement('div');
+        block.className = 'transform-item';
+        block.innerHTML = `
+          <div class="transform-top">
+            <span class="number-badge">${item.number}</span>
+            <div class="transform-body">
+              <div class="transform-original">${escapeHtml(item.original)}</div>
+              <div class="given-word-box">Palabra dada: ${escapeHtml(item.givenWord)}</div>
+              <div class="transform-complete-line">
+                <span>${escapeHtml(item.prefix)}</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        const line = block.querySelector('.transform-complete-line');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'input-field transform-input';
+        input.placeholder = 'Escribe solo las palabras que faltan';
+        input.disabled = showResults;
+        input.value = userAnswers[transformKey(exercise.id, item.number)] || '';
+        input.addEventListener('input', (e) => {
+          userAnswers[transformKey(exercise.id, item.number)] = e.target.value;
+        });
+        line.appendChild(input);
+
+        const suffix = document.createElement('span');
+        suffix.textContent = item.suffix;
+        line.appendChild(suffix);
+
+        const help = document.createElement('div');
+        help.className = 'answer-help';
+        help.textContent = 'Escribe entre 3 y 6 palabras incluyendo la palabra dada.';
+        block.appendChild(help);
+
+        if (showResults) {
+          const feedback = document.createElement('div');
+          const correct = isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)]);
+          feedback.className = `transform-feedback ${correct ? 'correct' : 'incorrect'}`;
+          feedback.textContent = correct
+            ? '✓ Correcto.'
+            : `✗ Respuesta válida: ${formatAcceptedAnswers(item).toUpperCase()}`;
+          block.appendChild(feedback);
+
+          const preview = document.createElement('div');
+          preview.className = 'answer-preview';
+          preview.innerHTML = `<strong>Oración completa aceptada:</strong><br>${escapeHtml(item.prefix)} ${escapeHtml(item.answer)} ${escapeHtml(item.suffix)}`;
+          block.appendChild(preview);
+        }
+
+        list.appendChild(block);
+      });
+
+      container.appendChild(list);
+    }
+
+    function createPassageBlock(text) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'exercise-passage';
+      wrapper.innerHTML = formatPassageHtml(text || '');
+      return wrapper;
+    }
+
+    function formatPassageHtml(text) {
+      return text.split('\n\n').map((paragraph) => {
+        let html = escapeHtml(paragraph);
+        html = html.replace(/\{\{(\d+)\|([A-Z]+)\}\}/g, (_, number, base) => {
+          return `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span><span class="gap-base-inline">${base}</span></span>`;
+        });
+        html = html.replace(/\{\{(\d+)\}\}/g, (_, number) => {
+          return `<span class="inline-gap"><span class="gap-number">(${number})</span><span class="gap-line"></span></span>`;
+        });
+        return `<p>${html}</p>`;
+      }).join('');
+    }
+
+    function updateExerciseButtons() {
+      const container = document.getElementById('exerciseButtons');
+      container.innerHTML = '';
+
+      if (!showResults) {
+        container.innerHTML = `
+          <button class="button button-dark" type="button" onclick="goBackToTypes()">← Volver a tipos</button>
+          <button class="button button-main" type="button" onclick="checkAnswers()">Comprobar ✓</button>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <button class="button button-dark" type="button" onclick="goBackToTypes()">← Volver a tipos</button>
+        <button class="button button-orange" type="button" onclick="retryExercise()">Intentar de nuevo 🔄</button>
+        <button class="button button-green" type="button" ${currentExerciseIndex < currentExercises.length - 1 ? '' : 'disabled'} onclick="nextExercise()">Siguiente ▶</button>
+      `;
+    }
+
+    function retryExercise() {
+      loadExercise(currentExerciseIndex);
+    }
+
+    function nextExercise() {
+      if (currentExerciseIndex < currentExercises.length - 1) {
+        loadExercise(currentExerciseIndex + 1);
+      }
+    }
+
+    function questionKey(exerciseId, number) { return `${exerciseId}-q-${number}`; }
+    function blankKey(exerciseId, number) { return `${exerciseId}-blank-${number}`; }
+    function transformKey(exerciseId, number) { return `${exerciseId}-transform-${number}`; }
+
+    function normalizeText(value) {
+      return (value || '')
+        .toLowerCase()
+        .replace(/[’‘]/g, "'")
+        .replace(/[^a-z0-9'\s-]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function getAcceptedAnswers(item) {
+      if (Array.isArray(item.acceptedAnswers) && item.acceptedAnswers.length) return item.acceptedAnswers;
+      if (item.answer) return [item.answer];
+      return [];
+    }
+
+    function formatAcceptedAnswers(item) {
+      return getAcceptedAnswers(item).join(' / ');
+    }
+
+    function isBlankCorrect(item, userValue) {
+      const normalized = normalizeText(userValue);
+      return getAcceptedAnswers(item).some(answer => normalizeText(answer) === normalized);
+    }
+
+    function isTransformationCorrect(item, userValue) {
+      const normalizedInput = normalizeText(userValue);
+      const answers = getAcceptedAnswers(item);
+      return answers.some(answer => {
+        const full = `${item.prefix} ${answer} ${item.suffix}`;
+        return normalizeText(answer) === normalizedInput || normalizeText(full) === normalizedInput;
+      });
+    }
+
+    function getScore(exercise) {
+      if (currentTypeKey === 'multipleChoice') {
+        const total = exercise.questions.length;
+        const correct = exercise.questions.filter(q => userAnswers[questionKey(exercise.id, q.number)] === q.correct).length;
+        return { correct, total };
+      }
+
+      if (currentTypeKey === 'fillBlanks' || currentTypeKey === 'wordFormation') {
+        const total = exercise.blanks.length;
+        const correct = exercise.blanks.filter(blank => isBlankCorrect(blank, userAnswers[blankKey(exercise.id, blank.number)])).length;
+        return { correct, total };
+      }
+
+      const total = exercise.items.length;
+      const correct = exercise.items.filter(item => isTransformationCorrect(item, userAnswers[transformKey(exercise.id, item.number)])).length;
+      return { correct, total };
+    }
+
+    function checkAnswers() {
+      showResults = true;
+      renderExerciseContent();
+      const exercise = currentExercises[currentExerciseIndex];
+      const score = getScore(exercise);
+
+      const summary = document.getElementById('resultSummary');
+      summary.classList.add('show');
+      summary.innerHTML = `
+        <h3>📊 Resultado</h3>
+        <p>Has acertado <strong>${score.correct}</strong> de <strong>${score.total}</strong> respuestas.</p>
+      `;
+
+      const explanation = document.getElementById('explanation');
+      explanation.classList.add('show');
+      explanation.innerHTML = `
+        <h3>📚 Pista de corrección</h3>
+        <p>${escapeHtml(exercise.explanation || '')}</p>
+      `;
+
+      updateExerciseButtons();
+    }
+
+    function escapeHtml(text) {
+      return String(text ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+  </script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 {
   "app": {
     "title": "Cambridge English Practice 🎓",
-    "subtitle": "Primero eliges un bloque de ejercicios y después el tipo de actividad.",
-    "footer": "📖 App preparada para cargar muchos ejercicios desde exercises.json",
+    "subtitle": "Elige primero un bloque oficial y después el tipo de ejercicio.",
+    "footer": "📖 Material organizado desde exercises.json para seguir ampliándolo con más bloques oficiales.",
     "exerciseTypeOrder": [
       "multipleChoice",
       "fillBlanks",
@@ -14,97 +14,256 @@
     "multipleChoice": {
       "label": "Multiple Choice",
       "icon": "📝",
-      "description": "Texto completo con todos los huecos numerados y una sección de respuestas por cada pregunta."
+      "description": "Texto completo con todos los huecos numerados y una respuesta distinta para cada gap."
     },
     "fillBlanks": {
       "label": "Fill the Gaps",
       "icon": "✍️",
-      "description": "Lectura completa con todos los huecos visibles y una hoja de respuestas para escribir una palabra."
+      "description": "Open cloze con el pasaje entero y una hoja de respuestas para escribir una sola palabra."
     },
     "wordFormation": {
       "label": "Word Formation",
       "icon": "🔄",
-      "description": "Texto completo con huecos y palabra base indicada en cada caso, tal y como aparece en Cambridge."
+      "description": "Texto completo con palabra base visible en cada hueco, al estilo Cambridge."
     },
     "sentenceTransformation": {
       "label": "Sentence Transformation",
       "icon": "✏️",
-      "description": "Las frases salen completas, con la palabra dada y un espacio para escribir solo el fragmento que falta."
+      "description": "Oración original, palabra dada y hueco para escribir solo el fragmento que falta."
     }
   },
   "exerciseSets": [
     {
-      "id": "exercise_1",
-      "title": "Exercise 1",
-      "description": "Bloque de ejemplo con los cuatro tipos de ejercicio.",
-      "level": "B2 First / C1 Advanced",
+      "id": "official_sample_paper_3",
+      "title": "Official Sample Paper 3",
+      "description": "Bloque oficial con Studying black bears, The origin of language, Training sports champions y las transformaciones 25–30.",
+      "level": "C1 Advanced",
+      "source": {
+        "collection": "Specifications and Sample Papers",
+        "pages": "10–14",
+        "notes": "Ejercicios y answer key oficiales del mismo bloque."
+      },
       "types": {
         "multipleChoice": [
           {
-            "id": "mc_black_bears",
+            "id": "sp3_mc_black_bears",
             "title": "Studying black bears",
             "instructions": "For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.",
-            "note": "Ahora ya no se muestra un trozo suelto del texto: ves todo el pasaje y debajo eliges una opción distinta para cada hueco.",
-            "text": "After years studying North America’s black bears in the usual way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to {{1}} their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.\n\nThe {{2}} this has given him into their behaviour has allowed him to dispel certain myths about bears. {{3}} to popular belief, he contends that bears do not {{4}} as much for fruit as previously supposed. He also {{5}} claims that they are ferocious. He says that people should not be {{6}} by behaviour such as swatting paws on the ground, as this is a defensive, rather than an aggressive, act.\n\nHowever, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no {{7}} about their feelings for him. It is clear that their interest in him does not {{8}} beyond the food he brings.",
+            "note": "Texto completo del ejercicio oficial y opciones separadas por hueco.",
+            "source": {
+              "pages": "10, 14"
+            },
+            "text": "After years studying North America’s black bears in the conventional way, wildlife biologist Luke Robertson felt no closer to understanding the creatures. He realised that he had to {{1}} their trust. Abandoning scientific detachment, he took the daring step of forming relationships with the animals, bringing them food to gain their acceptance.\n\nThe {{2}} this has given him into their behaviour has allowed him to dispel certain myths about bears. {{3}} to popular belief, he contends that bears do not {{4}} as much for fruit as previously supposed. He also {{5}} claims that they are ferocious. He says that people should not be {{6}} by behaviour such as swatting paws on the ground, as this is a defensive, rather than an aggressive, act.\n\nHowever, Robertson is no sentimentalist. After devoting years of his life to the bears, he is under no {{7}} about their feelings for him. It is clear that their interest in him does not {{8}} beyond the food he brings.",
             "questions": [
-              { "number": 1, "options": { "A": "catch", "B": "win", "C": "achieve", "D": "receive" }, "correct": "B" },
-              { "number": 2, "options": { "A": "perception", "B": "awareness", "C": "insight", "D": "vision" }, "correct": "C" },
-              { "number": 3, "options": { "A": "Opposite", "B": "Opposed", "C": "Contrary", "D": "Contradictory" }, "correct": "C" },
-              { "number": 4, "options": { "A": "care", "B": "bother", "C": "desire", "D": "hope" }, "correct": "A" },
-              { "number": 5, "options": { "A": "concludes", "B": "disputes", "C": "reasons", "D": "argues" }, "correct": "B" },
-              { "number": 6, "options": { "A": "misguided", "B": "misled", "C": "misdirected", "D": "misinformed" }, "correct": "B" },
-              { "number": 7, "options": { "A": "error", "B": "doubt", "C": "illusion", "D": "impression" }, "correct": "C" },
-              { "number": 8, "options": { "A": "expand", "B": "spread", "C": "widen", "D": "extend" }, "correct": "D" }
+              {
+                "number": 1,
+                "options": {
+                  "A": "catch",
+                  "B": "win",
+                  "C": "achieve",
+                  "D": "receive"
+                },
+                "correct": "B"
+              },
+              {
+                "number": 2,
+                "options": {
+                  "A": "perception",
+                  "B": "awareness",
+                  "C": "insight",
+                  "D": "vision"
+                },
+                "correct": "C"
+              },
+              {
+                "number": 3,
+                "options": {
+                  "A": "Opposite",
+                  "B": "Opposed",
+                  "C": "Contrary",
+                  "D": "Contradictory"
+                },
+                "correct": "C"
+              },
+              {
+                "number": 4,
+                "options": {
+                  "A": "care",
+                  "B": "bother",
+                  "C": "desire",
+                  "D": "hope"
+                },
+                "correct": "A"
+              },
+              {
+                "number": 5,
+                "options": {
+                  "A": "concludes",
+                  "B": "disputes",
+                  "C": "reasons",
+                  "D": "argues"
+                },
+                "correct": "B"
+              },
+              {
+                "number": 6,
+                "options": {
+                  "A": "misguided",
+                  "B": "misled",
+                  "C": "misdirected",
+                  "D": "misinformed"
+                },
+                "correct": "B"
+              },
+              {
+                "number": 7,
+                "options": {
+                  "A": "error",
+                  "B": "doubt",
+                  "C": "illusion",
+                  "D": "impression"
+                },
+                "correct": "C"
+              },
+              {
+                "number": 8,
+                "options": {
+                  "A": "expand",
+                  "B": "spread",
+                  "C": "widen",
+                  "D": "extend"
+                },
+                "correct": "D"
+              }
             ],
-            "explanation": "En esta parte suelen decidir mucho las colocaciones: win trust, insight into, contrary to, care for, disputes claims, be misled, under no illusion, extend beyond."
+            "explanation": "Las combinaciones clave aquí son win trust, insight into, contrary to, care for, dispute claims, be misled, under no illusion y extend beyond."
           }
         ],
         "fillBlanks": [
           {
-            "id": "fb_origin_language",
+            "id": "sp3_fb_origin_language",
             "title": "The origin of language",
             "instructions": "For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.",
-            "note": "Aquí tienes el texto entero con todos los huecos visibles y una zona de respuesta independiente para escribir una sola palabra.",
+            "note": "Este ejercicio admite varias respuestas oficiales en algunos huecos.",
+            "source": {
+              "pages": "11, 14, 16–17"
+            },
             "text": "The truth is nobody really knows how language first began. Did we all start talking at around the same time {{9}} of the manner in which our brains had begun to develop?\n\nAlthough there is a lack of clear evidence, people have come up with various theories about the origins of language. One recent theory is that human beings have evolved in {{10}} a way that we are programmed for language from the moment of birth. In {{11}} words, language came about as a result of an evolutionary change in our brains at some stage.\n\nLanguage {{12}} well be programmed into the brain but, {{13}} this, people still need stimulus from others around them. From studies, we know that {{14}} children are isolated from human contact and have not learnt to construct sentences before they are ten, it is doubtful they will ever do so. This research shows, if {{15}} else, that language is a social activity, not something invented {{16}} isolation.",
             "blanks": [
-              { "number": 9, "answer": "because" },
-              { "number": 10, "answer": "such" },
-              { "number": 11, "answer": "other" },
-              { "number": 12, "answer": "may" },
-              { "number": 13, "answer": "despite" },
-              { "number": 14, "answer": "if" },
-              { "number": 15, "answer": "nothing" },
-              { "number": 16, "answer": "in" }
+              {
+                "number": 9,
+                "answer": "because"
+              },
+              {
+                "number": 10,
+                "answer": "such"
+              },
+              {
+                "number": 11,
+                "answer": "other"
+              },
+              {
+                "number": 12,
+                "answer": "could",
+                "acceptedAnswers": [
+                  "could",
+                  "may",
+                  "might"
+                ]
+              },
+              {
+                "number": 13,
+                "answer": "despite"
+              },
+              {
+                "number": 14,
+                "answer": "if",
+                "acceptedAnswers": [
+                  "if",
+                  "when",
+                  "whenever"
+                ]
+              },
+              {
+                "number": 15,
+                "answer": "nothing",
+                "acceptedAnswers": [
+                  "nothing",
+                  "little"
+                ]
+              },
+              {
+                "number": 16,
+                "answer": "in"
+              }
             ],
-            "explanation": "En Open Cloze suelen caer conectores y expresiones fijas: because of, such a way, in other words, may well, despite this, if children..., if nothing else, in isolation."
+            "explanation": "En Open Cloze suelen caer conectores, cuantificadores y expresiones fijas como in other words, if nothing else o in isolation."
           }
         ],
         "wordFormation": [
           {
-            "id": "wf_training_sports_champions",
+            "id": "sp3_wf_training_sports_champions",
             "title": "Training sports champions",
-            "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap.",
-            "note": "El texto aparece completo y en cada hueco se ve también la palabra base para que la respuesta se parezca más al formato real.",
-            "text": "What are the abilities that a professional athlete needs to guarantee that opponents can be {{17|COME}}? Clearly, speed, stamina and agility are essential, not to mention outstanding natural talent.\n\nBoth a rigorous and comprehensive {{18|FIT}} regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates, rather than proteins and fat, that provide athletes with the {{19|ENDURE}} they need to compete. This means that pasta is more {{20|BENEFIT}} than eggs or meat.\n\nSuch a diet enables them to move very {{21|ENERGY}} when required. Regular training to increase muscular {{22|STRONG}} is also vital, and this is typically achieved through weight training. It is, of course, important to emphasize the role of {{23|DETERMINE}} in an athlete’s success, since training can be exhausting. Sports people are prone to injury but a quality training regime can ensure that the {{24|SEVERE}} of these can be minimized.",
+            "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap in the same line.",
+            "note": "Texto completo con la palabra base en cada hueco, igual que en el formato oficial.",
+            "source": {
+              "pages": "11, 14, 16"
+            },
+            "text": "What are the abilities that a professional sports person needs? To guarantee that opponents can be {{17|COME}}, speed, stamina and agility are essential, not to mention outstanding natural talent. Both a rigorous and comprehensive {{18|FIT}} regime and a highly nutritious diet are vital for top-level performance. It is carbohydrates, rather than proteins and fat, that provide athletes with the {{19|ENDURE}} they need to compete. This means that pasta is more {{20|BENEFIT}} than eggs or meat. Such a diet enables them to move very energetically when required. Failure to follow a sensible diet can result in the {{21|ABLE}} to maintain stamina.\n\nRegular training to increase muscular {{22|STRONG}} is also a vital part of a professional’s regime, and this is {{23|TYPE}} done by exercising with weights. Sports people are prone to injury but a quality training regime can ensure that the {{24|SEVERE}} of these can be minimised.",
             "blanks": [
-              { "number": 17, "base": "COME", "answer": "overcome" },
-              { "number": 18, "base": "FIT", "answer": "fitness" },
-              { "number": 19, "base": "ENDURE", "answer": "endurance" },
-              { "number": 20, "base": "BENEFIT", "answer": "beneficial" },
-              { "number": 21, "base": "ENERGY", "answer": "energetically" },
-              { "number": 22, "base": "STRONG", "answer": "strength" },
-              { "number": 23, "base": "DETERMINE", "answer": "determination" },
-              { "number": 24, "base": "SEVERE", "answer": "severity" }
+              {
+                "number": 17,
+                "base": "COME",
+                "answer": "overcome"
+              },
+              {
+                "number": 18,
+                "base": "FIT",
+                "answer": "fitness"
+              },
+              {
+                "number": 19,
+                "base": "ENDURE",
+                "answer": "endurance"
+              },
+              {
+                "number": 20,
+                "base": "BENEFIT",
+                "answer": "beneficial"
+              },
+              {
+                "number": 21,
+                "base": "ABLE",
+                "answer": "inability"
+              },
+              {
+                "number": 22,
+                "base": "STRONG",
+                "answer": "strength"
+              },
+              {
+                "number": 23,
+                "base": "TYPE",
+                "answer": "typically"
+              },
+              {
+                "number": 24,
+                "base": "SEVERE",
+                "answer": "severity"
+              }
             ],
-            "explanation": "Aquí importa mucho reconocer la categoría gramatical necesaria: overcome (verbo), fitness / endurance / strength / determination / severity (sustantivos), beneficial (adjetivo) y energetically (adverbio)."
+            "explanation": "Aquí hay que detectar la categoría gramatical que pide el contexto: sustantivos como fitness, endurance, inability, strength y severity; adjetivo beneficial; adverbio typically; y verbo overcome."
           }
         ],
         "sentenceTransformation": [
           {
-            "id": "st_key_transformations",
-            "title": "Key word transformations",
+            "id": "sp3_sentence_transformations",
+            "title": "Key word transformations 25–30",
             "instructions": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
-            "note": "En esta versión cada pregunta enseña la oración original, la palabra obligatoria y un hueco para escribir solo el fragmento que falta.",
+            "note": "Se han añadido variantes oficiales aceptadas para que la autocorrección sea más flexible.",
+            "source": {
+              "pages": "12, 14, 16–17"
+            },
             "items": [
               {
                 "number": 25,
@@ -112,7 +271,17 @@
                 "givenWord": "NEARLY",
                 "prefix": "My brother",
                 "suffix": "much now as he did when he was younger.",
-                "answer": "doesn't earn nearly as much"
+                "answer": "doesn't earn nearly as",
+                "acceptedAnswers": [
+                  "doesn't earn nearly as",
+                  "doesn’t earn nearly as",
+                  "doesn't earn nearly so",
+                  "doesn’t earn nearly so",
+                  "doesn't make nearly as",
+                  "doesn’t make nearly as",
+                  "doesn't make nearly so",
+                  "doesn’t make nearly so"
+                ]
               },
               {
                 "number": 26,
@@ -120,7 +289,13 @@
                 "givenWord": "PULLED",
                 "prefix": "The old bus station is",
                 "suffix": "with a new one.",
-                "answer": "being pulled down and replaced"
+                "answer": "being pulled down and replaced",
+                "acceptedAnswers": [
+                  "being pulled down and replaced",
+                  "being pulled down and being replaced",
+                  "being pulled down to be replaced",
+                  "to be pulled down and replaced"
+                ]
               },
               {
                 "number": 27,
@@ -128,7 +303,15 @@
                 "givenWord": "THE",
                 "prefix": "The number of students now at university is",
                 "suffix": "been, apparently.",
-                "answer": "the highest it has ever"
+                "answer": "the highest it has ever",
+                "acceptedAnswers": [
+                  "the highest it has ever",
+                  "the highest that it has ever",
+                  "the highest which it has ever",
+                  "the highest it's ever",
+                  "the highest that it's ever",
+                  "the highest which it's ever"
+                ]
               },
               {
                 "number": 28,
@@ -136,7 +319,13 @@
                 "givenWord": "COMPARISON",
                 "prefix": "I think the Fishers’ new album is",
                 "suffix": "their previous one.",
-                "answer": "disappointing in comparison with"
+                "answer": "disappointing in comparison with",
+                "acceptedAnswers": [
+                  "disappointing in comparison with",
+                  "disappointing in comparison to",
+                  "a disappointment in comparison with",
+                  "a disappointment in comparison to"
+                ]
               },
               {
                 "number": 29,
@@ -144,7 +333,11 @@
                 "givenWord": "SPITE",
                 "prefix": "Anna got the job",
                 "suffix": "of experience in public relations.",
-                "answer": "in spite of her lack"
+                "answer": "in spite of her lack",
+                "acceptedAnswers": [
+                  "in spite of her lack",
+                  "in spite of a lack"
+                ]
               },
               {
                 "number": 30,
@@ -152,10 +345,320 @@
                 "givenWord": "DANGERS",
                 "prefix": "Max received a",
                 "suffix": "at night without any lights from the police officer.",
-                "answer": "warning about the dangers of cycling"
+                "answer": "warning about the dangers of cycling",
+                "acceptedAnswers": [
+                  "warning about the dangers of cycling",
+                  "warning regarding the dangers of cycling",
+                  "warning concerning the dangers of cycling",
+                  "warning about the dangers when cycling",
+                  "warning regarding the dangers when cycling",
+                  "warning concerning the dangers when cycling"
+                ]
               }
             ],
-            "explanation": "En key word transformations conviene detectar la estructura equivalente exacta: nearly as much, being pulled down, the highest it has ever, in comparison with, in spite of, and warning about the dangers of cycling."
+            "explanation": "En estas transformaciones importa mucho reconocer equivalencias exactas: nearly as/so, be pulled down, the highest ... has ever been, in comparison with/to, in spite of y warning about/regarding/concerning."
+          }
+        ]
+      }
+    },
+    {
+      "id": "official_handbook_sample",
+      "title": "Official Handbook Sample Test",
+      "description": "Bloque oficial con New uses for salt mines, Managing change, Fashion and Science y las transformaciones 25–30.",
+      "level": "C1 Advanced",
+      "source": {
+        "collection": "C1 Advanced Handbook for teachers",
+        "pages": "4–8",
+        "notes": "Las respuestas salen en la misma muestra oficial del handbook."
+      },
+      "types": {
+        "multipleChoice": [
+          {
+            "id": "hb_mc_salt_mines",
+            "title": "New uses for salt mines",
+            "instructions": "For questions 1 – 8, read the text below and decide which answer (A, B, C or D) best fits each gap.",
+            "note": "Basado en el sample test paper-based del handbook oficial.",
+            "source": {
+              "pages": "4, 8"
+            },
+            "text": "Geological deposits of salt were formed millions of years ago, when what is now land, lay under the sea. It is hard to believe that salt is now such a cheap {{1}}, because centuries ago it was the commercial {{2}} of today’s oil. The men who mined salt became wealthy and, although the work was {{3}} and frequently dangerous, a job in a salt mine was highly {{4}}.\n\nNowadays, the specific microclimates in disused mines have been {{5}} for the treatment of respiratory illnesses such as asthma, and the silent, dark surroundings in a mine are considered {{6}} in encouraging patients to relax.\n\nIn addition, some disused mines have been {{7}} to different commercial enterprises, although keeping up-to-date with the technology of mining is essential to {{8}} visitors’ safety. Some of the largest underground chambers even host concerts, conferences and business meetings.",
+            "questions": [
+              {
+                "number": 1,
+                "options": {
+                  "A": "provision",
+                  "B": "utility",
+                  "C": "material",
+                  "D": "commodity"
+                },
+                "correct": "D"
+              },
+              {
+                "number": 2,
+                "options": {
+                  "A": "match",
+                  "B": "similarity",
+                  "C": "parallel",
+                  "D": "equivalent"
+                },
+                "correct": "D"
+              },
+              {
+                "number": 3,
+                "options": {
+                  "A": "critical",
+                  "B": "demanding",
+                  "C": "extreme",
+                  "D": "straining"
+                },
+                "correct": "B"
+              },
+              {
+                "number": 4,
+                "options": {
+                  "A": "regarded",
+                  "B": "admired",
+                  "C": "approved",
+                  "D": "honoured"
+                },
+                "correct": "A"
+              },
+              {
+                "number": 5,
+                "options": {
+                  "A": "exploited",
+                  "B": "extracted",
+                  "C": "exposed",
+                  "D": "extended"
+                },
+                "correct": "A"
+              },
+              {
+                "number": 6,
+                "options": {
+                  "A": "profitable",
+                  "B": "agreeable",
+                  "C": "beneficial",
+                  "D": "popular"
+                },
+                "correct": "C"
+              },
+              {
+                "number": 7,
+                "options": {
+                  "A": "put down",
+                  "B": "turned over",
+                  "C": "made out",
+                  "D": "set about"
+                },
+                "correct": "B"
+              },
+              {
+                "number": 8,
+                "options": {
+                  "A": "enable",
+                  "B": "retain",
+                  "C": "ensure",
+                  "D": "support"
+                },
+                "correct": "C"
+              }
+            ],
+            "explanation": "Aquí son decisivas las colocaciones y el sentido contextual: cheap commodity, equivalent of, demanding work, highly regarded, exploited for treatment, beneficial in encouraging, turned over to, ensure safety."
+          }
+        ],
+        "fillBlanks": [
+          {
+            "id": "hb_fb_managing_change",
+            "title": "Managing change",
+            "instructions": "For questions 9 – 16, read the text below and think of the word which best fits each gap. Use only one word in each gap.",
+            "note": "Open cloze del handbook con una respuesta doble oficial en el hueco 13.",
+            "source": {
+              "pages": "5, 8"
+            },
+            "text": "Most people find change unsettling and difficult to adapt to. Many societies have experienced {{9}} rapid change in the early years of the 21st century that life can feel very daunting {{10}} times. Various commentators have {{11}} forward suggestions for coping with change on a personal level.\n\nOne suggestion involves thinking of three solutions to a problem, rather {{12}} two. Apparently, many people faced {{13}} change respond by considering two possible courses of action, but invariably tend to reject both of these. However, thinking instead of three potential solutions is a strategy which, according to research, provides a reliable way of finding a solution to the initial problem.\n\nAnother strategy advocates learning to avoid set patterns of routine behaviour. Something simple, {{14}} taking another route to work at {{15}} once a week, is seen as encouraging confidence in the face of uncertainty. {{16}} the simplicity of these ideas, they nevertheless help prepare people mentally to manage major change if necessary.",
+            "blanks": [
+              {
+                "number": 9,
+                "answer": "such"
+              },
+              {
+                "number": 10,
+                "answer": "at"
+              },
+              {
+                "number": 11,
+                "answer": "put"
+              },
+              {
+                "number": 12,
+                "answer": "than"
+              },
+              {
+                "number": 13,
+                "answer": "with",
+                "acceptedAnswers": [
+                  "with",
+                  "by"
+                ]
+              },
+              {
+                "number": 14,
+                "answer": "like"
+              },
+              {
+                "number": 15,
+                "answer": "least"
+              },
+              {
+                "number": 16,
+                "answer": "despite"
+              }
+            ],
+            "explanation": "Hay varias estructuras fijas importantes: such ... that, at times, put forward, rather than, faced with/by change, at least y despite the simplicity of these ideas."
+          }
+        ],
+        "wordFormation": [
+          {
+            "id": "hb_wf_fashion_science",
+            "title": "Fashion and Science",
+            "instructions": "For questions 17 – 24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap in the same line.",
+            "note": "Ejercicio oficial de Word Formation con ocho transformaciones completas.",
+            "source": {
+              "pages": "5, 8"
+            },
+            "text": "At first glance science and fashion could not be more dissimilar. Science is generally considered to be a {{17|PURSUE}} that is slow-paced, serious and worthy, whereas fashion is frivolous, impulsive and often {{18|PREDICT}}.\n\nBut fashion owes more to science than some {{19|ENTHUSE}} might like to admit. Fashion houses adopt new materials in order to {{20|DISTINCT}} themselves from their various {{21|COMPETE}}. One designer recently showed off a liquid that can be used to produce clothes that are seamless.\n\nAs cotton is {{22|INCREASE}} having to compete with other crops for land, and oil-based fabrics become less acceptable, scientists are working to develop {{23|REPLACE}} for these products. Sportswear, for example, has been transformed thanks to the use of {{24|INNOVATE}} materials and scientific designs, greatly improving the performance of athletes.",
+            "blanks": [
+              {
+                "number": 17,
+                "base": "PURSUE",
+                "answer": "pursuit"
+              },
+              {
+                "number": 18,
+                "base": "PREDICT",
+                "answer": "unpredictable"
+              },
+              {
+                "number": 19,
+                "base": "ENTHUSE",
+                "answer": "enthusiasts"
+              },
+              {
+                "number": 20,
+                "base": "DISTINCT",
+                "answer": "distinguish"
+              },
+              {
+                "number": 21,
+                "base": "COMPETE",
+                "answer": "competitors"
+              },
+              {
+                "number": 22,
+                "base": "INCREASE",
+                "answer": "increasingly"
+              },
+              {
+                "number": 23,
+                "base": "REPLACE",
+                "answer": "replacements"
+              },
+              {
+                "number": 24,
+                "base": "INNOVATE",
+                "answer": "innovative"
+              }
+            ],
+            "explanation": "Este texto combina cambios de categoría y prefijación/sufijación: pursuit, unpredictable, enthusiasts, distinguish, competitors, increasingly, replacements e innovative."
+          }
+        ],
+        "sentenceTransformation": [
+          {
+            "id": "hb_sentence_transformations",
+            "title": "Key word transformations 25–30",
+            "instructions": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
+            "note": "Se incluyen las respuestas oficiales aceptadas que aparecen en la clave del handbook.",
+            "source": {
+              "pages": "6, 8"
+            },
+            "items": [
+              {
+                "number": 25,
+                "original": "As long as you explain the process clearly at the conference, your boss will be pleased.",
+                "givenWord": "GIVE",
+                "prefix": "If",
+                "suffix": "the process at the conference, your boss will be pleased.",
+                "answer": "you give a clear explanation of",
+                "acceptedAnswers": [
+                  "you give a clear explanation of",
+                  "you give a clear explanation about"
+                ]
+              },
+              {
+                "number": 26,
+                "original": "They say that a visitor to the national art gallery damaged an 18th-century painting.",
+                "givenWord": "ALLEGED",
+                "prefix": "A visitor to the national art gallery",
+                "suffix": "an 18th-century painting.",
+                "answer": "is alleged to have damaged",
+                "acceptedAnswers": [
+                  "is alleged to have damaged"
+                ]
+              },
+              {
+                "number": 27,
+                "original": "I really don’t mind whether Jill chooses to come on holiday with us or not.",
+                "givenWord": "DIFFERENCE",
+                "prefix": "It really",
+                "suffix": "whether Jill chooses to come on holiday with us or not.",
+                "answer": "makes no difference to me",
+                "acceptedAnswers": [
+                  "makes no difference to me",
+                  "makes very little difference to me"
+                ]
+              },
+              {
+                "number": 28,
+                "original": "Without the help that Joe gave me, I don’t think I’d have finished the course.",
+                "givenWord": "BEEN",
+                "prefix": "If it",
+                "suffix": "help, I don’t think I’d have finished the course.",
+                "answer": "hadn't been for Joe's",
+                "acceptedAnswers": [
+                  "hadn't been for Joe's",
+                  "had not been for Joe's"
+                ]
+              },
+              {
+                "number": 29,
+                "original": "We can assure our customers that we will take every possible measure to maintain the quality of the products on our shelves.",
+                "givenWord": "TAKES",
+                "prefix": "We can assure our customers that we will",
+                "suffix": "to maintain the quality of the products on our shelves.",
+                "answer": "do what it takes",
+                "acceptedAnswers": [
+                  "do what it takes",
+                  "do whatever it takes",
+                  "do everything it takes",
+                  "do all it takes",
+                  "do anything it takes"
+                ]
+              },
+              {
+                "number": 30,
+                "original": "Following some complaints by local residents, the government withdrew its proposal to build a new runway at the airport.",
+                "givenWord": "LIGHT",
+                "prefix": "The government’s proposal to build a new runway at the airport",
+                "suffix": "some complaints by local residents.",
+                "answer": "was withdrawn in light of",
+                "acceptedAnswers": [
+                  "was withdrawn in light of",
+                  "was withdrawn in the light of"
+                ]
+              }
+            ],
+            "explanation": "Aquí se practican varias equivalencias muy típicas del examen: give a clear explanation, be alleged to have, make no difference, hadn’t been for, do what it takes y in light of / in the light of."
           }
         ]
       }
